@@ -102,3 +102,14 @@ dist
 
 # TernJS port file
 .tern-port
+
+
+  
+.vscode/
+.DS_Store
+package-lock.json
+node_modules/
+dist/
+build/
+.firebase/
+src/javascripts/helpers/apiKeys.json
