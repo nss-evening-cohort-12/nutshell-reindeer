@@ -1,0 +1,27 @@
+{
+  "user1": {
+    "uid": "g9mafEXLpiNQ83gs1hqE7DQMnRv1",
+    "name": "Kamiran",
+    "email": "white@green.com"
+  },
+  "user2": {
+    "uid": "7333717",
+    "name": "Nikhil",
+    "email": "a@b.com"    
+  },
+  "user3": {
+    "uid": "84444818",
+    "name": "Geno",
+    "email": "b@b.com"    
+  },
+  "user4": {
+    "uid": "622616",
+    "name": "Shawn Garrison",
+    "email": "c@b.com"    
+  },  
+  "user5": {
+    "uid": "955555919",
+    "name": "newUser",
+    "age": "100"    
+  }      
+}
