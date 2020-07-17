@@ -6,6 +6,26 @@
   <title>Jurassic World</title>
 </head>
 <body>
-  <h1>Jurassic World</h1>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Jurassic World</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a id="dinasours"class="nav-item nav-link active" href="#">Dinasours<span class="sr-only">(current)</span></a>
+        <a id="staff"class="nav-item nav-link" href="#">Staff</a>
+        <a id="equipment"class="nav-item nav-link" href="#">Equipment</a>
+        <a id="rides"class="nav-item nav-link" href="#">Rides</a>
+        <a id="vendors"class="nav-item nav-link" href="#">Vendors</a>
+      </div>
+      <div class="navbar-nav navbar-right">
+        <button class="nav-link btn btn-danger mr-sm-2" id="navbar-logout-button"><i class="fas fa-sign-out-alt"></i>  Logout</button>
+      </div>
+    </div>
+  </nav>
+  <div id="auth">loged in</div>
+  <h1 id="collectionName"></h1>
+  <div id="displayCards"></div>
 </body>
 </html>
