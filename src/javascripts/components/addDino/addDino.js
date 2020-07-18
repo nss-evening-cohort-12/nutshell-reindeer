@@ -12,7 +12,6 @@ const addDino = () => {
     $(`#${utils.getActive()}`).click();
     $('#addButton').click();
   });
-  console.warn(tempDinoOjb);
 };
 
 export default { addDino };
