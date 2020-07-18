@@ -53,6 +53,7 @@ const navBarEventListeners = () => {
   $('#addButton').click(addButton.addButtonEvent);
 
   $('#dinosaurs').click(() => {
+    addButton.hideaddbutton();
     dinoList.displayDinos().then(() => {
       const user = auth.getUser();
       if (user !== null) {
@@ -64,6 +65,7 @@ const navBarEventListeners = () => {
     });
   });
   $('#staff').click(() => {
+    addButton.hideaddbutton();
     staffList.displayStaff().then(() => {
       const user = auth.getUser();
       if (user !== null) {
@@ -75,6 +77,7 @@ const navBarEventListeners = () => {
     });
   });
   $('#equipment').click(() => {
+    addButton.hideaddbutton();
     equipList.displayEquipCollection().then(() => {
       const user = auth.getUser();
       if (user !== null) {

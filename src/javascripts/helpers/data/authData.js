@@ -17,6 +17,7 @@ const checkLoginStatus = () => {
       utils.printToDom('#displayCards', '');
       navBar.navBarEventListeners();
       addButton.removeClass('hide');
+      $(`#${utils.getActive()}`).click();
     } else {
       addButton.addClass('hide');
       authDiv.removeClass('hide');

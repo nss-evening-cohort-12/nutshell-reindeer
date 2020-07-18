@@ -35,4 +35,6 @@ const addButtonEvent = () => {
   $('#submitAdd').click(addFunction);
 };
 
-export default { addButtonEvent };
+const hideaddbutton = () => $('#addForm').addClass('hide');
+
+export default { addButtonEvent, hideaddbutton };
