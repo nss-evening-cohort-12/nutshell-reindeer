@@ -4,9 +4,33 @@ import dinoList from '../dinoList/dinoList';
 import staffList from '../staffList/staffList';
 import equipList from '../equipList/equipList';
 
+import utils from '../../helpers/utils';
+
+import staffData from '../../helpers/data/staffData';
+
+const removeExcute = (e) => {
+  // console.warn('excute remove event');
+  const collectionId = e.target.closest('.card').id;
+  // console.warn(collectionId);
+  const collectionName = utils.getActive();
+  // console.warn(collectionName);
+  switch (collectionName) {
+    case 'staff':
+      // console.warn('do delete staff member by id');
+      staffData.deleteStaffById(collectionId)
+        .then(() => {
+          $(`#${utils.getActive()}`).click();
+        })
+        .catch((err) => console.error('could not delete board ', err));
+      break;
+    default:
+      // console.warn('this is just defulte');
+  }
+};
+
 const editDeleteEventListeners = () => {
-  $('.editCard').click();
-  $('.deleteCard').click();
+  // $('.editCard').click();
+  $('.deleteCard').click(removeExcute);
 };
 
 const showEditDelete = () => {
