@@ -3,6 +3,7 @@ import auth from '../auth/auth';
 import dinoList from '../dinoList/dinoList';
 import addButton from '../addButton/addButton';
 import staffList from '../staffList/staffList';
+import equipList from '../equipList/equipList';
 
 const editDeleteEventListeners = () => {
   $('.editCard').click();
@@ -40,6 +41,17 @@ const navBarEventListeners = () => {
   });
   $('#staff').click(() => {
     staffList.displayStaff().then(() => {
+      const user = auth.getUser();
+      if (user !== null) {
+        showEditDelete();
+        editDeleteEventListeners();
+      } else {
+        hideEditDelete();
+      }
+    });
+  });
+  $('#equipment').click(() => {
+    equipList.displayEquipCollection().then(() => {
       const user = auth.getUser();
       if (user !== null) {
         showEditDelete();
