@@ -16,15 +16,15 @@ const removeExcute = (e) => {
   // console.warn(collectionName);
   switch (collectionName) {
     case 'staff':
-      console.warn('do delete staff member by id');
+      // console.warn('do delete staff member by id');
       staffData.deleteStaffById(collectionId)
         .then(() => {
+          $(`#${utils.getActive()}`).click();
         })
         .catch((err) => console.error('could not delete board ', err));
-      staffList.displayStaffAfterEditDelete();
       break;
     default:
-      console.warn('this is just defulte');
+      // console.warn('this is just defulte');
   }
 };
 
