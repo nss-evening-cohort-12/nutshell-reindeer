@@ -3,6 +3,14 @@ import apiKeys from '../apiKeys.json';
 
 const baseUrl = apiKeys.firebaseConfig.databaseURL;
 
-const getEquips = () => axios.get(`${baseUrl}/equipment.json`);
+const getAllEquipment = () => axios.get(`${baseUrl}/equipment.json`);
 
-export default { getEquips };
+const deleteEquipById = (equipId) => axios.delete(`${baseUrl}/equipment/${equipId}.json`);
+
+const getEquipById = (equipId) => axios.get(`${baseUrl}/equipment/${equipId}.json`);
+
+export default {
+  getAllEquipment,
+  deleteEquipById,
+  getEquipById,
+};
