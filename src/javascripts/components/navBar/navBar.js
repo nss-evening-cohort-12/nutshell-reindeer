@@ -1,6 +1,7 @@
 import auth from '../auth/auth';
 
 import dinoList from '../dinoList/dinoList';
+import addButton from '../addButton/addButton';
 
 const editDeleteEventListeners = () => {
   $('.editCard').click();
@@ -22,6 +23,8 @@ const navBarEventListeners = () => {
     $('.navbar-nav .active').removeClass('active');
     $(event.target).addClass('active');
   });
+
+  $('#addButton').click(addButton.addButtonEvent);
 
   $('#dinosaurs').click(() => {
     dinoList.displayDinos().then(() => {
