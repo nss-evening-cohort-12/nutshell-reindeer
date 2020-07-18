@@ -1,0 +1,26 @@
+{
+  "dino1": {
+    "dinoName": "Big Al",
+    "dinoType": "Allosaurus",
+    "dinoImgUrl": "https://www.nps.gov/dino/learn/nature/images/allosaurus-jimmadseni.jpg",
+    "dinoSize": "medium"
+  },
+  "dino2": {
+    "dinoName": "Steve",
+    "dinoType": "Stegosaurus",
+    "dinoImgUrl": "https://www.nps.gov/dino/learn/nature/images/Stegosaurus-8370.jpg",
+    "dinoSize": "small"
+  },
+  "dino3": {
+    "dinoName": "Brony",
+    "dinoType": "Apatosaurus",
+    "dinoImgUrl": "https://www.nps.gov/dino/learn/nature/images/apatosaurus_1.jpg",
+    "dinoSize": "large"
+  },
+  "dino4": {
+    "dinoName": "Campy",
+    "dinoType": "Camptosaurus",
+    "dinoImgUrl": "https://www.nps.gov/dino/learn/nature/images/Camptosaurs.jpg",
+    "dinoSize": "small"
+  }
+}

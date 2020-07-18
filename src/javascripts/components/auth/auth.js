@@ -21,4 +21,6 @@ const logoutEvent = () => {
   });
 };
 
-export default { logoutEvent, loginButton };
+const getUser = () => firebase.auth().currentUser;
+
+export default { logoutEvent, loginButton, getUser };
