@@ -1,0 +1,26 @@
+{
+  "staff1": {
+    "staffName": "Tammy",
+    "staffTitle": "Keeper",
+    "staffImgUrl": "https://vignette2.wikia.nocookie.net/uncyclopedia/images/2/28/Groundskeeper-wille.jpg/revision/latest?cb=20060320210139",
+    "kidnap": "false"
+  },
+  "staff2": {
+    "staffName": "Mr. Fix",
+    "staffTitle": "Maintenance",
+    "staffImgUrl": "https://billweinbergerblog.files.wordpress.com/2019/11/ppm.png",
+    "kidnap": "true"
+  },
+  "staff3": {
+    "staffName": "Amy",
+    "staffTitle": "Nurse",
+    "staffImgUrl": "https://i.pinimg.com/originals/c8/96/08/c89608772fdb9e58a13b26f16a687d4a.jpg",
+    "kidnap": "false"
+  },
+  "staff4": {
+    "staffName": "Mr. Boss",
+    "staffTitle": "Park Manager",
+    "staffImgUrl": "https://static9.depositphotos.com/1003938/1122/v/950/depositphotos_11225342-stock-illustration-funny-cartoon-manager.jpg",
+    "kidnap": "false"
+  }
+}
