@@ -6,7 +6,7 @@ import navBar from '../../components/navBar/navBar';
 
 const authDiv = $('#auth');
 const logoutButton = $('#navbar-logout-button');
-const addButton = $('#addButton');
+const addButton = $('#addButtonDiv');
 
 const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {

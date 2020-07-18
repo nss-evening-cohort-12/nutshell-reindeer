@@ -1,5 +1,3 @@
-// import utils from '../../helpers/utils';
-
 import addForms from '../addForms/addForms';
 import utils from '../../helpers/utils';
 
@@ -13,15 +11,11 @@ const whichform = (id) => {
   }
 };
 
-const makeDropdown = () => {
-  const dropDownElement = whichform(utils.getActive());
-  console.warn(dropDownElement);
-  utils.printToDom('#addDropDown', dropDownElement);
-};
-
 const addButtonEvent = () => {
-  makeDropdown();
-  $('#addButtonDiv').dropdown();
+  console.warn('button clicked');
+  const form = whichform(utils.getActive());
+  console.warn(form);
+  utils.printToDom('#addForm', form);
 };
 
 export default { addButtonEvent };
