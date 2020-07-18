@@ -3,9 +3,9 @@ import './cardFactoryStaff.scss';
 // create card domstrings here
 
 const makeCollectionCard = (collection) => {
-  let domString = `<div class="card align-items-center m-3" style="width: 18rem;">
+  let domString = `<div class="card staff-card align-items-center m-3" style="width: 18rem;" id="${collection.id}">
   <img src="${collection.staffImgUrl}" class="card-img-top" alt="...">
-  <div id="${collection.id}" class="card-body">
+  <div class="card-body">
     <h5 class="card-title">${collection.staffName}</h5>
     <p class="card-text">${collection.staffTitle}</p>`;
   const isTrueSet = (collection.kidnap === 'true');

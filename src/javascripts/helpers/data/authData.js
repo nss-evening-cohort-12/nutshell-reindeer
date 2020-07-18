@@ -14,6 +14,7 @@ const checkLoginStatus = () => {
       authDiv.addClass('hide');
       logoutButton.removeClass('hide');
       utils.printToDom('#collectionName', 'You just logged in');
+      utils.printToDom('#displayCards', '');
       navBar.navBarEventListeners();
       addButton.removeClass('hide');
     } else {

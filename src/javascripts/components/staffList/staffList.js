@@ -1,8 +1,8 @@
-import staffData from '../../helpers/data/staffData';
-
 import cardFactoryStaff from '../cardFactoryStaff/cardFactoryStaff';
 
 import utils from '../../helpers/utils';
+
+import staffData from '../../helpers/data/staffData';
 
 const displayStaff = () => new Promise((resolve, reject) => {
   const collectionNameDiv = $('#collectionName');
@@ -22,4 +22,6 @@ const displayStaff = () => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-export default { displayStaff };
+export default {
+  displayStaff,
+};
