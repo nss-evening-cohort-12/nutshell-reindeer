@@ -6,6 +6,7 @@ import navBar from '../../components/navBar/navBar';
 
 const authDiv = $('#auth');
 const logoutButton = $('#navbar-logout-button');
+const addButton = $('#addButtonDiv');
 
 const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
@@ -15,7 +16,10 @@ const checkLoginStatus = () => {
       utils.printToDom('#collectionName', 'You just logged in');
       utils.printToDom('#displayCards', '');
       navBar.navBarEventListeners();
+      addButton.removeClass('hide');
+      $(`#${utils.getActive()}`).click();
     } else {
+      addButton.addClass('hide');
       authDiv.removeClass('hide');
       logoutButton.addClass('hide');
       utils.printToDom('#collectionName', '');

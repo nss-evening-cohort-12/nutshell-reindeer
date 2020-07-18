@@ -1,6 +1,7 @@
 import auth from '../auth/auth';
 
 import dinoList from '../dinoList/dinoList';
+import addButton from '../addButton/addButton';
 import staffList from '../staffList/staffList';
 import equipList from '../equipList/equipList';
 
@@ -49,7 +50,10 @@ const navBarEventListeners = () => {
     $(event.target).addClass('active');
   });
 
+  $('#addButton').click(addButton.addButtonEvent);
+
   $('#dinosaurs').click(() => {
+    addButton.hideaddbutton();
     dinoList.displayDinos().then(() => {
       const user = auth.getUser();
       if (user !== null) {
@@ -61,6 +65,7 @@ const navBarEventListeners = () => {
     });
   });
   $('#staff').click(() => {
+    addButton.hideaddbutton();
     staffList.displayStaff().then(() => {
       const user = auth.getUser();
       if (user !== null) {
@@ -72,6 +77,7 @@ const navBarEventListeners = () => {
     });
   });
   $('#equipment').click(() => {
+    addButton.hideaddbutton();
     equipList.displayEquipCollection().then(() => {
       const user = auth.getUser();
       if (user !== null) {
