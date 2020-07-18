@@ -3,9 +3,9 @@ import './cardFactory.scss';
 // create card domstrings here
 
 const makeDinoCard = (dino) => {
-  const domString = `<div class="card align-items-center m-3" style="width: 18rem;">
+  const domString = `<div class="card align-items-center m-3" style="width: 18rem;" id="${dino.id}">
   <img src="${dino.dinoImgUrl}" class="card-img-top" alt="...">
-  <div id="${dino.id}" class="card-body">
+  <div class="card-body">
     <h5 class="card-title">Dinosauar Name: ${dino.dinoName}</h5>
     <p class="card-text">Dinosaur Type: ${dino.dinoType}</p>
     <div class="links card-text text-center">

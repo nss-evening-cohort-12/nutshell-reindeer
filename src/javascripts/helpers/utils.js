@@ -16,4 +16,6 @@ const convertFirebaseCollection = (data) => {
   return arrayCollection;
 };
 
-export default { printToDom, convertFirebaseCollection };
+const getActive = () => $('.navbar-nav .active').attr('id');
+
+export default { printToDom, convertFirebaseCollection, getActive };
