@@ -1,6 +1,7 @@
 import auth from '../auth/auth';
 
 import dinoList from '../dinoList/dinoList';
+import staffList from '../staffList/staffList';
 
 const editDeleteEventListeners = () => {
   $('.editCard').click();
@@ -25,6 +26,17 @@ const navBarEventListeners = () => {
 
   $('#dinosaurs').click(() => {
     dinoList.displayDinos().then(() => {
+      const user = auth.getUser();
+      if (user !== null) {
+        showEditDelete();
+        editDeleteEventListeners();
+      } else {
+        hideEditDelete();
+      }
+    });
+  });
+  $('#staff').click(() => {
+    staffList.displayStaff().then(() => {
       const user = auth.getUser();
       if (user !== null) {
         showEditDelete();
