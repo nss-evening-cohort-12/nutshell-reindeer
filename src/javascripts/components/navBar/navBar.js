@@ -134,14 +134,12 @@ const editShowForm = (e) => {
               </div>
               </div>
               <button type="submit" class="btn btn-primary" id="equip-editor">Update</button>
+              <button class="btn btn-warning backButton" id="equip-editor-cancel">Cancel</button>
             </form>
           `;
           utils.printToDom('#addForm', domString);
           if (addformElement.hasClass('hide')) {
             addformElement.removeClass('hide');
-          } else {
-            addformElement.removeClass('hide');
-            addformElement.addClass('hide');
           }
           $('#equip-editor').click(editExecute);
         })
@@ -182,7 +180,6 @@ const navBarEventListeners = () => {
     utils.printToDom('#addForm', '');
     $('#addForm').addClass('hide');
   });
-
   $('#dinosaurs').click(() => {
     addButton.hideaddbutton();
     dinoList.displayDinos().then(() => {
