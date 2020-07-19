@@ -9,8 +9,11 @@ const deleteStaffById = (staffId) => axios.delete(`${baseUrl}/staff/${staffId}.j
 
 const getStaffById = (staffId) => axios.get(`${baseUrl}/satff/${staffId}.json`);
 
+const addStaff = (staffObj) => axios.post(`${baseUrl}/staff.json`, staffObj);
+
 export default {
   getStaff,
   deleteStaffById,
   getStaffById,
+  addStaff,
 };

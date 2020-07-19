@@ -26,21 +26,41 @@ const equipAddForm = () => {
   const domString = `
   <form id="equipAddForm" class="px-4 py-3">
     <div class="form-group">
-    <label for="addEquipName">Equipment Name</label>
-    <input type="text" class="form-control" id="addEquipName">
+      <label for="addEquipName">Equipment Name</label>
+      <input type="text" class="form-control" id="addEquipName">
+    </div>
+    <div class="form-group">
+      <label for="addEquipType">Equipment Type</label>
+      <input type="text" class="form-control" id="addEquipType">
+    </div>
+    <div class="form-group">
+      <label for="addEquipImgUrl">Equipment Image URL</label>
+      <input type="url" class="form-control" id="addEquipImgUrl">
+    </div>
+    <div class="form-group">
+      <label for="addEquipSize">Equipment Location</label>
+      <input type="text" class="form-control" id="addEquipSize">
+    </div>
+    <button id="submitAdd" class="btn btn-primary">Submit</button>
+  </form>`;
+  return domString;
+};
+
+const staffAddForm = () => {
+  const domString = `
+  <form id="staffAddForm" class="px-4 py-3">
+    <div class="form-group">
+    <label for="addStaffName">Staff Name</label>
+    <input type="text" class="form-control" id="addStaffName">
   </div>
   <div class="form-group">
-    <label for="addEquipType">Equipment Type</label>
-    <input type="text" class="form-control" id="addEquipType">
+    <label for="addStaffTitle">Staff Title</label>
+    <input type="text" class="form-control" id="addStaffTitle">
   </div>
   <div class="form-group">
-    <label for="addEquipImgUrl">Equipment Image URL</label>
-    <input type="url" class="form-control" id="addEquipImgUrl">
+    <label for="addStaffImgUrl">Staff Image URL</label>
+    <input type="url" class="form-control" id="addStaffImgUrl">
   </div>
-  <div class="form-group">
-  <label for="addEquipSize">Equipment Location</label>
-  <input type="text" class="form-control" id="addEquipSize">
-</div>
     <button id="submitAdd" class="btn btn-primary">Submit</button>
   </form>`;
   return domString;
@@ -51,4 +71,9 @@ const junkTestForm = () => {
   return domString;
 };
 
-export default { dinoAddForm, junkTestForm, equipAddForm };
+export default {
+  dinoAddForm,
+  junkTestForm,
+  equipAddForm,
+  staffAddForm,
+};
