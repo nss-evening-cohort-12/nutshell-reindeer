@@ -25,6 +25,7 @@ const checkLoginStatus = () => {
       utils.printToDom('#collectionName', '');
       utils.printToDom('#displayCards', '');
       navBar.navBarEventListeners();
+      $(`#${utils.getActive()}`).click();
     }
   });
 };
