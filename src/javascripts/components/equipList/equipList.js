@@ -9,7 +9,7 @@ const displayEquipCollection = () => new Promise((resolve, reject) => {
 
   equipData.getAllEquipment().then((response) => {
     const equipCollectionArr = utils.convertFirebaseCollection(response.data);
-    let domString = '<div class="d-flex flex-wrap">';
+    let domString = '<div class="d-flex justify-content-center flex-wrap">';
     equipCollectionArr.forEach((equip) => {
       domString += cardFactoryEquip.makeSingleEquipCard(equip);
     });

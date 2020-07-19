@@ -1,6 +1,7 @@
 import addForms from '../addForms/addForms';
 import utils from '../../helpers/utils';
 import addDino from '../addDino/addDino';
+import addEquipment from '../addEquipment/addEquipment';
 
 const addFunction = (e) => {
   e.preventDefault();
@@ -8,6 +9,9 @@ const addFunction = (e) => {
   switch (collection) {
     case 'dinosaurs':
       addDino.addDino();
+      break;
+    case 'equipment':
+      addEquipment.addEquipment();
       break;
     default:
       console.warn('no add function yet');
@@ -18,6 +22,8 @@ const whichform = (id) => {
   switch (id) {
     case 'dinosaurs':
       return addForms.dinoAddForm();
+    case 'equipment':
+      return addForms.equipAddForm();
     default:
       return addForms.junkTestForm();
   }

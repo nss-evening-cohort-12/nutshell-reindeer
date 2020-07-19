@@ -3,16 +3,17 @@ import './cardFactoryEquip.scss';
 // create card domstrings here
 
 const makeSingleEquipCard = (equip) => {
-  let domString = `<div class="card align-items-center m-3" style="width: 18rem;">
+  let domString = `<div id="${equip.id}" class="card align-items-center m-3" style="width: 18rem;">
   <img src="${equip.equipImgUrl}" class="card-img-top" alt="...">
-  <div id="${equip.id}" class="card-body">
+  <div class="card-body">
     <h5 class="card-title">Equipment Name: ${equip.equipName}</h5>
-    <p class="card-text">Equipment Type: ${equip.equipType}</p>`;
+    <p class="card-text">Equipment Type: ${equip.equipType}</p>
+    <p class="card-text">Equipment Location: ${equip.equipLocation}</p>`;
   const isTrueSet = (equip.equipOperational === true);
   if (isTrueSet) {
-    domString += '<p class="card-text">Operational: <i class="fas fa-home" style="color:green;"></i></p>';
+    domString += '<p class="card-text">Operational: <i class="fas fa-thumbs-up" style="color:green;"></i></p>';
   } else {
-    domString += '<p class="card-text">Operational: <i class="fas fa-house-damage" style="color:red;"></i></p>';
+    domString += '<p class="card-text">Operational: <i class="fas fa-thumbs-down" style="color:red;"></i></p>';
   }
   domString += `
     <div class="links card-text text-center">
