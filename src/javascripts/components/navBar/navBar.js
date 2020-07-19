@@ -1,16 +1,16 @@
 import auth from '../auth/auth';
 
-import dinoList from '../dinoList/dinoList';
-import addButton from '../addButton/addButton';
-import staffList from '../staffList/staffList';
-import equipList from '../equipList/equipList';
+import dinoList from '../listView/dinoList';
+import addButton from '../add/addButton';
+import staffList from '../listView/staffList';
+import equipList from '../listView/equipList';
 
 import utils from '../../helpers/utils';
 
 import staffData from '../../helpers/data/staffData';
 import dinoData from '../../helpers/data/dinoData';
 import equipData from '../../helpers/data/equipData';
-import detailCardBuilder from '../detailCardBuilder/detailCardBuilder';
+import detailCardBuilder from '../detailsView/detailCardBuilder';
 
 const removeExecute = (e) => {
   // console.warn('excute remove event');

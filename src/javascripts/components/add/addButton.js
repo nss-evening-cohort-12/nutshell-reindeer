@@ -1,7 +1,7 @@
-import addForms from '../addForms/addForms';
+import addForms from './addForms';
 import utils from '../../helpers/utils';
-import addDino from '../addDino/addDino';
-import addEquipment from '../addEquipment/addEquipment';
+import addDino from './addDino';
+import addEquipment from './addEquipment';
 
 const addFunction = (e) => {
   e.preventDefault();
