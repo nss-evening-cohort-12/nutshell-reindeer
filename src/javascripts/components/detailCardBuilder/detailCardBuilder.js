@@ -43,9 +43,6 @@ const showDetailedCard = (e) => {
           const addformElement = $('#addForm');
           if (addformElement.hasClass('hide')) {
             addformElement.removeClass('hide');
-          } else {
-            addformElement.removeClass('hide');
-            addformElement.addClass('hide');
           }
         })
         .catch((err) => console.error('get single equipment failed', err));
