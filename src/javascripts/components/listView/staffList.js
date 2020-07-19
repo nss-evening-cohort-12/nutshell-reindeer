@@ -1,4 +1,4 @@
-import cardFactoryStaff from '../cardFactoryStaff/cardFactoryStaff';
+import cardFactoryStaff from '../cardFactory/cardFactoryStaff';
 
 import utils from '../../helpers/utils';
 

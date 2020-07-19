@@ -1,4 +1,4 @@
-import cardFactoryEquip from '../cardFactoryEquip/cardFactoryEquip';
+import cardFactoryEquip from '../cardFactory/cardFactoryEquip';
 
 import utils from '../../helpers/utils';
 import equipData from '../../helpers/data/equipData';
