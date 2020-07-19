@@ -17,6 +17,7 @@ const equipmentEditForm = (collectionId) => {
         addformElement.removeClass('hide');
       }
       $('#submitEdit').click(edit.editEquipment);
+      $('#addButtonDiv').removeClass('d-none');
     })
     .catch((err) => console.warn(err));
 };
