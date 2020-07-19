@@ -38,6 +38,7 @@ const navBarEventListeners = () => {
   $('body').on('click', '.backButton', () => {
     utils.printToDom('#addForm', '');
     $('#addForm').addClass('hide');
+    $('#addButtonDiv').removeClass('d-none');
   });
   $('#dinosaurs').click(() => {
     addButton.hideaddbutton();
