@@ -9,6 +9,7 @@ import utils from '../../helpers/utils';
 
 import staffData from '../../helpers/data/staffData';
 import equipData from '../../helpers/data/equipData';
+import detailCardBuilder from '../detailCardBuilder/detailCardBuilder';
 
 const removeExecute = (e) => {
   // console.warn('excute remove event');
@@ -89,6 +90,7 @@ const editExecute = (e) => {
 const editShowForm = (e) => {
   e.preventDefault();
   // console.warn('excute remove event');
+  $('#addButtonDiv').addClass('d-none');
   const collectionId = e.target.closest('.card').id;
   const collectionName = utils.getActive();
   // console.warn(collectionName);
@@ -138,6 +140,7 @@ const editShowForm = (e) => {
           if (addformElement.hasClass('hide')) {
             addformElement.removeClass('hide');
           } else {
+            addformElement.removeClass('hide');
             addformElement.addClass('hide');
           }
           $('#equip-editor').click(editExecute);
@@ -173,6 +176,13 @@ const navBarEventListeners = () => {
   });
   // Handles the addButton Click envent
   $('#addButton').click(addButton.addButtonEvent);
+  // Handles the detail Card builder event
+  $('body').on('click', '.viewCard', detailCardBuilder.showDetailedCard);
+  $('body').on('click', '.backButton', () => {
+    utils.printToDom('#addForm', '');
+    $('#addForm').addClass('hide');
+  });
+
   $('#dinosaurs').click(() => {
     addButton.hideaddbutton();
     dinoList.displayDinos().then(() => {
