@@ -8,6 +8,7 @@ import equipList from '../equipList/equipList';
 import utils from '../../helpers/utils';
 
 import staffData from '../../helpers/data/staffData';
+import dinoData from '../../helpers/data/dinoData';
 import equipData from '../../helpers/data/equipData';
 import detailCardBuilder from '../detailCardBuilder/detailCardBuilder';
 
@@ -21,6 +22,13 @@ const removeExecute = (e) => {
     case 'staff':
       // console.warn('do delete staff member by id');
       staffData.deleteStaffById(collectionId)
+        .then(() => {
+          $(`#${utils.getActive()}`).click();
+        })
+        .catch((err) => console.error('could not delete board ', err));
+      break;
+    case 'dinosaurs':
+      dinoData.deleteDinosById(collectionId)
         .then(() => {
           $(`#${utils.getActive()}`).click();
         })
