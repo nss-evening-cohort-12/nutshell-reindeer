@@ -3,17 +3,21 @@ import './cardFactoryRide.scss';
 // create card domstrings here
 
 const makeSingleRideCard = (ride) => {
-  let domString = `<div id="${ride.id}" class="card align-items-center m-3" style="width: 18rem;">
+  const isTrueSet = (ride.rideOperational === true);
+  let backgroundColor;
+  if (!isTrueSet) {
+    backgroundColor = 'red';
+  }
+  let domString = `<div id="${ride.id}" class="card align-items-center m-3" style="width: 18rem; background-color: ${backgroundColor};">
   <img src="${ride.rideImgUrl}" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">Ride Name: ${ride.rideName}</h5>
     <p class="card-text">Ride Type: ${ride.rideType}</p>
     <p class="card-text">Ride Location: ${ride.rideLocation}</p>`;
-  const isTrueSet = (ride.rideOperational === true);
   if (isTrueSet) {
     domString += '<p class="card-text">Operational: <i class="fas fa-thumbs-up" style="color:green;"></i></p>';
   } else {
-    domString += '<p class="card-text">Operational: <i class="fas fa-thumbs-down" style="color:red;"></i></p>';
+    domString += '<p class="card-text">Operational: <i class="fas fa-thumbs-down" style="color:black;"></i></p>';
   }
   domString += `
     <div class="links card-text text-center">

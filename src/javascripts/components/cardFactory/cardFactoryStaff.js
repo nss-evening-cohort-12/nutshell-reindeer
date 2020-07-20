@@ -3,14 +3,18 @@ import './cardFactoryStaff.scss';
 // create card domstrings here
 
 const makeCollectionCard = (collection) => {
-  let domString = `<div class="card staff-card align-items-center m-3" style="width: 18rem;" id="${collection.id}">
+  const isTrueSet = (collection.kidnap === 'true');
+  let backgroundColor;
+  if (isTrueSet) {
+    backgroundColor = 'red';
+  }
+  let domString = `<div class="card staff-card align-items-center m-3" style="width: 18rem; background-color: ${backgroundColor};" id="${collection.id}">
   <img src="${collection.staffImgUrl}" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">${collection.staffName}</h5>
     <p class="card-text">${collection.staffTitle}</p>`;
-  const isTrueSet = (collection.kidnap === 'true');
   if (isTrueSet) {
-    domString += '<p class="card-text">kidnapped: <i class="fas fa-ghost" style="color:red;"></i></p>';
+    domString += '<p class="card-text">kidnapped: <i class="fas fa-ghost" style="color:black;"></i></p>';
   } else {
     domString += '<p class="card-text">kidnapped: <i class="fab fa-angellist" style="color:green;"></i></p>';
   }
