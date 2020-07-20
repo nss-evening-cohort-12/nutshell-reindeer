@@ -3,6 +3,7 @@ import utils from '../../helpers/utils';
 import addDino from './addDino';
 import addEquipment from './addEquipment';
 import addStaff from './addStaff';
+import addVendor from './addVendor';
 
 const addFunction = (e) => {
   e.preventDefault();
@@ -17,6 +18,9 @@ const addFunction = (e) => {
     case 'staff':
       addStaff.addStaff();
       break;
+    case 'vendors':
+      addVendor.addVendor();
+      break;
     default:
       console.warn('no add function yet');
   }
@@ -30,6 +34,8 @@ const whichform = (id) => {
       return addForms.equipAddForm();
     case 'staff':
       return addForms.staffAddForm();
+    case 'vendors':
+      return addForms.vendorAddForm();
     default:
       return addForms.junkTestForm();
   }
