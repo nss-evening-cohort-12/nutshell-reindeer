@@ -3,6 +3,7 @@ import equipData from '../../helpers/data/equipData';
 import rideData from '../../helpers/data/rideData';
 import staffData from '../../helpers/data/staffData';
 import vendorData from '../../helpers/data/vendorData';
+import dinoData from '../../helpers/data/dinoData';
 
 const showDetailedCard = (e) => {
   e.preventDefault();
@@ -148,6 +149,42 @@ const showDetailedCard = (e) => {
                                 <a href="#" class="btn btn-outline-dark backButton mb-2"><i class="fas fa-arrow-left"></i></a>
                                 <h1>${vendor.vendorName}</h1>
                                 <h5>${vendor.vendorType}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                
+                </div>
+            `;
+          utils.printToDom('#addForm', domString);
+          $('#addButtonDiv').addClass('d-none');
+          const addformElement = $('#addForm');
+          if (addformElement.hasClass('hide')) {
+            addformElement.removeClass('hide');
+          }
+        })
+        .catch((err) => console.error('get single vendor failed', err));
+      break;
+    case 'dinosaurs':
+      dinoData.getDinoById(collectionId)
+        .then((response) => {
+          const dino = response.data;
+          const domString = `  
+                <div class="d-flex justify-content-center">
+                    <div class="card mt-5" style="width: 48rem;" id=${collectionId}>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                <div class="d-flex justify-content-center">
+                                <div class="card mb-2" border-radius:20px;">
+                                <img class="card-img-top" src="${dino.dinoImgUrl}" alt="Card image cap">
+                                </div>           
+                                </div> 
+                                </div>
+                                <div class="col-6">
+                                <a href="#" class="btn btn-outline-dark backButton mb-2"><i class="fas fa-arrow-left"></i></a>
+                                <h1>${dino.dinoName}</h1>
+                                <h5>Type: ${dino.dinoType}</h5>
+                                <h5>Size: ${dino.dinoSize}</h5>
                                 </div>
                             </div>
                         </div>

@@ -9,4 +9,11 @@ const addDino = (dinoObj) => axios.post(`${baseUrl}/dinosaurs.json`, dinoObj);
 
 const deleteDinosById = (dinoId) => axios.delete(`${baseUrl}/dinosaurs/${dinoId}.json`);
 
-export default { getDinos, addDino, deleteDinosById };
+const getDinoById = (dinoId) => axios.get(`${baseUrl}/dinosaurs/${dinoId}.json`);
+
+export default {
+  getDinos,
+  addDino,
+  deleteDinosById,
+  getDinoById,
+};
