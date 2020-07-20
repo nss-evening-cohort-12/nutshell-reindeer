@@ -4,6 +4,7 @@ import addDino from './addDino';
 import addEquipment from './addEquipment';
 import addStaff from './addStaff';
 import addRide from './addRide';
+import addVendor from './addVendor';
 
 const addFunction = (e) => {
   e.preventDefault();
@@ -21,6 +22,9 @@ const addFunction = (e) => {
     case 'rides':
       addRide.addRide();
       break;
+    case 'vendors':
+      addVendor.addVendor();
+      break;
     default:
       console.warn('no add function yet');
   }
@@ -36,6 +40,8 @@ const whichform = (id) => {
       return addForms.staffAddForm();
     case 'rides':
       return addForms.rideAddForm();
+    case 'vendors':
+      return addForms.vendorAddForm();
     default:
       return addForms.junkTestForm();
   }

@@ -4,6 +4,7 @@ import dinoList from '../listView/dinoList';
 import addButton from '../add/addButton';
 import staffList from '../listView/staffList';
 import equipList from '../listView/equipList';
+import vendorList from '../listView/vendorList';
 
 import utils from '../../helpers/utils';
 import detailCardBuilder from '../detailsView/detailCardBuilder';
@@ -80,6 +81,18 @@ const navBarEventListeners = () => {
   $('#rides').click(() => {
     addButton.hideaddbutton();
     rideList.displayRides().then(() => {
+      const user = auth.getUser();
+      if (user !== null) {
+        showEditDelete();
+        editDeleteEventListeners();
+      } else {
+        hideEditDelete();
+      }
+    });
+  });
+  $('#vendors').click(() => {
+    addButton.hideaddbutton();
+    vendorList.displayVendors().then(() => {
       const user = auth.getUser();
       if (user !== null) {
         showEditDelete();

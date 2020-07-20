@@ -83,7 +83,27 @@ const rideAddForm = () => {
     </div>
     <div class="form-group">
       <label for="addRideLocation">Ride Location</label>
-      <input type="text" class="form-control" id="addRideSize">
+      <input type="text" class="form-control" id="addRideLocation">
+      </div>
+    <button id="submitAdd" class="btn btn-primary">Submit</button>
+  </form>`;
+  return domString;
+};
+
+const vendorAddForm = () => {
+  const domString = `
+  <form id="vendorAddForm" class="px-4 py-3">
+    <div class="form-group">
+      <label for="addVendorName">Vendorsaur Name</label>
+      <input type="text" class="form-control" id="addVendorName">
+    </div>
+    <div class="form-group">
+      <label for="addVendorType">Vendorsaur Type</label>
+      <input type="text" class="form-control" id="addVendorType">
+    </div>
+    <div class="form-group">
+      <label for="addVendorImgUrl">Vendorsaur Image URL</label>
+      <input type="url" class="form-control" id="addVendorImgUrl">
     </div>
     <button id="submitAdd" class="btn btn-primary">Submit</button>
   </form>`;
@@ -101,4 +121,5 @@ export default {
   equipAddForm,
   staffAddForm,
   rideAddForm,
+  vendorAddForm,
 };
