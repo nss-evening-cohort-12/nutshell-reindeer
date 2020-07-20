@@ -10,6 +10,7 @@ import utils from '../../helpers/utils';
 import detailCardBuilder from '../detailsView/detailCardBuilder';
 import deleteElement from '../delete/deleteElement';
 import editButton from '../edit/editButton';
+import rideList from '../listView/rideList';
 
 const editDeleteEventListeners = () => {
   $('body').on('click', '.editCard', editButton.editButtonEvent);
@@ -68,6 +69,18 @@ const navBarEventListeners = () => {
   $('#equipment').click(() => {
     addButton.hideaddbutton();
     equipList.displayEquipCollection().then(() => {
+      const user = auth.getUser();
+      if (user !== null) {
+        showEditDelete();
+        editDeleteEventListeners();
+      } else {
+        hideEditDelete();
+      }
+    });
+  });
+  $('#rides').click(() => {
+    addButton.hideaddbutton();
+    rideList.displayRides().then(() => {
       const user = auth.getUser();
       if (user !== null) {
         showEditDelete();

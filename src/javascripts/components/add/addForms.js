@@ -38,7 +38,7 @@ const equipAddForm = () => {
       <input type="url" class="form-control" id="addEquipImgUrl">
     </div>
     <div class="form-group">
-      <label for="addEquipSize">Equipment Location</label>
+      <label for="addEquipLocation">Equipment Location</label>
       <input type="text" class="form-control" id="addEquipSize">
     </div>
     <button id="submitAdd" class="btn btn-primary">Submit</button>
@@ -61,6 +61,30 @@ const staffAddForm = () => {
     <label for="addStaffImgUrl">Staff Image URL</label>
     <input type="url" class="form-control" id="addStaffImgUrl">
   </div>
+    <button id="submitAdd" class="btn btn-primary">Submit</button>
+  </form>`;
+  return domString;
+};
+
+const rideAddForm = () => {
+  const domString = `
+  <form id="rideAddForm" class="px-4 py-3">
+    <div class="form-group">
+      <label for="addRideName">Ride Name</label>
+      <input type="text" class="form-control" id="addRideName">
+    </div>
+    <div class="form-group">
+      <label for="addRideType">Ride Type</label>
+      <input type="text" class="form-control" id="addRideType">
+    </div>
+    <div class="form-group">
+      <label for="addRideImgUrl">Ride Image URL</label>
+      <input type="url" class="form-control" id="addRideImgUrl">
+    </div>
+    <div class="form-group">
+      <label for="addRideLocation">Ride Location</label>
+      <input type="text" class="form-control" id="addRideLocation">
+      </div>
     <button id="submitAdd" class="btn btn-primary">Submit</button>
   </form>`;
   return domString;
@@ -96,5 +120,6 @@ export default {
   junkTestForm,
   equipAddForm,
   staffAddForm,
+  rideAddForm,
   vendorAddForm,
 };

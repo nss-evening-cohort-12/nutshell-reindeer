@@ -1,6 +1,7 @@
 import utils from '../../helpers/utils';
 import staffData from '../../helpers/data/staffData';
 import equipData from '../../helpers/data/equipData';
+import rideData from '../../helpers/data/rideData';
 // import 'bootstrap';
 
 const toastFunction = (message) => {
@@ -83,8 +84,35 @@ const breakRandomEquip = () => {
     .catch((err) => console.warn(err));
 };
 
+const breakRandomRide = () => {
+  rideData.getAllRides()
+    .then((response) => {
+      const ridesArr = utils.convertFirebaseCollection(response.data);
+      const filteredRidesArr = ridesArr.filter((item) => item.rideOperational === true);
+      // console.warn(rideArr);
+      // console.warn(filteredRidesArr.length);
+      if (filteredRidesArr.length > 0) {
+        const getRandomNumber = getRandomInt(0, filteredRidesArr.length);
+        const rideId = filteredRidesArr[getRandomNumber].id;
+
+        rideData.getRideById(rideId)
+          .then((rideObj) => {
+            const tempObj = rideObj.data;
+            tempObj.rideOperational = false;
+            rideData.updateRide(rideId, tempObj)
+              .then(() => {
+                const message = `Chaos Monkey just broke ${tempObj.rideName} ride`;
+                toastFunction(message);
+                $(`#${utils.getActive()}`).click();
+              });
+          });
+      }
+    })
+    .catch((err) => console.warn(err));
+};
+
 const randomActivity = () => {
-  const randomActivityNumber = getRandomInt(1, 3);
+  const randomActivityNumber = getRandomInt(1, 4);
   // const randomActivityNumber = 1;
   switch (randomActivityNumber) {
     case 1:
@@ -92,6 +120,9 @@ const randomActivity = () => {
       break;
     case 2:
       breakRandomEquip();
+      break;
+    case 3:
+      breakRandomRide();
       break;
     default:
       console.warn('no add function yet');

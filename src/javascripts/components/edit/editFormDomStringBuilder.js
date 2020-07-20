@@ -37,6 +37,45 @@ const editEquipDomStringBuilder = (collectionId, equipObj) => {
   return domString;
 };
 
+const editRideDomStringBuilder = (collectionId, rideObj) => {
+  let domString = `            
+        <form class="edit-equip m-5 editForm" id=${collectionId}>
+        <h2>Edit Equipment</h2>
+        <div class="form-group">
+            <label for="edit-ride-name">Name:</label>
+            <input type="text" class="form-control" id="edit-ride-name" placeholder="Cordyceps" value=${rideObj.rideName}>
+        </div>
+        <div class="form-group">
+            <label for="edit-ride-type">Type:</label>
+            <input type="text" class="form-control" id="edit-ride-type" placeholder="M" value=${rideObj.rideType}>
+        </div>
+        <div class="form-group">
+            <label for="edit-ride-location">Location:</label>
+            <input type="text" class="form-control" id="edit-ride-location" placeholder="Farm" value=${rideObj.rideLocation}>
+        </div>
+        <div class="form-group">
+            <label for="edit-ride-imgUrl">Image URL</label>
+            <input type="text" class="form-control" id="edit-ride-imgUrl" placeholder="Image URL" value=${rideObj.rideImgUrl}>
+        </div>
+        <div class="form-group">
+        <div class="form-check">
+            `;
+  if (rideObj.rideOperational) {
+    domString += '<input class="form-check-input" id="edit-ride-operational" type="checkbox" checked>';
+  } else {
+    domString += '<input class="form-check-input" id="edit-ride-operational" type="checkbox">';
+  }
+  domString += `
+        <label class="form-check-label" for="edit-ride-operational">Is Operational</label>              
+        </div>
+        </div>
+        <button type="submit" class="btn btn-primary" id="submitEdit">Update</button>
+        <button class="btn btn-warning backButton" id="ride-editor-cancel">Cancel</button>
+        </form>
+    `;
+  return domString;
+};
+
 const editVendorDomStringBuilder = (collectionId, vendorObj) => {
   const domString = `            
         <form class="edit-vendor m-5 editForm" id=${collectionId}>
@@ -63,4 +102,5 @@ const editVendorDomStringBuilder = (collectionId, vendorObj) => {
 export default {
   editEquipDomStringBuilder,
   editVendorDomStringBuilder,
+  editRideDomStringBuilder,
 };

@@ -3,6 +3,7 @@ import utils from '../../helpers/utils';
 import addDino from './addDino';
 import addEquipment from './addEquipment';
 import addStaff from './addStaff';
+import addRide from './addRide';
 import addVendor from './addVendor';
 
 const addFunction = (e) => {
@@ -17,6 +18,9 @@ const addFunction = (e) => {
       break;
     case 'staff':
       addStaff.addStaff();
+      break;
+    case 'rides':
+      addRide.addRide();
       break;
     case 'vendors':
       addVendor.addVendor();
@@ -34,6 +38,8 @@ const whichform = (id) => {
       return addForms.equipAddForm();
     case 'staff':
       return addForms.staffAddForm();
+    case 'rides':
+      return addForms.rideAddForm();
     case 'vendors':
       return addForms.vendorAddForm();
     default:
