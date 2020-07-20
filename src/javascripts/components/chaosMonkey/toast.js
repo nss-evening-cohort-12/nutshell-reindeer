@@ -8,9 +8,9 @@ const toastFunction = (message) => {
   const domString = `
   <div class="toast" data-delay="10000" role="alert" aria-live="assertive" aria-atomic="true">
   <div class="toast-header">
-    <img src="..." class="rounded mr-2" alt="...">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSJDxUYMNRC2nEIVJRZ7yIYnH7epWQ0Bl_Lqg&usqp=CAU" class="rounded mr-2" alt="...">
     <strong class="mr-auto">Bootstrap</strong>
-    <small>11 mins ago</small>
+    <small>Random mins ago</small>
     <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
