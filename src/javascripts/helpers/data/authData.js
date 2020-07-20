@@ -20,7 +20,7 @@ const checkLoginStatus = () => {
       navBar.navBarEventListeners();
       addButton.removeClass('hide');
       $(`#${utils.getActive()}`).click();
-      window.setInterval(chaosMonkey.toastTimer, 25000);
+      window.setInterval(chaosMonkey.bringChaosMonkey, 25000);
     } else {
       addButton.addClass('hide');
       authDiv.removeClass('hide');
