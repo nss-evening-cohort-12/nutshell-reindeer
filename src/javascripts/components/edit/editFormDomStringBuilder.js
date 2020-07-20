@@ -99,8 +99,36 @@ const editVendorDomStringBuilder = (collectionId, vendorObj) => {
   return domString;
 };
 
+const editDinoDomStringBuilder = (collectionId, dinoObj) => {
+  const domString = `            
+        <form class="edit-vendor m-5 editForm" id=${collectionId}>
+        <h2>Edit Vendor</h2>
+        <div class="form-group">
+            <label for="edit-dino-name">Name:</label>
+            <input type="text" class="form-control" id="edit-dino-name" placeholder="Dino Name" value=${dinoObj.dinoName}>
+        </div>
+        <div class="form-group">
+            <label for="edit-dino-type">Type:</label>
+            <input type="text" class="form-control" id="edit-dino-type" placeholder="T-Rex" value=${dinoObj.dinoType}>
+        </div>
+        <div class="form-group">
+            <label for="edit-vendor-imgUrl">Image URL</label>
+            <input type="text" class="form-control" id="edit-dino-imgUrl" placeholder="Image URL" value=${dinoObj.dinoImgUrl}>
+        </div>
+        <div class="form-group">
+            <label for="edit-vendor-imgUrl">Dino Size</label>
+            <input type="text" class="form-control" id="edit-dino-size" placeholder="Medium" value=${dinoObj.dinoSize}>
+        </div>
+        <button type="submit" class="btn btn-primary" id="submitEdit">Update</button>
+        <button class="btn btn-warning backButton" id="vendor-editor-cancel">Cancel</button>
+        </form>
+    `;
+  return domString;
+};
+
 export default {
   editEquipDomStringBuilder,
   editVendorDomStringBuilder,
   editRideDomStringBuilder,
+  editDinoDomStringBuilder,
 };
