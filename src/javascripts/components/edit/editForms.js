@@ -1,6 +1,7 @@
 import equipData from '../../helpers/data/equipData';
 import vendorData from '../../helpers/data/vendorData';
 import dinoData from '../../helpers/data/dinoData';
+import staffData from '../../helpers/data/staffData';
 // eslint-disable-next-line import/no-cycle
 import editEquipment from './editEquipment';
 import editRide from './editRide';
@@ -9,6 +10,7 @@ import editFormBuilder from './editFormDomStringBuilder';
 import rideData from '../../helpers/data/rideData';
 import editVendor from './editVendor';
 import editDino from './editDino';
+import editStaff from './editStaff';
 
 const equipmentEditForm = (collectionId) => {
   equipData.getEquipById(collectionId)
@@ -80,9 +82,29 @@ const dinoEditForm = (collectionId) => {
     .catch((err) => console.warn(err));
 };
 
+const staffEditForm = (collectionId) => {
+  // vendorData.getVendorById(collectionId)
+  staffData.getStaffById(collectionId)
+    .then((response) => {
+      const staff = response.data;
+
+      const domString = editFormBuilder.editStaffDomStringBuilder(collectionId, staff);
+
+      utils.printToDom('#addForm', domString);
+      const addformElement = $('#addForm');
+      if (addformElement.hasClass('hide')) {
+        addformElement.removeClass('hide');
+      }
+      $('#submitEdit').click(editStaff.editStaff);
+      $('#addButtonDiv').removeClass('d-none');
+    })
+    .catch((err) => console.warn(err));
+};
+
 export default {
   equipmentEditForm,
   vendorEditForm,
   rideEditForm,
   dinoEditForm,
+  staffEditForm,
 };

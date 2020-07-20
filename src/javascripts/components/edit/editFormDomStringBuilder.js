@@ -126,9 +126,46 @@ const editDinoDomStringBuilder = (collectionId, dinoObj) => {
   return domString;
 };
 
+const editStaffDomStringBuilder = (collectionId, staffObj) => {
+  let domString = `
+        <form class="edit-staff m-5 editForm" id=${collectionId}>
+          <h2>Edit Staff</h2>
+          <div class="form-group">
+              <label for="edit-staff-name">Name:</label>
+              <input type="text" class="form-control" id="edit-staff-name" placeholder="e.g. first last" value=${staffObj.staffName}>
+          </div>
+          <div class="form-group">
+              <label for="edit-staff-title">Title:</label>
+              <input type="text" class="form-control" id="edit-staff-title" placeholder="e.g. Engineer" value=${staffObj.staffTitle}>
+          </div>
+          <div class="form-group">
+              <label for="edit-staff-imgUrl">Image URL</label>
+              <input type="text" class="form-control" id="edit-staff-imgUrl" placeholder="Image URL" value=${staffObj.staffImgUrl}>
+          </div>
+          <div class="form-group">
+          <div class="form-check">
+        `;
+  const isTrueSet = (staffObj.kidnap === 'true');
+  if (isTrueSet) {
+    domString += '<input class="form-check-input" id="edit-staff-kidnapped" type="checkbox" checked>';
+  } else {
+    domString += '<input class="form-check-input" id="edit-staff-kidnapped" type="checkbox">';
+  }
+  domString += `
+        <label class="form-check-label" for="edit-staff-kidnapped">Is Kidnapped</label>              
+      </div>
+      </div>
+      <button type="submit" class="btn btn-primary" id="submitEdit">Update</button>
+      <button class="btn btn-warning backButton" id="staff-editor-cancel">Cancel</button>
+    </form>
+  `;
+  return domString;
+};
+
 export default {
   editEquipDomStringBuilder,
   editVendorDomStringBuilder,
   editRideDomStringBuilder,
   editDinoDomStringBuilder,
+  editStaffDomStringBuilder,
 };

@@ -19,6 +19,9 @@ const whichEditForm = (collectionName, collectionId) => {
     case 'vendors':
       editForms.vendorEditForm(collectionId);
       break;
+    case 'staff':
+      editForms.staffEditForm(collectionId);
+      break;
     default:
       return addForms.junkTestForm();
   }
