@@ -11,9 +11,12 @@ const deleteDinosById = (dinoId) => axios.delete(`${baseUrl}/dinosaurs/${dinoId}
 
 const getDinoById = (dinoId) => axios.get(`${baseUrl}/dinosaurs/${dinoId}.json`);
 
+const updateDino = (dinoId, editedDinoObj) => axios.put(`${baseUrl}/dinosaurs/${dinoId}.json`, editedDinoObj);
+
 export default {
   getDinos,
   addDino,
   deleteDinosById,
   getDinoById,
+  updateDino,
 };

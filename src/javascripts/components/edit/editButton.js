@@ -7,6 +7,9 @@ import editForms from './editForms';
 // eslint-disable-next-line consistent-return
 const whichEditForm = (collectionName, collectionId) => {
   switch (collectionName) {
+    case 'dinosaurs':
+      editForms.dinoEditForm(collectionId);
+      break;
     case 'equipment':
       editForms.equipmentEditForm(collectionId);
       break;
@@ -15,6 +18,9 @@ const whichEditForm = (collectionName, collectionId) => {
       break;
     case 'vendors':
       editForms.vendorEditForm(collectionId);
+      break;
+    case 'staff':
+      editForms.staffEditForm(collectionId);
       break;
     default:
       return addForms.junkTestForm();
