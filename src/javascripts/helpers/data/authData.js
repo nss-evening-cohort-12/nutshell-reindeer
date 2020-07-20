@@ -1,8 +1,10 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
+
 import utils from '../utils';
 
 import navBar from '../../components/navBar/navBar';
+import chaosMonkey from '../../components/chaosMonkey/toast';
 
 const authDiv = $('#auth');
 const logoutButton = $('#navbar-logout-button');
@@ -18,6 +20,7 @@ const checkLoginStatus = () => {
       navBar.navBarEventListeners();
       addButton.removeClass('hide');
       $(`#${utils.getActive()}`).click();
+      window.setInterval(chaosMonkey.toastTimer, 25000);
     } else {
       addButton.addClass('hide');
       authDiv.removeClass('hide');
