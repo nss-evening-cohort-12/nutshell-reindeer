@@ -25,7 +25,6 @@ const displayDinos = () => {
         </div>`;
       });
       domString += '</div>';
-      console.error(checkUser.checkUser());
       utils.printToDom('#displayCards', domString);
     })
     .catch((err) => console.error(err));
