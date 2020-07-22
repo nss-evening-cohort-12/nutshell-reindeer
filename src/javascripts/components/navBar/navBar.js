@@ -1,10 +1,10 @@
 import auth from '../auth/auth';
 
-import dinoList from '../listView/dinoList';
+import dinoList from '../dinos/dinoList';
 import addButton from '../add/addButton';
 import staffList from '../listView/staffList';
-import equipList from '../listView/equipList';
-import vendorList from '../listView/vendorList';
+import equipList from '../equipment/equipList';
+import vendorList from '../vendors/vendorCards';
 
 import deleteElement from '../delete/deleteElement';
 import rideList from '../rides/rideList';
@@ -51,15 +51,7 @@ const navBarEventListeners = () => {
   });
   $('#equipment').click(() => {
     addButton.hideaddbutton();
-    equipList.displayEquipCollection().then(() => {
-      const user = auth.getUser();
-      if (user !== null) {
-        showEditDelete();
-        editDeleteEventListeners();
-      } else {
-        hideEditDelete();
-      }
-    });
+    equipList.displayEquipCollection();
   });
   $('#rides').click(() => {
     addButton.hideaddbutton();
@@ -67,15 +59,7 @@ const navBarEventListeners = () => {
   });
   $('#vendors').click(() => {
     addButton.hideaddbutton();
-    vendorList.displayVendors().then(() => {
-      const user = auth.getUser();
-      if (user !== null) {
-        showEditDelete();
-        editDeleteEventListeners();
-      } else {
-        hideEditDelete();
-      }
-    });
+    vendorList.displayVendors();
   });
 };
 
