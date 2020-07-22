@@ -6,14 +6,10 @@ import staffList from '../listView/staffList';
 import equipList from '../listView/equipList';
 import vendorList from '../listView/vendorList';
 
-import utils from '../../helpers/utils';
-import detailCardBuilder from '../detailsView/detailCardBuilder';
 import deleteElement from '../delete/deleteElement';
-import editButton from '../edit/editButton';
 import rideList from '../listView/rideList';
 
 const editDeleteEventListeners = () => {
-  $('body').on('click', '.editCard', editButton.editButtonEvent);
   $('.deleteCard').click(deleteElement.removeExecute);
 };
 
@@ -36,23 +32,10 @@ const navBarEventListeners = () => {
   });
   // Handles the addButton Click envent
   $('#addButton').click(addButton.addButtonEvent);
-  $('body').on('click', '.viewCard', detailCardBuilder.showDetailedCard);
-  $('body').on('click', '.backButton', () => {
-    utils.printToDom('#addForm', '');
-    $('#addForm').addClass('hide');
-    $('#addButtonDiv').removeClass('d-none');
-  });
+
   $('#dinosaurs').click(() => {
     addButton.hideaddbutton();
-    dinoList.displayDinos().then(() => {
-      const user = auth.getUser();
-      if (user !== null) {
-        showEditDelete();
-        editDeleteEventListeners();
-      } else {
-        hideEditDelete();
-      }
-    });
+    dinoList.displayDinos();
   });
   $('#staff').click(() => {
     addButton.hideaddbutton();
