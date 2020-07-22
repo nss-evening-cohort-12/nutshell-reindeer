@@ -7,7 +7,7 @@ import equipList from '../listView/equipList';
 import vendorList from '../listView/vendorList';
 
 import deleteElement from '../delete/deleteElement';
-import rideList from '../listView/rideList';
+import rideList from '../rides/rideList';
 
 const editDeleteEventListeners = () => {
   $('.deleteCard').click(deleteElement.removeExecute);
@@ -63,15 +63,7 @@ const navBarEventListeners = () => {
   });
   $('#rides').click(() => {
     addButton.hideaddbutton();
-    rideList.displayRides().then(() => {
-      const user = auth.getUser();
-      if (user !== null) {
-        showEditDelete();
-        editDeleteEventListeners();
-      } else {
-        hideEditDelete();
-      }
-    });
+    rideList.displayRides();
   });
   $('#vendors').click(() => {
     addButton.hideaddbutton();
