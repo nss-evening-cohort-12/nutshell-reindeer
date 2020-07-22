@@ -4,7 +4,7 @@ import 'firebase/auth';
 import utils from '../utils';
 
 import navBar from '../../components/navBar/navBar';
-import chaosMonkey from '../../components/chaosMonkey/toast';
+// import chaosMonkey from '../../components/chaosMonkey/toast';
 
 const authDiv = $('#auth');
 const logoutButton = $('#navbar-logout-button');
@@ -20,7 +20,7 @@ const checkLoginStatus = () => {
       navBar.navBarEventListeners();
       addButton.removeClass('hide');
       $(`#${utils.getActive()}`).click();
-      window.setInterval(chaosMonkey.bringChaosMonkey, 25000);
+      // window.setInterval(chaosMonkey.bringChaosMonkey, 25000);
     } else {
       addButton.addClass('hide');
       authDiv.removeClass('hide');
@@ -33,6 +33,16 @@ const checkLoginStatus = () => {
   });
 };
 
+// call this to appropriately hide things with '.auth-only' class:
+const secureButtons = () => {
+  if (!firebase.auth().currentUser) {
+    $(document).ready(() => {
+      $('.authOnly').addClass('hide');
+    });
+  }
+};
 
+// returns either user info or null (can use like true or false)
+const checkAuth = () => firebase.auth().currentUser;
 
-export default { checkLoginStatus };
+export default { checkLoginStatus, secureButtons, checkAuth };

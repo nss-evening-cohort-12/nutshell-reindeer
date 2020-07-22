@@ -35,15 +35,7 @@ const navBarEventListeners = () => {
 
   $('#dinosaurs').click(() => {
     addButton.hideaddbutton();
-    dinoList.displayDinos().then(() => {
-      const user = auth.getUser();
-      if (user !== null) {
-        showEditDelete();
-        editDeleteEventListeners();
-      } else {
-        hideEditDelete();
-      }
-    });
+    dinoList.displayDinos();
   });
   $('#staff').click(() => {
     addButton.hideaddbutton();

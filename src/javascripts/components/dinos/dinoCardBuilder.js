@@ -1,4 +1,4 @@
-import './cardFactory.scss';
+import './dinoCards.scss';
 
 // create card domstrings here
 
