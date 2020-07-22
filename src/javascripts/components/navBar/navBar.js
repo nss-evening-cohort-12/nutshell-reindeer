@@ -2,12 +2,12 @@ import auth from '../auth/auth';
 
 import dinoList from '../listView/dinoList';
 import addButton from '../add/addButton';
-import staffList from '../listView/staffList';
 import equipList from '../listView/equipList';
 import vendorList from '../listView/vendorList';
 
 import deleteElement from '../delete/deleteElement';
 import rideList from '../listView/rideList';
+import staffCardBuilder from '../staff/staffCardBuilder';
 
 const editDeleteEventListeners = () => {
   $('.deleteCard').click(deleteElement.removeExecute);
@@ -39,15 +39,7 @@ const navBarEventListeners = () => {
   });
   $('#staff').click(() => {
     addButton.hideaddbutton();
-    staffList.displayStaff().then(() => {
-      const user = auth.getUser();
-      if (user !== null) {
-        showEditDelete();
-        editDeleteEventListeners();
-      } else {
-        hideEditDelete();
-      }
-    });
+    staffCardBuilder.displayStaff();
   });
   $('#equipment').click(() => {
     addButton.hideaddbutton();
