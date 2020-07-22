@@ -1,21 +1,25 @@
 import axios from 'axios';
 import apiKeys from '../apiKeys.json';
+import utils from '../utils';
 
 const baseUrl = apiKeys.firebaseConfig.databaseURL;
 
-// Retrieve (CRUD)
-const getAllVendors = () => axios.get(`${baseUrl}/vendors.json`);
-// Create (CRUD)
+const getVendors = () => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/vendors.json`)
+    .then(({ data }) => resolve(utils.convertFirebaseCollection(data)))
+    .catch((err) => reject(err));
+});
+
 const addVendor = (vendorObj) => axios.post(`${baseUrl}/vendors.json`, vendorObj);
-// Delete (CRUD)
+
 const deleteVendorById = (vendorId) => axios.delete(`${baseUrl}/vendors/${vendorId}.json`);
-// Retrieve by ID (CRUD)
+
 const getVendorById = (vendorId) => axios.get(`${baseUrl}/vendors/${vendorId}.json`);
-// Edit (CRUD)
+
 const updateVendor = (vendorId, editedVendorObj) => axios.put(`${baseUrl}/vendors/${vendorId}.json`, editedVendorObj);
 
 export default {
-  getAllVendors,
+  getVendors,
   deleteVendorById,
   getVendorById,
   addVendor,

@@ -4,7 +4,7 @@ import dinoList from '../dinos/dinoList';
 import addButton from '../add/addButton';
 import staffList from '../listView/staffList';
 import equipList from '../equipment/equipList';
-import vendorList from '../listView/vendorList';
+import vendorList from '../vendors/vendorCards';
 
 import deleteElement from '../delete/deleteElement';
 import rideList from '../listView/rideList';
@@ -67,15 +67,7 @@ const navBarEventListeners = () => {
   });
   $('#vendors').click(() => {
     addButton.hideaddbutton();
-    vendorList.displayVendors().then(() => {
-      const user = auth.getUser();
-      if (user !== null) {
-        showEditDelete();
-        editDeleteEventListeners();
-      } else {
-        hideEditDelete();
-      }
-    });
+    vendorList.displayVendors();
   });
 };
 
