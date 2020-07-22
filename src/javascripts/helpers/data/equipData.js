@@ -1,10 +1,15 @@
 import axios from 'axios';
 import apiKeys from '../apiKeys.json';
+import utils from '../utils';
 
 const baseUrl = apiKeys.firebaseConfig.databaseURL;
 
 // Retrieve (CRUD)
-const getAllEquipment = () => axios.get(`${baseUrl}/equipment.json`);
+const getAllEquipment = () => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/equipment.json`)
+    .then(({ data }) => resolve(utils.convertFirebaseCollection(data)))
+    .catch((err) => reject(err));
+});
 // Create (CRUD)
 const addEquipment = (equipObj) => axios.post(`${baseUrl}/equipment.json`, equipObj);
 // Delete (CRUD)
