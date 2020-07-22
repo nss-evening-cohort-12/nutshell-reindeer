@@ -1,17 +1,20 @@
-import auth from '../auth/auth';
+// import auth from '../auth/auth';
 
-import dinoList from '../listView/dinoList';
+import dinoList from '../dinos/dinoList';
 import addButton from '../add/addButton';
-import equipList from '../listView/equipList';
-import vendorList from '../listView/vendorList';
 
-import deleteElement from '../delete/deleteElement';
-import rideList from '../listView/rideList';
+import equipList from '../equipment/equipList';
+import vendorList from '../vendors/vendorCards';
+
+// import deleteElement from '../delete/deleteElement';
+import rideList from '../rides/rideList';
 import staffCardBuilder from '../staff/staffCardBuilder';
 
+/*
 const editDeleteEventListeners = () => {
   $('.deleteCard').click(deleteElement.removeExecute);
 };
+*/
 
 const showEditDelete = () => {
   $('.editCard').removeClass('hide');
@@ -43,39 +46,15 @@ const navBarEventListeners = () => {
   });
   $('#equipment').click(() => {
     addButton.hideaddbutton();
-    equipList.displayEquipCollection().then(() => {
-      const user = auth.getUser();
-      if (user !== null) {
-        showEditDelete();
-        editDeleteEventListeners();
-      } else {
-        hideEditDelete();
-      }
-    });
+    equipList.displayEquipCollection();
   });
   $('#rides').click(() => {
     addButton.hideaddbutton();
-    rideList.displayRides().then(() => {
-      const user = auth.getUser();
-      if (user !== null) {
-        showEditDelete();
-        editDeleteEventListeners();
-      } else {
-        hideEditDelete();
-      }
-    });
+    rideList.displayRides();
   });
   $('#vendors').click(() => {
     addButton.hideaddbutton();
-    vendorList.displayVendors().then(() => {
-      const user = auth.getUser();
-      if (user !== null) {
-        showEditDelete();
-        editDeleteEventListeners();
-      } else {
-        hideEditDelete();
-      }
-    });
+    vendorList.displayVendors();
   });
 };
 
