@@ -1,17 +1,20 @@
-import auth from '../auth/auth';
+// import auth from '../auth/auth';
 
 import dinoList from '../dinos/dinoList';
 import addButton from '../add/addButton';
-import staffList from '../listView/staffList';
+
 import equipList from '../equipment/equipList';
 import vendorList from '../vendors/vendorCards';
 
-import deleteElement from '../delete/deleteElement';
+// import deleteElement from '../delete/deleteElement';
 import rideList from '../rides/rideList';
+import staffCardBuilder from '../staff/staffCardBuilder';
 
+/*
 const editDeleteEventListeners = () => {
   $('.deleteCard').click(deleteElement.removeExecute);
 };
+*/
 
 const showEditDelete = () => {
   $('.editCard').removeClass('hide');
@@ -39,15 +42,7 @@ const navBarEventListeners = () => {
   });
   $('#staff').click(() => {
     addButton.hideaddbutton();
-    staffList.displayStaff().then(() => {
-      const user = auth.getUser();
-      if (user !== null) {
-        showEditDelete();
-        editDeleteEventListeners();
-      } else {
-        hideEditDelete();
-      }
-    });
+    staffCardBuilder.displayStaff();
   });
   $('#equipment').click(() => {
     addButton.hideaddbutton();

@@ -1,9 +1,14 @@
 import axios from 'axios';
 import apiKeys from '../apiKeys.json';
+import utils from '../utils';
 
 const baseUrl = apiKeys.firebaseConfig.databaseURL;
 
-const getStaff = () => axios.get(`${baseUrl}/staff.json`);
+const getStaff = () => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/staff.json`)
+    .then(({ data }) => resolve(utils.convertFirebaseCollection(data)))
+    .catch((err) => reject(err));
+});
 
 const deleteStaffById = (staffId) => axios.delete(`${baseUrl}/staff/${staffId}.json`);
 
