@@ -4,7 +4,7 @@ import utils from '../../helpers/utils';
 import equipData from '../../helpers/data/equipData';
 import checkUser from '../../helpers/data/checkUser';
 
-const equipAddForm = () => {
+const addEquipForm = () => {
   const domString = `
   <form id="equipAddForm" class="px-4 py-3">
     <div class="form-group">
@@ -31,7 +31,7 @@ const equipAddForm = () => {
 const displayEquipCollection = () => {
   $('#collectionName').text('Equipment');
   if (checkUser.checkUser()) {
-    utils.printToDom('#addForm', equipAddForm());
+    utils.printToDom('#addForm', addEquipForm());
   }
   equipData.getAllEquipment().then((equipCollectionArr) => {
     let domString = '<div class="d-flex justify-content-center flex-wrap">';
