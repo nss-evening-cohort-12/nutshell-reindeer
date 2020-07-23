@@ -4,6 +4,7 @@ import 'firebase/auth';
 import utils from '../utils';
 
 import navBar from '../../components/navBar/navBar';
+import clickEvents from '../clickEvents';
 // import chaosMonkey from '../../components/chaosMonkey/toast';
 
 const authDiv = $('#auth');
@@ -19,6 +20,7 @@ const checkLoginStatus = () => {
       utils.printToDom('#displayCards', '');
       navBar.navBarEventListeners();
       addButton.removeClass('hide');
+      clickEvents.clickEvents();
       $(`#${utils.getActive()}`).click();
       // window.setInterval(chaosMonkey.bringChaosMonkey, 25000);
     } else {

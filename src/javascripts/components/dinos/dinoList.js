@@ -2,9 +2,35 @@ import dinoData from '../../helpers/data/dinoData';
 import utils from '../../helpers/utils';
 import checkUser from '../../helpers/data/checkUser';
 
+const addDinoForm = () => {
+  const domString = `
+  <form id="dinoAddForm" class="px-4 py-3">
+    <div class="form-group">
+    <label for="addDinoName">Dinosaur Name</label>
+    <input type="text" class="form-control" name="addDinoName">
+  </div>
+  <div class="form-group">
+    <label for="addDinoType">Dinosaur Type</label>
+    <input type="text" class="form-control" name="addDinoType">
+  </div>
+  <div class="form-group">
+    <label for="addDinoImgUrl">Dinosaur Image URL</label>
+    <input type="url" class="form-control" name="addDinoImgUrl">
+  </div>
+  <div class="form-group">
+  <label for="addDinoSize">Dinosaur Size</label>
+  <input type="text" class="form-control" name="addDinoSize">
+</div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>`;
+  return domString;
+};
+
 const displayDinos = () => {
   $('#collectionName').text('Dinosaurs');
-
+  if (checkUser.checkUser()) {
+    utils.printToDom('#addForm', addDinoForm());
+  }
   dinoData.getDinos()
     .then((dinosArr) => {
       let domString = '<div class="d-flex flex-wrap">';
@@ -30,4 +56,18 @@ const displayDinos = () => {
     .catch((err) => console.error(err));
 };
 
-export default { displayDinos };
+const addDino = (e) => {
+  e.preventDefault();
+  const tempDinoOjb = {
+    dinoName: e.target.elements.addDinoName.value,
+    dinoType: e.target.elements.addDinoType.value,
+    dinoImgUrl: e.target.elements.addDinoImgUrl.value,
+    dinoSize: e.target.elements.addDinoSize.value,
+  };
+  dinoData.addDino(tempDinoOjb).then(() => {
+    displayDinos();
+    $('#addForm').addClass('hide');
+  });
+};
+
+export default { displayDinos, addDino };
