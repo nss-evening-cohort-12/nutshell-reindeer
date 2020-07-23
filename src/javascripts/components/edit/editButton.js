@@ -1,6 +1,4 @@
 import utils from '../../helpers/utils';
-
-import addForms from '../add/addForms';
 // eslint-disable-next-line import/no-cycle
 import editForms from './editForms';
 
@@ -23,7 +21,7 @@ const whichEditForm = (collectionName, collectionId) => {
       editForms.staffEditForm(collectionId);
       break;
     default:
-      return addForms.junkTestForm();
+      return 'no form to add';
   }
 };
 
