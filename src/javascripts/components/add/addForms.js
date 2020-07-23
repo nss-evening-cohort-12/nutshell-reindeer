@@ -1,27 +1,3 @@
-const equipAddForm = () => {
-  const domString = `
-  <form id="equipAddForm" class="px-4 py-3">
-    <div class="form-group">
-      <label for="addEquipName">Equipment Name</label>
-      <input type="text" class="form-control" id="addEquipName">
-    </div>
-    <div class="form-group">
-      <label for="addEquipType">Equipment Type</label>
-      <input type="text" class="form-control" id="addEquipType">
-    </div>
-    <div class="form-group">
-      <label for="addEquipImgUrl">Equipment Image URL</label>
-      <input type="url" class="form-control" id="addEquipImgUrl">
-    </div>
-    <div class="form-group">
-      <label for="addEquipLocation">Equipment Location</label>
-      <input type="text" class="form-control" id="addEquipSize">
-    </div>
-    <button id="submitAdd" class="btn btn-primary">Submit</button>
-  </form>`;
-  return domString;
-};
-
 const staffAddForm = () => {
   const domString = `
   <form id="staffAddForm" class="px-4 py-3">
@@ -93,7 +69,6 @@ const junkTestForm = () => {
 
 export default {
   junkTestForm,
-  equipAddForm,
   staffAddForm,
   rideAddForm,
   vendorAddForm,
