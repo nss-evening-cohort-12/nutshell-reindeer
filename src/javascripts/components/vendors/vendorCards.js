@@ -1,11 +1,34 @@
 import vendorData from '../../helpers/data/vendorData';
-import utils from '../../helpers/utils';
 import checkUser from '../../helpers/data/checkUser';
+import utils from '../../helpers/utils';
+
 import './vendorCards.scss';
 
+const addVendorForm = () => {
+  const domString = `
+    <form id="vendorAddForm" class="px-4 py-3">
+      <div class="form-group">
+        <label for="addVendorName">Vendor Name</label>
+        <input type="text" class="form-control" name="addVendorName">
+      </div>
+      <div class="form-group">
+        <label for="addVendorType">Vendor Type</label>
+        <input type="text" class="form-control" name="addVendorType">
+      </div>
+      <div class="form-group">
+        <label for="addVendorImgUrl">Vendor Image URL</label>
+        <input type="url" class="form-control" name="addVendorImgUrl">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>`;
+  return domString;
+};
+
 const displayVendors = () => {
-  const collectionNameDiv = $('#collectionName');
-  collectionNameDiv.text('Vendors');
+  $('#collectionName').text('Vendors');
+  if (checkUser.checkUser()) {
+    utils.printToDom('#addForm', addVendorForm());
+  }
 
   vendorData.getVendors()
     .then((vendorsArr) => {
@@ -31,10 +54,23 @@ const displayVendors = () => {
         </div>`;
       });
       domString += '</div>';
-
       utils.printToDom('#displayCards', domString);
     })
     .catch((err) => console.error('getting the vendors did not work -> ', err));
 };
 
-export default { displayVendors };
+const addVendor = (e) => {
+  e.preventDefault();
+  const tempVendorObj = {
+    vendorName: e.target.elements.addVendorName.value,
+    vendorType: e.target.elements.addVendorType.value,
+    vendorImgUrl: e.target.elements.addVendorImgUrl.value,
+  };
+  vendorData.addVendor(tempVendorObj).then(() => {
+    displayVendors();
+    $('#addForm').addClass('hide');
+  })
+    .catch((err) => console.error('adding new vendors did not work -> ', err));
+};
+
+export default { displayVendors, addVendor };
