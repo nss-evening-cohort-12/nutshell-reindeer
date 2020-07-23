@@ -4,7 +4,7 @@ import dinoList from './dinoList';
 
 const editDinoDomStringBuilder = (collectionId, dinoObj) => {
   const domString = `            
-        <form class="edit-vendor m-5 editForm" id="editDino">
+        <form class="edit-vendor m-5 editDinoForm">
         <h2>Edit Vendor</h2>
         <div class="form-group">
             <label for="edit-dino-name">Name:</label>
@@ -32,8 +32,7 @@ const editDinoDomStringBuilder = (collectionId, dinoObj) => {
 
 const editDino = (e) => {
   e.preventDefault();
-  const collectionId = e.target.closest('.editForm').id;
-
+  const collectionId = e.target.elements.collectionId.value;
   const tempEditedDino = {
     dinoName: e.target.elements.editDinoName.value,
     dinoType: e.target.elements.editDinoType.value,
@@ -48,7 +47,6 @@ const editDino = (e) => {
 };
 
 const dinoEditForm = (e) => {
-  console.error(e);
   const collectionId = e.target.closest('.card').id;
   dinoData.getDinoById(collectionId)
     .then((response) => {

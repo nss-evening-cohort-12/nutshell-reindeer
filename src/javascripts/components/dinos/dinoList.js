@@ -39,11 +39,11 @@ const displayDinos = () => {
         <div class="card align-items-center m-3" style="width: 18rem;" id="${dino.id}">
           <img src="${dino.dinoImgUrl}" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">Dinosauar Name: ${dino.dinoName}</h5>
+            <h5 class="card-title">Dinosaur Name: ${dino.dinoName}</h5>
             <p class="card-text">Dinosaur Type: ${dino.dinoType}</p>`;
         if (checkUser.checkUser()) {
           domString += `<div class="links card-text text-center">
-                <button id="editDino">Edit</button>
+                <i class="fas fa-pen editDino"></i>
                 <i class="far fa-trash-alt"></i>
             </div>`;
         }

@@ -1,9 +1,9 @@
+import firebase from 'firebase/app';
 import dinoList from '../components/dinos/dinoList';
 import equipList from '../components/equipment/equipList';
 import rideList from '../components/rides/rideList';
 import vendorCards from '../components/vendors/vendorCards';
 import staffList from '../components/staff/staffList';
-import checkUser from './data/checkUser';
 import editDino from '../components/dinos/editDino';
 
 const showAddForm = () => {
@@ -34,16 +34,18 @@ const navBarEventListeners = () => {
 
 const clickEvents = () => {
   navBarEventListeners();
-  $('body').on('click', '#editDino', editDino.dinoEditForm);
-  if (checkUser.checkUser()) {
-    $('body').on('click', '#addButton', showAddForm);
-    $('body').on('submit', '#dinoAddForm', dinoList.addDino);
-    $('body').on('submit', '#equipAddForm', equipList.addEquipment);
-    $('body').on('submit', '#addRideForm', rideList.addRide);
-    $('body').on('submit', '#vendorAddForm', vendorCards.addVendor);
-    $('body').on('submit', '#staffAddForm', staffList.addStaff);
-    $('body').on('submit', '#editDinoForm', editDino.editDino);
-  }
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      $('body').on('click', '#addButton', showAddForm);
+      $('body').on('submit', '#dinoAddForm', dinoList.addDino);
+      $('body').on('submit', '#equipAddForm', equipList.addEquipment);
+      $('body').on('submit', '#addRideForm', rideList.addRide);
+      $('body').on('submit', '#vendorAddForm', vendorCards.addVendor);
+      $('body').on('submit', '#staffAddForm', staffList.addStaff);
+      $('body').on('submit', '.editDinoForm', editDino.editDino);
+      $('body').on('click', '.editDino', editDino.dinoEditForm);
+    }
+  });
 };
 
 export default { clickEvents };
