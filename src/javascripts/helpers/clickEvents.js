@@ -5,6 +5,7 @@ import rideList from '../components/rides/rideList';
 import vendorCards from '../components/vendors/vendorCards';
 import staffList from '../components/staff/staffList';
 import editDino from '../components/dinos/editDino';
+import editRide from '../components/rides/editRide';
 
 const showAddForm = () => {
   $('#addForm').removeClass('hide');
@@ -44,6 +45,8 @@ const clickEvents = () => {
       $('body').on('submit', '#staffAddForm', staffList.addStaff);
       $('body').on('submit', '.editDinoForm', editDino.editDino);
       $('body').on('click', '.editDino', editDino.dinoEditForm);
+      $('body').on('submit', '.editRideForm', editRide.editRide);
+      $('body').on('click', '.editRide', editRide.rideEditForm);
     }
   });
 };
