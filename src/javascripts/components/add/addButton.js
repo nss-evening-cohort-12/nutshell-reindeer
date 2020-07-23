@@ -39,7 +39,7 @@
 //     case 'staff':
 //       return addForms.staffAddForm();
 //     case 'rides':
-//       return addForms.rideAddForm();
+//       return addForms.addRideForm();
 //     case 'vendors':
 //       return addForms.vendorAddForm();
 //     default:

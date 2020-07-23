@@ -8,7 +8,7 @@ import vendorList from '../vendors/vendorCards';
 
 // import deleteElement from '../delete/deleteElement';
 import rideList from '../rides/rideList';
-import staffCardBuilder from '../staff/staffCardBuilder';
+import staffList from '../staff/staffList';
 
 // This removes the class of active from previous selection and
 // adds the class of active on clicked collectionName button in the navbar
@@ -26,7 +26,7 @@ const navBarEventListeners = () => {
   });
   $('#staff').click(() => {
     // addButton.hideaddbutton();
-    staffCardBuilder.displayStaff();
+    staffList.displayStaff();
   });
   $('#equipment').click(() => {
     // addButton.hideaddbutton();

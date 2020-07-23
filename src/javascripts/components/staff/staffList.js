@@ -1,6 +1,6 @@
 import utils from '../../helpers/utils';
 import staffData from '../../helpers/data/staffData';
-import './staffCardBuilder.scss';
+import './staffList.scss';
 import checkUser from '../../helpers/data/checkUser';
 
 const addStaffForm = () => {

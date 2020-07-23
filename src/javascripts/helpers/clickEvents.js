@@ -1,7 +1,10 @@
 import utils from './utils';
-import editButton from '../components/edit/editButton';
 import dinoList from '../components/dinos/dinoList';
-import staffCardBuilder from '../components/staff/staffCardBuilder';
+import equipList from '../components/equipment/equipList';
+import rideList from '../components/rides/rideList';
+import editButton from '../components/edit/editButton';
+import vendorCards from '../components/vendors/vendorCards';
+import staffList from '../components/staff/staffList';
 
 const showAddForm = () => {
   $('#addForm').removeClass('hide');
@@ -16,7 +19,10 @@ const clickEvents = () => {
   });
   $('body').on('click', '#addButton', showAddForm);
   $('body').on('submit', '#dinoAddForm', dinoList.addDino);
-  $('body').on('submit', '#staffAddForm', staffCardBuilder.addStaff);
+  $('body').on('submit', '#equipAddForm', equipList.addEquipment);
+  $('body').on('submit', '#addRideForm', rideList.addRide);
+  $('body').on('submit', '#vendorAddForm', vendorCards.addVendor);
+  $('body').on('submit', '#staffAddForm', staffList.addStaff);
 };
 
 export default { clickEvents };
