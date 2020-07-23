@@ -58,13 +58,14 @@ const displayDinos = () => {
 
 const addDino = (e) => {
   e.preventDefault();
-  const tempDinoOjb = {
+  const tempDinoObj = {
     dinoName: e.target.elements.addDinoName.value,
     dinoType: e.target.elements.addDinoType.value,
     dinoImgUrl: e.target.elements.addDinoImgUrl.value,
     dinoSize: e.target.elements.addDinoSize.value,
+    rideOperational: true,
   };
-  dinoData.addDino(tempDinoOjb).then(() => {
+  dinoData.addDino(tempDinoObj).then(() => {
     displayDinos();
     $('#addForm').addClass('hide');
   });

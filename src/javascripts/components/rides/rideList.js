@@ -1,11 +1,37 @@
-// import cardFactoryRide from './cardFactoryRide';
 import utils from '../../helpers/utils';
 import rideData from '../../helpers/data/rideData';
 import checkUser from '../../helpers/data/checkUser';
 import './rideList.scss';
 
+const addRideForm = () => {
+  const domString = `
+  <form id="addRideForm" class="px-4 py-3">
+    <div class="form-group">
+      <label for="addRideName">Ride Name</label>
+      <input type="text" class="form-control" id="addRideName">
+    </div>
+    <div class="form-group">
+      <label for="addRideType">Ride Type</label>
+      <input type="text" class="form-control" id="addRideType">
+    </div>
+    <div class="form-group">
+      <label for="addRideImgUrl">Ride Image URL</label>
+      <input type="url" class="form-control" id="addRideImgUrl">
+    </div>
+    <div class="form-group">
+      <label for="addRideLocation">Ride Location</label>
+      <input type="text" class="form-control" id="addRideLocation">
+      </div>
+    <button type-"submit" class="btn btn-primary">Submit</button>
+  </form>`;
+  return domString;
+};
+
 const displayRides = () => {
   $('#collectionName').text('Rides');
+  if (checkUser.checkUser()) {
+    utils.printToDom('#addForm', addRideForm());
+  }
   rideData.getAllRides()
     .then((ridesArr) => {
       let domString = '<div class="d-flex justify-content-center flex-wrap">';
@@ -35,4 +61,19 @@ const displayRides = () => {
     .catch((err) => console.error(err));
 };
 
-export default { displayRides };
+const addRide = (e) => {
+  e.preventDefault();
+  const tempRideObj = {
+    rideName: e.target.elements.addRideName.value,
+    rideType: e.target.elements.addRideType.value,
+    rideImgUrl: e.target.elements.addRideImgUrl.value,
+    rideLocation: e.target.elements.addRideLocation.value,
+    rideOperational: true,
+  };
+  rideData.addRide(tempRideObj).then(() => {
+    displayRides();
+    $('#addForm').addClass('hide');
+  });
+};
+
+export default { displayRides, addRide };
