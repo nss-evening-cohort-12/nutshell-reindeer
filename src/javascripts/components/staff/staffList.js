@@ -1,9 +1,32 @@
 import utils from '../../helpers/utils';
 import staffData from '../../helpers/data/staffData';
-import './staffCardBuilder.scss';
+import './staffList.scss';
 import checkUser from '../../helpers/data/checkUser';
 
+const addStaffForm = () => {
+  const domString = `
+  <form id="staffAddForm" class="px-4 py-3">
+    <div class="form-group">
+      <label for="addStaffName">Staff Name</label>
+      <input type="text" class="form-control" name="addStaffName">
+    </div>
+    <div class="form-group">
+      <label for="addStaffTitle">Staff Title</label>
+      <input type="text" class="form-control" name="addStaffTitle">
+    </div>
+    <div class="form-group">
+      <label for="addStaffImgUrl">Staff Image URL</label>
+      <input type="url" class="form-control" name="addStaffImgUrl">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>`;
+  return domString;
+};
+
 const staffCard = (collection) => {
+  if (checkUser.checkUser()) {
+    utils.printToDom('#addForm', addStaffForm());
+  }
   let domString = `<div class="card staff-card align-items-center m-3${collection.kidnap ? ' kidnapped' : ''}" id="${collection.id}">
   <img src="${collection.staffImgUrl}" class="card-img-top" alt="...">
   <div class="card-body">
@@ -41,4 +64,18 @@ const displayStaff = () => {
     .catch((err) => console.error(err));
 };
 
-export default { displayStaff };
+const addStaff = (e) => {
+  e.preventDefault();
+  const newStaff = {
+    staffName: e.target.elements.addStaffName.value,
+    staffTitle: e.target.elements.addStaffTitle.value,
+    staffImgUrl: e.target.elements.addStaffImgUrl.value,
+    kidnap: false,
+  };
+  staffData.addStaff(newStaff).then(() => {
+    displayStaff();
+    $('#addForm').addClass('hide');
+  });
+};
+
+export default { displayStaff, addStaff };

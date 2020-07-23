@@ -4,6 +4,7 @@ import equipList from '../components/equipment/equipList';
 import rideList from '../components/rides/rideList';
 import editButton from '../components/edit/editButton';
 import vendorCards from '../components/vendors/vendorCards';
+import staffList from '../components/staff/staffList';
 
 const showAddForm = () => {
   $('#addForm').removeClass('hide');
@@ -21,6 +22,7 @@ const clickEvents = () => {
   $('body').on('submit', '#equipAddForm', equipList.addEquipment);
   $('body').on('submit', '#addRideForm', rideList.addRide);
   $('body').on('submit', '#vendorAddForm', vendorCards.addVendor);
+  $('body').on('submit', '#staffAddForm', staffList.addStaff);
 };
 
 export default { clickEvents };
