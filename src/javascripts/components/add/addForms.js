@@ -18,50 +18,6 @@ const staffAddForm = () => {
   return domString;
 };
 
-const rideAddForm = () => {
-  const domString = `
-  <form id="rideAddForm" class="px-4 py-3">
-    <div class="form-group">
-      <label for="addRideName">Ride Name</label>
-      <input type="text" class="form-control" id="addRideName">
-    </div>
-    <div class="form-group">
-      <label for="addRideType">Ride Type</label>
-      <input type="text" class="form-control" id="addRideType">
-    </div>
-    <div class="form-group">
-      <label for="addRideImgUrl">Ride Image URL</label>
-      <input type="url" class="form-control" id="addRideImgUrl">
-    </div>
-    <div class="form-group">
-      <label for="addRideLocation">Ride Location</label>
-      <input type="text" class="form-control" id="addRideLocation">
-      </div>
-    <button id="submitAdd" class="btn btn-primary">Submit</button>
-  </form>`;
-  return domString;
-};
-
-const vendorAddForm = () => {
-  const domString = `
-  <form id="vendorAddForm" class="px-4 py-3">
-    <div class="form-group">
-      <label for="addVendorName">Vendorsaur Name</label>
-      <input type="text" class="form-control" id="addVendorName">
-    </div>
-    <div class="form-group">
-      <label for="addVendorType">Vendorsaur Type</label>
-      <input type="text" class="form-control" id="addVendorType">
-    </div>
-    <div class="form-group">
-      <label for="addVendorImgUrl">Vendorsaur Image URL</label>
-      <input type="url" class="form-control" id="addVendorImgUrl">
-    </div>
-    <button id="submitAdd" class="btn btn-primary">Submit</button>
-  </form>`;
-  return domString;
-};
-
 const junkTestForm = () => {
   const domString = '<h1>No Add Form for This Collection yet</h1>';
   return domString;
@@ -70,6 +26,4 @@ const junkTestForm = () => {
 export default {
   junkTestForm,
   staffAddForm,
-  rideAddForm,
-  vendorAddForm,
 };
