@@ -46,7 +46,7 @@ const displayRides = () => {
         if (checkUser.checkUser()) {
           domString += `
           <div class="links card-text text-center">
-            <a href="#" class="editCard mr-4 card-link"><i class="fas fa-pen"></i></a>
+            <a href="#" class="editRide mr-4 card-link"><i class="fas fa-pen"></i></a>
             <a href="#" class="deleteCard ml-4 card-link"><i class="far fa-trash-alt"></i></a>
           </div>`;
         }
