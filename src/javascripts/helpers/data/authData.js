@@ -2,9 +2,6 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 
 import utils from '../utils';
-
-import navBar from '../../components/navBar/navBar';
-import clickEvents from '../clickEvents';
 // import chaosMonkey from '../../components/chaosMonkey/toast';
 
 const authDiv = $('#auth');
@@ -18,10 +15,7 @@ const checkLoginStatus = () => {
       logoutButton.removeClass('hide');
       utils.printToDom('#collectionName', 'You just logged in');
       utils.printToDom('#displayCards', '');
-      navBar.navBarEventListeners();
       addButton.removeClass('hide');
-      clickEvents.clickEvents();
-      $(`#${utils.getActive()}`).click();
       // window.setInterval(chaosMonkey.bringChaosMonkey, 25000);
     } else {
       addButton.addClass('hide');
@@ -29,8 +23,6 @@ const checkLoginStatus = () => {
       logoutButton.addClass('hide');
       utils.printToDom('#collectionName', '');
       utils.printToDom('#displayCards', '');
-      navBar.navBarEventListeners();
-      $(`#${utils.getActive()}`).click();
     }
   });
 };

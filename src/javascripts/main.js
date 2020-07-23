@@ -6,12 +6,14 @@ import authData from './helpers/data/authData';
 
 import '../styles/main.scss';
 import 'bootstrap';
+import clickEvents from './helpers/clickEvents';
 
 const init = () => {
   firebase.initializeApp(apiKeys.firebaseConfig);
   authData.checkLoginStatus();
   auth.loginButton();
   auth.logoutEvent();
+  clickEvents.clickEvents();
 };
 
 init();
