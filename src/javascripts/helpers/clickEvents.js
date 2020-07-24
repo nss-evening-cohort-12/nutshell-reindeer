@@ -47,6 +47,7 @@ const clickEvents = () => {
       $('body').on('click', '.editDino', editDino.dinoEditForm);
       $('body').on('submit', '.editRideForm', editRide.editRide);
       $('body').on('click', '.editRide', editRide.rideEditForm);
+      $('body').on('click', '.deleteRide', rideList.deleteRide);
     }
   });
 };
