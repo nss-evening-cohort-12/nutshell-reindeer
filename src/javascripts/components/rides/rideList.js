@@ -47,7 +47,7 @@ const displayRides = () => {
           domString += `
           <div class="links card-text text-center">
             <a href="#" class="editRide mr-4 card-link"><i class="fas fa-pen"></i></a>
-            <a href="#" class="deleteCard ml-4 card-link"><i class="far fa-trash-alt"></i></a>
+            <a href="#" class="deleteRide ml-4 card-link"><i class="far fa-trash-alt"></i></a>
           </div>`;
         }
         domString += `
@@ -76,4 +76,15 @@ const addRide = (e) => {
   });
 };
 
-export default { displayRides, addRide };
+const deleteRide = (e) => {
+  e.preventDefault();
+  const collectionId = e.target.closest('.card').id;
+  rideData.deleteRideById(collectionId)
+    .then(() => {
+      displayRides();
+      $('#addForm').addClass('hide');
+    })
+    .catch((err) => console.error(err));
+};
+
+export default { displayRides, addRide, deleteRide };
