@@ -2,10 +2,14 @@ import firebase from 'firebase/app';
 import dinoList from '../components/dinos/dinoList';
 import equipList from '../components/equipment/equipList';
 import rideList from '../components/rides/rideList';
-import vendorCards from '../components/vendors/vendorCards';
+import vendorList from '../components/vendors/vendorList';
 import staffList from '../components/staff/staffList';
 import editDino from '../components/dinos/editDino';
 import editRide from '../components/rides/editRide';
+import editStaff from '../components/staff/editStaff';
+import deleteStaff from '../components/staff/deleteStaff';
+import editVendor from '../components/vendors/editVendor';
+import deleteVendor from '../components/vendors/deleteVendor';
 
 const showAddForm = () => {
   $('#addForm').removeClass('hide');
@@ -29,7 +33,7 @@ const navBarEventListeners = () => {
     rideList.displayRides();
   });
   $('#vendors').click(() => {
-    vendorCards.displayVendors();
+    vendorList.displayVendors();
   });
 };
 
@@ -41,7 +45,7 @@ const clickEvents = () => {
       $('body').on('submit', '#dinoAddForm', dinoList.addDino);
       $('body').on('submit', '#equipAddForm', equipList.addEquipment);
       $('body').on('submit', '#addRideForm', rideList.addRide);
-      $('body').on('submit', '#vendorAddForm', vendorCards.addVendor);
+      $('body').on('submit', '#vendorAddForm', vendorList.addVendor);
       $('body').on('submit', '#staffAddForm', staffList.addStaff);
       $('body').on('submit', '.editDinoForm', editDino.editDino);
       $('body').on('click', '.editDino', editDino.dinoEditForm);
@@ -49,6 +53,14 @@ const clickEvents = () => {
       $('body').on('click', '.editRide', editRide.rideEditForm);
       $('body').on('click', '.deleteRide', rideList.deleteRide);
       $('body').on('click', '#ride-editor-cancel', rideList.displayRides);
+      $('body').on('submit', '.editStaffForm', editStaff.editStaff);
+      $('body').on('click', '.editStaff', editStaff.staffEditForm);
+      $('body').on('click', '.deleteStaff', deleteStaff.deleteStaff);
+      $('body').on('click', '#staff-editor-cancel', editStaff.cancelEdit);
+      $('body').on('submit', '.editVendorForm', editVendor.editVendor);
+      $('body').on('click', '.editVendor', editVendor.vendorEditForm);
+      $('body').on('click', '#vendor-editor-cancel', editVendor.cancelEdit);
+      $('body').on('click', '.deleteVendor', deleteVendor.deleteVendor);
     }
   });
 };
