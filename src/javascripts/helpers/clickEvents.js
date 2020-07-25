@@ -6,6 +6,8 @@ import vendorCards from '../components/vendors/vendorCards';
 import staffList from '../components/staff/staffList';
 import editDino from '../components/dinos/editDino';
 import editRide from '../components/rides/editRide';
+import editStaff from '../components/staff/editStaff';
+import deleteStaff from '../components/staff/deleteStaff';
 
 const showAddForm = () => {
   $('#addForm').removeClass('hide');
@@ -48,6 +50,9 @@ const clickEvents = () => {
       $('body').on('submit', '.editRideForm', editRide.editRide);
       $('body').on('click', '.editRide', editRide.rideEditForm);
       $('body').on('click', '.deleteRide', rideList.deleteRide);
+      $('body').on('submit', '.editStaffForm', editStaff.editStaff);
+      $('body').on('click', '.editStaff', editStaff.staffEditForm);
+      $('body').on('click', '.deleteStaff', deleteStaff.deleteStaff);
     }
   });
 };
