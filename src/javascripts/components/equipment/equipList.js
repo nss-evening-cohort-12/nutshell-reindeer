@@ -45,7 +45,7 @@ const displayEquipCollection = () => {
               <p class="card-text">Equipment Location: ${equip.equipLocation}</p>`;
       if (checkUser.checkUser()) {
         domString += `<div class="links card-text text-center">
-                        <a href="#" class="editCard mr-4 card-link "><i class="fas fa-pen"></i></a>
+                        <a href="#" class="editEquip mr-4 card-link "><i class="fas fa-pen"></i></a>
                         <a href="#" class="deleteCard ml-4 card-link"><i class="far fa-trash-alt"></i></a>
                     </div>`;
       }
