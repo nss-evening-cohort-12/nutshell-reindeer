@@ -43,37 +43,48 @@ const clickEvents = () => {
   navBarEventListeners();
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
+      // -----> Project <-----
       $('body').on('click', '#addButton', showAddForm);
+      //----------------------
 
+      // -----> Dinos <-----
       $('body').on('submit', '#dinoAddForm', dinoList.addDino);
       $('body').on('submit', '.editDinoForm', editDino.editDino);
       $('body').on('click', '.editDino', editDino.dinoEditForm);
+      //----------------------
 
+      // -----> Equipment <-----
       $('body').on('submit', '#equipAddForm', equipList.addEquipment);
       $('body').on('submit', '.editEquipForm', editEquip.editEquipment);
       $('body').on('click', '.editEquip', editEquip.equipmentEditForm);
       $('body').on('click', '.deleteEquip', deleteEquipment.deleteEquip);
+      //----------------------
 
+      // -----> Rides <-----
       $('body').on('submit', '#addRideForm', rideList.addRide);
       $('body').on('submit', '#staffAddForm', staffList.addStaff);
-
       $('body').on('submit', '.editRideForm', editRide.editRide);
       $('body').on('click', '.editRide', editRide.rideEditForm);
       $('body').on('click', '.deleteRide', rideList.deleteRide);
       $('body').on('submit', '#addRideForm', rideList.addRide);
-
       $('body').on('click', '#ride-editor-cancel', rideList.displayRides);
+      //----------------------
+
+      // -----> Staff <-----
       $('body').on('submit', '.editStaffForm', editStaff.editStaff);
       $('body').on('click', '.editStaff', editStaff.staffEditForm);
       $('body').on('click', '.deleteStaff', deleteStaff.deleteStaff);
       $('body').on('submit', '#staffAddForm', staffList.addStaff);
       $('body').on('click', '#staff-editor-cancel', editStaff.cancelEdit);
+      //----------------------
 
+      // -----> Vendors <-----
       $('body').on('submit', '#vendorAddForm', vendorList.addVendor);
       $('body').on('submit', '.editVendorForm', editVendor.editVendor);
       $('body').on('click', '.editVendor', editVendor.vendorEditForm);
       $('body').on('click', '#vendor-editor-cancel', editVendor.cancelEdit);
       $('body').on('click', '.deleteVendor', deleteVendor.deleteVendor);
+      //----------------------
     }
   });
 };
