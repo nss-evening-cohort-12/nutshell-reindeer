@@ -55,6 +55,7 @@ const clickEvents = () => {
       $('body').on('submit', '.editStaffForm', editStaff.editStaff);
       $('body').on('click', '.editStaff', editStaff.staffEditForm);
       $('body').on('click', '.deleteStaff', deleteStaff.deleteStaff);
+      $('body').on('click', '#staff-editor-cancel', editStaff.cancelEdit);
       $('body').on('submit', '.editVendorForm', editVendor.editVendor);
       $('body').on('click', '.editVendor', editVendor.vendorEditForm);
       $('body').on('click', '#vendor-editor-cancel', editVendor.cancelEdit);
