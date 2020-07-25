@@ -1,27 +1,82 @@
+<<<<<<< HEAD
 import vendorData from '../../helpers/data/vendorData';
+=======
+import equipData from '../../helpers/data/equipData';
+// import vendorData from '../../helpers/data/vendorData';
+// import staffData from '../../helpers/data/staffData';
+>>>>>>> main
 // eslint-disable-next-line import/no-cycle
 import utils from '../../helpers/utils';
 import editFormBuilder from './editFormDomStringBuilder';
+<<<<<<< HEAD
 import editVendor from './editVendor';
+=======
+// import editVendor from './editVendor';
+// import editStaff from './';
 
-const vendorEditForm = (collectionId) => {
-  vendorData.getVendorById(collectionId)
+const equipmentEditForm = (collectionId) => {
+  equipData.getEquipById(collectionId)
     .then((response) => {
-      const vendor = response.data;
+      const equip = response.data;
 
-      const domString = editFormBuilder.editVendorDomStringBuilder(collectionId, vendor);
+      const domString = editFormBuilder.editEquipDomStringBuilder(collectionId, equip);
 
       utils.printToDom('#addForm', domString);
       const addformElement = $('#addForm');
       if (addformElement.hasClass('hide')) {
         addformElement.removeClass('hide');
       }
-      $('#submitEdit').click(editVendor.editVendor);
+      $('#submitEdit').click(editEquipment.editEquipment);
       $('#addButtonDiv').removeClass('d-none');
     })
     .catch((err) => console.warn(err));
 };
+>>>>>>> main
 
+// const vendorEditForm = (collectionId) => {
+//   vendorData.getVendorById(collectionId)
+//     .then((response) => {
+//       const vendor = response.data;
+
+//       const domString = editFormBuilder.editVendorDomStringBuilder(collectionId, vendor);
+
+//       utils.printToDom('#addForm', domString);
+//       const addformElement = $('#addForm');
+//       if (addformElement.hasClass('hide')) {
+//         addformElement.removeClass('hide');
+//       }
+//       $('#submitEdit').click(editVendor.editVendor);
+//       $('#addButtonDiv').removeClass('d-none');
+//     })
+//     .catch((err) => console.warn(err));
+// };
+
+<<<<<<< HEAD
 export default {
   vendorEditForm,
+=======
+// const staffEditForm = (collectionId) => {
+//   // vendorData.getVendorById(collectionId)
+//   staffData.getStaffById(collectionId)
+//     .then((response) => {
+//       const staff = response.data;
+
+//       const domString = editFormBuilder.editStaffDomStringBuilder(collectionId, staff);
+
+//       utils.printToDom('#addForm', domString);
+//       const addformElement = $('#addForm');
+//       if (addformElement.hasClass('hide')) {
+//         addformElement.removeClass('hide');
+//       }
+//       $('#submitEdit').click(editStaff.editStaff);
+//       $('#addButtonDiv').removeClass('d-none');
+//     })
+//     .catch((err) => console.warn(err));
+// };
+
+export default {
+  equipmentEditForm,
+  // vendorEditForm,
+  // staffEditForm,
+>>>>>>> main
 };
