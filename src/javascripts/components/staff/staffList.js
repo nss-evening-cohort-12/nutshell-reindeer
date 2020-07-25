@@ -27,7 +27,7 @@ const staffCard = (collection) => {
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addStaffForm());
   }
-  let domString = `<div class="card staff-card align-items-center m-3${collection.kidnap ? ' kidnapped' : ''}" id="${collection.id}">
+  let domString = `<div class="card staff-card align-items-center m-3${collection.kidnap ? ' ' : ' kidnapped'}" id="${collection.id}">
   <img src="${collection.staffImgUrl}" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">${collection.staffName}</h5>
