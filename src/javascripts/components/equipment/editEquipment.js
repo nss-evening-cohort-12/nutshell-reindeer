@@ -8,24 +8,24 @@ const editEquipDomStringBuilder = (collectionId, equipObj) => {
         <h2>Edit Equipment</h2>
         <div class="form-group">
             <label for="edit-equip-name">Name:</label>
-            <input type="text" class="form-control" id="editEquipName" placeholder="Name" value=${equipObj.equipName}>
+            <input type="text" class="form-control" name="editEquipName" placeholder="Name" value=${equipObj.equipName}>
         </div>
         <div class="form-group">
             <label for="edit-equip-type">Type:</label>
-            <input type="text" class="form-control" id="editEquipType" placeholder="Type" value=${equipObj.equipType}>
+            <input type="text" class="form-control" name="editEquipType" placeholder="Type" value=${equipObj.equipType}>
         </div>
         <div class="form-group">
             <label for="edit-equip-location">Location:</label>
-            <input type="text" class="form-control" id="editEquipLocation" placeholder="Location" value=${equipObj.equipLocation}>
+            <input type="text" class="form-control" name="editEquipLocation" placeholder="Location" value=${equipObj.equipLocation}>
         </div>
         <div class="form-group">
             <label for="edit-equip-imgUrl">Image URL</label>
-            <input type="text" class="form-control" id="editEquipImgUrl" placeholder="Image URL" value=${equipObj.equipImgUrl}>
+            <input type="text" class="form-control" name="editEquipImgUrl" placeholder="Image URL" value=${equipObj.equipImgUrl}>
         </div>
         <div class="form-group">
           <div class="form-check">
-          <label class="form-check-label" for="editEquipOperational">Is Operational</label>              
-            <input class="form-check-input" id="editEquipOperational" type="checkbox" ${(equipObj.equipOperational) ? 'checked' : ''}>';
+            <label class="form-check-label" for="editEquipOperational">Is Operational</label>              
+            <input class="form-check-input" name="editEquipOperational" type="checkbox"${(equipObj.equipOperational) ? 'checked' : ''}>
           </div>
         </div>
         <input type="hidden" class="form-control" name="collectionId" value="${collectionId}">

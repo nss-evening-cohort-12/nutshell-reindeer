@@ -9,6 +9,7 @@ import editRide from '../components/rides/editRide';
 import editStaff from '../components/staff/editStaff';
 import deleteStaff from '../components/staff/deleteStaff';
 import editEquip from '../components/equipment/editEquipment';
+import deleteEquipment from '../components/equipment/deleteEquipment';
 
 const showAddForm = () => {
   $('#addForm').removeClass('hide');
@@ -48,6 +49,7 @@ const clickEvents = () => {
       $('body').on('submit', '#equipAddForm', equipList.addEquipment);
       $('body').on('submit', '.editEquipForm', editEquip.editEquipment);
       $('body').on('click', '.editEquip', editEquip.equipmentEditForm);
+      $('body').on('click', '.deleteEquip', deleteEquipment.deleteEquip);
 
       $('body').on('submit', '#vendorAddForm', vendorCards.addVendor);
 
