@@ -1,10 +1,16 @@
+<<<<<<< HEAD
+import vendorData from '../../helpers/data/vendorData';
+=======
 import equipData from '../../helpers/data/equipData';
 // import vendorData from '../../helpers/data/vendorData';
 // import staffData from '../../helpers/data/staffData';
+>>>>>>> main
 // eslint-disable-next-line import/no-cycle
-import editEquipment from './editEquipment';
 import utils from '../../helpers/utils';
 import editFormBuilder from './editFormDomStringBuilder';
+<<<<<<< HEAD
+import editVendor from './editVendor';
+=======
 // import editVendor from './editVendor';
 // import editStaff from './';
 
@@ -25,6 +31,7 @@ const equipmentEditForm = (collectionId) => {
     })
     .catch((err) => console.warn(err));
 };
+>>>>>>> main
 
 // const vendorEditForm = (collectionId) => {
 //   vendorData.getVendorById(collectionId)
@@ -44,6 +51,10 @@ const equipmentEditForm = (collectionId) => {
 //     .catch((err) => console.warn(err));
 // };
 
+<<<<<<< HEAD
+export default {
+  vendorEditForm,
+=======
 // const staffEditForm = (collectionId) => {
 //   // vendorData.getVendorById(collectionId)
 //   staffData.getStaffById(collectionId)
@@ -67,4 +78,5 @@ export default {
   equipmentEditForm,
   // vendorEditForm,
   // staffEditForm,
+>>>>>>> main
 };
