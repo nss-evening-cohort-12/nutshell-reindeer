@@ -24,7 +24,7 @@ const editDinoDomStringBuilder = (collectionId, dinoObj) => {
         </div>
         <input type="hidden" class="form-control" name="collectionId" value=${collectionId}>
         <button type="submit" class="btn btn-primary" id="submitEdit">Update</button>
-        <button class="btn btn-warning backButton" id="vendor-editor-cancel">Cancel</button>
+        <button class="btn btn-warning backButton" id="dino-editor-cancel">Cancel</button>
         </form>
     `;
   return domString;

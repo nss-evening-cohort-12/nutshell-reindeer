@@ -1,8 +1,8 @@
-import vendorData from '../../helpers/data/vendorData';
 import checkUser from '../../helpers/data/checkUser';
+import vendorData from '../../helpers/data/vendorData';
 import utils from '../../helpers/utils';
 
-import './vendorCards.scss';
+import './vendorList.scss';
 
 const addVendorForm = () => {
   const domString = `
@@ -44,8 +44,8 @@ const displayVendors = () => {
         if (checkUser.checkUser()) {
           domString += `
             <div class="links card-text text-center">
-              <a href="#" class="editCard mr-4 card-link"><i class="fas fa-pen"></i></a>
-              <a href="#" class="deleteCard ml-4 card-link"><i class="far fa-trash-alt"></i></a>
+              <a href="#" class="editVendor mr-4 card-link"><i class="fas fa-pen"></i></a>
+              <a href="#" class="deleteVendor ml-4 card-link"><i class="far fa-trash-alt"></i></a>
             </div>`;
         }
 
