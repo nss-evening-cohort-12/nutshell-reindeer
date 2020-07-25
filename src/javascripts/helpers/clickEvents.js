@@ -12,6 +12,7 @@ import editEquip from '../components/equipment/editEquipment';
 import deleteEquipment from '../components/equipment/deleteEquipment';
 import editVendor from '../components/vendors/editVendor';
 import deleteVendor from '../components/vendors/deleteVendor';
+import causeChaos from '../components/chaosMonkey/causeChaos';
 
 const showAddForm = () => {
   $('#addForm').removeClass('hide');
@@ -45,6 +46,8 @@ const clickEvents = () => {
     if (user) {
       // -----> Project <-----
       $('body').on('click', '#addButton', showAddForm);
+      $('body').on('click', '#causeChaos', causeChaos.getChaos);
+      $('body').click(causeChaos.decreaseChaos);
       //----------------------
 
       // -----> Dinos <-----

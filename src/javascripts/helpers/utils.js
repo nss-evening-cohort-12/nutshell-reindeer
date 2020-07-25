@@ -1,3 +1,5 @@
+const randomNum = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+
 const printToDom = (selector, text) => {
   $(selector).html(text);
 };
@@ -18,4 +20,9 @@ const convertFirebaseCollection = (data) => {
 
 const getActive = () => $('.navbar-nav .active').attr('id');
 
-export default { printToDom, convertFirebaseCollection, getActive };
+export default {
+  printToDom,
+  convertFirebaseCollection,
+  getActive,
+  randomNum,
+};
