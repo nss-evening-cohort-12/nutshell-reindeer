@@ -53,6 +53,7 @@ const clickEvents = () => {
       $('body').on('submit', '.editStaffForm', editStaff.editStaff);
       $('body').on('click', '.editStaff', editStaff.staffEditForm);
       $('body').on('click', '.deleteStaff', deleteStaff.deleteStaff);
+      $('body').on('click', '#staff-editor-cancel', editStaff.cancelEdit);
     }
   });
 };

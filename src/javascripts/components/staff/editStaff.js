@@ -2,6 +2,11 @@ import staffData from '../../helpers/data/staffData';
 import utils from '../../helpers/utils';
 import staffList from './staffList';
 
+const cancelEdit = () => {
+  staffList.displayStaff();
+  $('#addForm').addClass('hide');
+};
+
 const editStaffDomStringBuilder = (collectionId, staffObj) => {
   const domString = `            
         <form class="edit-staff m-5 editStaffForm">
@@ -18,6 +23,10 @@ const editStaffDomStringBuilder = (collectionId, staffObj) => {
             <label for="editStaffImgUrl">Image URL</label>
             <input type="text" class="form-control" name="editStaffImgUrl" value="${staffObj.staffImgUrl}">
         </div>
+        <div class="form-group">
+            <label for="editStaffKidnapped">Kidnapped?</label>
+            <input type="checkbox" class="form-control" name="kidnap">
+        </div>
         <input type="hidden" class="form-control" name="collectionId" value="${collectionId}">
         <button type="submit" class="btn btn-primary" name="submitEdit">Update</button>
         <button class="btn btn-warning backButton" id="staff-editor-cancel">Cancel</button>
@@ -33,6 +42,7 @@ const editStaff = (e) => {
     staffName: e.target.elements.editStaffName.value,
     staffTitle: e.target.elements.editStaffTitle.value,
     staffImgUrl: e.target.elements.editStaffImgUrl.value,
+    kidnap: e.target.elements.kidnap.checked,
   };
   // pass those to an update equipment data function
   staffData.updateStaff(collectionId, tempEditedStaff)
@@ -55,4 +65,4 @@ const staffEditForm = (e) => {
     .catch((err) => console.warn(err));
 };
 
-export default { editStaff, staffEditForm };
+export default { editStaff, staffEditForm, cancelEdit };
