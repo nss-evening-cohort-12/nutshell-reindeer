@@ -48,6 +48,7 @@ const clickEvents = () => {
       $('body').on('submit', '.editRideForm', editRide.editRide);
       $('body').on('click', '.editRide', editRide.rideEditForm);
       $('body').on('click', '.deleteRide', rideList.deleteRide);
+      $('body').on('click', '#ride-editor-cancel', rideList.displayRides);
     }
   });
 };

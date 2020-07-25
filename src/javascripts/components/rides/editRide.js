@@ -30,7 +30,7 @@ const editRideDomStringBuilder = (collectionId, rideObj) => {
         </div>
         <input type="hidden" class="form-control" name="collectionId" value="${collectionId}">
         <button type="submit" class="btn btn-primary" name="submitEdit">Update</button>
-        <button class="btn btn-warning backButton" id="ride-editor-cancel">Cancel</button>
+        <button class="btn btn-warning" id="ride-editor-cancel">Cancel</button>
         </form>
     `;
   return domString;

@@ -29,6 +29,7 @@ const addRideForm = () => {
 
 const displayRides = () => {
   $('#collectionName').text('Rides');
+  $('#addForm').addClass('hide');
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addRideForm());
   }
@@ -72,7 +73,6 @@ const addRide = (e) => {
   };
   rideData.addRide(tempRideObj).then(() => {
     displayRides();
-    $('#addForm').addClass('hide');
   });
 };
 
@@ -82,7 +82,6 @@ const deleteRide = (e) => {
   rideData.deleteRideById(collectionId)
     .then(() => {
       displayRides();
-      $('#addForm').addClass('hide');
     })
     .catch((err) => console.error(err));
 };
