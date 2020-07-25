@@ -22,5 +22,65 @@
     "staffTitle": "Park Manager",
     "staffImgUrl": "https://static9.depositphotos.com/1003938/1122/v/950/depositphotos_11225342-stock-illustration-funny-cartoon-manager.jpg",
     "kidnap": "false"
+  },
+  "staff5": {
+    "staffName": "John",
+    "staffTitle": "Vendor Operator",
+    "staffImgUrl": "https://billweinbergerblog.files.wordpress.com/2019/11/ppm.png",
+    "kidnap": "false"
+  },
+  "staff6": {
+    "staffName": "Jacob",
+    "staffTitle": "Vendor Operator",
+    "staffImgUrl": "https://billweinbergerblog.files.wordpress.com/2019/11/ppm.png",
+    "kidnap": "false"
+  },
+  "staff7": {
+    "staffName": "Schmitt",
+    "staffTitle": "Vendor Operator",
+    "staffImgUrl": "https://billweinbergerblog.files.wordpress.com/2019/11/ppm.png",
+    "kidnap": "false"
+  },
+  "staff8": {
+    "staffName": "Sally",
+    "staffTitle": "Dino Wrangler",
+    "staffImgUrl": "https://billweinbergerblog.files.wordpress.com/2019/11/ppm.png",
+    "kidnap": "false"
+  },
+  "staff9": {
+    "staffName": "Amy",
+    "staffTitle": "Dino Wrangler",
+    "staffImgUrl": "https://billweinbergerblog.files.wordpress.com/2019/11/ppm.png",
+    "kidnap": "false"
+  },
+  "staff10": {
+    "staffName": "Sarag",
+    "staffTitle": "Dino Wrangler",
+    "staffImgUrl": "https://billweinbergerblog.files.wordpress.com/2019/11/ppm.png",
+    "kidnap": "false"
+  },
+  "staff11": {
+    "staffName": "Jackie",
+    "staffTitle": "Dino Wrangler",
+    "staffImgUrl": "https://billweinbergerblog.files.wordpress.com/2019/11/ppm.png",
+    "kidnap": "false"
+  },
+  "staff12": {
+    "staffName": "Mike",
+    "staffTitle": "Ride Operator",
+    "staffImgUrl": "https://billweinbergerblog.files.wordpress.com/2019/11/ppm.png",
+    "kidnap": "false"
+  },
+  "staff13": {
+    "staffName": "Jake",
+    "staffTitle": "Ride Operator",
+    "staffImgUrl": "https://billweinbergerblog.files.wordpress.com/2019/11/ppm.png",
+    "kidnap": "false"
+  },
+  "staff14": {
+    "staffName": "Peralta",
+    "staffTitle": "Ride Operator",
+    "staffImgUrl": "https://billweinbergerblog.files.wordpress.com/2019/11/ppm.png",
+    "kidnap": "false"
   }
 }
