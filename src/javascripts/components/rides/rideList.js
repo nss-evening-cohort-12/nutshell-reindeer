@@ -5,6 +5,16 @@ import './rideList.scss';
 
 const addRideForm = () => {
   const domString = `
+  <div class="modal fade" id="addRideModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New Ride</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
   <form id="addRideForm" class="px-4 py-3">
     <div class="form-group">
       <label for="addRideName">Ride Name</label>
@@ -22,8 +32,12 @@ const addRideForm = () => {
       <label for="addRideLocation">Ride Location</label>
       <input type="text" class="form-control" id="addRideLocation">
       </div>
-    <button type-"submit" class="btn btn-primary">Submit</button>
-  </form>`;
+    <button type-"submit" class="btn btn-primary">Build!</button>
+  </form>
+  </div>
+    </div>
+  </div>
+</div>`;
   return domString;
 };
 
@@ -64,6 +78,7 @@ const displayRides = () => {
 
 const addRide = (e) => {
   e.preventDefault();
+  $('#addRideModal').modal('hide');
   const tempRideObj = {
     rideName: e.target.elements.addRideName.value,
     rideType: e.target.elements.addRideType.value,

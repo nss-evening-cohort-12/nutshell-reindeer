@@ -32,39 +32,38 @@ import checkUser from '../../helpers/data/checkUser';
 const addEquipForm = () => {
   const domString = `
 
-  <div class="modal" tabindex="-1" role="dialog">
+  <div class="modal fade" id="addEquipModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
+        <h5 class="modal-title" id="newEquipModal">New Equipment</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
       <form id="equipAddForm" class="px-4 py-3">
-      <div class="form-group">
-        <label for="equipName">Equipment Name</label>
-        <input type="text" class="form-control" name="equipName">
-      </div>
-      <div class="form-group">
-        <label for="equipType">Equipment Type</label>
-        <input type="text" class="form-control" name="equipType">
-      </div>
-      <div class="form-group">
-        <label for="equipImgUrl">Equipment Image URL</label>
-        <input type="url" class="form-control" name="equipImgUrl">
-      </div>
-      <div class="form-group">
-        <label for="equipSize">Equipment Location</label>
-        <input type="text" class="form-control" name="equipSize">
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-      </div>
+           <div class="form-group">
+             <label for="equipName">Equipment Name</label>
+             <input type="text" class="form-control" name="equipName">
+           </div>
+           <div class="form-group">
+             <label for="equipType">Equipment Type</label>
+             <input type="text" class="form-control" name="equipType">
+          </div>
+           <div class="form-group">
+             <label for="equipImgUrl">Equipment Image URL</label>
+             <input type="url" class="form-control" name="equipImgUrl">
+           </div>
+           <div class="form-group">
+             <label for="equipSize">Equipment Location</label>
+             <input type="text" class="form-control" name="equipSize">
+           </div>         
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save changes</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+      </form>
       </div>
     </div>
   </div>
@@ -77,7 +76,6 @@ const addEquipForm = () => {
 
 const displayEquipCollection = () => {
   $('#collectionName').text('Equipment');
-  $('#addForm').addClass('hide');
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addEquipForm());
   }
@@ -85,12 +83,12 @@ const displayEquipCollection = () => {
     let domString = '<div class="d-flex justify-content-center flex-wrap">';
     equipCollectionArr.forEach((equip) => {
       domString += `
-        <div id="${equip.id}" class="card equipCard align-items-center m-3 ${equip.equipOperational ? '' : 'disabled'}" style="width: 18rem">
-          <img src="${equip.equipImgUrl}" class="card-img-top" alt="..." >
+        <div id="${equip.id}" class="card equipCard align-items-center m-3 ${equip.isOperational ? '' : 'disabled'}" style="width: 18rem">
+          <img src="${equip.imgUrl}" class="card-img-top" alt="..." >
           <div class="card-body">
-              <h5 class="card-title">Equipment Name: ${equip.equipName}</h5>
-              <p class="card-text">Equipment Type: ${equip.equipType}</p>
-              <p class="card-text">Equipment Location: ${equip.equipLocation}</p>`;
+              <h5 class="card-title">Equipment Name: ${equip.name}</h5>
+              <p class="card-text">Equipment Type: ${equip.type}</p>
+              <p class="card-text">Equipment Location: ${equip.location}</p>`;
       if (checkUser.checkUser()) {
         domString += `<div class="links card-text text-center">
                         <a href="#" class="editEquip mr-4 card-link "><i class="fas fa-pen"></i></a>
@@ -110,16 +108,16 @@ const displayEquipCollection = () => {
 
 const addEquipment = (e) => {
   e.preventDefault();
+  $('#addEquipModal').modal('hide');
   const tempEquipOjb = {
-    equipName: e.target.elements.equipName.value,
-    equipType: e.target.elements.equipType.value,
-    equipImgUrl: e.target.elements.equipImgUrl.value,
-    equipLocation: e.target.elements.equipSize.value,
-    equipOperational: true,
+    name: e.target.elements.equipName.value,
+    type: e.target.elements.equipType.value,
+    imgUrl: e.target.elements.equipImgUrl.value,
+    location: e.target.elements.equipSize.value,
+    isOperational: true,
   };
   equipData.addEquipment(tempEquipOjb).then(() => {
     displayEquipCollection();
-    $('#addForm').addClass('hide');
   });
 };
 

@@ -3,7 +3,17 @@ import utils from '../../helpers/utils';
 import rideList from './rideList';
 
 const editRideDomStringBuilder = (collectionId, rideObj) => {
-  const domString = `            
+  const domString = `
+  <div class="modal fade" id="editRideModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Edit Ride</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">            
         <form class="edit-equip m-5 editRideForm">
         <h2>Edit Equipment</h2>
         <div class="form-group">
@@ -32,12 +42,21 @@ const editRideDomStringBuilder = (collectionId, rideObj) => {
         <button type="submit" class="btn btn-primary" name="submitEdit">Update</button>
         <button class="btn btn-warning" id="ride-editor-cancel">Cancel</button>
         </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
     `;
   return domString;
 };
 
 const editRide = (e) => {
   e.preventDefault();
+  $('#editRideModal').modal('hide');
   const collectionId = e.target.elements.collectionId.value;
   const isChecked = $('#editRideOperational').is(':checked');
   console.error('checkbox returned ', isChecked);
@@ -63,7 +82,8 @@ const rideEditForm = (e) => {
       const domString = editRideDomStringBuilder(collectionId, ride);
 
       utils.printToDom('#addForm', domString);
-      $('#addForm').removeClass('hide');
+      $('#editRideModal').modal();
+      // $('#addForm').removeClass('hide');
       $('#addButtonDiv').removeClass('d-none');
     })
     .catch((err) => console.warn(err));

@@ -13,8 +13,16 @@ import deleteEquipment from '../components/equipment/deleteEquipment';
 import editVendor from '../components/vendors/editVendor';
 import deleteVendor from '../components/vendors/deleteVendor';
 
-const showAddForm = () => {
-  $('#addForm').removeClass('hide');
+// const showAddForm = () => {
+//   $('#addForm').removeClass('hide');
+// };
+
+const showModal = () => {
+  $('#addEquipModal').modal();
+  $('#addRideModal').modal();
+  $('#addStaffModal').modal();
+  $('#addVendorModal').modal();
+  $('#addDinoModal').modal();
 };
 
 const navBarEventListeners = () => {
@@ -44,7 +52,8 @@ const clickEvents = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       // -----> Project <-----
-      $('body').on('click', '#addButton', showAddForm);
+      // $('body').on('click', '#addButton', showAddForm);
+      $('body').on('click', '#addButton', showModal);
       //----------------------
 
       // -----> Dinos <-----
@@ -61,8 +70,6 @@ const clickEvents = () => {
       //----------------------
 
       // -----> Rides <-----
-      $('body').on('submit', '#addRideForm', rideList.addRide);
-      $('body').on('submit', '#staffAddForm', staffList.addStaff);
       $('body').on('submit', '.editRideForm', editRide.editRide);
       $('body').on('click', '.editRide', editRide.rideEditForm);
       $('body').on('click', '.deleteRide', rideList.deleteRide);

@@ -3,49 +3,71 @@ import utils from '../../helpers/utils';
 import equipList from './equipList';
 
 const editEquipDomStringBuilder = (collectionId, equipObj) => {
-  const domString = `            
+  const domString = `   
+  
+  <div class="modal fade" id="editEquipModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Edit Equipment</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
         <form class="edit-equip m-5 editEquipForm" >
         <h2>Edit Equipment</h2>
         <div class="form-group">
             <label for="edit-equip-name">Name:</label>
-            <input type="text" class="form-control" name="editEquipName" placeholder="Name" value=${equipObj.equipName}>
+            <input type="text" class="form-control" name="editEquipName" placeholder="Name" value=${equipObj.name}>
         </div>
         <div class="form-group">
             <label for="edit-equip-type">Type:</label>
-            <input type="text" class="form-control" name="editEquipType" placeholder="Type" value=${equipObj.equipType}>
+            <input type="text" class="form-control" name="editEquipType" placeholder="Type" value=${equipObj.type}>
         </div>
         <div class="form-group">
             <label for="edit-equip-location">Location:</label>
-            <input type="text" class="form-control" name="editEquipLocation" placeholder="Location" value=${equipObj.equipLocation}>
+            <input type="text" class="form-control" name="editEquipLocation" placeholder="Location" value=${equipObj.location}>
         </div>
         <div class="form-group">
             <label for="edit-equip-imgUrl">Image URL</label>
-            <input type="text" class="form-control" name="editEquipImgUrl" placeholder="Image URL" value=${equipObj.equipImgUrl}>
+            <input type="text" class="form-control" name="editEquipImgUrl" placeholder="Image URL" value=${equipObj.imgUrl}>
         </div>
         <div class="form-group">
           <div class="form-check">
             <label class="form-check-label" for="editEquipOperational">Is Operational</label>              
-            <input class="form-check-input" name="editEquipOperational" type="checkbox"${(equipObj.equipOperational) ? 'checked' : ''}>
+            <input class="form-check-input" name="editEquipOperational" type="checkbox"${(equipObj.isOperational) ? 'checked' : ''}>
           </div>
         </div>
         <input type="hidden" class="form-control" name="collectionId" value="${collectionId}">
 
         <button type="submit" class="btn btn-primary" id="submitEdit">Update</button>
-        <button class="btn btn-warning backButton" id="equip-editor-cancel">Cancel</button>
+        
         </form>
+
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+      </div>
+    </div>
+      
     `;
   return domString;
 };
 
 const editEquipment = (e) => {
   e.preventDefault();
+  $('#editEquipModal').modal('hide');
   const collectionId = e.target.elements.collectionId.value;
   const tempEditedEquip = {
-    equipName: e.target.elements.editEquipName.value,
-    equipType: e.target.elements.editEquipName.value,
-    equipLocation: e.target.elements.editEquipName.value,
-    equipImgUrl: e.target.elements.editEquipName.value,
-    equipOperational: $('#edit-equip-operational').is(':checked'),
+    name: e.target.elements.editEquipName.value,
+    type: e.target.elements.editEquipName.value,
+    location: e.target.elements.editEquipName.value,
+    imgUrl: e.target.elements.editEquipName.value,
+    isOperational: $('#edit-equip-operational').is(':checked'),
   };
   // pass those to an update equipment data function
   equipData.updateEquipment(collectionId, tempEditedEquip)
@@ -63,7 +85,8 @@ const equipmentEditForm = (e) => {
       const domString = editEquipDomStringBuilder(collectionId, equip);
 
       utils.printToDom('#addForm', domString);
-      $('#addForm').removeClass('hide');
+      $('#editEquipModal').modal();
+      // $('#addForm').removeClass('hide');
       $('#addButtonDiv').removeClass('d-none');
     })
     .catch((err) => console.warn(err));

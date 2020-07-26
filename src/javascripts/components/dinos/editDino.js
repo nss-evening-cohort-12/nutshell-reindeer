@@ -3,7 +3,17 @@ import dinoData from '../../helpers/data/dinoData';
 import dinoList from './dinoList';
 
 const editDinoDomStringBuilder = (collectionId, dinoObj) => {
-  const domString = `            
+  const domString = `
+  <div class="modal fade" id="addDinoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newEquipModal">Edit Dino</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">            
         <form class="edit-vendor m-5 editDinoForm">
         <h2>Edit Vendor</h2>
         <div class="form-group">
@@ -26,12 +36,18 @@ const editDinoDomStringBuilder = (collectionId, dinoObj) => {
         <button type="submit" class="btn btn-primary" id="submitEdit">Update</button>
         <button class="btn btn-warning backButton" id="dino-editor-cancel">Cancel</button>
         </form>
+        </div>
+    </div>
+  </div>
+</div>
     `;
   return domString;
 };
 
 const editDino = (e) => {
   e.preventDefault();
+  $('#editDinoModal').modal('hide');
+
   const collectionId = e.target.elements.collectionId.value;
   const tempEditedDino = {
     dinoName: e.target.elements.editDinoName.value,
@@ -54,7 +70,7 @@ const dinoEditForm = (e) => {
       const domString = editDinoDomStringBuilder(collectionId, dino);
 
       utils.printToDom('#addForm', domString);
-      $('#addForm').removeClass('hide');
+      $('#editDinoModal').modal();
       $('#addButtonDiv').removeClass('d-none');
     })
     .catch((err) => console.warn(err));
