@@ -9,9 +9,12 @@ const assignEquipment = (e) => {
     .then((response) => {
       const equipObj = response.data;
       equipObj.assignedTo = staffId;
-      equipData.updateEquipment(equipId, equipObj);
-    })
-    .catch((err) => console.error(err));
+      equipData.updateEquipment(equipId, equipObj)
+        .then(() => {
+          equipList.displayEquipCollection();
+        })
+        .catch((err) => console.error(err));
+    });
 };
 
 const editEquipDomStringBuilder = (collectionId, equipObj) => {
@@ -19,19 +22,24 @@ const editEquipDomStringBuilder = (collectionId, equipObj) => {
         <form class="edit-equip m-5 editEquipForm">
         <h2>Edit Equipment</h2>
         <div class="form-group">
-            <label for="edit-equip-name">Name:</label>
+            <label for="name">Name:</label>
             <input type="text" class="form-control" name="name" placeholder="Name" value="${equipObj.name}">
         </div>
         <div class="form-group">
-            <label for="edit-equip-type">Type:</label>
-            <input type="text" class="form-control" name="type" placeholder="Type" value="${equipObj.type}">
+        <label for="type">Type:</label>
+        <select id="cars" class="form-control" name="type">
+          <option value="Office"${equipObj.type === 'Office' ? ' selected' : ''}>Office</option>
+          <option value="Tool"${equipObj.type === 'Tool' ? ' selected' : ''}>Tool</option>
+          <option value="Safety"${equipObj.type === 'Safety' ? ' selected' : ''}>Safety</option>
+          <option value="Vehicle"${equipObj.type === 'Vehicle' ? ' selected' : ''}>Vehicle</option>
+        </select>
         </div>
         <div class="form-group">
-            <label for="edit-equip-location">Location:</label>
+            <label for="location">Location:</label>
             <input type="text" class="form-control" name="location" placeholder="Location" value="${equipObj.location}">
         </div>
         <div class="form-group">
-            <label for="edit-equip-imgUrl">Image URL</label>
+            <label for="imgUrl">Image URL</label>
             <input type="text" class="form-control" name="imgUrl" placeholder="Image URL" value="${equipObj.imgUrl}">
         </div>
         <div class="form-group">
@@ -63,7 +71,8 @@ const editEquipment = (e) => {
   equipData.updateEquipment(collectionId, tempEditedEquip)
     .then(() => {
       equipList.displayEquipCollection();
-    });
+    })
+    .catch((err) => console.error(err));
 };
 
 const equipmentEditForm = (e) => {

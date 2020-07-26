@@ -13,8 +13,13 @@ const addEquipForm = () => {
       <input type="text" class="form-control" name="name">
     </div>
     <div class="form-group">
-      <label for="type">Equipment Type</label>
-      <input type="text" class="form-control" name="type">
+    <label for="type">Type:</label>
+    <select id="cars" class="form-control" name="type">
+      <option value="Office">Office</option>
+      <option value="Tool">Tool</option>
+      <option value="Safety">Safety</option>
+      <option value="Vehicle">Vehicle</option>
+    </select>
     </div>
     <div class="form-group">
       <label for="imgUrl">Equipment Image URL</label>
@@ -30,11 +35,17 @@ const addEquipForm = () => {
 };
 
 const availableUsersForm = (equip, staff) => {
-  let domString = `${equip.assignedTo ? '<a class="dropdown-item" href="#">Mark As Available</a><div class="dropdown-divider"></div>' : ''}`;
+  let domString = '';
+  if (equip.assignedTo) {
+    domString += `
+    <button class="assignEquipOption dropdown-item" type="button" data-equipid="${equip.id}" data-staffid="">Mark As Available</button>
+    <div class="dropdown-divider"></div>`;
+  }
   staff.forEach((staffMember) => {
     if (staffMember.isActive) {
-      // eslint-disable-next-line max-len
-      domString += `<button class="assignEquipOption dropdown-item${equip.assignedTo === staffMember.id ? ' active' : ''}" type="button" data-equipid="${equip.id}" data-staffid="${staffMember.id}">${staffMember.name}</button>`;
+      domString += `<button class="assignEquipOption dropdown-item${equip.assignedTo === staffMember.id ? ' active' : ''}" 
+      type="button" data-equipid="${equip.id}" data-staffid="${staffMember.id}">${staffMember.name}
+      </button>`;
     }
   });
   return domString;
@@ -57,7 +68,7 @@ const displayEquipCollection = () => {
             <div class="card-body">
                 <h5 class="card-title">${equip.name}</h5>
                 <p class="card-text">location: ${equip.location}</p>
-                <p class="card-text">assigned to: ${equip.assignedTo ? (staff.find((staffMember) => staffMember.id === 'staff2')).name : 'Available'}</p>`;
+                <p class="card-text">assigned to: ${equip.assignedTo ? (staff.find((staffMember) => staffMember.id === equip.assignedTo)).name : 'Available'}</p>`;
             if (checkUser.checkUser()) {
               domString += `<div class="links card-text text-center"> 
                         <div class="btn-group">
