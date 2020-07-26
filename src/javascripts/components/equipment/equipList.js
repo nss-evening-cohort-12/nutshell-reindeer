@@ -5,6 +5,27 @@ import equipData from '../../helpers/data/equipData';
 import checkUser from '../../helpers/data/checkUser';
 import staffData from '../../helpers/data/staffData';
 
+const equipIcon = (type) => {
+  let icon = '';
+  switch (type) {
+    case 'Office':
+      icon = 'fas fa-laptop';
+      break;
+    case 'Tool':
+      icon = 'fas fa-tools';
+      break;
+    case 'Safety':
+      icon = 'fas fa-exclamation-triangle';
+      break;
+    case 'Vehicle':
+      icon = 'fas fa-truck';
+      break;
+    default:
+      icon = 'fa-question';
+  }
+  return `<i class="${icon} fa-5x text-secondary m-4"></i>`;
+};
+
 const addEquipForm = () => {
   const domString = `
   <form id="equipAddForm" class="px-4 py-3">
@@ -64,7 +85,8 @@ const displayEquipCollection = () => {
           equipCollectionArr.forEach((equip) => {
             domString += `
           <div id="${equip.id}" class="card equipCard align-items-center m-3 ${equip.isOperational ? '' : 'disabled'}" style="width: 18rem">
-            <img src="${equip.imgUrl}" class="card-img-top" alt="..." >
+            
+            ${equipIcon(equip.type)}
             <div class="card-body">
                 <h5 class="card-title">${equip.name}</h5>
                 <p class="card-text">location: ${equip.location}</p>
