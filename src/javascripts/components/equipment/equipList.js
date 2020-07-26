@@ -4,27 +4,74 @@ import utils from '../../helpers/utils';
 import equipData from '../../helpers/data/equipData';
 import checkUser from '../../helpers/data/checkUser';
 
+// const addEquipForm = () => {
+//   const domString = `
+//   <form id="equipAddForm" class="px-4 py-3">
+//     <div class="form-group">
+//       <label for="equipName">Equipment Name</label>
+//       <input type="text" class="form-control" name="equipName">
+//     </div>
+//     <div class="form-group">
+//       <label for="equipType">Equipment Type</label>
+//       <input type="text" class="form-control" name="equipType">
+//     </div>
+//     <div class="form-group">
+//       <label for="equipImgUrl">Equipment Image URL</label>
+//       <input type="url" class="form-control" name="equipImgUrl">
+//     </div>
+//     <div class="form-group">
+//       <label for="equipSize">Equipment Location</label>
+//       <input type="text" class="form-control" name="equipSize">
+//     </div>
+//     <button type="submit" class="btn btn-primary">Submit</button>
+//   </form>`;
+//   return domString;
+// };
+
+// modal version
 const addEquipForm = () => {
   const domString = `
-  <form id="equipAddForm" class="px-4 py-3">
-    <div class="form-group">
-      <label for="equipName">Equipment Name</label>
-      <input type="text" class="form-control" name="equipName">
+
+  <div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form id="equipAddForm" class="px-4 py-3">
+      <div class="form-group">
+        <label for="equipName">Equipment Name</label>
+        <input type="text" class="form-control" name="equipName">
+      </div>
+      <div class="form-group">
+        <label for="equipType">Equipment Type</label>
+        <input type="text" class="form-control" name="equipType">
+      </div>
+      <div class="form-group">
+        <label for="equipImgUrl">Equipment Image URL</label>
+        <input type="url" class="form-control" name="equipImgUrl">
+      </div>
+      <div class="form-group">
+        <label for="equipSize">Equipment Location</label>
+        <input type="text" class="form-control" name="equipSize">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="equipType">Equipment Type</label>
-      <input type="text" class="form-control" name="equipType">
-    </div>
-    <div class="form-group">
-      <label for="equipImgUrl">Equipment Image URL</label>
-      <input type="url" class="form-control" name="equipImgUrl">
-    </div>
-    <div class="form-group">
-      <label for="equipSize">Equipment Location</label>
-      <input type="text" class="form-control" name="equipSize">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>`;
+  </div>
+</div>
+
+
+  `;
   return domString;
 };
 
