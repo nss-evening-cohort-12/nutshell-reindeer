@@ -1,45 +1,51 @@
 {
     "equipment1": {
-      "equipName": "Jeep Wrangler",
-      "equipType": "Car",
-      "equipLocation": "Warehouse",
-      "equipImgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTrEg2g_lpi6pldStn6Vdvg8FspLqAIe4R7ZQ&usqp=CAU",
-      "equipOperational": true
+      "name": "Jeep Wrangler",
+      "type": "Vehicle",
+      "location": "Warehouse",
+      "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTrEg2g_lpi6pldStn6Vdvg8FspLqAIe4R7ZQ&usqp=CAU",
+      "isOperational": true,
+      "assignedTo" : "staff1"
     },
     "equipment2": {
-        "equipName": "Computer",
-        "equipType": "Computer",
-        "equipLocation": "Warehouse",
-        "equipImgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRFRzUdVMhjUhqyApFqaCPieY7BJZG4Tymb4A&usqp=CAU",
-        "equipOperational": true
+        "name": "Computer",
+        "type": "Office",
+        "location": "Warehouse",
+        "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRFRzUdVMhjUhqyApFqaCPieY7BJZG4Tymb4A&usqp=CAU",
+        "isOperational": true,
+        "assignedTo" : "staff2"
     },
     "equipment3": {
-        "equipName": "Tour Vehicles",
-        "equipType": "Vehicle",
-        "equipLocation": "Warehouse",
-        "equipImgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRTSxTEP02MtZ7I2OB2-hx6qZImFpOh14uS5w&usqp=CAU",
-        "equipOperational": true
+        "name": "Tour Van",
+        "type": "Vehicle",
+        "location": "Warehouse",
+        "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRTSxTEP02MtZ7I2OB2-hx6qZImFpOh14uS5w&usqp=CAU",
+        "isOperational": true,
+        "assignedTo" : "staff3"
     },
     "equipment4": {
-        "equipName": "Electric Fence",
-        "equipType": "Safety & Protection",
-        "equipLocation": "Warehouse",
-        "equipImgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ3mb6Ms7JqhpX7Ritql-HFk4vSFBsPB2FR6A&usqp=CAU",
-        "equipOperational": true
+        "name": "Tranquilizer",
+        "type": "Safety",
+        "location": "Warehouse",
+        "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ3mb6Ms7JqhpX7Ritql-HFk4vSFBsPB2FR6A&usqp=CAU",
+        "isOperational": true,
+        "assignedTo" : "staff4"
     },
     "equipment5": {
-        "equipName": "Lindstradt Air Gun",
-        "equipType": "Gun",
-        "equipLocation": "Warehouse",
-        "equipImgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ-iSZwkLd7fczD6pDSO0xEMfC55UrlGnbkfg&usqp=CAU",
-        "equipOperational": true
+        "name": "Air Gun",
+        "type": "Tool",
+        "location": "Warehouse",
+        "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ-iSZwkLd7fczD6pDSO0xEMfC55UrlGnbkfg&usqp=CAU",
+        "isOperational": true,
+        "assignedTo" : ""
     },
     "equipment6": {
-        "equipName": "Hammer",
-        "equipType": "Hammer",
-        "equipLocation": "Warehouse",
-        "equipImgUrl": "https://cdn3.vectorstock.com/i/1000x1000/73/57/hammer-isolated-on-white-background-cartoon-vector-26577357.jpg",
-        "equipOperational": true
+        "name": "Hammer",
+        "type": "Tool",
+        "location": "Warehouse",
+        "imgUrl": "https://cdn3.vectorstock.com/i/1000x1000/73/57/hammer-isolated-on-white-background-cartoon-vector-26577357.jpg",
+        "isOperational": true,
+        "assignedTo" : "staff6"
     }
 }
   

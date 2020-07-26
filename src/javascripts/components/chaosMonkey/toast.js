@@ -47,7 +47,7 @@ const kidnapRandomStaff = () => {
             tempObj.kidnap = 'true';
             staffData.updateStaff(staffId, tempObj)
               .then(() => {
-                const message = `Chaos Monkey just kidnapped a staff member ${tempObj.staffName}`;
+                const message = `Chaos Monkey just kidnapped a staff member ${tempObj.name}`;
                 toastFunction(message);
                 $(`#${utils.getActive()}`).click();
               });
@@ -74,7 +74,7 @@ const breakRandomEquip = () => {
             tempObj.equipOperational = false;
             equipData.updateEquipment(equipId, tempObj)
               .then(() => {
-                const message = `Chaos Monkey just broke ${tempObj.equipName} equipment`;
+                const message = `Chaos Monkey just broke ${tempObj.name} equipment`;
                 toastFunction(message);
                 $(`#${utils.getActive()}`).click();
               });

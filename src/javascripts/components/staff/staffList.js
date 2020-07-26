@@ -30,7 +30,7 @@ const staffCard = (collection) => {
   let domString = `<div class="card staff-card align-items-center m-3${collection.kidnap ? ' ' : ' kidnapped'}" id="${collection.id}">
   <img src="${collection.staffImgUrl}" class="card-img-top" alt="...">
   <div class="card-body">
-    <h5 class="card-title">${collection.staffName}</h5>
+    <h5 class="card-title">${collection.name}</h5>
     <p class="card-text">${collection.staffTitle}</p>`;
   if (collection.kidnapped) {
     domString += '<p class="card-text">kidnapped: <i class="fas fa-ghost" style="color:black;"></i></p>';
@@ -67,7 +67,7 @@ const displayStaff = () => {
 const addStaff = (e) => {
   e.preventDefault();
   const newStaff = {
-    staffName: e.target.elements.addStaffName.value,
+    name: e.target.elements.addStaffName.value,
     staffTitle: e.target.elements.addStaffTitle.value,
     staffImgUrl: e.target.elements.addStaffImgUrl.value,
     kidnap: false,

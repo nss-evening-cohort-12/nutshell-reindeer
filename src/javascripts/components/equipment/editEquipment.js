@@ -2,30 +2,42 @@ import equipData from '../../helpers/data/equipData';
 import utils from '../../helpers/utils';
 import equipList from './equipList';
 
+const assignEquipment = (e) => {
+  const staffId = e.target.dataset.staffid;
+  const equipId = e.target.dataset.equipid;
+  equipData.getEquipById(equipId)
+    .then((response) => {
+      const equipObj = response.data;
+      equipObj.assignedTo = staffId;
+      equipData.updateEquipment(equipId, equipObj);
+    })
+    .catch((err) => console.error(err));
+};
+
 const editEquipDomStringBuilder = (collectionId, equipObj) => {
   const domString = `            
-        <form class="edit-equip m-5 editEquipForm" >
+        <form class="edit-equip m-5 editEquipForm">
         <h2>Edit Equipment</h2>
         <div class="form-group">
             <label for="edit-equip-name">Name:</label>
-            <input type="text" class="form-control" name="editEquipName" placeholder="Name" value=${equipObj.equipName}>
+            <input type="text" class="form-control" name="name" placeholder="Name" value="${equipObj.name}">
         </div>
         <div class="form-group">
             <label for="edit-equip-type">Type:</label>
-            <input type="text" class="form-control" name="editEquipType" placeholder="Type" value=${equipObj.equipType}>
+            <input type="text" class="form-control" name="type" placeholder="Type" value="${equipObj.type}">
         </div>
         <div class="form-group">
             <label for="edit-equip-location">Location:</label>
-            <input type="text" class="form-control" name="editEquipLocation" placeholder="Location" value=${equipObj.equipLocation}>
+            <input type="text" class="form-control" name="location" placeholder="Location" value="${equipObj.location}">
         </div>
         <div class="form-group">
             <label for="edit-equip-imgUrl">Image URL</label>
-            <input type="text" class="form-control" name="editEquipImgUrl" placeholder="Image URL" value=${equipObj.equipImgUrl}>
+            <input type="text" class="form-control" name="imgUrl" placeholder="Image URL" value="${equipObj.imgUrl}">
         </div>
         <div class="form-group">
           <div class="form-check">
-            <label class="form-check-label" for="editEquipOperational">Is Operational</label>              
-            <input class="form-check-input" name="editEquipOperational" type="checkbox"${(equipObj.equipOperational) ? 'checked' : ''}>
+            <label class="form-check-label" for="isOperational">Is Operational</label>              
+            <input class="form-check-input" name="isOperational" type="checkbox"${(equipObj.isOperational) ? 'checked' : ''}>
           </div>
         </div>
         <input type="hidden" class="form-control" name="collectionId" value="${collectionId}">
@@ -41,11 +53,11 @@ const editEquipment = (e) => {
   e.preventDefault();
   const collectionId = e.target.elements.collectionId.value;
   const tempEditedEquip = {
-    equipName: e.target.elements.editEquipName.value,
-    equipType: e.target.elements.editEquipName.value,
-    equipLocation: e.target.elements.editEquipName.value,
-    equipImgUrl: e.target.elements.editEquipName.value,
-    equipOperational: $('#edit-equip-operational').is(':checked'),
+    name: e.target.elements.name.value,
+    type: e.target.elements.type.value,
+    location: e.target.elements.location.value,
+    imgUrl: e.target.elements.imgUrl.value,
+    isOperational: e.target.elements.isOperational.checked,
   };
   // pass those to an update equipment data function
   equipData.updateEquipment(collectionId, tempEditedEquip)
@@ -69,4 +81,6 @@ const equipmentEditForm = (e) => {
     .catch((err) => console.warn(err));
 };
 
-export default { editEquipment, editEquipDomStringBuilder, equipmentEditForm };
+export default {
+  editEquipment, editEquipDomStringBuilder, equipmentEditForm, assignEquipment,
+};

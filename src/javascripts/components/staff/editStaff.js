@@ -10,10 +10,10 @@ const cancelEdit = () => {
 const editStaffDomStringBuilder = (collectionId, staffObj) => {
   const domString = `            
         <form class="edit-staff m-5 editStaffForm">
-        <h2>Edit Equipment</h2>
+        <h2>Edit Staff</h2>
         <div class="form-group">
             <label for="editStaffName">Name:</label>
-            <input type="text" class="form-control" id="editStaffName" value="${staffObj.staffName}">
+            <input type="text" class="form-control" id="editStaffName" value="${staffObj.name}">
         </div>
         <div class="form-group">
             <label for="editStaffTitle">Title:</label>
@@ -39,7 +39,7 @@ const editStaff = (e) => {
   e.preventDefault();
   const collectionId = e.target.elements.collectionId.value;
   const tempEditedStaff = {
-    staffName: e.target.elements.editStaffName.value,
+    name: e.target.elements.editStaffName.value,
     staffTitle: e.target.elements.editStaffTitle.value,
     staffImgUrl: e.target.elements.editStaffImgUrl.value,
     kidnap: e.target.elements.kidnap.checked,
