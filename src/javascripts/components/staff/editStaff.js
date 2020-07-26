@@ -17,15 +17,15 @@ const editStaffDomStringBuilder = (collectionId, staffObj) => {
         </div>
         <div class="form-group">
             <label for="editStaffTitle">Title:</label>
-            <input type="text" class="form-control" name="editStaffTitle" value="${staffObj.staffTitle}">
+            <input type="text" class="form-control" name="editStaffTitle" value="${staffObj.title}">
         </div>
         <div class="form-group">
             <label for="editStaffImgUrl">Image URL</label>
-            <input type="text" class="form-control" name="editStaffImgUrl" value="${staffObj.staffImgUrl}">
+            <input type="text" class="form-control" name="editStaffImgUrl" value="${staffObj.imgUrl}">
         </div>
         <div class="form-group">
-            <label for="editStaffKidnapped">Kidnapped?</label>
-            <input type="checkbox" class="form-control" name="kidnap">
+            <label for="editStaffActive">Currently Active?</label>
+            <input type="checkbox" class="form-control" name="isActive">
         </div>
         <input type="hidden" class="form-control" name="collectionId" value="${collectionId}">
         <button type="submit" class="btn btn-primary" name="submitEdit">Update</button>
@@ -40,9 +40,9 @@ const editStaff = (e) => {
   const collectionId = e.target.elements.collectionId.value;
   const tempEditedStaff = {
     name: e.target.elements.editStaffName.value,
-    staffTitle: e.target.elements.editStaffTitle.value,
-    staffImgUrl: e.target.elements.editStaffImgUrl.value,
-    kidnap: e.target.elements.kidnap.checked,
+    title: e.target.elements.editStaffTitle.value,
+    imgUrl: e.target.elements.editStaffImgUrl.value,
+    isActive: e.target.elements.isActive.checked,
   };
   // pass those to an update equipment data function
   staffData.updateStaff(collectionId, tempEditedStaff)

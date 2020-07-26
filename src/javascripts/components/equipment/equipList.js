@@ -43,10 +43,6 @@ const addEquipForm = () => {
     </select>
     </div>
     <div class="form-group">
-      <label for="imgUrl">Equipment Image URL</label>
-      <input type="url" class="form-control" name="imgUrl">
-    </div>
-    <div class="form-group">
       <label for="size">Equipment Location</label>
       <input type="text" class="form-control" name="size">
     </div>
@@ -119,7 +115,6 @@ const addEquipment = (e) => {
   const tempEquipOjb = {
     name: e.target.elements.name.value,
     type: e.target.elements.type.value,
-    imgUrl: e.target.elements.imgUrl.value,
     location: e.target.elements.size.value,
     isOperational: true,
   };

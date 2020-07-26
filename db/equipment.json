@@ -3,7 +3,6 @@
       "name": "Jeep Wrangler",
       "type": "Vehicle",
       "location": "Warehouse",
-      "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTrEg2g_lpi6pldStn6Vdvg8FspLqAIe4R7ZQ&usqp=CAU",
       "isOperational": true,
       "assignedTo" : "staff1"
     },
@@ -11,7 +10,6 @@
         "name": "Computer",
         "type": "Office",
         "location": "Warehouse",
-        "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRFRzUdVMhjUhqyApFqaCPieY7BJZG4Tymb4A&usqp=CAU",
         "isOperational": true,
         "assignedTo" : "staff2"
     },
@@ -19,7 +17,6 @@
         "name": "Tour Van",
         "type": "Vehicle",
         "location": "Warehouse",
-        "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRTSxTEP02MtZ7I2OB2-hx6qZImFpOh14uS5w&usqp=CAU",
         "isOperational": true,
         "assignedTo" : "staff3"
     },
@@ -27,7 +24,6 @@
         "name": "Tranquilizer",
         "type": "Safety",
         "location": "Warehouse",
-        "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ3mb6Ms7JqhpX7Ritql-HFk4vSFBsPB2FR6A&usqp=CAU",
         "isOperational": true,
         "assignedTo" : "staff4"
     },
@@ -35,7 +31,6 @@
         "name": "Air Gun",
         "type": "Tool",
         "location": "Warehouse",
-        "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ-iSZwkLd7fczD6pDSO0xEMfC55UrlGnbkfg&usqp=CAU",
         "isOperational": true,
         "assignedTo" : ""
     },
@@ -43,7 +38,6 @@
         "name": "Hammer",
         "type": "Tool",
         "location": "Warehouse",
-        "imgUrl": "https://cdn3.vectorstock.com/i/1000x1000/73/57/hammer-isolated-on-white-background-cartoon-vector-26577357.jpg",
         "isOperational": true,
         "assignedTo" : "staff6"
     }
