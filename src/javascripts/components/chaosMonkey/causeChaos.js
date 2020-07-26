@@ -1,8 +1,8 @@
 import utils from '../../helpers/utils';
 import './causeChaos.scss';
-import monkey from '../../../images/angry-monkey.png';
-import lightrays from '../../../images/light-rays.jpg';
-import splat from '../../../images/paint-splash.png';
+import monkey from '../../../assets/images/angry-monkey.png';
+import lightrays from '../../../assets/images/light-rays.jpg';
+import splat from '../../../assets/images/paint-splash.png';
 
 let chaosCounter = 0;
 
@@ -15,28 +15,23 @@ const randomChaos = () => {
 const angryMonkey = () => `<img src="${lightrays}" id="light-rays">
                             <img src="${monkey}" id="angry-monkey">`;
 
-const paintSplat = () => `<img src="${splat}" id="paint-splash">
-                          <h1 id="splat-text">Oh no!<br>Amy's been kidnapped by the chaos monkey!</h1>`;
+const paintSplat = (text) => `<img src="${splat}" id="paint-splash">
+                          <h1 id="splat-text">${text}</h1>`;
 
-const runChaos = () => {
+const runChaos = (text) => {
   console.error('chaos triggered');
-  $('body').addClass('flash');
-  setTimeout(() => {
-    $('#chaosMonkey').html(angryMonkey).fadeIn();
-  }, 1000);
-  setTimeout(() => {
-    $('#chaosMonkey').html(paintSplat).delay(3000).fadeOut();
-  }, 5000);
-  setTimeout(() => {
-    $('#chaosMonkey').html('');
-    $('body').removeClass('flash');
-  }, 10000);
+  $('body').addClass('flash'); // trigger lightning flass
+  setTimeout(() => $('body').removeClass('flash'), 600); // remove flash class after 600ms
+  setTimeout(() => $('#chaosMonkey').html(angryMonkey), 600); // 2s animation after fade in monkey animation
+  setTimeout(() => $('#chaosMonkey').html(paintSplat(text)).delay(2000).fadeOut(1000), 4600);
+  setTimeout(() => $('#chaosMonkey').html(''), 10000);
 };
 
-const decreaseChaos = () => {
+const decreaseChaos = (text) => {
+  console.error(chaosCounter);
   if (chaosCounter === 0) {
     randomChaos();
-    runChaos();
+    runChaos(text);
   } else {
     chaosCounter -= 1;
   }

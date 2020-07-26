@@ -47,7 +47,9 @@ const clickEvents = () => {
       // -----> Project <-----
       $('body').on('click', '#addButton', showAddForm);
       $('body').on('click', '#causeChaos', causeChaos.getChaos);
-      $('body').click(causeChaos.decreaseChaos);
+      $('body').click(() => {
+        causeChaos.decreaseChaos('Test Text');
+      });
       //----------------------
 
       // -----> Dinos <-----

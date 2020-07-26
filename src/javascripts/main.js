@@ -15,7 +15,7 @@ const init = () => {
   auth.loginButton();
   auth.logoutEvent();
   clickEvents.clickEvents();
-  causeChaos.randomChaos();
+  causeChaos.randomChaos(); // sets the chaos counter to random number on init
 };
 
 init();
