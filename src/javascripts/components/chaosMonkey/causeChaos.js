@@ -25,6 +25,7 @@ const runChaos = (text) => {
   setTimeout(() => $('#chaosMonkey').html(angryMonkey), 600); // 2s animation after fade in monkey animation
   setTimeout(() => $('#chaosMonkey').html(paintSplat(text)).delay(2000).fadeOut(1000), 4600);
   setTimeout(() => $('#chaosMonkey').html(''), 10000);
+  setTimeout(() => $('#chaosMonkey').css('display', ''), 12000);
 };
 
 const decreaseChaos = (text) => {
