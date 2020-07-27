@@ -18,6 +18,10 @@ const showAddForm = () => {
   $('#addForm').removeClass('hide');
 };
 
+// const getThis = (e) => {
+//   console.warn(e.target.dataset.stuff);
+// };
+
 const navBarEventListeners = () => {
   $('.navbar-nav a').click((event) => {
     $('.navbar-nav .active').removeClass('active');
@@ -63,6 +67,12 @@ const clickEvents = () => {
       $('body').on('submit', '.editEquipForm', editEquip.editEquipment);
       $('body').on('click', '.editEquip', editEquip.equipmentEditForm);
       $('body').on('click', '.deleteEquip', deleteEquipment.deleteEquip);
+      // eslint-disable-next-line func-names
+      // $('body').on('click', '.assignEquipOption', (function () {
+      //   console.warn($(this).text());
+      // }));
+      $('body').on('click', '.assignEquipOption', editEquip.assignEquipment);
+
       //----------------------
 
       // -----> Rides <-----
