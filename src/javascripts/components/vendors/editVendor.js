@@ -69,7 +69,7 @@ const vendorEditForm = (e) => {
       const vendor = response.data;
       const domString = editVendorDomStringBuilder(collectionId, vendor);
 
-      utils.printToDom('#addForm', domString);
+      utils.printToDom('#editForm', domString);
       $('#editVendorModal').modal();
       $('#addButtonDiv').removeClass('d-none');
     })

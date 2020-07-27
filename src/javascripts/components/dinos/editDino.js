@@ -4,37 +4,36 @@ import dinoList from './dinoList';
 
 const editDinoDomStringBuilder = (collectionId, dinoObj) => {
   const domString = `
-  <div class="modal fade" id="addDinoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="editDinoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="newEquipModal">Edit Dino</h5>
+        <h5 class="modal-title" id="editDinoModal">Edit Dino</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">            
-        <form class="edit-vendor m-5 editDinoForm">
-        <h2>Edit Vendor</h2>
-        <div class="form-group">
+        <form class="edit-dino m-5 editDinoForm">
+          <h2>Edit Dino</h2>
+          <div class="form-group">
             <label for="edit-dino-name">Name:</label>
             <input type="text" class="form-control" name="editDinoName" placeholder="Dino Name" value=${dinoObj.dinoName}>
-        </div>
-        <div class="form-group">
+          </div>
+          <div class="form-group">
             <label for="edit-dino-type">Type:</label>
             <input type="text" class="form-control" name="editDinoType" placeholder="T-Rex" value=${dinoObj.dinoType}>
-        </div>
-        <div class="form-group">
-            <label for="edit-vendor-imgUrl">Image URL</label>
+          </div>
+          <div class="form-group">
+            <label for="edit-dino-imgUrl">Image URL</label>
             <input type="text" class="form-control" name="editDinoImgUrl" placeholder="Image URL" value=${dinoObj.dinoImgUrl}>
-        </div>
-        <div class="form-group">
-            <label for="edit-vendor-imgUrl">Dino Size</label>
+          </div>
+          <div class="form-group">
+            <label for="edit-dino-imgUrl">Dino Size</label>
             <input type="text" class="form-control" name="editDinoSize" placeholder="Medium" value=${dinoObj.dinoSize}>
-        </div>
-        <input type="hidden" class="form-control" name="collectionId" value=${collectionId}>
-        <button type="submit" class="btn btn-primary" id="submitEdit">Update</button>
-        <button class="btn btn-warning backButton" id="dino-editor-cancel">Cancel</button>
+          </div>
+            <input type="hidden" class="form-control" name="collectionId" value=${collectionId}>
+            <button type="submit" class="btn btn-primary" id="submitEdit">Update</button>
         </form>
         </div>
     </div>
@@ -68,8 +67,8 @@ const dinoEditForm = (e) => {
     .then((response) => {
       const dino = response.data;
       const domString = editDinoDomStringBuilder(collectionId, dino);
-
-      utils.printToDom('#addForm', domString);
+      console.error('hi');
+      utils.printToDom('#editForm', domString);
       $('#editDinoModal').modal();
       $('#addButtonDiv').removeClass('d-none');
     })

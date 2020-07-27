@@ -76,7 +76,7 @@ const staffEditForm = (e) => {
       const staff = response.data;
       const domString = editStaffDomStringBuilder(collectionId, staff);
 
-      utils.printToDom('#addForm', domString);
+      utils.printToDom('#editForm', domString);
       $('#editStaffModal').modal();
       // $('#addForm').removeClass('hide');
       $('#addButtonDiv').removeClass('d-none');

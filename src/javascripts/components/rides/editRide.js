@@ -81,7 +81,7 @@ const rideEditForm = (e) => {
       const ride = response.data;
       const domString = editRideDomStringBuilder(collectionId, ride);
 
-      utils.printToDom('#addForm', domString);
+      utils.printToDom('#editForm', domString);
       $('#editRideModal').modal();
       // $('#addForm').removeClass('hide');
       $('#addButtonDiv').removeClass('d-none');

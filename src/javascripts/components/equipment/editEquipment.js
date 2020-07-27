@@ -100,7 +100,7 @@ const equipmentEditForm = (e) => {
 
       const domString = editEquipDomStringBuilder(collectionId, equip);
 
-      utils.printToDom('#addForm', domString);
+      utils.printToDom('#editForm', domString);
       $('#editEquipModal').modal();
       // $('#addForm').removeClass('hide');
       $('#addButtonDiv').removeClass('d-none');

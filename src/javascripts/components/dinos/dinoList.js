@@ -58,8 +58,8 @@ const displayDinos = () => {
             <p class="card-text">Dinosaur Type: ${dino.dinoType}</p>`;
         if (checkUser.checkUser()) {
           domString += `<div class="links card-text text-center">
-                <a href="#" class="editEquip mr-4 card-link "><i class="fas fa-pen editDino"></i></a>
-                <a href="#" class="deleteEquip ml-4 card-link"><i class="far fa-trash-alt"></i></a>
+                <a href="#" class="editDino mr-4 card-link "><i class="fas fa-pen"></i></a>
+                <a href="#" class="deleteDino ml-4 card-link"><i class="far fa-trash-alt"></i></a>
             </div>`;
         }
         domString += `</div>
