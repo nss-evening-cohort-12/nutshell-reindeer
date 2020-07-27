@@ -3,6 +3,7 @@ import vendorData from '../../helpers/data/vendorData';
 import utils from '../../helpers/utils';
 
 import './vendorList.scss';
+import staffData from '../../helpers/data/staffData';
 
 const addVendorForm = () => {
   const domString = `
@@ -24,6 +25,22 @@ const addVendorForm = () => {
   return domString;
 };
 
+const unattendedVendors = (e) => {
+  if (e.target.checked === true) {
+    staffData.getStaff()
+      .then((staff) => {
+        staff.forEach((person) => {
+          if (person.assignmentCategory === 'vendors') {
+            console.warn(person);
+          }
+        });
+      })
+      .catch((err) => console.error('Getting staff for unattended vendors did not work -> ', err));
+  } else if (e.target.checked === false) {
+    console.warn('Unchecked!');
+  }
+};
+
 const displayVendors = () => {
   $('#addForm').addClass('hide');
   if (checkUser.checkUser()) {
@@ -31,7 +48,15 @@ const displayVendors = () => {
   }
   vendorData.getVendorsWithAssignees()
     .then((vendorsArr) => {
-      let domString = '<div class="d-flex flex-wrap">';
+      let domString = `
+      <div class="form-check unassigned-box">
+        <input class="form-check-input" type="checkbox" value="" id="unattended-vendors">
+        <label class="form-check-label" for="unattended-vendors">
+          See Unattended Vendors
+        </label>
+      </div>
+      <div class="d-flex flex-wrap">
+      `;
       vendorsArr.forEach((vendor) => {
         let assignees = 'unassigned';
         if (vendor.assignees.length > 0) {
@@ -80,4 +105,4 @@ const addVendor = (e) => {
     .catch((err) => console.error('adding new vendors did not work -> ', err));
 };
 
-export default { displayVendors, addVendor };
+export default { displayVendors, addVendor, unattendedVendors };

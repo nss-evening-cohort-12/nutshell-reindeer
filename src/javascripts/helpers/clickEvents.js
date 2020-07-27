@@ -90,6 +90,7 @@ const clickEvents = () => {
       $('body').on('click', '.editVendor', editVendor.vendorEditForm);
       $('body').on('click', '#vendor-editor-cancel', editVendor.cancelEdit);
       $('body').on('click', '.deleteVendor', deleteVendor.deleteVendor);
+      $('body').on('click', '#unattended-vendors', vendorList.unattendedVendors);
       //----------------------
     }
   });
