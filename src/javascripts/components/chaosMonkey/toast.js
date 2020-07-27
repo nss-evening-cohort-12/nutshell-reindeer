@@ -34,7 +34,7 @@ const kidnapRandomStaff = () => {
   staffData.getStaff()
     .then((response) => {
       const staffArr = utils.convertFirebaseCollection(response.data);
-      const filteredStaffArr = staffArr.filter((item) => item.kidnap === 'false');
+      const filteredStaffArr = staffArr.filter((item) => item.isActive === 'true');
       // console.warn(staffArr);
       // console.warn(filteredStaffArr.length);
       if (filteredStaffArr.length > 0) {
@@ -44,10 +44,10 @@ const kidnapRandomStaff = () => {
         staffData.getStaffById(staffId)
           .then((staffObj) => {
             const tempObj = staffObj.data;
-            tempObj.kidnap = 'true';
+            tempObj.isActive = 'false';
             staffData.updateStaff(staffId, tempObj)
               .then(() => {
-                const message = `Chaos Monkey just kidnapped a staff member ${tempObj.staffName}`;
+                const message = `Chaos Monkey just kidnapped a staff member ${tempObj.name}`;
                 toastFunction(message);
                 $(`#${utils.getActive()}`).click();
               });
@@ -74,7 +74,7 @@ const breakRandomEquip = () => {
             tempObj.equipOperational = false;
             equipData.updateEquipment(equipId, tempObj)
               .then(() => {
-                const message = `Chaos Monkey just broke ${tempObj.equipName} equipment`;
+                const message = `Chaos Monkey just broke ${tempObj.name} equipment`;
                 toastFunction(message);
                 $(`#${utils.getActive()}`).click();
               });

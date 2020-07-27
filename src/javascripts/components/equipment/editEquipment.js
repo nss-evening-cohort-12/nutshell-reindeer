@@ -2,6 +2,21 @@ import equipData from '../../helpers/data/equipData';
 import utils from '../../helpers/utils';
 import equipList from './equipList';
 
+const assignEquipment = (e) => {
+  const staffId = e.target.dataset.staffid;
+  const equipId = e.target.dataset.equipid;
+  equipData.getEquipById(equipId)
+    .then((response) => {
+      const equipObj = response.data;
+      equipObj.assignedTo = staffId;
+      equipData.updateEquipment(equipId, equipObj)
+        .then(() => {
+          equipList.displayEquipCollection();
+        })
+        .catch((err) => console.error(err));
+    });
+};
+
 const editEquipDomStringBuilder = (collectionId, equipObj) => {
   const domString = `   
   
@@ -73,7 +88,8 @@ const editEquipment = (e) => {
   equipData.updateEquipment(collectionId, tempEditedEquip)
     .then(() => {
       equipList.displayEquipCollection();
-    });
+    })
+    .catch((err) => console.error(err));
 };
 
 const equipmentEditForm = (e) => {
@@ -92,4 +108,6 @@ const equipmentEditForm = (e) => {
     .catch((err) => console.warn(err));
 };
 
-export default { editEquipment, editEquipDomStringBuilder, equipmentEditForm };
+export default {
+  editEquipment, editEquipDomStringBuilder, equipmentEditForm, assignEquipment,
+};
