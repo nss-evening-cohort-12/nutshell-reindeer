@@ -26,11 +26,11 @@ const getDinosWithHandlers = () => new Promise((resolve, reject) => {
           const staff = utils.convertFirebaseCollection(staffData.data);
           const allDinos = dinos.data;
           Object.keys(allDinos).forEach((dino) => {
-            allDinos[dino].handler = '';
+            allDinos[dino].assignees = [];
           });
           staff.forEach((employee) => {
             if (employee.assignmentCategory === 'dinosaurs') {
-              allDinos[employee.assignedTo].handler = employee;
+              allDinos[employee.assignedTo].assignees.push(employee);
             }
           });
           resolve(utils.convertFirebaseCollection(allDinos));
