@@ -38,7 +38,7 @@ const displayVendors = () => {
         <div class="card align-items-center m-3" style="width: 18rem;" id="${vendor.id}">
           <img src="${vendor.vendorImgUrl}" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">Vendor Name: ${vendor.vendorName}</h5>
+            <h5 class="card-title">Vendor Name: ${vendor.name}</h5>
             <p class="card-text">Vendor Type: ${vendor.vendorType}</p>`;
 
         if (checkUser.checkUser()) {
@@ -62,7 +62,7 @@ const displayVendors = () => {
 const addVendor = (e) => {
   e.preventDefault();
   const tempVendorObj = {
-    vendorName: e.target.elements.addVendorName.value,
+    name: e.target.elements.addVendorName.value,
     vendorType: e.target.elements.addVendorType.value,
     vendorImgUrl: e.target.elements.addVendorImgUrl.value,
   };

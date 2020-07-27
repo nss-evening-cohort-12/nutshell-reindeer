@@ -8,7 +8,7 @@ const editVendorDomStringBuilder = (collectionId, vendorObj) => {
       <h2>Edit Vendor</h2>
       <div class="form-group">
         <label for="editVendorName">Name:</label>
-        <input type="text" class="form-control" name="editVendorName" placeholder="Vendor Name" value=${vendorObj.vendorName}>
+        <input type="text" class="form-control" name="editVendorName" placeholder="Vendor Name" value=${vendorObj.name}>
       </div>
       <div class="form-group">
         <label for="editVendorType">Type:</label>
@@ -30,7 +30,7 @@ const editVendor = (e) => {
   e.preventDefault();
   const collectionId = e.target.elements.collectionId.value;
   const tempEditedVendor = {
-    vendorName: e.target.elements.editVendorName.value,
+    name: e.target.elements.editVendorName.value,
     vendorType: e.target.elements.editVendorType.value,
     vendorImgUrl: e.target.elements.editVendorImgUrl.value,
   };

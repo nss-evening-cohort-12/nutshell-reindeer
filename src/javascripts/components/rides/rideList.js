@@ -40,7 +40,7 @@ const displayRides = () => {
         domString += `<div id="${ride.id}" class="card align-items-center m-3" style="width: 18rem; background-color:${ride.rideOperational ? '' : 'red'};">
         <img src="${ride.rideImgUrl}" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">Ride Name: ${ride.rideName}</h5>
+          <h5 class="card-title">Ride Name: ${ride.name}</h5>
           <p class="card-text">Ride Type: ${ride.rideType}</p>
           <p class="card-text">Ride Location: ${ride.rideLocation}</p>
           <p class="card-text">Operational: <i class="fas fa-thumbs-${ride.rideOperational ? 'up' : 'down'}" style="color:${ride.rideOperational ? 'green' : 'black'};"></i></p>`;
@@ -65,7 +65,7 @@ const displayRides = () => {
 const addRide = (e) => {
   e.preventDefault();
   const tempRideObj = {
-    rideName: e.target.elements.addRideName.value,
+    name: e.target.elements.addRideName.value,
     rideType: e.target.elements.addRideType.value,
     rideImgUrl: e.target.elements.addRideImgUrl.value,
     rideLocation: e.target.elements.addRideLocation.value,
