@@ -96,7 +96,7 @@ const addEquipForm = () => {
   return domString;
 };
 
-const availableUsersForm = (equip, staff) => {
+const availableStaffForm = (equip, staff) => {
   let domString = '';
   if (equip.assignedTo) {
     domString += `
@@ -137,7 +137,7 @@ const displayEquipCollection = () => {
                         <div class="btn-group">
                           <a href="#" class="assignEquip mr-4 card-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i></a>
                           <div class="dropdown-menu dropdown-menu-right">
-                          ${availableUsersForm(equip, staff)}
+                          ${availableStaffForm(equip, staff)}
                           </div>
                         </div>
                           <a href="#" class="editEquip mr-4 card-link"><i class="fas fa-pen"></i></a>

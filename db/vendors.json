@@ -1,22 +1,22 @@
 {
   "vendor1": {
-    "vendorName": "Candy Apple",
+    "name": "Candy Apple",
     "vendorType": "Candy Store",
     "vendorImgUrl": "https://hungergamesthemepark.weebly.com/uploads/2/6/5/0/26505405/5871473.png"
   },
   "vendor2": {
-    "vendorName": "Fries",
+    "name": "Fries",
     "vendorType": "Resturant",
     "vendorImgUrl": "https://phasegaming.files.wordpress.com/2014/03/fries.jpg"
   },
   "vendor3": {
-    "vendorName": "Popcorn",
+    "name": "Popcorn",
     "vendorType": "Popcorn Store",
     "vendorImgUrl": "https://i.pinimg.com/originals/46/04/d9/4604d94d8a2e7c437da852e31019afb9.jpg"
 
   },
   "vendor4": {
-    "vendorName": "Hot Dogs",
+    "name": "Hot Dogs",
     "vendorType": "Fast Food",
     "vendorImgUrl": "https://comps.canstockphoto.com/hot-dog-vendor-drawings_csp8484063.jpg"
   }

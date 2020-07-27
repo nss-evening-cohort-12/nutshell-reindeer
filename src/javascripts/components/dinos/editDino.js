@@ -18,9 +18,9 @@ const editDinoDomStringBuilder = (collectionId, dinoObj) => {
           <h2>Edit Dino</h2>
           <div class="form-group">
             <label for="edit-dino-name">Name:</label>
-            <input type="text" class="form-control" name="editDinoName" placeholder="Dino Name" value=${dinoObj.dinoName}>
-          </div>
-          <div class="form-group">
+            <input type="text" class="form-control" name="editDinoName" placeholder="Dino Name" value=${dinoObj.name}>
+        </div>
+        <div class="form-group">
             <label for="edit-dino-type">Type:</label>
             <input type="text" class="form-control" name="editDinoType" placeholder="T-Rex" value=${dinoObj.dinoType}>
           </div>
@@ -49,7 +49,7 @@ const editDino = (e) => {
 
   const collectionId = e.target.elements.collectionId.value;
   const tempEditedDino = {
-    dinoName: e.target.elements.editDinoName.value,
+    name: e.target.elements.editDinoName.value,
     dinoType: e.target.elements.editDinoType.value,
     dinoImgUrl: e.target.elements.editDinoImgUrl.value,
     dinoSize: e.target.elements.editDinoSize.value,

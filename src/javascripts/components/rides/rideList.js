@@ -42,22 +42,30 @@ const addRideForm = () => {
 };
 
 const displayRides = () => {
-  $('#collectionName').text('Rides');
   $('#addForm').addClass('hide');
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addRideForm());
   }
-  rideData.getAllRides()
+  rideData.getRidesWithAssignees()
     .then((ridesArr) => {
       let domString = '<div class="d-flex justify-content-center flex-wrap">';
       ridesArr.forEach((ride) => {
+        let assignees = 'unassigned';
+        if (ride.assignees.length > 0) {
+          assignees = '';
+          ride.assignees.forEach((assignee) => {
+            assignees += `<p>${assignee.name}`;
+          });
+        }
         domString += `<div id="${ride.id}" class="card align-items-center m-3" style="width: 18rem; background-color:${ride.rideOperational ? '' : 'red'};">
         <img src="${ride.rideImgUrl}" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">Ride Name: ${ride.rideName}</h5>
+          <h5 class="card-title">Ride Name: ${ride.name}</h5>
           <p class="card-text">Ride Type: ${ride.rideType}</p>
           <p class="card-text">Ride Location: ${ride.rideLocation}</p>
-          <p class="card-text">Operational: <i class="fas fa-thumbs-${ride.rideOperational ? 'up' : 'down'}" style="color:${ride.rideOperational ? 'green' : 'black'};"></i></p>`;
+          <p class="card-text">Operational: <i class="fas fa-thumbs-${ride.rideOperational ? 'up' : 'down'}" style="color:${ride.rideOperational ? 'green' : 'black'};"></i></p>
+          <p class="card-text">Assigned to: 
+            ${assignees}</p>`;
         if (checkUser.checkUser()) {
           domString += `
           <div class="links card-text text-center">
@@ -80,7 +88,7 @@ const addRide = (e) => {
   e.preventDefault();
   $('#addRideModal').modal('hide');
   const tempRideObj = {
-    rideName: e.target.elements.addRideName.value,
+    name: e.target.elements.addRideName.value,
     rideType: e.target.elements.addRideType.value,
     rideImgUrl: e.target.elements.addRideImgUrl.value,
     rideLocation: e.target.elements.addRideLocation.value,

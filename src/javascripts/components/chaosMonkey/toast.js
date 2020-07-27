@@ -101,7 +101,7 @@ const breakRandomRide = () => {
             tempObj.rideOperational = false;
             rideData.updateRide(rideId, tempObj)
               .then(() => {
-                const message = `Chaos Monkey just broke ${tempObj.rideName} ride`;
+                const message = `Chaos Monkey just broke ${tempObj.name} ride`;
                 toastFunction(message);
                 $(`#${utils.getActive()}`).click();
               });

@@ -1,41 +1,41 @@
 {
     "ride1": {
-      "rideName": "Tora Tora",
+      "name": "Tora Tora",
       "rideType": "Roller Coaster",
       "rideLocation": "Warehouse",
       "rideImgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSm1hORuDUrKVkPr1Ycge1YW4lWMbHUy1YvuA&usqp=CAU",
       "rideOperational": true
     },
     "ride2": {
-        "rideName": "Gravity",
+        "name": "Gravity",
         "rideType": "Swing",
         "rideLocation": "Warehouse",
         "rideImgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQun8FwSPtzAq1EkE-G4Cv-hfhtRDJIHsFcEQ&usqp=CAU",
         "rideOperational": true
     },
     "ride3": {
-        "rideName": "Anaconda",
+        "name": "Anaconda",
         "rideType": "theater",
         "rideLocation": "Warehouse",
         "rideImgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSpTH-BHJlivLfXayeknRNawNl9Ue8Zhdurmg&usqp=CAU",
         "rideOperational": true
     },
     "ride4": {
-        "rideName": "KingKong",
+        "name": "KingKong",
         "rideType": "theater",
         "rideLocation": "Warehouse",
         "rideImgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTQrWiyDaTC_aU5q-3glWjPf-4p2D7fO_u5AQ&usqp=CAU",
         "rideOperational": true
     },
     "ride5": {
-        "rideName": "Superman",
+        "name": "Superman",
         "rideType": "BunjiJumping",
         "rideLocation": "Warehouse",
         "rideImgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSMS0Fqel9g-LCZq0EFbhaNYjrlaI5qhNHKHg&usqp=CAU",
         "rideOperational": true
     },
     "ride6": {
-        "rideName": "Captain America",
+        "name": "Captain America",
         "rideType": "HighLow",
         "rideLocation": "Warehouse",
         "rideImgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTVOr_ucHT-B-_xGWUswVjzdQYLLd78wwBk6g&usqp=CAU",

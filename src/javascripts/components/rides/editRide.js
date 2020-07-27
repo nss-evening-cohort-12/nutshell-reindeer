@@ -18,7 +18,7 @@ const editRideDomStringBuilder = (collectionId, rideObj) => {
         <h2>Edit Equipment</h2>
         <div class="form-group">
             <label for="editRideName">Name:</label>
-            <input type="text" class="form-control" id="editRideName" placeholder="Cordyceps" value="${rideObj.rideName}">
+            <input type="text" class="form-control" id="editRideName" placeholder="Cordyceps" value="${rideObj.name}">
         </div>
         <div class="form-group">
             <label for="editRideType">Type:</label>
@@ -61,7 +61,7 @@ const editRide = (e) => {
   const isChecked = $('#editRideOperational').is(':checked');
   console.error('checkbox returned ', isChecked);
   const tempEditedRide = {
-    rideName: e.target.elements.editRideName.value,
+    name: e.target.elements.editRideName.value,
     rideType: e.target.elements.editRideType.value,
     rideLocation: e.target.elements.editRideLocation.value,
     rideImgUrl: e.target.elements.editRideImgUrl.value,
