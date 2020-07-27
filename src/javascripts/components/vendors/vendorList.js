@@ -25,22 +25,29 @@ const addVendorForm = () => {
 };
 
 const displayVendors = () => {
-  $('#collectionName').text('Vendors');
+  $('#addForm').addClass('hide');
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addVendorForm());
   }
-
-  vendorData.getVendors()
+  vendorData.getVendorsWithAssignees()
     .then((vendorsArr) => {
       let domString = '<div class="d-flex flex-wrap">';
       vendorsArr.forEach((vendor) => {
+        let assignees = 'unassigned';
+        if (vendor.assignees.length > 0) {
+          assignees = '';
+          vendor.assignees.forEach((assignee) => {
+            assignees += `<p>${assignee.name}`;
+          });
+        }
         domString += `
         <div class="card align-items-center m-3" style="width: 18rem;" id="${vendor.id}">
           <img src="${vendor.vendorImgUrl}" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">Vendor Name: ${vendor.vendorName}</h5>
-            <p class="card-text">Vendor Type: ${vendor.vendorType}</p>`;
-
+            <h5 class="card-title">Vendor Name: ${vendor.name}</h5>
+            <p class="card-text">Vendor Type: ${vendor.vendorType}</p>
+            <p class="card-text">Assigned to: 
+            ${assignees}</p>`;
         if (checkUser.checkUser()) {
           domString += `
             <div class="links card-text text-center">
@@ -62,7 +69,7 @@ const displayVendors = () => {
 const addVendor = (e) => {
   e.preventDefault();
   const tempVendorObj = {
-    vendorName: e.target.elements.addVendorName.value,
+    name: e.target.elements.addVendorName.value,
     vendorType: e.target.elements.addVendorType.value,
     vendorImgUrl: e.target.elements.addVendorImgUrl.value,
   };

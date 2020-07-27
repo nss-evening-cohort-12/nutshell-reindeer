@@ -17,10 +17,6 @@ const showAddForm = () => {
   $('#addForm').removeClass('hide');
 };
 
-// const getThis = (e) => {
-//   console.warn(e.target.dataset.stuff);
-// };
-
 const navBarEventListeners = () => {
   $('.navbar-nav a').click((event) => {
     $('.navbar-nav .active').removeClass('active');

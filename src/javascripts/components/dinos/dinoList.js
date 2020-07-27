@@ -31,16 +31,25 @@ const displayDinos = () => {
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addDinoForm());
   }
-  dinoData.getDinos()
+  dinoData.getDinosWithHandlers()
     .then((dinosArr) => {
       let domString = '<div class="d-flex flex-wrap">';
       dinosArr.forEach((dino) => {
+        let handlers = 'unassigned';
+        if (dino.assignees.length > 0) {
+          handlers = '';
+          dino.assignees.forEach((assignee) => {
+            handlers += `<p>${assignee.name}`;
+          });
+        }
         domString += `
         <div class="card align-items-center m-3" style="width: 18rem;" id="${dino.id}">
           <img src="${dino.dinoImgUrl}" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">Dinosaur Name: ${dino.dinoName}</h5>
-            <p class="card-text">Dinosaur Type: ${dino.dinoType}</p>`;
+            <h5 class="card-title">Dinosaur Name: ${dino.name}</h5>
+            <p class="card-text">Dinosaur Type: ${dino.dinoType}</p>
+            <p class="card-text">Current Handlers: 
+            ${handlers}</p>`;
         if (checkUser.checkUser()) {
           domString += `<div class="links card-text text-center">
                 <i class="fas fa-pen editDino"></i>
@@ -59,7 +68,7 @@ const displayDinos = () => {
 const addDino = (e) => {
   e.preventDefault();
   const tempDinoObj = {
-    dinoName: e.target.elements.addDinoName.value,
+    name: e.target.elements.addDinoName.value,
     dinoType: e.target.elements.addDinoType.value,
     dinoImgUrl: e.target.elements.addDinoImgUrl.value,
     dinoSize: e.target.elements.addDinoSize.value,
