@@ -18,10 +18,27 @@ const getDinoById = (dinoId) => axios.get(`${baseUrl}/dinosaurs/${dinoId}.json`)
 
 const updateDino = (dinoId, editedDinoObj) => axios.put(`${baseUrl}/dinosaurs/${dinoId}.json`, editedDinoObj);
 
+const getDinosWithHandlers = () => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/dinosaurs.json`)
+    .then((dinos) => {
+      axios.get(`${baseUrl}/staff.json`)
+        .then((staffData) => {
+          const staff = utils.convertFirebaseCollection(staffData.data);
+          const allDinos = dinos.data;
+          Object.keys(allDinos).forEach((dino) => {
+            allDinos[dino].handler = '';
+          });
+          staff.forEach((employee) => {
+            if (employee.assignmentCategory === 'dinosaurs') {
+              allDinos[employee.assignedTo].handler = employee;
+            }
+          });
+          resolve(utils.convertFirebaseCollection(allDinos));
+        })
+        .catch((err) => reject(err));
+    });
+});
+
 export default {
-  getDinos,
-  addDino,
-  deleteDinosById,
-  getDinoById,
-  updateDino,
+  getDinos, addDino, deleteDinosById, getDinoById, updateDino, getDinosWithHandlers,
 };

@@ -31,7 +31,7 @@ const displayDinos = () => {
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addDinoForm());
   }
-  dinoData.getDinos()
+  dinoData.getDinosWithHandlers()
     .then((dinosArr) => {
       let domString = '<div class="d-flex flex-wrap">';
       dinosArr.forEach((dino) => {
@@ -40,7 +40,8 @@ const displayDinos = () => {
           <img src="${dino.dinoImgUrl}" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Dinosaur Name: ${dino.name}</h5>
-            <p class="card-text">Dinosaur Type: ${dino.dinoType}</p>`;
+            <p class="card-text">Dinosaur Type: ${dino.dinoType}</p>
+            <p class="card-text">Current Handler: ${dino.handler.name ? dino.handler.name : 'unassigned'}</p>`;
         if (checkUser.checkUser()) {
           domString += `<div class="links card-text text-center">
                 <i class="fas fa-pen editDino"></i>
