@@ -46,10 +46,6 @@ const editEquipDomStringBuilder = (collectionId, equipObj) => {
             <input type="text" class="form-control" name="editEquipLocation" placeholder="Location" value=${equipObj.location}>
         </div>
         <div class="form-group">
-            <label for="edit-equip-imgUrl">Image URL</label>
-            <input type="text" class="form-control" name="editEquipImgUrl" placeholder="Image URL" value=${equipObj.imgUrl}>
-        </div>
-        <div class="form-group">
           <div class="form-check">
             <label class="form-check-label" for="editEquipOperational">Is Operational</label>              
             <input class="form-check-input" name="editEquipOperational" type="checkbox"${(equipObj.isOperational) ? 'checked' : ''}>
@@ -81,7 +77,6 @@ const editEquipment = (e) => {
     name: e.target.elements.editEquipName.value,
     type: e.target.elements.editEquipName.value,
     location: e.target.elements.editEquipName.value,
-    imgUrl: e.target.elements.editEquipName.value,
     isOperational: $('#edit-equip-operational').is(':checked'),
   };
   // pass those to an update equipment data function

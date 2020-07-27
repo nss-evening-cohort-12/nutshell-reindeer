@@ -66,20 +66,16 @@ const addEquipForm = () => {
       <div class="modal-body">
       <form id="equipAddForm" class="px-4 py-3">
            <div class="form-group">
-             <label for="equipName">Equipment Name</label>
-             <input type="text" class="form-control" name="equipName">
+             <label for="name">Equipment Name</label>
+             <input type="text" class="form-control" name="name">
            </div>
            <div class="form-group">
-             <label for="equipType">Equipment Type</label>
-             <input type="text" class="form-control" name="equipType">
+             <label for="type">Equipment Type</label>
+             <input type="text" class="form-control" name="type">
           </div>
            <div class="form-group">
-             <label for="equipImgUrl">Equipment Image URL</label>
-             <input type="url" class="form-control" name="equipImgUrl">
-           </div>
-           <div class="form-group">
-             <label for="equipSize">Equipment Location</label>
-             <input type="text" class="form-control" name="equipSize">
+             <label for="location">Equipment Location</label>
+             <input type="text" class="form-control" name="location">
            </div>         
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -161,7 +157,7 @@ const addEquipment = (e) => {
   const tempEquipOjb = {
     name: e.target.elements.name.value,
     type: e.target.elements.type.value,
-    location: e.target.elements.size.value,
+    location: e.target.elements.location.value,
     isOperational: true,
   };
   equipData.addEquipment(tempEquipOjb).then(() => {

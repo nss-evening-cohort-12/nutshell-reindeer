@@ -67,7 +67,6 @@ const dinoEditForm = (e) => {
     .then((response) => {
       const dino = response.data;
       const domString = editDinoDomStringBuilder(collectionId, dino);
-      console.error('hi');
       utils.printToDom('#editForm', domString);
       $('#editDinoModal').modal();
       $('#addButtonDiv').removeClass('d-none');
