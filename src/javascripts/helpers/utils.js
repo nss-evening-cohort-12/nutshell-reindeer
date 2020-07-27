@@ -1,4 +1,4 @@
-const randomNum = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+const randomNum = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 
 const printToDom = (selector, text) => {
   $(selector).html(text);

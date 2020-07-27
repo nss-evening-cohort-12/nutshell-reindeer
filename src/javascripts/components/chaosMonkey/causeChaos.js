@@ -41,4 +41,31 @@ const decreaseChaos = () => {
   }
 };
 
-export default { randomChaos, getChaos, decreaseChaos };
+const randTable = () => {
+  let table;
+  switch (utils.randomNum(1, 3)) {
+    case 1:
+      table = { tableName: 'staff', property: 'isActive' };
+      break;
+    case 2:
+      table = { tableName: 'rides', property: 'rideOperational' };
+      break;
+    case 3:
+      table = { tableName: 'equipment', property: 'isActive' };
+      break;
+    default: // linter demands a default
+  }
+  return table;
+};
+
+const commitChaos = () => {
+  // test
+};
+
+export default {
+  randomChaos,
+  getChaos,
+  decreaseChaos,
+  randTable,
+  commitChaos,
+};

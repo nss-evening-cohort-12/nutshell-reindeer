@@ -50,7 +50,7 @@ const clickEvents = () => {
     if (user) {
       // -----> Project <-----
       $('body').on('click', '#addButton', showAddForm);
-      $('body').click(() => {
+      $('body').click(() => { // Comment this out to turn off chaos monkey temporarily
         causeChaos.decreaseChaos();
       });
       //----------------------
