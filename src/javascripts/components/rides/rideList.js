@@ -41,6 +41,24 @@ const addRideForm = () => {
   return domString;
 };
 
+// Checks for Rides that have no assigned staff and hides all others
+
+const unattendedRides = (e) => {
+  rideData.getRidesWithAssignees()
+    .then((rides) => {
+      if (e.target.checked === true) {
+        rides.forEach((ride) => {
+          if (ride.assignees.length > 0) {
+            $(`#${ride.id}`).closest('.card').css('display', 'none');
+          }
+        });
+      } else if (e.target.checked === false) {
+        $('.card').css('display', 'block');
+      }
+    })
+    .catch((err) => console.error('Getting assignees for rides did not work -> ', err));
+};
+
 const displayRides = () => {
   $('#addForm').addClass('hide');
   if (checkUser.checkUser()) {
@@ -48,7 +66,15 @@ const displayRides = () => {
   }
   rideData.getRidesWithAssignees()
     .then((ridesArr) => {
-      let domString = '<div class="d-flex justify-content-center flex-wrap">';
+      let domString = `
+        <div class="form-check unassigned-box">
+          <input class="form-check-input" type="checkbox" value="" id="unattended-rides">
+          <label class="form-check-label" for="unattended-rides">
+            See Unattended Rides
+          </label>
+        </div>
+        <div class="d-flex justify-content-center flex-wrap">
+      `;
       ridesArr.forEach((ride) => {
         let assignees = 'unassigned';
         if (ride.assignees.length > 0) {
@@ -109,4 +135,9 @@ const deleteRide = (e) => {
     .catch((err) => console.error(err));
 };
 
-export default { displayRides, addRide, deleteRide };
+export default {
+  displayRides,
+  addRide,
+  deleteRide,
+  unattendedRides,
+};

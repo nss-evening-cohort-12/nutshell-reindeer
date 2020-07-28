@@ -62,6 +62,7 @@ const clickEvents = () => {
       $('body').on('submit', '#dinoAddForm', dinoList.addDino);
       $('body').on('submit', '.editDinoForm', editDino.editDino);
       $('body').on('click', '.editDino', editDino.dinoEditForm);
+      $('body').on('click', '#unattended-dinos', dinoList.unattendedDinos);
       //----------------------
 
       // -----> Equipment <-----
@@ -74,6 +75,7 @@ const clickEvents = () => {
       //   console.warn($(this).text());
       // }));
       $('body').on('click', '.assignEquipOption', editEquip.assignEquipment);
+      $('body').on('click', '#unattended-equip', equipList.unattendedEquip);
 
       //----------------------
 
@@ -83,6 +85,7 @@ const clickEvents = () => {
       $('body').on('click', '.deleteRide', rideList.deleteRide);
       $('body').on('submit', '#addRideForm', rideList.addRide);
       $('body').on('click', '#ride-editor-cancel', rideList.displayRides);
+      $('body').on('click', '#unattended-rides', rideList.unattendedRides);
       //----------------------
 
       // -----> Staff <-----
