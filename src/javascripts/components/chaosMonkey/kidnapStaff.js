@@ -9,7 +9,7 @@ const kidnapStaff = () => new Promise((resolve, reject) => {
       const kidnappableStaff = staffList.filter((actives) => actives.isActive === true); // get only the staff with isActive == true
       const kidnappedStaff = kidnappableStaff[utils.randomNum(0, kidnappableStaff.length)]; // select a single random staff member from that list
       console.error(kidnappedStaff);
-      staffData.patchStaff(kidnappedStaff.id, { assignedTo: '', assignmentCategory: '', isActive: false })
+      staffData.deleteStaffById(kidnappedStaff.id)
         .then(() => {
           equipData.getAllEquipment()
             .then((equipment) => {

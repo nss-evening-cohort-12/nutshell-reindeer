@@ -5,7 +5,9 @@ import lightrays from '../../../assets/images/light-rays.jpg';
 import splat from '../../../assets/images/paint-splash.png';
 import screech from '../../../assets/sounds/monkey.mp3';
 import splatSound from '../../../assets/sounds/splat.mp3';
-import kidnapStaff from './kidnapStaff';
+// import kidnapStaff from './kidnapStaff';
+// import breakEquipment from './breakEquipment';
+import breakRide from './breakRide';
 
 let chaosCounter = 0;
 
@@ -36,7 +38,7 @@ const decreaseChaos = () => {
   console.error(chaosCounter); // logs current counter number
   if (chaosCounter === 0) {
     randomChaos(); // reset counter to new random number
-    kidnapStaff.kidnapStaff()
+    breakRide.breakRide()
       .then((msg) => {
         runChaos(msg);
       })
