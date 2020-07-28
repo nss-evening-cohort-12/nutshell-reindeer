@@ -12,6 +12,7 @@ import editEquip from '../components/equipment/editEquipment';
 import deleteEquipment from '../components/equipment/deleteEquipment';
 import editVendor from '../components/vendors/editVendor';
 import deleteVendor from '../components/vendors/deleteVendor';
+import assignStaff from '../components/staff/assignStaff';
 
 // const showAddForm = () => {
 //   $('#addForm').removeClass('hide');
@@ -89,6 +90,7 @@ const clickEvents = () => {
       $('body').on('click', '.deleteStaff', deleteStaff.deleteStaff);
       $('body').on('submit', '#staffAddForm', staffList.addStaff);
       $('body').on('click', '#staff-editor-cancel', editStaff.cancelEdit);
+      $('body').on('click', '.assignStaff', assignStaff.assignStaff);
       //----------------------
 
       // -----> Vendors <-----
