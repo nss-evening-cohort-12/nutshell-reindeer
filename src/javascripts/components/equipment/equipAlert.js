@@ -22,10 +22,12 @@ const equipCheck = () => {
         </button>
       </div>
       <div class="toast-body">`;
-      if (brokenEquip.length < 5) {
-        domString += `Warning ${brokenEquip} is broken!`;
+      if (brokenEquip.length === 0) {
+        domString += 'Nothing is broken, but watch out for the Chaos Monkeys!!';
+      } else if (brokenEquip.length < 5) {
+        domString += `Warning!! ${brokenEquip} is broken!`;
       } else {
-        domString += `Warning Choas monkeys have destroyed ${brokenEquip.length} pieces of equipment`;
+        domString += `Warning!! Chaos Monkeys have destroyed ${brokenEquip.length} pieces of equipment!`;
       }
 
       domString += `</div>
