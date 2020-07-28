@@ -60,6 +60,7 @@ const clickEvents = () => {
       $('body').on('submit', '#dinoAddForm', dinoList.addDino);
       $('body').on('submit', '.editDinoForm', editDino.editDino);
       $('body').on('click', '.editDino', editDino.dinoEditForm);
+      $('body').on('click', '#unattended-dinos', dinoList.unattendedDinos);
       //----------------------
 
       // -----> Equipment <-----
@@ -72,6 +73,7 @@ const clickEvents = () => {
       //   console.warn($(this).text());
       // }));
       $('body').on('click', '.assignEquipOption', editEquip.assignEquipment);
+      $('body').on('click', '#unattended-equip', equipList.unattendedEquip);
 
       //----------------------
 

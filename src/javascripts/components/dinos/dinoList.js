@@ -5,40 +5,55 @@ import checkUser from '../../helpers/data/checkUser';
 const addDinoForm = () => {
   const domString = `
   <div class="modal" id="addDinoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New Dino</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New Dino</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="dinoAddForm" class="px-4 py-3">
+            <div class="form-group">
+              <label for="addDinoName">Dinosaur Name</label>
+              <input type="text" class="form-control" name="addDinoName">
+            </div>
+            <div class="form-group">
+              <label for="addDinoType">Dinosaur Type</label>
+              <input type="text" class="form-control" name="addDinoType">
+            </div>
+            <div class="form-group">
+              <label for="addDinoImgUrl">Dinosaur Image URL</label>
+              <input type="url" class="form-control" name="addDinoImgUrl">
+            </div>
+            <div class="form-group">
+              <label for="addDinoSize">Dinosaur Size</label>
+              <input type="text" class="form-control" name="addDinoSize">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
       </div>
-      <div class="modal-body">
-
-  <form id="dinoAddForm" class="px-4 py-3">
-    <div class="form-group">
-    <label for="addDinoName">Dinosaur Name</label>
-    <input type="text" class="form-control" name="addDinoName">
-  </div>
-  <div class="form-group">
-    <label for="addDinoType">Dinosaur Type</label>
-    <input type="text" class="form-control" name="addDinoType">
-  </div>
-  <div class="form-group">
-    <label for="addDinoImgUrl">Dinosaur Image URL</label>
-    <input type="url" class="form-control" name="addDinoImgUrl">
-  </div>
-  <div class="form-group">
-  <label for="addDinoSize">Dinosaur Size</label>
-  <input type="text" class="form-control" name="addDinoSize">
-</div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-  </div>
-  </div>
-</div>
-</div>`;
+    </div>
+  </div>`;
   return domString;
+};
+
+const unattendedDinos = (e) => {
+  dinoData.getDinosWithHandlers()
+    .then((dinos) => {
+      if (e.target.checked === true) {
+        dinos.forEach((dino) => {
+          if (dino.assignees.length > 1) {
+            $(`#${dino.id}`).closest('.card').css('display', 'none');
+          }
+        });
+      } else if (e.target.checked === false) {
+        $('.card').css('display', 'block');
+      }
+    })
+    .catch((err) => console.error('Getting handlers for dinos did not work -> ', err));
 };
 
 const displayDinos = () => {
@@ -48,7 +63,15 @@ const displayDinos = () => {
   }
   dinoData.getDinosWithHandlers()
     .then((dinosArr) => {
-      let domString = '<div class="d-flex flex-wrap">';
+      let domString = `
+        <div class="form-check unassigned-box">
+          <input class="form-check-input" type="checkbox" value="" id="unattended-dinos">
+          <label class="form-check-label" for="unattended-dinos">
+            See Unattended Dinos
+          </label>
+        </div>
+        <div class="d-flex flex-wrap">
+      `;
       dinosArr.forEach((dino) => {
         let handlers = 'unassigned';
         if (dino.assignees.length > 0) {
@@ -96,4 +119,4 @@ const addDino = (e) => {
   });
 };
 
-export default { displayDinos, addDino };
+export default { displayDinos, addDino, unattendedDinos };
