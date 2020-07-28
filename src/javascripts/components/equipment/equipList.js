@@ -86,8 +86,6 @@ const addEquipForm = () => {
     </div>
   </div>
 </div>
-
-
   `;
   return domString;
 };
@@ -109,6 +107,24 @@ const availableStaffForm = (equip, staff) => {
   return domString;
 };
 
+// Checks for Equipment that have no assigned staff and hides all others
+
+const unattendedEquip = (e) => {
+  equipData.getAllEquipment()
+    .then((equips) => {
+      if (e.target.checked === true) {
+        equips.forEach((equip) => {
+          if (equip.assignedTo) {
+            $(`#${equip.id}`).closest('.card').addClass('hide-assigned');
+          }
+        });
+      } else if (e.target.checked === false) {
+        $('.card').removeClass('hide-assigned');
+      }
+    })
+    .catch((err) => console.error('Getting assignees for equipment did not work -> ', err));
+};
+
 const displayEquipCollection = () => {
   $('#addForm').addClass('hide');
   if (checkUser.checkUser()) {
@@ -118,7 +134,22 @@ const displayEquipCollection = () => {
     .then((staff) => {
       equipData.getAllEquipment()
         .then((equipCollectionArr) => {
-          let domString = '<div class="d-flex justify-content-center flex-wrap">';
+          let domString = `<div class="d-flex justify-content-center flex-wrap">
+          <div class="form-check unassigned-box">
+              <input class="form-check-input" type="checkbox" value="" id="unattended-equip">
+              <label class="form-check-label" for="unattended-equip">
+                See Unattended Equipment
+              </label>
+            </div>
+          <div class ="card equipCard align-items-center m-3" style="width: 18rem">
+            <div class="card-body">
+            <button id="testButton" type="button" class="btn btn-outline-info btn-large">
+        Test All Equipment
+      </button>
+            </div>
+          </div>
+            
+          `;
           equipCollectionArr.forEach((equip) => {
             domString += `
           <div id="${equip.id}" class="card equipCard align-items-center m-3 ${equip.isOperational ? '' : 'disabled'}" style="width: 18rem">
@@ -165,4 +196,4 @@ const addEquipment = (e) => {
   });
 };
 
-export default { displayEquipCollection, addEquipment };
+export default { displayEquipCollection, addEquipment, unattendedEquip };
