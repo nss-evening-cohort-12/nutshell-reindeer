@@ -12,6 +12,7 @@ import editEquip from '../components/equipment/editEquipment';
 import deleteEquipment from '../components/equipment/deleteEquipment';
 import editVendor from '../components/vendors/editVendor';
 import deleteVendor from '../components/vendors/deleteVendor';
+import equipTest from '../components/equipment/equipAlert';
 
 // const showAddForm = () => {
 //   $('#addForm').removeClass('hide');
@@ -54,6 +55,7 @@ const clickEvents = () => {
       // -----> Project <-----
       // $('body').on('click', '#addButton', showAddForm);
       $('body').on('click', '#addButton', showModal);
+      $('body').on('click', '#testButton', equipTest.equipCheck);
       //----------------------
 
       // -----> Dinos <-----
