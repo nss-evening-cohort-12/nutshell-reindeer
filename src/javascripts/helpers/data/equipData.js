@@ -18,6 +18,13 @@ const getEquipById = (equipId) => axios.get(`${baseUrl}/equipment/${equipId}.jso
 
 const updateEquipment = (equipId, editedEquipObj) => axios.put(`${baseUrl}/equipment/${equipId}.json`, editedEquipObj);
 
+const patchEquipment = (equipmentId, addedEquipObj) => axios.patch(`${baseUrl}/equipment/${equipmentId}.json`, addedEquipObj);
+
 export default {
-  getAllEquipment, deleteEquipById, getEquipById, addEquipment, updateEquipment,
+  getAllEquipment,
+  deleteEquipById,
+  getEquipById,
+  addEquipment,
+  updateEquipment,
+  patchEquipment,
 };

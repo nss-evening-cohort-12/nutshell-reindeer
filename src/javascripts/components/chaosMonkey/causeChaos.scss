@@ -1,0 +1,94 @@
+@font-face {
+  font-family: 'JPFont';
+  src: url('../../../assets/fonts/Jurassic_Park.woff') format('woff');
+}
+
+.flash {
+  animation: flash 0.25s 2 step-end;
+}
+
+#chaos-monkey {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#angry-monkey {
+  position: absolute;
+  opacity: 0;
+  width: 50vw;
+  height: 50vw;
+  top: 50%;
+  left: 50%;
+  transform-origin: 0 0;
+  z-index: 2;
+  animation: monkeyFlyin 2s linear forwards;
+}
+
+#light-rays {
+  position: absolute;
+  width: 300vw;
+  height: 300vh;
+  top: -100%;
+  left: -100%;
+  z-index: 1;
+  animation: spin 30s linear infinite;
+}
+
+#paint-splash {
+  position: absolute;
+  width: 50vw;
+  height: 50vw;
+  top: 50%;
+  left: 50%;
+  z-index: 5;
+  transform-origin: center;
+  animation: splat 0.5s forwards;
+}
+
+#splat-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'JPFont', Fallback, sans-serif;
+  color: goldenrod;
+  text-align: center;
+  position: absolute;
+  width: 15vw;
+  height: 15vw;
+  font-size: 3vw;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  transform: translate(-55%, -50%);
+}
+
+@keyframes monkeyFlyin {
+  0% {transform: scale(0) translate(-50%, -50%); opacity: 100%;}
+  50% {transform: scale(1) translate(-50%, -50%); opacity: 100%;}
+  57%, 65%, 73%, 80%, 88%, 96% {transform: scale(1) translate(-51%, -50%); opacity: 100%;}
+  59%, 67%, 75%, 82%, 90%, 98% {transform: scale(1) translate(-49%, -51%); opacity: 100%;}
+  61%, 69%, 77%, 84%, 92%, 99% {transform: scale(1) translate(-52%, -49%); opacity: 100%;}
+  63%, 71%, 78%, 86%, 94%, 100% {transform: scale(1) translate(-48%, -51%); opacity: 100%;}
+}
+
+@keyframes spin {
+  0% {transform: rotate(360deg);}
+  100% {transform: rotate(0deg);}
+}
+
+@keyframes flash {
+  0% {filter: invert(0);}
+  50% {filter: invert(100%); background-color: white;}
+  100% {filter: invert(0);}
+}
+
+@keyframes splat {
+  0% {transform: scale(0.8) translate(-80%, -80%);}
+  50% {transform: scale(1.2) translate(-40%, -40%);}
+  100% {transform: scale(1) translate(-50%, -50%);}
+}

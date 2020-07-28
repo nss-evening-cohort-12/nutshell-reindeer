@@ -12,6 +12,7 @@ import editEquip from '../components/equipment/editEquipment';
 import deleteEquipment from '../components/equipment/deleteEquipment';
 import editVendor from '../components/vendors/editVendor';
 import deleteVendor from '../components/vendors/deleteVendor';
+// import causeChaos from '../components/chaosMonkey/causeChaos';
 import equipTest from '../components/equipment/equipAlert';
 
 // const showAddForm = () => {
@@ -53,6 +54,9 @@ const clickEvents = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       // -----> Project <-----
+      // $('body').click(() => { // Comment this out to turn off chaos monkey temporarily
+      //  causeChaos.decreaseChaos();
+      // });
       // $('body').on('click', '#addButton', showAddForm);
       $('body').on('click', '#addButton', showModal);
       $('body').on('click', '#testButton', equipTest.equipCheck);
