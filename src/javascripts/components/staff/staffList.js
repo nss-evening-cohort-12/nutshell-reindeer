@@ -76,11 +76,37 @@ const staffCard = (employee) => {
   return domString;
 };
 
+// Checks for Staff that have no assignments and hides all others
+
+const unassignedStaff = (e) => {
+  staffData.getStaffWithAssignments()
+    .then((staff) => {
+      if (e.target.checked === true) {
+        staff.forEach((person) => {
+          if (person.assignedTo || person.isActive === false) {
+            $(`#${person.id}`).closest('.card').addClass('hide-assigned');
+          }
+        });
+      } else if (e.target.checked === false) {
+        $('.card').removeClass('hide-assigned');
+      }
+    })
+    .catch((err) => console.error('Getting staff for assignments did not work -> ', err));
+};
+
 const displayStaff = () => {
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addStaffForm());
   }
-  let domString = '<div class="d-flex flex-wrap">';
+  let domString = `
+    <div class="form-check unassigned-box">
+      <input class="form-check-input" type="checkbox" value="" id="unassigned-staff">
+      <label class="form-check-label" for="unassigned-staff">
+        See Unassigned Staff
+      </label>
+    </div>
+    <div class="d-flex flex-wrap">
+  `;
   staffData.getStaffWithAssignments()
     .then((allStaff) => {
       allStaff.forEach((employee) => {
@@ -106,4 +132,4 @@ const addStaff = (e) => {
   });
 };
 
-export default { displayStaff, addStaff };
+export default { displayStaff, addStaff, unassignedStaff };

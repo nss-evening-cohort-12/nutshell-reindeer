@@ -115,11 +115,11 @@ const unattendedEquip = (e) => {
       if (e.target.checked === true) {
         equips.forEach((equip) => {
           if (equip.assignedTo) {
-            $(`#${equip.id}`).closest('.card').css('display', 'none');
+            $(`#${equip.id}`).closest('.card').addClass('hide-assigned');
           }
         });
       } else if (e.target.checked === false) {
-        $('.card').css('display', 'block');
+        $('.card').removeClass('hide-assigned');
       }
     })
     .catch((err) => console.error('Getting assignees for equipment did not work -> ', err));

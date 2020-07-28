@@ -49,11 +49,11 @@ const unattendedRides = (e) => {
       if (e.target.checked === true) {
         rides.forEach((ride) => {
           if (ride.assignees.length > 0) {
-            $(`#${ride.id}`).closest('.card').css('display', 'none');
+            $(`#${ride.id}`).closest('.card').addClass('hide-assigned');
           }
         });
       } else if (e.target.checked === false) {
-        $('.card').css('display', 'block');
+        $('.card').removeClass('hide-assigned');
       }
     })
     .catch((err) => console.error('Getting assignees for rides did not work -> ', err));
