@@ -12,7 +12,7 @@ import editEquip from '../components/equipment/editEquipment';
 import deleteEquipment from '../components/equipment/deleteEquipment';
 import editVendor from '../components/vendors/editVendor';
 import deleteVendor from '../components/vendors/deleteVendor';
-import causeChaos from '../components/chaosMonkey/causeChaos';
+// import causeChaos from '../components/chaosMonkey/causeChaos';
 
 const showAddForm = () => {
   $('#addForm').removeClass('hide');
@@ -50,9 +50,9 @@ const clickEvents = () => {
     if (user) {
       // -----> Project <-----
       $('body').on('click', '#addButton', showAddForm);
-      $('body').click(() => { // Comment this out to turn off chaos monkey temporarily
-        causeChaos.decreaseChaos();
-      });
+      // $('body').click(() => { // Comment this out to turn off chaos monkey temporarily
+      //  causeChaos.decreaseChaos();
+      // });
       //----------------------
 
       // -----> Dinos <-----
