@@ -5,7 +5,7 @@ import './rideList.scss';
 
 const addRideForm = () => {
   const domString = `
-  <div class="modal fade" id="addRideModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal" id="addRideModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -86,7 +86,6 @@ const displayRides = () => {
 
 const addRide = (e) => {
   e.preventDefault();
-  $('#addRideModal').modal('hide');
   const tempRideObj = {
     name: e.target.elements.addRideName.value,
     rideType: e.target.elements.addRideType.value,
@@ -95,6 +94,7 @@ const addRide = (e) => {
     rideOperational: true,
   };
   rideData.addRide(tempRideObj).then(() => {
+    $('#addRideModal').modal('toggle');
     displayRides();
   });
 };

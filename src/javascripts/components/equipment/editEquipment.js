@@ -20,7 +20,7 @@ const assignEquipment = (e) => {
 const editEquipDomStringBuilder = (collectionId, equipObj) => {
   const domString = `   
   
-  <div class="modal fade" id="editEquipModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal" id="editEquipModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -97,7 +97,6 @@ const equipmentEditForm = (e) => {
 
       utils.printToDom('#editForm', domString);
       $('#editEquipModal').modal();
-      // $('#addForm').removeClass('hide');
       $('#addButtonDiv').removeClass('d-none');
     })
     .catch((err) => console.warn(err));

@@ -54,7 +54,7 @@ const equipIcon = (type) => {
 const addEquipForm = () => {
   const domString = `
 
-  <div class="modal fade" id="addEquipModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal" id="addEquipModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -153,7 +153,6 @@ const displayEquipCollection = () => {
 
 const addEquipment = (e) => {
   e.preventDefault();
-  $('#addEquipModal').modal('hide');
   const tempEquipOjb = {
     name: e.target.elements.name.value,
     type: e.target.elements.type.value,
@@ -161,6 +160,7 @@ const addEquipment = (e) => {
     isOperational: true,
   };
   equipData.addEquipment(tempEquipOjb).then(() => {
+    $('#addEquipModal').modal('hide');
     displayEquipCollection();
   });
 };
