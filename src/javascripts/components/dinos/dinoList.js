@@ -1,6 +1,7 @@
 import dinoData from '../../helpers/data/dinoData';
 import utils from '../../helpers/utils';
 import checkUser from '../../helpers/data/checkUser';
+import checkDino from './checkDino';
 
 const addDinoForm = () => {
   const domString = `
@@ -66,6 +67,9 @@ const displayDinos = () => {
   dinoData.getDinosWithHandlers()
     .then((dinosArr) => {
       let domString = `
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
+          Check Dino Test
+        </button>
         <div class="form-check unassigned-box">
           <input class="form-check-input" type="checkbox" value="" id="unattended-dinos">
           <label class="form-check-label" for="unattended-dinos">
@@ -103,6 +107,7 @@ const displayDinos = () => {
       utils.printToDom('#displayCards', domString);
     })
     .catch((err) => console.error(err));
+  checkDino.checkDinoHandlers();
 };
 
 const addDino = (e) => {
