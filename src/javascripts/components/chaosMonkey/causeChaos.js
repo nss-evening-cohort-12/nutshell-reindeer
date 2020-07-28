@@ -35,7 +35,7 @@ const runChaos = (msg) => {
 };
 
 const decreaseChaos = () => {
-  console.error(chaosCounter); // logs current counter number
+  console.error('countdown to Chaos Monkey: ', chaosCounter); // logs current counter number
   if (chaosCounter === 0) {
     randomChaos(); // reset counter to new random number
     switch (utils.randomNum(1, 3)) {
