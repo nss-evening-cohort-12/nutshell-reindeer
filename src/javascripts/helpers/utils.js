@@ -1,3 +1,10 @@
+let state; // variable that holds the current console state
+
+const setState = (newState) => { // sets the console state
+  state = newState;
+  console.error('current state: ', state);
+};
+
 const randomNum = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 
 const printToDom = (selector, text) => {
@@ -25,4 +32,5 @@ export default {
   convertFirebaseCollection,
   getActive,
   randomNum,
+  setState,
 };

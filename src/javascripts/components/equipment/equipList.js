@@ -177,6 +177,7 @@ const displayEquipCollection = () => {
           });
           domString += '</div>';
           utils.printToDom('#displayCards', domString);
+          utils.setState('equipment');
         })
         .catch((err) => console.error(err));
     });

@@ -102,6 +102,7 @@ const displayVendors = () => {
       });
       domString += '</div>';
       utils.printToDom('#displayCards', domString);
+      utils.setState('vendors');
     })
     .catch((err) => console.error('getting the vendors did not work -> ', err));
 };
