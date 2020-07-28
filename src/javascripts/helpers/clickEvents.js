@@ -92,6 +92,7 @@ const clickEvents = () => {
       $('body').on('click', '.deleteStaff', deleteStaff.deleteStaff);
       $('body').on('submit', '#staffAddForm', staffList.addStaff);
       $('body').on('click', '#staff-editor-cancel', editStaff.cancelEdit);
+      $('body').on('click', '#unassigned-staff', staffList.unassignedStaff);
       //----------------------
 
       // -----> Vendors <-----

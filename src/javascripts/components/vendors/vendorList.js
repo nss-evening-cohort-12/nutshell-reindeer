@@ -46,11 +46,11 @@ const unattendedVendors = (e) => {
       if (e.target.checked === true) {
         vendors.forEach((vendor) => {
           if (vendor.assignees.length > 0) {
-            $(`#${vendor.id}`).closest('.card').css('display', 'none');
+            $(`#${vendor.id}`).closest('.card').addClass('hide-assigned');
           }
         });
       } else if (e.target.checked === false) {
-        $('.card').css('display', 'block');
+        $('.card').removeClass('hide-assigned');
       }
     })
     .catch((err) => console.error('Getting assignees for vendors did not work -> ', err));

@@ -48,11 +48,11 @@ const unattendedDinos = (e) => {
       if (e.target.checked === true) {
         dinos.forEach((dino) => {
           if (dino.assignees.length > 1) {
-            $(`#${dino.id}`).closest('.card').css('display', 'none');
+            $(`#${dino.id}`).closest('.card').addClass('hide-assigned');
           }
         });
       } else if (e.target.checked === false) {
-        $('.card').css('display', 'block');
+        $('.card').removeClass('hide-assigned');
       }
     })
     .catch((err) => console.error('Getting handlers for dinos did not work -> ', err));
