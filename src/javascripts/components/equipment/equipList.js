@@ -26,32 +26,71 @@ const equipIcon = (type) => {
   return `<i class="${icon} fa-5x text-secondary m-4"></i>`;
 };
 
+// const addEquipForm = () => {
+//   const domString = `
+//   <form id="equipAddForm" class="px-4 py-3">
+//     <div class="form-group">
+//       <label for="equipName">Equipment Name</label>
+//       <input type="text" class="form-control" name="equipName">
+//     </div>
+//     <div class="form-group">
+//       <label for="equipType">Equipment Type</label>
+//       <input type="text" class="form-control" name="equipType">
+//     </div>
+//     <div class="form-group">
+//       <label for="equipImgUrl">Equipment Image URL</label>
+//       <input type="url" class="form-control" name="equipImgUrl">
+//     </div>
+//     <div class="form-group">
+//       <label for="equipSize">Equipment Location</label>
+//       <input type="text" class="form-control" name="equipSize">
+//     </div>
+//     <button type="submit" class="btn btn-primary">Submit</button>
+//   </form>`;
+//   return domString;
+// };
+
+// modal version
 const addEquipForm = () => {
   const domString = `
-  <form id="equipAddForm" class="px-4 py-3">
-    <div class="form-group">
-      <label for="name">Equipment Name</label>
-      <input type="text" class="form-control" name="name">
+
+  <div class="modal" id="addEquipModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newEquipModal">New Equipment</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form id="equipAddForm" class="px-4 py-3">
+           <div class="form-group">
+             <label for="name">Equipment Name</label>
+             <input type="text" class="form-control" name="name">
+           </div>
+           <div class="form-group">
+             <label for="type">Equipment Type</label>
+             <input type="text" class="form-control" name="type">
+          </div>
+           <div class="form-group">
+             <label for="location">Equipment Location</label>
+             <input type="text" class="form-control" name="location">
+           </div>         
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+      </form>
+      </div>
     </div>
-    <div class="form-group">
-    <label for="type">Type:</label>
-    <select id="cars" class="form-control" name="type">
-      <option value="Office">Office</option>
-      <option value="Tool">Tool</option>
-      <option value="Safety">Safety</option>
-      <option value="Vehicle">Vehicle</option>
-    </select>
-    </div>
-    <div class="form-group">
-      <label for="size">Equipment Location</label>
-      <input type="text" class="form-control" name="size">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>`;
+  </div>
+</div>
+  `;
   return domString;
 };
 
-const availableUsersForm = (equip, staff) => {
+const availableStaffForm = (equip, staff) => {
   let domString = '';
   if (equip.assignedTo) {
     domString += `
@@ -68,6 +107,24 @@ const availableUsersForm = (equip, staff) => {
   return domString;
 };
 
+// Checks for Equipment that have no assigned staff and hides all others
+
+const unattendedEquip = (e) => {
+  equipData.getAllEquipment()
+    .then((equips) => {
+      if (e.target.checked === true) {
+        equips.forEach((equip) => {
+          if (equip.assignedTo) {
+            $(`#${equip.id}`).closest('.card').addClass('hide-assigned');
+          }
+        });
+      } else if (e.target.checked === false) {
+        $('.card').removeClass('hide-assigned');
+      }
+    })
+    .catch((err) => console.error('Getting assignees for equipment did not work -> ', err));
+};
+
 const displayEquipCollection = () => {
   $('#addForm').addClass('hide');
   if (checkUser.checkUser()) {
@@ -77,7 +134,22 @@ const displayEquipCollection = () => {
     .then((staff) => {
       equipData.getAllEquipment()
         .then((equipCollectionArr) => {
-          let domString = '<div class="d-flex justify-content-center flex-wrap">';
+          let domString = `<div class="d-flex justify-content-center flex-wrap">
+          <div class="form-check unassigned-box">
+              <input class="form-check-input" type="checkbox" value="" id="unattended-equip">
+              <label class="form-check-label" for="unattended-equip">
+                See Unattended Equipment
+              </label>
+            </div>
+          <div class ="card equipCard align-items-center m-3" style="width: 18rem">
+            <div class="card-body">
+            <button id="testButton" type="button" class="btn btn-outline-info btn-large">
+        Test All Equipment
+      </button>
+            </div>
+          </div>
+            
+          `;
           equipCollectionArr.forEach((equip) => {
             domString += `
           <div id="${equip.id}" class="card equipCard align-items-center m-3 ${equip.isOperational ? '' : 'disabled'}" style="width: 18rem">
@@ -92,7 +164,7 @@ const displayEquipCollection = () => {
                         <div class="btn-group">
                           <a href="#" class="assignEquip mr-4 card-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i></a>
                           <div class="dropdown-menu dropdown-menu-right">
-                          ${availableUsersForm(equip, staff)}
+                          ${availableStaffForm(equip, staff)}
                           </div>
                         </div>
                           <a href="#" class="editEquip mr-4 card-link"><i class="fas fa-pen"></i></a>
@@ -115,13 +187,13 @@ const addEquipment = (e) => {
   const tempEquipOjb = {
     name: e.target.elements.name.value,
     type: e.target.elements.type.value,
-    location: e.target.elements.size.value,
+    location: e.target.elements.location.value,
     isOperational: true,
   };
   equipData.addEquipment(tempEquipOjb).then(() => {
+    $('#addEquipModal').modal('hide');
     displayEquipCollection();
-    $('#addForm').addClass('hide');
   });
 };
 
-export default { displayEquipCollection, addEquipment };
+export default { displayEquipCollection, addEquipment, unattendedEquip };

@@ -10,6 +10,27 @@ const getAllRides = () => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
+const getRidesWithAssignees = () => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/rides.json`)
+    .then((rides) => {
+      axios.get(`${baseUrl}/staff.json`)
+        .then((staffData) => {
+          const staff = utils.convertFirebaseCollection(staffData.data);
+          const allRides = rides.data;
+          Object.keys(allRides).forEach((ride) => {
+            allRides[ride].assignees = [];
+          });
+          staff.forEach((employee) => {
+            if (employee.assignmentCategory === 'rides') {
+              allRides[employee.assignedTo].assignees.push(employee);
+            }
+          });
+          resolve(utils.convertFirebaseCollection(allRides));
+        })
+        .catch((err) => reject(err));
+    });
+});
+
 const addRide = (equipObj) => axios.post(`${baseUrl}/rides.json`, equipObj);
 
 const deleteRideById = (equipId) => axios.delete(`${baseUrl}/rides/${equipId}.json`);
@@ -27,4 +48,5 @@ export default {
   getRideById,
   updateRide,
   patchRide,
+  getRidesWithAssignees,
 };

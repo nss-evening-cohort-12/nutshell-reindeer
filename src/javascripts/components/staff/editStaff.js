@@ -8,7 +8,18 @@ const cancelEdit = () => {
 };
 
 const editStaffDomStringBuilder = (collectionId, staffObj) => {
-  const domString = `            
+  const domString = `    
+  <div class="modal" id="editStaffModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Update Staff</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
         <form class="edit-staff m-5 editStaffForm">
         <h2>Edit Staff</h2>
         <div class="form-group">
@@ -29,14 +40,21 @@ const editStaffDomStringBuilder = (collectionId, staffObj) => {
         </div>
         <input type="hidden" class="form-control" name="collectionId" value="${collectionId}">
         <button type="submit" class="btn btn-primary" name="submitEdit">Update</button>
-        <button class="btn btn-warning backButton" id="staff-editor-cancel">Cancel</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
         </form>
+
+        </div>
+    </div>
+  </div>
+</div>
     `;
   return domString;
 };
 
 const editStaff = (e) => {
   e.preventDefault();
+  $('#editStaffModal').modal('hide');
   const collectionId = e.target.elements.collectionId.value;
   const tempEditedStaff = {
     name: e.target.elements.editStaffName.value,
@@ -58,8 +76,8 @@ const staffEditForm = (e) => {
       const staff = response.data;
       const domString = editStaffDomStringBuilder(collectionId, staff);
 
-      utils.printToDom('#addForm', domString);
-      $('#addForm').removeClass('hide');
+      utils.printToDom('#editForm', domString);
+      $('#editStaffModal').modal();
       $('#addButtonDiv').removeClass('d-none');
     })
     .catch((err) => console.warn(err));
