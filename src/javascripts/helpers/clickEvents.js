@@ -13,6 +13,8 @@ import deleteEquipment from '../components/equipment/deleteEquipment';
 import editVendor from '../components/vendors/editVendor';
 import deleteVendor from '../components/vendors/deleteVendor';
 import assignStaff from '../components/staff/assignStaff';
+// import causeChaos from '../components/chaosMonkey/causeChaos';
+import equipTest from '../components/equipment/equipAlert';
 
 // const showAddForm = () => {
 //   $('#addForm').removeClass('hide');
@@ -53,14 +55,19 @@ const clickEvents = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       // -----> Project <-----
+      // $('body').click(() => { // Comment this out to turn off chaos monkey temporarily
+      //  causeChaos.decreaseChaos();
+      // });
       // $('body').on('click', '#addButton', showAddForm);
       $('body').on('click', '#addButton', showModal);
+      $('body').on('click', '#testButton', equipTest.equipCheck);
       //----------------------
 
       // -----> Dinos <-----
       $('body').on('submit', '#dinoAddForm', dinoList.addDino);
       $('body').on('submit', '.editDinoForm', editDino.editDino);
       $('body').on('click', '.editDino', editDino.dinoEditForm);
+      $('body').on('click', '#unattended-dinos', dinoList.unattendedDinos);
       //----------------------
 
       // -----> Equipment <-----
@@ -73,6 +80,7 @@ const clickEvents = () => {
       //   console.warn($(this).text());
       // }));
       $('body').on('click', '.assignEquipOption', editEquip.assignEquipment);
+      $('body').on('click', '#unattended-equip', equipList.unattendedEquip);
 
       //----------------------
 
@@ -82,6 +90,7 @@ const clickEvents = () => {
       $('body').on('click', '.deleteRide', rideList.deleteRide);
       $('body').on('submit', '#addRideForm', rideList.addRide);
       $('body').on('click', '#ride-editor-cancel', rideList.displayRides);
+      $('body').on('click', '#unattended-rides', rideList.unattendedRides);
       //----------------------
 
       // -----> Staff <-----
@@ -91,6 +100,7 @@ const clickEvents = () => {
       $('body').on('submit', '#staffAddForm', staffList.addStaff);
       $('body').on('click', '#staff-editor-cancel', editStaff.cancelEdit);
       $('body').on('click', '.assignStaff', assignStaff.assignStaff);
+      $('body').on('click', '#unassigned-staff', staffList.unassignedStaff);
       //----------------------
 
       // -----> Vendors <-----
@@ -99,6 +109,7 @@ const clickEvents = () => {
       $('body').on('click', '.editVendor', editVendor.vendorEditForm);
       $('body').on('click', '#vendor-editor-cancel', editVendor.cancelEdit);
       $('body').on('click', '.deleteVendor', deleteVendor.deleteVendor);
+      $('body').on('click', '#unattended-vendors', vendorList.unattendedVendors);
       //----------------------
     }
   });

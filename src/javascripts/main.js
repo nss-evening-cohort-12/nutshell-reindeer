@@ -7,6 +7,7 @@ import authData from './helpers/data/authData';
 import '../styles/main.scss';
 import 'bootstrap';
 import clickEvents from './helpers/clickEvents';
+import causeChaos from './components/chaosMonkey/causeChaos';
 
 const init = () => {
   firebase.initializeApp(apiKeys.firebaseConfig);
@@ -14,6 +15,7 @@ const init = () => {
   auth.loginButton();
   auth.logoutEvent();
   clickEvents.clickEvents();
+  causeChaos.randomChaos(); // sets the chaos counter to random number on init
 };
 
 init();

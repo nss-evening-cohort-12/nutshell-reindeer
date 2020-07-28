@@ -38,6 +38,24 @@ const addVendorForm = () => {
   return domString;
 };
 
+// Checks for Vendors that have no assigned staff and hides all others
+
+const unattendedVendors = (e) => {
+  vendorData.getVendorsWithAssignees()
+    .then((vendors) => {
+      if (e.target.checked === true) {
+        vendors.forEach((vendor) => {
+          if (vendor.assignees.length > 0) {
+            $(`#${vendor.id}`).closest('.card').addClass('hide-assigned');
+          }
+        });
+      } else if (e.target.checked === false) {
+        $('.card').removeClass('hide-assigned');
+      }
+    })
+    .catch((err) => console.error('Getting assignees for vendors did not work -> ', err));
+};
+
 const displayVendors = () => {
   $('#addForm').addClass('hide');
   if (checkUser.checkUser()) {
@@ -45,7 +63,15 @@ const displayVendors = () => {
   }
   vendorData.getVendorsWithAssignees()
     .then((vendorsArr) => {
-      let domString = '<div class="d-flex flex-wrap">';
+      let domString = `
+      <div class="form-check unassigned-box">
+        <input class="form-check-input" type="checkbox" value="" id="unattended-vendors">
+        <label class="form-check-label" for="unattended-vendors">
+          See Unattended Vendors
+        </label>
+      </div>
+      <div class="d-flex flex-wrap">
+      `;
       vendorsArr.forEach((vendor) => {
         let assignees = 'unassigned';
         if (vendor.assignees.length > 0) {
@@ -94,4 +120,4 @@ const addVendor = (e) => {
     .catch((err) => console.error('adding new vendors did not work -> ', err));
 };
 
-export default { displayVendors, addVendor };
+export default { displayVendors, addVendor, unattendedVendors };
