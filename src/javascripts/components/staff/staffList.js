@@ -16,6 +16,17 @@ const staffIcon = (staffMember) => {
 
 const addStaffForm = () => {
   const domString = `
+  <div class="modal" id="addStaffModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New Staff</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
   <form id="staffAddForm" class="px-4 py-3">
     <div class="form-group">
       <label for="addStaffName">Staff Name</label>
@@ -29,8 +40,12 @@ const addStaffForm = () => {
       <label for="addStaffImgUrl">Staff Image URL</label>
       <input type="url" class="form-control" name="addStaffImgUrl">
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>`;
+    <button type="submit" class="btn btn-primary">Hire</button>
+  </form>
+  </div>
+    </div>
+  </div>
+</div>`;
   return domString;
 };
 
@@ -86,8 +101,8 @@ const addStaff = (e) => {
     isActive: true,
   };
   staffData.addStaff(newStaff).then(() => {
+    $('#addStaffModal').modal('hide');
     displayStaff();
-    $('#addForm').addClass('hide');
   });
 };
 
