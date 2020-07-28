@@ -39,6 +39,14 @@ const getRideById = (equipId) => axios.get(`${baseUrl}/rides/${equipId}.json`);
 
 const updateRide = (equipId, editedEquipObj) => axios.put(`${baseUrl}/rides/${equipId}.json`, editedEquipObj);
 
+const patchRide = (rideId, addedRideObj) => axios.patch(`${baseUrl}/rides/${rideId}.json`, addedRideObj);
+
 export default {
-  getAllRides, addRide, deleteRideById, getRideById, updateRide, getRidesWithAssignees,
+  getAllRides,
+  addRide,
+  deleteRideById,
+  getRideById,
+  updateRide,
+  patchRide,
+  getRidesWithAssignees,
 };
