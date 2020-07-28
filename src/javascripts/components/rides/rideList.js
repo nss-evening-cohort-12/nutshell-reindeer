@@ -41,6 +41,8 @@ const addRideForm = () => {
   return domString;
 };
 
+// Checks for Rides that have no assigned staff and hides all others
+
 const unattendedRides = (e) => {
   rideData.getRidesWithAssignees()
     .then((rides) => {

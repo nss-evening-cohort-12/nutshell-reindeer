@@ -107,6 +107,8 @@ const availableStaffForm = (equip, staff) => {
   return domString;
 };
 
+// Checks for Equipment that have no assigned staff and hides all others
+
 const unattendedEquip = (e) => {
   equipData.getAllEquipment()
     .then((equips) => {

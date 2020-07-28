@@ -40,6 +40,8 @@ const addDinoForm = () => {
   return domString;
 };
 
+// Checks for Dinos that have 1 or less handler, hiding all others
+
 const unattendedDinos = (e) => {
   dinoData.getDinosWithHandlers()
     .then((dinos) => {

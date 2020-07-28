@@ -38,6 +38,8 @@ const addVendorForm = () => {
   return domString;
 };
 
+// Checks for Vendors that have no assigned staff and hides all others
+
 const unattendedVendors = (e) => {
   vendorData.getVendorsWithAssignees()
     .then((vendors) => {
