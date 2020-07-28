@@ -5,8 +5,8 @@ import lightrays from '../../../assets/images/light-rays.jpg';
 import splat from '../../../assets/images/paint-splash.png';
 import screech from '../../../assets/sounds/monkey.mp3';
 import splatSound from '../../../assets/sounds/splat.mp3';
-// import kidnapStaff from './kidnapStaff';
-// import breakEquipment from './breakEquipment';
+import kidnapStaff from './kidnapStaff';
+import breakEquipment from './breakEquipment';
 import breakRide from './breakRide';
 
 let chaosCounter = 0;
@@ -38,41 +38,37 @@ const decreaseChaos = () => {
   console.error(chaosCounter); // logs current counter number
   if (chaosCounter === 0) {
     randomChaos(); // reset counter to new random number
-    breakRide.breakRide()
-      .then((msg) => {
-        runChaos(msg);
-      })
-      .catch((err) => console.error(err));
+    switch (utils.randomNum(1, 3)) {
+      case 1:
+        breakRide.breakRide()
+          .then((msg) => {
+            runChaos(msg);
+          })
+          .catch((err) => console.error(err));
+        break;
+      case 2:
+        kidnapStaff.kidnapStaff()
+          .then((msg) => {
+            runChaos(msg);
+          })
+          .catch((err) => console.error(err));
+        break;
+      case 3:
+        breakEquipment.breakEquipment()
+          .then((msg) => {
+            runChaos(msg);
+          })
+          .catch((err) => console.error(err));
+        break;
+      default: // linter demands default
+    }
   } else {
     chaosCounter -= 1;
   }
-};
-
-const randTable = () => {
-  let table;
-  switch (utils.randomNum(1, 3)) {
-    case 1:
-      table = 'staff';
-      break;
-    case 2:
-      table = 'rides';
-      break;
-    case 3:
-      table = 'equipment';
-      break;
-    default: // linter demands a default
-  }
-  return table;
-};
-
-const commitChaos = () => {
-  // test
 };
 
 export default {
   randomChaos,
   getChaos,
   decreaseChaos,
-  randTable,
-  commitChaos,
 };
