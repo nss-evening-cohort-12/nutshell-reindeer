@@ -4,6 +4,17 @@ import checkUser from '../../helpers/data/checkUser';
 
 const addDinoForm = () => {
   const domString = `
+  <div class="modal" id="addDinoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New Dino</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
   <form id="dinoAddForm" class="px-4 py-3">
     <div class="form-group">
     <label for="addDinoName">Dinosaur Name</label>
@@ -22,7 +33,11 @@ const addDinoForm = () => {
   <input type="text" class="form-control" name="addDinoSize">
 </div>
     <button type="submit" class="btn btn-primary">Submit</button>
-  </form>`;
+  </form>
+  </div>
+  </div>
+</div>
+</div>`;
   return domString;
 };
 
@@ -52,8 +67,8 @@ const displayDinos = () => {
             ${handlers}</p>`;
         if (checkUser.checkUser()) {
           domString += `<div class="links card-text text-center">
-                <i class="fas fa-pen editDino"></i>
-                <i class="far fa-trash-alt"></i>
+                <a href="#" class="editDino mr-4 card-link "><i class="fas fa-pen"></i></a>
+                <a href="#" class="deleteDino ml-4 card-link"><i class="far fa-trash-alt"></i></a>
             </div>`;
         }
         domString += `</div>
@@ -67,6 +82,7 @@ const displayDinos = () => {
 
 const addDino = (e) => {
   e.preventDefault();
+
   const tempDinoObj = {
     name: e.target.elements.addDinoName.value,
     dinoType: e.target.elements.addDinoType.value,
@@ -75,8 +91,8 @@ const addDino = (e) => {
     rideOperational: true,
   };
   dinoData.addDino(tempDinoObj).then(() => {
+    $('#addDinoModal').modal('hide');
     displayDinos();
-    $('#addForm').addClass('hide');
   });
 };
 
