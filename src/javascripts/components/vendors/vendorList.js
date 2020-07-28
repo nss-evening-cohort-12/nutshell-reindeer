@@ -3,7 +3,6 @@ import vendorData from '../../helpers/data/vendorData';
 import utils from '../../helpers/utils';
 
 import './vendorList.scss';
-import staffData from '../../helpers/data/staffData';
 
 const addVendorForm = () => {
   const domString = `
@@ -40,19 +39,19 @@ const addVendorForm = () => {
 };
 
 const unattendedVendors = (e) => {
-  if (e.target.checked === true) {
-    staffData.getStaff()
-      .then((staff) => {
-        staff.forEach((person) => {
-          if (person.assignmentCategory === 'vendors') {
-            console.warn(person);
+  vendorData.getVendorsWithAssignees()
+    .then((vendors) => {
+      if (e.target.checked === true) {
+        vendors.forEach((vendor) => {
+          if (vendor.assignees.length > 0) {
+            $(`#${vendor.id}`).closest('.card').css('display', 'none');
           }
         });
-      })
-      .catch((err) => console.error('Getting staff for unattended vendors did not work -> ', err));
-  } else if (e.target.checked === false) {
-    console.warn('Unchecked!');
-  }
+      } else if (e.target.checked === false) {
+        $('.card').css('display', 'block');
+      }
+    })
+    .catch((err) => console.error('Getting assignees for vendors did not work -> ', err));
 };
 
 const displayVendors = () => {
