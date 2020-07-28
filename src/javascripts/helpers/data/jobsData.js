@@ -10,7 +10,6 @@ const addAssignedKey = (data) => {
   Object.keys(objectCollection).forEach((itemId) => {
     objectCollection[itemId].assigned = false;
   });
-  console.warn('objectCollection', objectCollection);
   return objectCollection;
 };
 
@@ -31,10 +30,10 @@ const getAllJobs = () => new Promise((resolve, reject) => {
                     rides,
                     vendors,
                   };
-                  // loop over each employee:
                   allStaff.forEach((employee) => {
                     if (employee.assignedTo !== '') {
-                      allJobs[employee.assignmentCategory][employee.assignedTo] = true;
+                      allJobs[employee.assignmentCategory][employee.assignedTo].assigned = true;
+                      allJobs[employee.assignmentCategory][employee.assignedTo].assignedTo = employee;
                     }
                   });
                   resolve(allJobs);
