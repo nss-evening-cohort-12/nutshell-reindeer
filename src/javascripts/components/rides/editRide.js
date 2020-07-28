@@ -4,7 +4,7 @@ import rideList from './rideList';
 
 const editRideDomStringBuilder = (collectionId, rideObj) => {
   const domString = `
-  <div class="modal fade" id="editRideModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal" id="editRideModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -83,7 +83,6 @@ const rideEditForm = (e) => {
 
       utils.printToDom('#editForm', domString);
       $('#editRideModal').modal();
-      // $('#addForm').removeClass('hide');
       $('#addButtonDiv').removeClass('d-none');
     })
     .catch((err) => console.warn(err));

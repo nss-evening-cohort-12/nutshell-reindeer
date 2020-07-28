@@ -4,7 +4,7 @@ import checkUser from '../../helpers/data/checkUser';
 
 const addDinoForm = () => {
   const domString = `
-  <div class="modal fade" id="addDinoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal" id="addDinoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -82,7 +82,6 @@ const displayDinos = () => {
 
 const addDino = (e) => {
   e.preventDefault();
-  $('#addDinoModal').modal('hide');
 
   const tempDinoObj = {
     name: e.target.elements.addDinoName.value,
@@ -92,6 +91,7 @@ const addDino = (e) => {
     rideOperational: true,
   };
   dinoData.addDino(tempDinoObj).then(() => {
+    $('#addDinoModal').modal('hide');
     displayDinos();
   });
 };

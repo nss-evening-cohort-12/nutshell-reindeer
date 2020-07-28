@@ -16,7 +16,7 @@ const staffIcon = (staffMember) => {
 
 const addStaffForm = () => {
   const domString = `
-  <div class="modal fade" id="addStaffModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal" id="addStaffModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -94,7 +94,6 @@ const displayStaff = () => {
 
 const addStaff = (e) => {
   e.preventDefault();
-  $('#addStaffModal').modal('hide');
   const newStaff = {
     name: e.target.elements.addStaffName.value,
     title: e.target.elements.addStaffTitle.value,
@@ -102,6 +101,7 @@ const addStaff = (e) => {
     isActive: true,
   };
   staffData.addStaff(newStaff).then(() => {
+    $('#addStaffModal').modal('hide');
     displayStaff();
   });
 };

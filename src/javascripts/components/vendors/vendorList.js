@@ -6,7 +6,7 @@ import './vendorList.scss';
 
 const addVendorForm = () => {
   const domString = `
-  <div class="modal fade" id="addVendorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal" id="addVendorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -82,13 +82,13 @@ const displayVendors = () => {
 
 const addVendor = (e) => {
   e.preventDefault();
-  $('#addVendorModal').modal('hide');
   const tempVendorObj = {
     name: e.target.elements.addVendorName.value,
     vendorType: e.target.elements.addVendorType.value,
     vendorImgUrl: e.target.elements.addVendorImgUrl.value,
   };
   vendorData.addVendor(tempVendorObj).then(() => {
+    $('#addVendorModal').modal('hide');
     displayVendors();
   })
     .catch((err) => console.error('adding new vendors did not work -> ', err));
