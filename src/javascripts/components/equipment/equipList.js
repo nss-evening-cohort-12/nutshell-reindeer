@@ -4,6 +4,7 @@ import utils from '../../helpers/utils';
 import equipData from '../../helpers/data/equipData';
 import checkUser from '../../helpers/data/checkUser';
 import staffData from '../../helpers/data/staffData';
+import header from '../consoleHeader/consoleHeader';
 
 const equipIcon = (type) => {
   let icon = '';
@@ -25,30 +26,6 @@ const equipIcon = (type) => {
   }
   return `<i class="${icon} fa-5x text-secondary m-4"></i>`;
 };
-
-// const addEquipForm = () => {
-//   const domString = `
-//   <form id="equipAddForm" class="px-4 py-3">
-//     <div class="form-group">
-//       <label for="equipName">Equipment Name</label>
-//       <input type="text" class="form-control" name="equipName">
-//     </div>
-//     <div class="form-group">
-//       <label for="equipType">Equipment Type</label>
-//       <input type="text" class="form-control" name="equipType">
-//     </div>
-//     <div class="form-group">
-//       <label for="equipImgUrl">Equipment Image URL</label>
-//       <input type="url" class="form-control" name="equipImgUrl">
-//     </div>
-//     <div class="form-group">
-//       <label for="equipSize">Equipment Location</label>
-//       <input type="text" class="form-control" name="equipSize">
-//     </div>
-//     <button type="submit" class="btn btn-primary">Submit</button>
-//   </form>`;
-//   return domString;
-// };
 
 // modal version
 const addEquipForm = () => {
@@ -126,7 +103,7 @@ const unattendedEquip = (e) => {
 };
 
 const displayEquipCollection = () => {
-  $('#addForm').addClass('hide');
+  header.headerBuilder('Equipment');
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addEquipForm());
   }

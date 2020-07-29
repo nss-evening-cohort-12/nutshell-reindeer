@@ -2,6 +2,7 @@ import utils from '../../helpers/utils';
 import rideData from '../../helpers/data/rideData';
 import checkUser from '../../helpers/data/checkUser';
 import './rideList.scss';
+import header from '../consoleHeader/consoleHeader';
 
 const addRideForm = () => {
   const domString = `
@@ -60,7 +61,7 @@ const unattendedRides = (e) => {
 };
 
 const displayRides = () => {
-  $('#addForm').addClass('hide');
+  header.headerBuilder('Rides');
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addRideForm());
   }
