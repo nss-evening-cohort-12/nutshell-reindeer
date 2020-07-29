@@ -85,7 +85,7 @@ const staffCard = (employee) => {
   if (checkUser.checkUser()) {
     domString += `
           <div class="links card-text text-center">
-            ${employee.isActive ? '<a href="#" class="assignStaff mr-4 card-link"><i class="fas fa-calendar-plus"></i></a>' : ''}
+            ${employee.isActive ? '<a href="#" class="assignStaff mr-4 card-link"><i class="fas fa-id-card"></i></a>' : ''}
             <a href="#" class="editStaff mr-4 card-link"><i class="fas fa-pen"></i></a>
             <a href="#" class="deleteStaff ml-4 card-link"><i class="far fa-trash-alt"></i></a>
           </div>`;
