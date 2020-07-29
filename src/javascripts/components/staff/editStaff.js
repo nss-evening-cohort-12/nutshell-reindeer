@@ -26,17 +26,24 @@ const editStaffDomStringBuilder = (collectionId, staffObj) => {
             <label for="editStaffName">Name:</label>
             <input type="text" class="form-control" id="editStaffName" value="${staffObj.name}">
         </div>
+
         <div class="form-group">
-            <label for="editStaffTitle">Title:</label>
-            <input type="text" class="form-control" name="editStaffTitle" value="${staffObj.title}">
+          <label for="editStaffTitle">Title</label>
+          <select name="editStaffTitle" id="editStaffTitle" class="form-control">
+            <option value="Dino Handler" ${staffObj.title === 'Dino Handler' ? ' selected' : ''}>Dino Handler</option>
+            <option value="Ride Attendant" ${staffObj.title === 'Ride Attendant' ? ' selected' : ''}>Ride Attendant</option>
+            <option value="Vendor Operator" ${staffObj.title === 'Vendor Operator' ? ' selected' : ''}>Vendor Operator</option>
+            <option value="" ${staffObj.title === '' ? ' selected' : ''}>(none)</option>
+          </select>
         </div>
+
         <div class="form-group">
             <label for="editStaffImgUrl">Image URL</label>
             <input type="text" class="form-control" name="editStaffImgUrl" value="${staffObj.imgUrl}">
         </div>
         <div class="form-group">
             <label for="editStaffActive">Currently Active?</label>
-            <input type="checkbox" class="form-control" name="isActive">
+            <input type="checkbox" name="isActive" checked>
         </div>
         <input type="hidden" class="form-control" name="collectionId" value="${collectionId}">
         <input type="hidden" class="form-control" name="assignedTo" value="${staffObj.assignedTo}">
