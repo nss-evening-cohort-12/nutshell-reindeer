@@ -26,19 +26,23 @@ const assignmentMenu = (employee, allJobs) => {
     const display = `<p class="card-text text-info">${staffList.jobIcon(department)} ${allJobs[department][job].name}</p>`;
     utils.printToDom('#new-assignment', display);
     let submitFooter = '';
-    if (allJobs[department][job].assigned) {
-      let currentAssignees = '';
-      // TODO check if new job !== old job
-      for (let i = 0; i < allJobs[department][job].assignedTo.length; i += 1) {
-        currentAssignees += allJobs[department][job].assignedTo[i].name;
-        if (i + 1 < allJobs[department][job].assignedTo.length && allJobs[department][job].assignedTo.length !== 1) currentAssignees += ', ';
+
+    if (employee.assignedTo === job) {
+      submitFooter += `<div class="card-text text-secondary">(${allJobs[department][job].name} already assigned to ${employee.name})`;
+    } else {
+      if (allJobs[department][job].assigned) {
+        let currentAssignees = '';
+        for (let i = 0; i < allJobs[department][job].assignedTo.length; i += 1) {
+          currentAssignees += allJobs[department][job].assignedTo[i].name;
+          if (i + 1 < allJobs[department][job].assignedTo.length && allJobs[department][job].assignedTo.length !== 1) currentAssignees += ', ';
+        }
+        submitFooter += `<div class="card-text text-danger">${allJobs[department][job].name} currently assigned to ${currentAssignees}`;
       }
-      submitFooter += `<div class="card-text text-danger">${allJobs[department][job].name} currently assigned to ${currentAssignees}`;
-    }
-    submitFooter += `
+      submitFooter += `
       <div class="d-flex justify-content-center mt-1">
        <button type="button" class="btn btn-primary" id="submit-assignment" data-staffid="${employee.id}">Assign</button>
       </div>`;
+    }
     utils.printToDom('#new-assignment-footer', submitFooter);
   };
 
@@ -65,6 +69,9 @@ const assignStaff = (e) => {
           const employee = employeeData.data;
           employee.id = staffId;
           const domString = `
+          <div class="p-2" style="width: 100%;">
+            <button type="button" class="close cancel-job-assignment" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
           <h5 class="card-title">${employee.name}</h5>
           <h6 class="card-text">Current assignment:</h6>
           <p class="card-text text-secondary">${staffList.jobIcon(employee.assignmentCategory)} ${allJobs[employee.assignmentCategory][employee.assignedTo].name}</p>

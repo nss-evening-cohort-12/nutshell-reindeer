@@ -12,8 +12,8 @@ import editEquip from '../components/equipment/editEquipment';
 import deleteEquipment from '../components/equipment/deleteEquipment';
 import editVendor from '../components/vendors/editVendor';
 import deleteVendor from '../components/vendors/deleteVendor';
-// import causeChaos from '../components/chaosMonkey/causeChaos';
 import assignStaff from '../components/staff/assignStaff';
+// import causeChaos from '../components/chaosMonkey/causeChaos';
 import equipTest from '../components/equipment/equipAlert';
 import LogButtons from '../components/auth/auth';
 
@@ -61,7 +61,6 @@ const clickEvents = () => {
       // $('body').click(() => { // Comment this out to turn off chaos monkey temporarily
       //   causeChaos.decreaseChaos();
       // });
-      // $('body').on('click', '#addButton', showAddForm);
       $('body').on('click', '#addButton', showModal);
       $('body').on('click', '#testButton', equipTest.equipCheck);
       //----------------------
@@ -71,7 +70,6 @@ const clickEvents = () => {
       $('body').on('submit', '.editDinoForm', editDino.editDino);
       $('body').on('click', '.editDino', editDino.dinoEditForm);
       $('body').on('click', '#unattended-dinos', dinoList.unattendedDinos);
-      $('body').on('click', '#save-handler-updates', dinoList.displayDinos);
       //----------------------
 
       // -----> Equipment <-----
@@ -79,10 +77,6 @@ const clickEvents = () => {
       $('body').on('submit', '.editEquipForm', editEquip.editEquipment);
       $('body').on('click', '.editEquip', editEquip.equipmentEditForm);
       $('body').on('click', '.deleteEquip', deleteEquipment.deleteEquip);
-      // eslint-disable-next-line func-names
-      // $('body').on('click', '.assignEquipOption', (function () {
-      //   console.warn($(this).text());
-      // }));
       $('body').on('click', '.assignEquipOption', editEquip.assignEquipment);
       $('body').on('click', '#unattended-equip', equipList.unattendedEquip);
 
@@ -106,6 +100,7 @@ const clickEvents = () => {
       $('body').on('click', '.assignStaff', assignStaff.assignStaff);
       $('body').on('click', '#unassigned-staff', staffList.unassignedStaff);
       $('body').on('click', '#submit-assignment', assignStaff.assignSelectedJob);
+      $('body').on('click', '.cancel-job-assignment', staffList.displayStaff);
       //----------------------
 
       // -----> Vendors <-----
