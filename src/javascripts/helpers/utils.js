@@ -5,6 +5,8 @@ const setState = (newState) => { // sets the console state
   console.error('current state: ', state);
 };
 
+const getState = () => state;
+
 const randomNum = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 
 const printToDom = (selector, text) => {
@@ -33,4 +35,5 @@ export default {
   getActive,
   randomNum,
   setState,
+  getState,
 };
