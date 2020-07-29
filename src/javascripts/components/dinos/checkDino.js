@@ -5,7 +5,8 @@ import './dinoCards.scss';
 
 const updateDinoHandlers = (e) => {
   utils.clearModal();
-  console.warn(e.target.id);
+  const staffId = e.target;
+  console.warn(staffId);
 };
 
 const runDinoModal = () => {
@@ -27,16 +28,14 @@ const runDinoModal = () => {
       dinos.forEach((dino) => {
         if (dino.assignees.length <= 1) {
           domString += `
-          <div class="btn-group pl-3" role="group" aria-label="Button group with nested dropdown">
+          <div class="btn-group pl-3 dino-name" id="test" role="group" aria-label="Button group with nested dropdown">
             <button type="text" class="btn btn-secondary">${dino.name}</button>
             <div class="btn-group" role="group">
-              <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Assign Staff
-              </button>
-              <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                <a class="dropdown-item" href="#">Dropdown link</a>
-                <a class="dropdown-item" href="#">Dropdown link</a>
-              </div>
+              <select name="update-dino-handler" id="update-dino-handler">
+                <option value="dinosaurs">Dinosaurs</option>
+                <option value="rides">Rides</option>
+                <option value="vendors">Vendors</option>
+              </select>
             </div>
           </div>
           `;
