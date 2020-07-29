@@ -14,7 +14,6 @@ import editVendor from '../components/vendors/editVendor';
 import deleteVendor from '../components/vendors/deleteVendor';
 import assignStaff from '../components/staff/assignStaff';
 // import causeChaos from '../components/chaosMonkey/causeChaos';
-import causeChaos from '../components/chaosMonkey/causeChaos';
 import equipTest from '../components/equipment/equipAlert';
 import LogButtons from '../components/auth/auth';
 
@@ -59,10 +58,9 @@ const clickEvents = () => {
     $('body').on('click', '#logoutButton', LogButtons.logoutEvent);
     if (user) {
       // -----> Project <-----
-      $('body').click(() => { // Comment this out to turn off chaos monkey temporarily
-        causeChaos.decreaseChaos();
-      });
-      // $('body').on('click', '#addButton', showAddForm);
+      // $('body').click(() => { // Comment this out to turn off chaos monkey temporarily
+      //   causeChaos.decreaseChaos();
+      // });
       $('body').on('click', '#addButton', showModal);
       $('body').on('click', '#testButton', equipTest.equipCheck);
       //----------------------
@@ -79,10 +77,6 @@ const clickEvents = () => {
       $('body').on('submit', '.editEquipForm', editEquip.editEquipment);
       $('body').on('click', '.editEquip', editEquip.equipmentEditForm);
       $('body').on('click', '.deleteEquip', deleteEquipment.deleteEquip);
-      // eslint-disable-next-line func-names
-      // $('body').on('click', '.assignEquipOption', (function () {
-      //   console.warn($(this).text());
-      // }));
       $('body').on('click', '.assignEquipOption', editEquip.assignEquipment);
       $('body').on('click', '#unattended-equip', equipList.unattendedEquip);
 
