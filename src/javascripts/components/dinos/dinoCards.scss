@@ -1,3 +1,38 @@
 .card-img-top {
   height: 150px;
 }
+
+.check-dino-modal {
+
+  .modal-body {
+    padding: 0;
+    margin: 0;
+  }
+
+  h4 {
+    text-align: center;
+    color: red;
+  }
+
+  h5 {
+    background-color: gray;
+    border: 1px solid #595959;
+    color: #fff;
+    text-align: center;
+
+    padding: 10px;
+    margin: 0px 1px;
+  }
+
+  .dinos {
+    text-align: center;
+
+    padding: 15px;
+    margin: 0px 25px;
+
+    h6 {
+      font-size: 1.5em;
+      border: 2px solid #000;
+    }
+  }
+}
