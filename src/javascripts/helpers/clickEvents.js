@@ -106,6 +106,7 @@ const clickEvents = () => {
       $('body').on('click', '.assignStaff', assignStaff.assignStaff);
       $('body').on('click', '#unassigned-staff', staffList.unassignedStaff);
       $('body').on('click', '#submit-assignment', assignStaff.assignSelectedJob);
+      $('body').on('click', '.cancel-job-assignment', staffList.displayStaff);
       //----------------------
 
       // -----> Vendors <-----
