@@ -39,6 +39,8 @@ const editStaffDomStringBuilder = (collectionId, staffObj) => {
             <input type="checkbox" class="form-control" name="isActive">
         </div>
         <input type="hidden" class="form-control" name="collectionId" value="${collectionId}">
+        <input type="hidden" class="form-control" name="assignedTo" value="${staffObj.assignedTo}">
+        <input type="hidden" class="form-control" name="assignmentCategory" value="${staffObj.assignmentCategory}">
         <button type="submit" class="btn btn-primary" name="submitEdit">Update</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
@@ -61,6 +63,8 @@ const editStaff = (e) => {
     title: e.target.elements.editStaffTitle.value,
     imgUrl: e.target.elements.editStaffImgUrl.value,
     isActive: e.target.elements.isActive.checked,
+    assignedTo: e.target.elements.assignedTo.value,
+    assignmentCategory: e.target.elements.assignmentCategory.value,
   };
   // pass those to an update equipment data function
   staffData.updateStaff(collectionId, tempEditedStaff)
@@ -78,6 +82,7 @@ const staffEditForm = (e) => {
 
       utils.printToDom('#editForm', domString);
       $('#editStaffModal').modal();
+      // $('#addForm').removeClass('hide');
       $('#addButtonDiv').removeClass('d-none');
     })
     .catch((err) => console.warn(err));
