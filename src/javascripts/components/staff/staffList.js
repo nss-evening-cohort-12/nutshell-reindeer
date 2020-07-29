@@ -114,6 +114,7 @@ const displayStaff = () => {
       });
       domString += '</div>';
       utils.printToDom('#displayCards', domString);
+      utils.setState('staff');
     })
     .catch((err) => console.error('problem getting staff assignment', err));
 };

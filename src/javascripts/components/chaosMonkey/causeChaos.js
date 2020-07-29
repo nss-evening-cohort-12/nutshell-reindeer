@@ -8,6 +8,10 @@ import splatSound from '../../../assets/sounds/splat.mp3';
 import kidnapStaff from './kidnapStaff';
 import breakEquipment from './breakEquipment';
 import breakRide from './breakRide';
+import dinoList from '../dinos/dinoList';
+import staffList from '../staff/staffList';
+import rideList from '../rides/rideList';
+import vendorList from '../vendors/vendorList';
 
 let chaosCounter = 0;
 
@@ -24,6 +28,16 @@ const angryMonkey = () => `<img src="${lightrays}" id="light-rays">
 const paintSplat = (text) => `<img src="${splat}" id="paint-splash">
                               <audio src="${splatSound}" autoplay></audio>
                               <div id="splat-text"><h1>${text}</h1></div>`;
+
+const callStateReprint = (selectedState) => {
+  switch (selectedState) {
+    case 'dinos': return dinoList.displayDinos();
+    case 'staff': return staffList.displayStaff();
+    case 'rides': return rideList.displayRides();
+    case 'vendors': return vendorList.displayVendors();
+    default: return console.error('no current state');
+  }
+};
 
 const runChaos = (msg) => {
   $('body').addClass('flash'); // trigger lightning flass
@@ -43,6 +57,7 @@ const decreaseChaos = () => {
         breakRide.breakRide()
           .then((msg) => {
             runChaos(msg);
+            callStateReprint(utils.getState);
           })
           .catch((err) => console.error(err));
         break;
@@ -50,6 +65,7 @@ const decreaseChaos = () => {
         kidnapStaff.kidnapStaff()
           .then((msg) => {
             runChaos(msg);
+            callStateReprint(utils.getState);
           })
           .catch((err) => console.error(err));
         break;
@@ -57,6 +73,7 @@ const decreaseChaos = () => {
         breakEquipment.breakEquipment()
           .then((msg) => {
             runChaos(msg);
+            callStateReprint(utils.getState);
           })
           .catch((err) => console.error(err));
         break;

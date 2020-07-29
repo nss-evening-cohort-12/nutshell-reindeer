@@ -1,26 +1,20 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import LogButtons from '../../components/auth/auth';
 
 import utils from '../utils';
 // import chaosMonkey from '../../components/chaosMonkey/toast';
 
-const authDiv = $('#auth');
-const logoutButton = $('#navbar-logout-button');
-const addButton = $('#addButtonDiv');
-
 const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      authDiv.addClass('hide');
-      logoutButton.removeClass('hide');
-      utils.printToDom('#collectionName', 'You just logged in');
       utils.printToDom('#displayCards', '');
-      addButton.removeClass('hide');
+      $('#addButtonDiv').removeClass('hide');
+      LogButtons.logoutButton();
       // window.setInterval(chaosMonkey.bringChaosMonkey, 25000);
     } else {
-      addButton.addClass('hide');
-      authDiv.removeClass('hide');
-      logoutButton.addClass('hide');
+      LogButtons.loginButton();
+      $('#addButtonDiv').addClass('hide');
       utils.printToDom('#collectionName', '');
       utils.printToDom('#displayCards', '');
     }

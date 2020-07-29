@@ -106,6 +106,7 @@ const displayRides = () => {
       domString += '</div>';
 
       utils.printToDom('#displayCards', domString);
+      utils.setState('rides');
     })
     .catch((err) => console.error(err));
 };

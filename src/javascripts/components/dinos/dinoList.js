@@ -101,6 +101,7 @@ const displayDinos = () => {
       });
       domString += '</div>';
       utils.printToDom('#displayCards', domString);
+      utils.setState('dinos');
     })
     .catch((err) => console.error(err));
 };
