@@ -4,7 +4,7 @@ nav {
   padding: 25px !important;
   font-size: 1.2em;
   width: 100vw;
-  background-color: $primary-color !important;
+  background: linear-gradient($primary-color, $primary-hover);
   margin-bottom: 1em;
   border-bottom: 1.5px solid $font-color;
   
