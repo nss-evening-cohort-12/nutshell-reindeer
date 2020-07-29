@@ -1,0 +1,15 @@
+@import '../../../styles/styles';
+
+
+.collectionHeader {
+  border-radius: 1em;
+  padding: .3em;
+  border: 1.5px solid black;
+  width: 6em;
+  justify-self: center;
+  background: linear-gradient($primary-color, $primary-hover)
+}
+#collectionName {
+  display: flex;
+  justify-content: center !important;
+}

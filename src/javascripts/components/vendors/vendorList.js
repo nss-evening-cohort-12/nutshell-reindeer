@@ -1,6 +1,7 @@
 import checkUser from '../../helpers/data/checkUser';
 import vendorData from '../../helpers/data/vendorData';
 import utils from '../../helpers/utils';
+import header from '../consoleHeader/consoleHeader';
 
 import './vendorList.scss';
 
@@ -57,7 +58,7 @@ const unattendedVendors = (e) => {
 };
 
 const displayVendors = () => {
-  $('#addForm').addClass('hide');
+  header.headerBuilder('Vendors');
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addVendorForm());
   }
