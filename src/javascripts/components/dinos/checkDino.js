@@ -3,6 +3,11 @@ import utils from '../../helpers/utils';
 
 import './dinoCards.scss';
 
+const updateDinoHandlers = (e) => {
+  utils.clearModal();
+  console.warn(e.target.id);
+};
+
 const runDinoModal = () => {
   dinoData.getDinosWithHandlers()
     .then((dinos) => {
@@ -41,7 +46,7 @@ const runDinoModal = () => {
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="save-handler-updates">Save</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="save-handler-updates">Save</button>
               </div>
             </div>
           </div>
@@ -49,7 +54,8 @@ const runDinoModal = () => {
       `;
       utils.printToDom('#check-dino', domString);
       $('#check-dino-modal').modal('show');
-      $('body').on('click', '#close-dino-modal', () => { $('div.modal-backdrop').css('display', 'none'); });
+      $('body').on('click', '#close-dino-modal', utils.clearModal);
+      $('body').on('click', '#save-handler-updates', updateDinoHandlers);
     })
     .catch((err) => console.error('Getting handlers for dinos did not work -> ', err));
 };

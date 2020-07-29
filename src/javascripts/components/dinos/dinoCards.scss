@@ -16,16 +16,17 @@
 
   .dinos {
     text-align: center;
+    margin: 25px 0px;
 
     .btn-group {
-      margin: 10px 0px;
+      margin: 8px 0px;
     }
 
     .btn-secondary {
       background-color: gray !important;
       cursor: initial;
 
-      margin: 10px 0px;
+      margin: 8px 0px;
     }
 
     .btn-secondary:focus,
