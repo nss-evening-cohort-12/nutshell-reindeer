@@ -1,6 +1,7 @@
 import dinoData from '../../helpers/data/dinoData';
 import utils from '../../helpers/utils';
 import checkUser from '../../helpers/data/checkUser';
+import header from '../consoleHeader/consoleHeader';
 
 const addDinoForm = () => {
   const domString = `
@@ -58,8 +59,13 @@ const unattendedDinos = (e) => {
     .catch((err) => console.error('Getting handlers for dinos did not work -> ', err));
 };
 
+// const dinoHeader = () => {
+//   const domString = '';
+//   $('#collectionName').text('Dinosaurs');
+// };
+
 const displayDinos = () => {
-  $('#collectionName').text('Dinosaurs');
+  header.headerBuilder('Dinosaurs');
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addDinoForm());
   }

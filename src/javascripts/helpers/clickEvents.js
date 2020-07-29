@@ -13,6 +13,7 @@ import deleteEquipment from '../components/equipment/deleteEquipment';
 import editVendor from '../components/vendors/editVendor';
 import deleteVendor from '../components/vendors/deleteVendor';
 // import causeChaos from '../components/chaosMonkey/causeChaos';
+import assignStaff from '../components/staff/assignStaff';
 import equipTest from '../components/equipment/equipAlert';
 import LogButtons from '../components/auth/auth';
 
@@ -102,7 +103,9 @@ const clickEvents = () => {
       $('body').on('click', '.deleteStaff', deleteStaff.deleteStaff);
       $('body').on('submit', '#staffAddForm', staffList.addStaff);
       $('body').on('click', '#staff-editor-cancel', editStaff.cancelEdit);
+      $('body').on('click', '.assignStaff', assignStaff.assignStaff);
       $('body').on('click', '#unassigned-staff', staffList.unassignedStaff);
+      $('body').on('click', '#submit-assignment', assignStaff.assignSelectedJob);
       //----------------------
 
       // -----> Vendors <-----

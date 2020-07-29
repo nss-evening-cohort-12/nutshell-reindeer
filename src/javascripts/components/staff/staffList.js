@@ -2,6 +2,7 @@ import utils from '../../helpers/utils';
 import staffData from '../../helpers/data/staffData';
 import './staffList.scss';
 import checkUser from '../../helpers/data/checkUser';
+import header from '../consoleHeader/consoleHeader';
 
 const staffIcon = (staffMember) => {
   let icon = '';
@@ -12,6 +13,27 @@ const staffIcon = (staffMember) => {
     icon = 'fas fa-user-slash';
   }
   return `<i class="${icon} fa-5x text-secondary m-4"></i>`;
+};
+
+const jobIcon = (jobType) => {
+  let icon = '';
+  switch (jobType) {
+    case 'dinosaurs':
+      icon = 'fas fa-paw';
+      break;
+    case 'rides':
+      icon = 'fas fa-tram';
+      break;
+    case 'vendors':
+      icon = 'fas fa-utensils';
+      break;
+    case '':
+      icon = 'fas fa-exclamation-triangle';
+      break;
+    default:
+      icon = 'fa-question';
+  }
+  return `<i class="${icon}"></i> `;
 };
 
 const addStaffForm = () => {
@@ -55,12 +77,10 @@ const staffCard = (employee) => {
       <div class="card-body">
         <h5 class="card-title">${employee.name}</h5>
         <p class="card-text">${employee.title}</p>`;
-  if (!employee.isActive) {
-    domString += '<p class="card-text">INACTIVE</p>';
-  } else if (employee.assignedTo === '') {
-    domString += '<p class="card-text">currently unassigned</p>';
+  if (employee.assignedTo === '') {
+    domString += '<p class="card-text text-danger"><i class="fas fa-exclamation-triangle"></i> currently unassigned</p>';
   } else {
-    domString += `<p class="card-text">assigned to ${employee.assignment.name}</p>`;
+    domString += `<p class="card-text">${jobIcon(employee.assignmentCategory)}assigned to ${employee.assignment.name}</p>`;
   }
   if (checkUser.checkUser()) {
     domString += `
@@ -95,6 +115,7 @@ const unassignedStaff = (e) => {
 };
 
 const displayStaff = () => {
+  header.headerBuilder('Staff');
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addStaffForm());
   }
@@ -110,7 +131,7 @@ const displayStaff = () => {
   staffData.getStaffWithAssignments()
     .then((allStaff) => {
       allStaff.forEach((employee) => {
-        domString += staffCard(employee);
+        if (employee.isActive) { domString += staffCard(employee); } // remove this line to also display inactive employees
       });
       domString += '</div>';
       utils.printToDom('#displayCards', domString);
@@ -133,4 +154,6 @@ const addStaff = (e) => {
   });
 };
 
-export default { displayStaff, addStaff, unassignedStaff };
+export default {
+  displayStaff, addStaff, unassignedStaff, jobIcon,
+};
