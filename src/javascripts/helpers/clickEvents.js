@@ -67,6 +67,7 @@ const clickEvents = () => {
       $('body').on('submit', '.editDinoForm', editDino.editDino);
       $('body').on('click', '.editDino', editDino.dinoEditForm);
       $('body').on('click', '#unattended-dinos', dinoList.unattendedDinos);
+      $('body').on('click', '#save-handler-updates', dinoList.displayDinos);
       //----------------------
 
       // -----> Equipment <-----

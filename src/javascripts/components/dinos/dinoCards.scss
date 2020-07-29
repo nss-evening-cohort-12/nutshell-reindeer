@@ -14,25 +14,25 @@
     color: red;
   }
 
-  h5 {
-    background-color: gray;
-    border: 1px solid #595959;
-    color: #fff;
-    text-align: center;
-
-    padding: 10px;
-    margin: 0px 1px;
-  }
-
   .dinos {
     text-align: center;
 
-    padding: 15px;
-    margin: 0px 25px;
+    .btn-group {
+      margin: 10px 0px;
+    }
 
-    h6 {
-      font-size: 1.5em;
-      border: 2px solid #000;
+    .btn-secondary {
+      background-color: gray !important;
+      cursor: initial;
+
+      margin: 10px 0px;
+    }
+
+    .btn-secondary:focus,
+    .btn-secondary:active {
+      background-color: gray !important;
+      outline: none !important;
+      box-shadow: none !important;
     }
   }
 }

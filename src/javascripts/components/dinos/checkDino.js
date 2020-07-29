@@ -7,7 +7,7 @@ const runDinoModal = () => {
   dinoData.getDinosWithHandlers()
     .then((dinos) => {
       let domString = `
-        <div class="modal check-dino-modal" id="check-dino-modal" tabindex="-1" role="dialog" aria-labelledby="check-dino-label" aria-hidden="true">
+        <div class="modal check-dino-modal" id="check-dino-modal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="check-dino-label" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -17,13 +17,23 @@ const runDinoModal = () => {
                 </button>
             </div>
             <div class="modal-body">
-              <h5>Assign a Handler to these Dinos:</h5>
-                <div class="dinos">
+              <div class="dinos">
       `;
       dinos.forEach((dino) => {
         if (dino.assignees.length <= 1) {
           domString += `
-            <h6>${dino.name}</h6>
+          <div class="btn-group pl-3" role="group" aria-label="Button group with nested dropdown">
+            <button type="text" class="btn btn-secondary">${dino.name}</button>
+            <div class="btn-group" role="group">
+              <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Assign Staff
+              </button>
+              <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href="#">Dropdown link</a>
+                <a class="dropdown-item" href="#">Dropdown link</a>
+              </div>
+            </div>
+          </div>
           `;
         }
       });
@@ -31,7 +41,7 @@ const runDinoModal = () => {
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-success">Assign Handlers</button>
+                <button type="button" class="btn btn-primary" id="save-handler-updates">Save</button>
               </div>
             </div>
           </div>
@@ -39,7 +49,7 @@ const runDinoModal = () => {
       `;
       utils.printToDom('#check-dino', domString);
       $('#check-dino-modal').modal('show');
-      $('body').on('click', '#close-dino-modal', () => { $('div.modal-backdrop').removeClass('modal-backdrop'); });
+      $('body').on('click', '#close-dino-modal', () => { $('div.modal-backdrop').css('display', 'none'); });
     })
     .catch((err) => console.error('Getting handlers for dinos did not work -> ', err));
 };
