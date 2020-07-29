@@ -36,7 +36,7 @@ const getStaffWithAssignments = () => new Promise((resolve, reject) => {
                   };
                   // loop over each employee:
                   allStaff.forEach((employee) => {
-                  // create staffMember object and add empty assignment object:
+                    // create staffMember object and add empty assignment object:
                     const staffMember = { assignment: {}, ...employee };
                     // find employee's assignment (if there is one):
                     if (employee.assignedTo) {
