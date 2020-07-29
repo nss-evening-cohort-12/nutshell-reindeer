@@ -1,10 +1,17 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
+@import "./styles";
+@import "./navBar.scss";
 
 body {
-  background-color: forestgreen;
+  height: 100vh;
+  background: linear-gradient(rgba(52,185,72,1), rgba(39,96,47,1));;
 }
 
+.logo {
+  max-width: 125px;
+  max-height: 125px;
+}
 .unassigned-box {
   margin-left: 25px;
 }
@@ -12,7 +19,3 @@ body {
 .hide-assigned {
   display: none;
 }
-
-// .hide {
-//   display: none;
-// }
