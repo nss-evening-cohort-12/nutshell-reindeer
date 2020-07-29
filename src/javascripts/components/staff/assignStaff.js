@@ -4,7 +4,8 @@ import jobsData from '../../helpers/data/jobsData';
 import staffList from './staffList';
 
 const assignmentMenu = (employee, allJobs) => {
-  const populateJobMenu = () => {
+  const populateJobMenu = (e) => {
+    e.preventDefault();
     let jobOptions = '';
     const department = $('#assignjob-category').val();
     Object.keys(allJobs[department]).forEach((job) => {
@@ -20,7 +21,8 @@ const assignmentMenu = (employee, allJobs) => {
     $('#assignjob-assignment').prop('selectedIndex', -1);
   };
 
-  const getSelectedJob = () => {
+  const getSelectedJob = (e) => {
+    e.preventDefault();
     const department = $('#assignjob-category').val();
     const job = $('#assignjob-assignment').val();
     const display = `<p class="card-text text-info">${staffList.jobIcon(department)} ${allJobs[department][job].name}</p>`;
@@ -92,6 +94,7 @@ const assignStaff = (e) => {
 };
 
 const assignSelectedJob = (e) => {
+  e.preventDefault();
   const staffId = e.target.dataset.staffid;
   const department = $('#assignjob-category').val();
   const job = $('#assignjob-assignment').val();
