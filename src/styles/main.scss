@@ -12,6 +12,12 @@ body {
   background: linear-gradient(rgba(52,185,72,1), rgba(39,96,47,1));
 }
 
+.displayCards {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap; 
+}
+
 .logo {
   max-width: 125px;
   max-height: 125px;

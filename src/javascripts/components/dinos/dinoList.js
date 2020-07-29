@@ -78,7 +78,7 @@ const displayDinos = () => {
             See Unattended Dinos
           </label>
         </div>
-        <div class="d-flex flex-wrap">
+        <div class="cardCollection"> 
       `;
       dinosArr.forEach((dino) => {
         let handlers = 'unassigned';
