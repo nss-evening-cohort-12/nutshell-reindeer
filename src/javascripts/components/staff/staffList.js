@@ -76,7 +76,7 @@ const staffCard = (employee) => {
       ${staffIcon(employee)}
       <div class="card-body">
         <h5 class="card-title">${employee.name}</h5>
-        <p class="card-text">${employee.title}</p>`;
+        <p class="card-text text-secondary">${employee.title}</p>`;
   if (employee.assignedTo === '') {
     domString += '<p class="card-text text-danger"><i class="fas fa-exclamation-triangle"></i> currently unassigned</p>';
   } else {

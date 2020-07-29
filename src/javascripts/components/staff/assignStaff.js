@@ -29,7 +29,10 @@ const assignmentMenu = (employee, allJobs) => {
 
     if (employee.assignedTo === job) {
       submitFooter += `<div class="card-text text-secondary">(${allJobs[department][job].name} already assigned to ${employee.name})`;
+      utils.printToDom('#new-assignment', '');
+      $('#new-assignment-header').removeClass('text-info').addClass('text-secondary');
     } else {
+      $('#new-assignment-header').removeClass('text-secondary').addClass('text-info');
       if (allJobs[department][job].assigned) {
         let currentAssignees = '';
         for (let i = 0; i < allJobs[department][job].assignedTo.length; i += 1) {
@@ -61,11 +64,13 @@ const assignmentMenu = (employee, allJobs) => {
 };
 
 const assignStaff = (e) => {
+  e.preventDefault();
   const staffId = e.target.closest('.card').id;
   staffData.getStaffById(staffId)
     .then((employeeData) => {
       jobsData.getAllJobs()
         .then((allJobs) => {
+          $('.card-link').addClass('hide-assigned');
           const employee = employeeData.data;
           employee.id = staffId;
           const domString = `
@@ -73,9 +78,9 @@ const assignStaff = (e) => {
             <button type="button" class="close cancel-job-assignment" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           </div>
           <h5 class="card-title">${employee.name}</h5>
-          <h6 class="card-text">Current assignment:</h6>
+          <h6 class="card-text text-secondary">Current assignment:</h6>
           <p class="card-text text-secondary">${staffList.jobIcon(employee.assignmentCategory)} ${allJobs[employee.assignmentCategory][employee.assignedTo].name}</p>
-          <h6 class="card-text">New assignment:</h6>
+          <h6 class="card-text text-secondary" id="new-assignment-header">New assignment:</h6>
           <div id="new-assignment"></div>
           <div id="top-assignment-menu"></div>
           <div id="btm-assignment-menu"></div>
