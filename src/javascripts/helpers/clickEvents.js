@@ -14,6 +14,7 @@ import editVendor from '../components/vendors/editVendor';
 import deleteVendor from '../components/vendors/deleteVendor';
 // import causeChaos from '../components/chaosMonkey/causeChaos';
 import equipTest from '../components/equipment/equipAlert';
+import LogButtons from '../components/auth/auth';
 
 // const showAddForm = () => {
 //   $('#addForm').removeClass('hide');
@@ -52,6 +53,8 @@ const navBarEventListeners = () => {
 const clickEvents = () => {
   navBarEventListeners();
   firebase.auth().onAuthStateChanged((user) => {
+    $('body').on('click', '#google-auth', LogButtons.signMeIn);
+    $('body').on('click', '#logoutButton', LogButtons.logoutEvent);
     if (user) {
       // -----> Project <-----
       // $('body').click(() => { // Comment this out to turn off chaos monkey temporarily
