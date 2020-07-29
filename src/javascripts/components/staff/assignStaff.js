@@ -17,20 +17,43 @@ const assignmentMenu = (employee, allJobs) => {
     </select>
     `;
     utils.printToDom('#btm-assignment-menu', btmMenu);
+    $('#assignjob-assignment').prop('selectedIndex', -1);
+  };
+
+  const getSelectedJob = () => {
+    const department = $('#assignjob-category').val();
+    const job = $('#assignjob-assignment').val();
+    const display = `<p class="card-text text-info">${staffList.jobIcon(department)} ${allJobs[department][job].name}</p>`;
+    utils.printToDom('#new-assignment', display);
+    let submitFooter = '';
+    if (allJobs[department][job].assigned) {
+      let currentAssignees = '';
+      // TODO check if new job !== old job
+      for (let i = 0; i < allJobs[department][job].assignedTo.length; i += 1) {
+        currentAssignees += allJobs[department][job].assignedTo[i].name;
+        if (i + 1 < allJobs[department][job].assignedTo.length && allJobs[department][job].assignedTo.length !== 1) currentAssignees += ', ';
+      }
+      submitFooter += `<div class="card-text text-danger">${allJobs[department][job].name} currently assigned to ${currentAssignees}`;
+    }
+    submitFooter += `
+      <div class="d-flex justify-content-center mt-1">
+       <button type="button" class="btn btn-primary" id="submit-assignment" data-staffid="${employee.id}">Assign</button>
+      </div>`;
+    utils.printToDom('#new-assignment-footer', submitFooter);
   };
 
   $('body').on('change', '#assignjob-category', populateJobMenu);
+  $('body').on('change', '#assignjob-assignment', getSelectedJob);
   const topMenu = `
   <label for="assignjob-category">Department:</label>
   <select name="assignjob-category" id="assignjob-category">
-    <option value=""></option>
     <option value="dinosaurs">Dinosaurs</option>
     <option value="rides">Rides</option>
     <option value="vendors">Vendors</option>
   </select>
   `;
-  console.warn(employee, allJobs);
   utils.printToDom('#top-assignment-menu', topMenu);
+  $('#assignjob-category').prop('selectedIndex', -1);
 };
 
 const assignStaff = (e) => {
@@ -40,20 +63,31 @@ const assignStaff = (e) => {
       jobsData.getAllJobs()
         .then((allJobs) => {
           const employee = employeeData.data;
-          console.warn('final product', employee.data, allJobs);
+          employee.id = staffId;
           const domString = `
           <h5 class="card-title">${employee.name}</h5>
-          <p class="card-text">${employee.title}</p>
           <h6 class="card-text">Current assignment:</h6>
-          <p class="card-text">${staffList.jobIcon(employee.assignmentCategory)} ${allJobs[employee.assignmentCategory][employee.assignedTo].name}</p>
+          <p class="card-text text-secondary">${staffList.jobIcon(employee.assignmentCategory)} ${allJobs[employee.assignmentCategory][employee.assignedTo].name}</p>
           <h6 class="card-text">New assignment:</h6>
           <div id="new-assignment"></div>
           <div id="top-assignment-menu"></div>
-          <div id="btm-assignment-menu"></div>`;
+          <div id="btm-assignment-menu"></div>
+          <div id="new-assignment-footer"></div>`;
           utils.printToDom(`#${staffId}`, domString);
           assignmentMenu(employee, allJobs);
         });
     });
 };
 
-export default { assignStaff };
+const assignSelectedJob = (e) => {
+  const staffId = e.target.dataset.staffid;
+  const department = $('#assignjob-category').val();
+  const job = $('#assignjob-assignment').val();
+  jobsData.assignNewJob(staffId, department, job)
+    .then(() => {
+      staffList.displayStaff();
+    })
+    .catch((err) => console.error(err));
+};
+
+export default { assignStaff, assignSelectedJob };

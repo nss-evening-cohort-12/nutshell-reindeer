@@ -5,10 +5,11 @@ import staffData from './staffData';
 
 const baseUrl = apiKeys.firebaseConfig.databaseURL;
 
-const addAssignedKey = (data) => {
+const addAssignmentKeys = (data) => {
   const objectCollection = data;
   Object.keys(objectCollection).forEach((itemId) => {
     objectCollection[itemId].assigned = false;
+    objectCollection[itemId].assignedTo = [];
   });
   return objectCollection;
 };
@@ -22,9 +23,9 @@ const getAllJobs = () => new Promise((resolve, reject) => {
             .then((rawRides) => {
               axios.get(`${baseUrl}/vendors.json`)
                 .then((rawVendors) => {
-                  const dinosaurs = addAssignedKey(rawDinos.data);
-                  const rides = addAssignedKey(rawRides.data);
-                  const vendors = addAssignedKey(rawVendors.data);
+                  const dinosaurs = addAssignmentKeys(rawDinos.data);
+                  const rides = addAssignmentKeys(rawRides.data);
+                  const vendors = addAssignmentKeys(rawVendors.data);
                   const allJobs = {
                     dinosaurs,
                     rides,
@@ -33,7 +34,7 @@ const getAllJobs = () => new Promise((resolve, reject) => {
                   allStaff.forEach((employee) => {
                     if (employee.assignedTo !== '') {
                       allJobs[employee.assignmentCategory][employee.assignedTo].assigned = true;
-                      allJobs[employee.assignmentCategory][employee.assignedTo].assignedTo = employee;
+                      allJobs[employee.assignmentCategory][employee.assignedTo].assignedTo.push(employee);
                     }
                   });
                   resolve(allJobs);
@@ -44,4 +45,6 @@ const getAllJobs = () => new Promise((resolve, reject) => {
     });
 });
 
-export default { getAllJobs };
+const assignNewJob = (staffId, department, job) => staffData.patchStaff(staffId, { assignedTo: job, assignmentCategory: department });
+
+export default { getAllJobs, assignNewJob };
