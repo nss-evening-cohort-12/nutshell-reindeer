@@ -56,7 +56,12 @@ const addStaffForm = () => {
     </div>
     <div class="form-group">
       <label for="addStaffTitle">Staff Title</label>
-      <input type="text" class="form-control" name="addStaffTitle">
+      <select name="addStaffTitle" id="addStaffTitle" class="form-control">
+        <option value="Dino Handler">Dino Handler</option>
+        <option value="Ride Attendant">Ride Attendant</option>
+        <option value="Vendor Operator">Vendor Operator</option>
+        <option value="">(none)</option>
+      </select>
     </div>
     <div class="form-group">
       <label for="addStaffImgUrl">Staff Image URL</label>
@@ -147,6 +152,8 @@ const addStaff = (e) => {
     title: e.target.elements.addStaffTitle.value,
     imgUrl: e.target.elements.addStaffImgUrl.value,
     isActive: true,
+    assignedTo: '',
+    assignmentCategory: '',
   };
   staffData.addStaff(newStaff).then(() => {
     $('#addStaffModal').modal('hide');
