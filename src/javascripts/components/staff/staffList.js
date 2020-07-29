@@ -2,6 +2,7 @@ import utils from '../../helpers/utils';
 import staffData from '../../helpers/data/staffData';
 import './staffList.scss';
 import checkUser from '../../helpers/data/checkUser';
+import header from '../consoleHeader/consoleHeader';
 
 const staffIcon = (staffMember) => {
   let icon = '';
@@ -95,6 +96,7 @@ const unassignedStaff = (e) => {
 };
 
 const displayStaff = () => {
+  header.headerBuilder('Staff');
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addStaffForm());
   }
