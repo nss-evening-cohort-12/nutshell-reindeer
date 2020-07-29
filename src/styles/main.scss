@@ -15,7 +15,12 @@ body {
 .addButtonDiv {
   display: flex;
   justify-content: flex-end;
-  margin-right: 3em;
+  margin-right: 3em;}
+  
+.displayCards {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap; 
 }
 
 .logo {
