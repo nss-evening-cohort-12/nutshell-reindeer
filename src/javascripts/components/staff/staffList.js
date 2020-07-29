@@ -126,7 +126,7 @@ const displayStaff = () => {
         See Unassigned Staff
       </label>
     </div>
-    <div class="d-flex flex-wrap">
+    <div class="cardCollection"> 
   `;
   staffData.getStaffWithAssignments()
     .then((allStaff) => {

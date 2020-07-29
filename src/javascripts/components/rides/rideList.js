@@ -74,7 +74,7 @@ const displayRides = () => {
             See Unattended Rides
           </label>
         </div>
-        <div class="d-flex justify-content-center flex-wrap">
+        <div class="cardCollection">
       `;
       ridesArr.forEach((ride) => {
         let assignees = 'unassigned';

@@ -71,7 +71,7 @@ const displayVendors = () => {
           See Unattended Vendors
         </label>
       </div>
-      <div class="d-flex flex-wrap">
+      <div class="cardCollection"> 
       `;
       vendorsArr.forEach((vendor) => {
         let assignees = 'unassigned';

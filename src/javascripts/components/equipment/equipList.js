@@ -111,13 +111,14 @@ const displayEquipCollection = () => {
     .then((staff) => {
       equipData.getAllEquipment()
         .then((equipCollectionArr) => {
-          let domString = `<div class="d-flex justify-content-center flex-wrap">
+          let domString = `<div>
           <div class="form-check unassigned-box">
               <input class="form-check-input" type="checkbox" value="" id="unattended-equip">
               <label class="form-check-label" for="unattended-equip">
                 See Unattended Equipment
               </label>
             </div>
+            <div class="cardCollection"> 
           <div class ="card equipCard align-items-center m-3" style="width: 18rem">
             <div class="card-body">
             <button id="testButton" type="button" class="btn btn-outline-info btn-large">
@@ -125,7 +126,7 @@ const displayEquipCollection = () => {
       </button>
             </div>
           </div>
-            
+           
           `;
           equipCollectionArr.forEach((equip) => {
             domString += `
