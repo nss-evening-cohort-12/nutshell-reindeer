@@ -12,6 +12,12 @@ body {
   background: linear-gradient(rgba(52,185,72,1), rgba(39,96,47,1));
 }
 
+.addButtonDiv {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 3em;
+}
+
 .logo {
   max-width: 125px;
   max-height: 125px;
