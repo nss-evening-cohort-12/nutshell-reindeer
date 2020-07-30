@@ -3,6 +3,7 @@ import rideData from '../../helpers/data/rideData';
 import checkUser from '../../helpers/data/checkUser';
 import './rideList.scss';
 import header from '../consoleHeader/consoleHeader';
+import addButton from '../addButton/addButton';
 
 const addRideForm = () => {
   const domString = `
@@ -64,6 +65,7 @@ const displayRides = () => {
   header.headerBuilder('Rides');
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addRideForm());
+    addButton.buttonDiv('Build New Ride');
   }
   rideData.getRidesWithAssignees()
     .then((ridesArr) => {

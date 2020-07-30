@@ -5,6 +5,7 @@ import equipData from '../../helpers/data/equipData';
 import checkUser from '../../helpers/data/checkUser';
 import staffData from '../../helpers/data/staffData';
 import header from '../consoleHeader/consoleHeader';
+import addButton from '../addButton/addButton';
 
 const equipIcon = (type) => {
   let icon = '';
@@ -106,6 +107,7 @@ const displayEquipCollection = () => {
   header.headerBuilder('Equipment');
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addEquipForm());
+    addButton.buttonDiv('New Equipment');
   }
   staffData.getStaff()
     .then((staff) => {

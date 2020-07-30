@@ -2,6 +2,7 @@ import dinoData from '../../helpers/data/dinoData';
 import utils from '../../helpers/utils';
 import checkUser from '../../helpers/data/checkUser';
 import header from '../consoleHeader/consoleHeader';
+import addButton from '../addButton/addButton';
 
 const addDinoForm = () => {
   const domString = `
@@ -68,6 +69,7 @@ const displayDinos = () => {
   header.headerBuilder('Dinosaurs');
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addDinoForm());
+    addButton.buttonDiv('Capture New Dinosaur');
   }
   dinoData.getDinosWithHandlers()
     .then((dinosArr) => {

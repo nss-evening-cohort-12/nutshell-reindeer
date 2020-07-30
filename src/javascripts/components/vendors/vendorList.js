@@ -2,6 +2,7 @@ import checkUser from '../../helpers/data/checkUser';
 import vendorData from '../../helpers/data/vendorData';
 import utils from '../../helpers/utils';
 import header from '../consoleHeader/consoleHeader';
+import addButton from '../addButton/addButton';
 
 import './vendorList.scss';
 
@@ -61,6 +62,7 @@ const displayVendors = () => {
   header.headerBuilder('Vendors');
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addVendorForm());
+    addButton.buttonDiv('Build New Vendor');
   }
   vendorData.getVendorsWithAssignees()
     .then((vendorsArr) => {
