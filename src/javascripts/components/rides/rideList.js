@@ -42,7 +42,7 @@ const addRideForm = () => {
     </div>
     <div class="form-group">
       <label for="addRideType">Type</label>
-      <select name="addRideType" class="form-control">
+      <select name="addRideType" class="form-control start-blank">
         <option value="Moving">Moving</option>
         <option value="Exhibit">Exhibit</option>
         <option value="Show">Show</option>
@@ -83,6 +83,7 @@ const displayRides = () => {
 
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addRideForm());
+    $('.start-blank').prop('selectedIndex', -1);
     addButton.buttonDiv('Build New Ride');
   }
   rideData.getRidesWithAssignees()

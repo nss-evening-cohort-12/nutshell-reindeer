@@ -57,7 +57,7 @@ const addStaffForm = () => {
     </div>
     <div class="form-group">
       <label for="addStaffTitle">Position</label>
-      <select name="addStaffTitle" id="addStaffTitle" class="form-control">
+      <select name="addStaffTitle" id="addStaffTitle" class="form-control start-blank">
         <option value="Dino Handler">Dino Handler</option>
         <option value="Ride Attendant">Ride Attendant</option>
         <option value="Vendor Operator">Vendor Operator</option>
@@ -124,6 +124,7 @@ const displayStaff = () => {
   header.headerBuilder('Staff');
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addStaffForm());
+    $('.start-blank').prop('selectedIndex', -1);
     addButton.buttonDiv('Hire New Staff');
   }
   let domString = `

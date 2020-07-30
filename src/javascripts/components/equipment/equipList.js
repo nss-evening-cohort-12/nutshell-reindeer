@@ -31,7 +31,6 @@ const equipIcon = (type) => {
 // modal version
 const addEquipForm = () => {
   const domString = `
-
   <div class="modal" id="addEquipModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -49,7 +48,7 @@ const addEquipForm = () => {
            </div>
           <div class="form-group">
             <label for="type">Item Type</label>
-            <select name="type" class="form-control">
+            <select name="type" class="form-control start-blank">
               <option value="Office">Office</option>
               <option value="Safety">Safety</option>
               <option value="Tool">Tool</option>
@@ -59,18 +58,15 @@ const addEquipForm = () => {
           </div>
           <div class="form-group">
             <label for="location">Item Location</label>
-            <select name="location" class="form-control">
+            <select name="location" class="form-control start-blank">
               <option value="Office">Office</option>
               <option value="Parking Lot">Parking Lot</option>
               <option value="Warehouse">Warehouse</option>
               <option value="With Employee">With Employee</option>
               <option value="Unknown">Unknown</option>
             </select>
-          </div>      
-
-
-        <button type="submit" class="btn btn-primary">Save</button>
-
+          </div>     
+          <button type="submit" class="btn btn-primary">Save</button>
       </form>
       </div>
     </div>
@@ -119,6 +115,7 @@ const displayEquipCollection = () => {
   header.headerBuilder('Equipment');
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addEquipForm());
+    $('.start-blank').prop('selectedIndex', -1);
     addButton.buttonDiv('New Equipment');
   }
   staffData.getStaff()

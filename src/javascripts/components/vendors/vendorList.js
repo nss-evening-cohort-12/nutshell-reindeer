@@ -46,7 +46,7 @@ const addVendorForm = () => {
       </div>
       <div class="form-group">
         <label for="addVendorType">Type</label>
-        <select name="addVendorType" class="form-control">
+        <select name="addVendorType" class="form-control start-blank">
           <option value="Restaurant">Restaurant</option>
           <option value="Gift Shop">Gift Shop</option>
           <option value="Arcade">Arcade</option>
@@ -85,6 +85,7 @@ const displayVendors = () => {
   header.headerBuilder('Vendors');
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addVendorForm());
+    $('.start-blank').prop('selectedIndex', -1);
     addButton.buttonDiv('Build New Vendor');
   }
 
