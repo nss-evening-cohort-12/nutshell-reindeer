@@ -43,17 +43,30 @@ const addEquipForm = () => {
       <div class="modal-body">
       <form id="equipAddForm" class="px-4 py-3">
            <div class="form-group">
-             <label for="name">Equipment Name</label>
+             <label for="name">Item Name</label>
              <input type="text" class="form-control" name="name">
            </div>
-           <div class="form-group">
-             <label for="type">Equipment Type</label>
-             <input type="text" class="form-control" name="type">
+          <div class="form-group">
+            <label for="type">Item Type</label>
+            <select name="type" class="form-control">
+              <option value="Office">Office</option>
+              <option value="Safety">Safety</option>
+              <option value="Tool">Tool</option>
+              <option value="Vehicle">Vehicle</option>
+              <option value="Misc">(Other)</option>
+            </select>
           </div>
-           <div class="form-group">
-             <label for="location">Equipment Location</label>
-             <input type="text" class="form-control" name="location">
-           </div>         
+          <div class="form-group">
+            <label for="location">Item Location</label>
+            <select name="location" class="form-control">
+              <option value="Office">Office</option>
+              <option value="Parking Lot">Parking Lot</option>
+              <option value="Warehouse">Warehouse</option>
+              <option value="With Employee">With Employee</option>
+              <option value="Unknown">Unknown</option>
+            </select>
+          </div>      
+
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Submit</button>
@@ -135,8 +148,8 @@ const displayEquipCollection = () => {
             ${equipIcon(equip.type)}
             <div class="card-body">
                 <h5 class="card-title">${equip.name}</h5>
-                <p class="card-text">location: ${equip.location}</p>
-                <p class="card-text">assigned to: ${equip.assignedTo ? (staff.find((staffMember) => staffMember.id === equip.assignedTo)).name : 'Available'}</p>`;
+                <p class="card-text">Location: ${equip.location}</p>
+                <p class="card-text">${equip.assignedTo ? `Assigned to: ${(staff.find((staffMember) => staffMember.id === equip.assignedTo)).name}` : 'Available'}</p>`;
             if (checkUser.checkUser()) {
               domString += `<div class="links card-text text-center"> 
                         <div class="btn-group">
