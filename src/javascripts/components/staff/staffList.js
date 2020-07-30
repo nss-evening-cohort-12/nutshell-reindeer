@@ -3,6 +3,7 @@ import staffData from '../../helpers/data/staffData';
 import './staffList.scss';
 import checkUser from '../../helpers/data/checkUser';
 import header from '../consoleHeader/consoleHeader';
+import addButton from '../addButton/addButton';
 
 const staffIcon = (staffMember) => {
   let icon = '';
@@ -56,7 +57,12 @@ const addStaffForm = () => {
     </div>
     <div class="form-group">
       <label for="addStaffTitle">Staff Title</label>
-      <input type="text" class="form-control" name="addStaffTitle">
+      <select name="addStaffTitle" id="addStaffTitle" class="form-control">
+        <option value="Dino Handler">Dino Handler</option>
+        <option value="Ride Attendant">Ride Attendant</option>
+        <option value="Vendor Operator">Vendor Operator</option>
+        <option value="">(none)</option>
+      </select>
     </div>
     <div class="form-group">
       <label for="addStaffImgUrl">Staff Image URL</label>
@@ -76,7 +82,7 @@ const staffCard = (employee) => {
       ${staffIcon(employee)}
       <div class="card-body">
         <h5 class="card-title">${employee.name}</h5>
-        <p class="card-text">${employee.title}</p>`;
+        <p class="card-text text-secondary">${employee.title ? employee.title : 'Park Employee'}</p>`;
   if (employee.assignedTo === '') {
     domString += '<p class="card-text text-danger"><i class="fas fa-exclamation-triangle"></i> currently unassigned</p>';
   } else {
@@ -85,7 +91,7 @@ const staffCard = (employee) => {
   if (checkUser.checkUser()) {
     domString += `
           <div class="links card-text text-center">
-            ${employee.isActive ? '<a href="#" class="assignStaff mr-4 card-link"><i class="fas fa-calendar-plus"></i></a>' : ''}
+            ${employee.isActive ? '<a href="#" class="assignStaff mr-4 card-link"><i class="fas fa-id-card"></i></a>' : ''}
             <a href="#" class="editStaff mr-4 card-link"><i class="fas fa-pen"></i></a>
             <a href="#" class="deleteStaff ml-4 card-link"><i class="far fa-trash-alt"></i></a>
           </div>`;
@@ -118,15 +124,16 @@ const displayStaff = () => {
   header.headerBuilder('Staff');
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addStaffForm());
+    addButton.buttonDiv('Hire New Staff');
   }
   let domString = `
-    <div class="form-check unassigned-box">
-      <input class="form-check-input" type="checkbox" value="" id="unassigned-staff">
-      <label class="form-check-label" for="unassigned-staff">
+    <div class="custom-control custom-switch">
+      <input class="custom-control-input" type="checkbox" value="" id="unassigned-staff">
+      <label class="custom-control-label" for="unassigned-staff">
         See Unassigned Staff
       </label>
     </div>
-    <div class="d-flex flex-wrap">
+    <div class="cardCollection"> 
   `;
   staffData.getStaffWithAssignments()
     .then((allStaff) => {
@@ -147,6 +154,8 @@ const addStaff = (e) => {
     title: e.target.elements.addStaffTitle.value,
     imgUrl: e.target.elements.addStaffImgUrl.value,
     isActive: true,
+    assignedTo: '',
+    assignmentCategory: '',
   };
   staffData.addStaff(newStaff).then(() => {
     $('#addStaffModal').modal('hide');

@@ -82,10 +82,6 @@ const clickEvents = () => {
       $('body').on('submit', '.editEquipForm', editEquip.editEquipment);
       $('body').on('click', '.editEquip', editEquip.equipmentEditForm);
       $('body').on('click', '.deleteEquip', deleteEquipment.deleteEquip);
-      // eslint-disable-next-line func-names
-      // $('body').on('click', '.assignEquipOption', (function () {
-      //   console.warn($(this).text());
-      // }));
       $('body').on('click', '.assignEquipOption', editEquip.assignEquipment);
       $('body').on('click', '#unattended-equip', equipList.unattendedEquip);
 
@@ -109,6 +105,7 @@ const clickEvents = () => {
       $('body').on('click', '.assignStaff', assignStaff.assignStaff);
       $('body').on('click', '#unassigned-staff', staffList.unassignedStaff);
       $('body').on('click', '#submit-assignment', assignStaff.assignSelectedJob);
+      $('body').on('click', '.cancel-job-assignment', staffList.displayStaff);
       //----------------------
 
       // -----> Vendors <-----

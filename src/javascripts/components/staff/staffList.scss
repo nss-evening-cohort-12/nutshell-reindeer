@@ -1,7 +1,12 @@
 .staff-card {
-  width: 18rem; 
+  width: 19rem; 
+  min-height: 350px;
 }
 
 .inactive {
   background-color: lightgrey !important;
+}
+
+.custom-switch{
+  margin-left: 5em;
 }

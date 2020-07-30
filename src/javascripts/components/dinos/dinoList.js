@@ -2,6 +2,7 @@ import dinoData from '../../helpers/data/dinoData';
 import utils from '../../helpers/utils';
 import checkUser from '../../helpers/data/checkUser';
 import header from '../consoleHeader/consoleHeader';
+import addButton from '../addButton/addButton';
 
 const addDinoForm = () => {
   const domString = `
@@ -68,17 +69,18 @@ const displayDinos = () => {
   header.headerBuilder('Dinosaurs');
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addDinoForm());
+    addButton.buttonDiv('Capture New Dinosaur');
   }
   dinoData.getDinosWithHandlers()
     .then((dinosArr) => {
       let domString = `
-        <div class="form-check unassigned-box">
-          <input class="form-check-input" type="checkbox" value="" id="unattended-dinos">
-          <label class="form-check-label" for="unattended-dinos">
+        <div class="custom-control custom-switch">
+          <input class="custom-control-input" type="checkbox" value="" id="unattended-dinos">
+          <label class="custom-control-label" for="unattended-dinos">
             See Unattended Dinos
           </label>
         </div>
-        <div class="d-flex flex-wrap">
+        <div class="cardCollection"> 
       `;
       dinosArr.forEach((dino) => {
         let handlers = 'unassigned';

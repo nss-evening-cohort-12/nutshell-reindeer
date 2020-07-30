@@ -45,6 +45,28 @@ const getAllJobs = () => new Promise((resolve, reject) => {
     });
 });
 
-const assignNewJob = (staffId, department, job) => staffData.patchStaff(staffId, { assignedTo: job, assignmentCategory: department });
+const assignNewJob = (staffId, department, job) => new Promise((resolve, reject) => {
+  let title = '';
+  switch (department) {
+    case 'dinosaurs':
+      title = 'Dino Handler';
+      break;
+    case 'rides':
+      title = 'Ride Attendant';
+      break;
+    case 'vendors':
+      title = 'Vendor Operator';
+      break;
+    default:
+      title = '';
+  }
+  staffData.patchStaff(staffId, { assignedTo: job, assignmentCategory: department, title })
+    .then(() => {
+      resolve();
+    })
+    .catch((err) => reject(err));
+});
+
+// const assignNewJob = (staffId, department, job) => staffData.patchStaff(staffId, { assignedTo: job, assignmentCategory: department });
 
 export default { getAllJobs, assignNewJob };
