@@ -14,9 +14,9 @@ import editVendor from '../components/vendors/editVendor';
 import deleteVendor from '../components/vendors/deleteVendor';
 import assignStaff from '../components/staff/assignStaff';
 // import causeChaos from '../components/chaosMonkey/causeChaos';
-import causeChaos from '../components/chaosMonkey/causeChaos';
 import equipTest from '../components/equipment/equipAlert';
 import LogButtons from '../components/auth/auth';
+import schedule from '../components/schedule/schedule';
 
 // const showAddForm = () => {
 //   $('#addForm').removeClass('hide');
@@ -50,6 +50,9 @@ const navBarEventListeners = () => {
   $('#vendors').click(() => {
     vendorList.displayVendors();
   });
+  $('#schedule').click(() => {
+    schedule.printSchedule();
+  });
 };
 
 const clickEvents = () => {
@@ -59,9 +62,9 @@ const clickEvents = () => {
     $('body').on('click', '#logoutButton', LogButtons.logoutEvent);
     if (user) {
       // -----> Project <-----
-      $('body').click(() => { // Comment this out to turn off chaos monkey temporarily
-        causeChaos.decreaseChaos();
-      });
+      // $('body').click(() => { // Comment this out to turn off chaos monkey temporarily
+      //  causeChaos.decreaseChaos();
+      // });
       // $('body').on('click', '#addButton', showAddForm);
       $('body').on('click', '#addButton', showModal);
       $('body').on('click', '#testButton', equipTest.equipCheck);
@@ -115,6 +118,15 @@ const clickEvents = () => {
       $('body').on('click', '#vendor-editor-cancel', editVendor.cancelEdit);
       $('body').on('click', '.deleteVendor', deleteVendor.deleteVendor);
       $('body').on('click', '#unattended-vendors', vendorList.unattendedVendors);
+      //----------------------
+
+      // -----> Schedule <-----
+      $('body').on('dragstart', '.dragItem', schedule.dragstart);
+      $('body').on('dragend', '.dragItem', schedule.dragend);
+      $('body').on('dragenter', '.daysOfWeek', schedule.dragenter);
+      $('body').on('dragleave', '.daysOfWeek', schedule.dragleave);
+      $('body').on('dragover', '.daysOfWeek', schedule.dragover);
+      $('body').on('drop', '.daysOfWeek', schedule.drop);
       //----------------------
     }
   });
