@@ -25,7 +25,7 @@ const jobIcon = (jobType) => {
       icon = 'fas fa-tram';
       break;
     case 'vendors':
-      icon = 'fas fa-utensils';
+      icon = 'fas fa-money-bill-alt';
       break;
     case '':
       icon = 'fas fa-exclamation-triangle';

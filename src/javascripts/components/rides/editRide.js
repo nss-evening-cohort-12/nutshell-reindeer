@@ -18,34 +18,26 @@ const editRideDomStringBuilder = (collectionId, rideObj) => {
         <h2>Edit Equipment</h2>
         <div class="form-group">
             <label for="editRideName">Name:</label>
-            <input type="text" class="form-control" id="editRideName" placeholder="Cordyceps" value="${rideObj.name}">
+            <input type="text" class="form-control" id="editRideName" value="${rideObj.name}">
         </div>
         <div class="form-group">
-            <label for="editRideType">Type:</label>
-            <input type="text" class="form-control" name="editRideType" placeholder="M" value="${rideObj.rideType}">
-        </div>
-        <div class="form-group">
-            <label for="edit-ride-location">Location:</label>
-            <input type="text" class="form-control" name="editRideLocation" placeholder="Farm" value="${rideObj.rideLocation}">
-        </div>
-        <div class="form-group">
-            <label for="edit-ride-imgUrl">Image URL</label>
-            <input type="text" class="form-control" name="editRideImgUrl" placeholder="Image URL" value="${rideObj.rideImgUrl}">
+          <label for="editRideType">Type</label>
+          <select name="editRideType" class="form-control">
+            <option value="Moving"${rideObj.type === 'Moving' ? ' selected' : ''}>Moving</option>
+            <option value="Exhibit"${rideObj.type === 'Exhibit' ? ' selected' : ''}>Exhibit</option>
+            <option value="Show"${rideObj.type === 'ResShowtaurant' ? ' selected' : ''}>Show</option>
+            <option value="Misc"${rideObj.type === 'Misc' ? ' selected' : ''}>(Other)</option>
+          </select>
         </div>
         <div class="form-group">
           <div class="form-check">
-            <label class="form-check-label" for="editRideOperational">Is Operational</label> 
-            <input class="form-check-input" id="editRideOperational" type="checkbox"${(rideObj.rideOperational) ? 'checked' : ''}>
+          <input class="" name="editRideOperational" id="editRideOperational" type="checkbox"${(rideObj.isOperational) ? 'checked' : ''}>
+            <label class="" for="editRideOperational">Operational</label>              
           </div>
         </div>
         <input type="hidden" class="form-control" name="collectionId" value="${collectionId}">
         <button type="submit" class="btn btn-primary" name="submitEdit">Update</button>
-        <button class="btn btn-warning" id="ride-editor-cancel">Cancel</button>
         </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          
         </div>
       </div>
     </div>
@@ -62,10 +54,8 @@ const editRide = (e) => {
   console.error('checkbox returned ', isChecked);
   const tempEditedRide = {
     name: e.target.elements.editRideName.value,
-    rideType: e.target.elements.editRideType.value,
-    rideLocation: e.target.elements.editRideLocation.value,
-    rideImgUrl: e.target.elements.editRideImgUrl.value,
-    rideOperational: $('#editRideOperational').is(':checked'),
+    type: e.target.elements.editRideType.value,
+    isOperational: $('#editRideOperational').is(':checked'),
   };
   // pass those to an update equipment data function
   rideData.updateRide(collectionId, tempEditedRide)

@@ -4,6 +4,24 @@ import checkUser from '../../helpers/data/checkUser';
 import './rideList.scss';
 import header from '../consoleHeader/consoleHeader';
 
+const rideIcon = (type) => {
+  let icon = '';
+  switch (type) {
+    case 'Moving':
+      icon = 'fas fa-tram';
+      break;
+    case 'Exhibit':
+      icon = 'fas fa-landmark';
+      break;
+    case 'Show':
+      icon = 'fas fa-theater-masks';
+      break;
+    default:
+      icon = 'fas fa-question';
+  }
+  return `<i class="${icon} fa-5x text-secondary m-4"></i>`;
+};
+
 const addRideForm = () => {
   const domString = `
   <div class="modal" id="addRideModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -22,18 +40,17 @@ const addRideForm = () => {
       <input type="text" class="form-control" id="addRideName">
     </div>
     <div class="form-group">
-      <label for="addRideType">Ride Type</label>
-      <input type="text" class="form-control" id="addRideType">
+      <label for="addRideType">Type</label>
+      <select name="addRideType" class="form-control">
+        <option value="Moving">Moving</option>
+        <option value="Exhibit">Exhibit</option>
+        <option value="Show">Show</option>
+        <option value="Misc">(Other)</option>
+      </select>
     </div>
-    <div class="form-group">
-      <label for="addRideImgUrl">Ride Image URL</label>
-      <input type="url" class="form-control" id="addRideImgUrl">
-    </div>
-    <div class="form-group">
-      <label for="addRideLocation">Ride Location</label>
-      <input type="text" class="form-control" id="addRideLocation">
-      </div>
-    <button type-"submit" class="btn btn-primary">Build!</button>
+
+
+    <button type-"submit" class="btn btn-primary">Save</button>
   </form>
   </div>
     </div>
@@ -77,22 +94,20 @@ const displayRides = () => {
         <div class="cardCollection">
       `;
       ridesArr.forEach((ride) => {
-        let assignees = 'unassigned';
+        let assignees = '';
         if (ride.assignees.length > 0) {
-          assignees = '';
-          ride.assignees.forEach((assignee) => {
-            assignees += `<p>${assignee.name}`;
-          });
+          for (let i = 0; i < ride.assignees.length; i += 1) {
+            assignees += ride.assignees[i].name;
+            if (i + 1 < ride.assignees.length && ride.assignees.length !== 1) assignees += ', ';
+          }
         }
-        domString += `<div id="${ride.id}" class="card align-items-center m-3" style="width: 18rem; background-color:${ride.rideOperational ? '' : 'red'};">
-        <img src="${ride.rideImgUrl}" class="card-img-top" alt="...">
+        domString += `<div id="${ride.id}" class="card align-items-center m-3" style="width: 18rem; background-color:${ride.isOperational ? '' : 'red'};">
+        ${rideIcon(ride.type)}
         <div class="card-body">
-          <h5 class="card-title">Ride Name: ${ride.name}</h5>
-          <p class="card-text">Ride Type: ${ride.rideType}</p>
-          <p class="card-text">Ride Location: ${ride.rideLocation}</p>
-          <p class="card-text">Operational: <i class="fas fa-thumbs-${ride.rideOperational ? 'up' : 'down'}" style="color:${ride.rideOperational ? 'green' : 'black'};"></i></p>
-          <p class="card-text">Assigned to: 
-            ${assignees}</p>`;
+          <h5 class="card-title">${ride.name}</h5>
+          <p class="card-text text-secondary">${ride.type === 'Moving' ? 'Ride' : `${ride.type}`}</p>
+          <p class="card-text">Operational: <i class="fas fa-thumbs-${ride.isOperational ? 'up' : 'down'}" style="color:${ride.isOperational ? 'green' : 'black'};"></i></p>
+          <p class="card-text">${assignees ? `Assigned to:  ${assignees}` : '<span class="text-danger"><i class="fas fa-exclamation-triangle"></i> currently unassigned</span>'}</p>`;
         if (checkUser.checkUser()) {
           domString += `
           <div class="links card-text text-center">
@@ -116,10 +131,8 @@ const addRide = (e) => {
   e.preventDefault();
   const tempRideObj = {
     name: e.target.elements.addRideName.value,
-    rideType: e.target.elements.addRideType.value,
-    rideImgUrl: e.target.elements.addRideImgUrl.value,
-    rideLocation: e.target.elements.addRideLocation.value,
-    rideOperational: true,
+    type: e.target.elements.addRideType.value,
+    isOperational: true,
   };
   rideData.addRide(tempRideObj).then(() => {
     $('#addRideModal').modal('toggle');

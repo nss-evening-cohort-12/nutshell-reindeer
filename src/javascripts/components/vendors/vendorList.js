@@ -21,7 +21,7 @@ const vendorIcon = (type) => {
       icon = 'fas fa-gamepad';
       break;
     default:
-      icon = 'fa-question';
+      icon = 'fas fa-question';
   }
   return `<i class="${icon} fa-5x text-secondary m-4"></i>`;
 };
@@ -32,7 +32,7 @@ const addVendorForm = () => {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New Vendor</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add New Vendor</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

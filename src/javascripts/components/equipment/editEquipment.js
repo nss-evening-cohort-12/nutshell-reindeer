@@ -24,15 +24,14 @@ const editEquipDomStringBuilder = (collectionId, equipObj) => {
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Edit Equipment</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Edit Equipment Item</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
 
-        <form class="edit-equip m-5 editEquipForm" >
-        <h2>Edit Equipment</h2>
+        <form class="edit-equip m-5 editEquipForm">
         <div class="form-group">
             <label for="editEquipName">Item Name:</label>
             <input type="text" class="form-control" name="editEquipName" placeholder="Name" value="${equipObj.name}">
@@ -61,7 +60,6 @@ const editEquipDomStringBuilder = (collectionId, equipObj) => {
           <div class="form-check">
           <input class="" name="editEquipOperational" id="editEquipOperational" type="checkbox"${(equipObj.isOperational) ? 'checked' : ''}>
             <label class="" for="editEquipOperational"> Operational</label>              
-            
           </div>
         </div>
         <input type="hidden" class="form-control" name="collectionId" value="${collectionId}">
@@ -69,9 +67,7 @@ const editEquipDomStringBuilder = (collectionId, equipObj) => {
         </form>
 
         </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
+
         </div>
       </div>
     </div>

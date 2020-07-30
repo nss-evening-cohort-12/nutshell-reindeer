@@ -22,7 +22,7 @@ const equipIcon = (type) => {
       icon = 'fas fa-truck';
       break;
     default:
-      icon = 'fa-question';
+      icon = 'fas fa-question';
   }
   return `<i class="${icon} fa-5x text-secondary m-4"></i>`;
 };
@@ -35,7 +35,7 @@ const addEquipForm = () => {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="newEquipModal">New Equipment</h5>
+        <h5 class="modal-title" id="newEquipModal">Add New Equipment</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -68,7 +68,6 @@ const addEquipForm = () => {
           </div>      
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Save</button>
       </div>
       </form>
