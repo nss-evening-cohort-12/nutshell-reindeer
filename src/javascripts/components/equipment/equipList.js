@@ -5,6 +5,7 @@ import equipData from '../../helpers/data/equipData';
 import checkUser from '../../helpers/data/checkUser';
 import staffData from '../../helpers/data/staffData';
 import header from '../consoleHeader/consoleHeader';
+import addButton from '../addButton/addButton';
 
 const equipIcon = (type) => {
   let icon = '';
@@ -106,18 +107,20 @@ const displayEquipCollection = () => {
   header.headerBuilder('Equipment');
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addEquipForm());
+    addButton.buttonDiv('New Equipment');
   }
   staffData.getStaff()
     .then((staff) => {
       equipData.getAllEquipment()
         .then((equipCollectionArr) => {
-          let domString = `<div class="d-flex justify-content-center flex-wrap">
-          <div class="form-check unassigned-box">
-              <input class="form-check-input" type="checkbox" value="" id="unattended-equip">
-              <label class="form-check-label" for="unattended-equip">
+          let domString = `<div>
+          <div class="custom-control custom-switch">
+              <input class="custom-control-input" type="checkbox" value="" id="unattended-equip">
+              <label class="custom-control-label" for="unattended-equip">
                 See Unattended Equipment
               </label>
             </div>
+            <div class="cardCollection"> 
           <div class ="card equipCard align-items-center m-3" style="width: 18rem">
             <div class="card-body">
             <button id="testButton" type="button" class="btn btn-outline-info btn-large">
@@ -125,7 +128,7 @@ const displayEquipCollection = () => {
       </button>
             </div>
           </div>
-            
+           
           `;
           equipCollectionArr.forEach((equip) => {
             domString += `

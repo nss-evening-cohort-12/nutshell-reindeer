@@ -118,5 +118,101 @@
     "isActive": true,
     "assignmentCategory": "vendors",
     "assignedTo": "vendor3"
+  },
+  "staff16": {
+    "name": "Amanda",
+    "title": "Entry Level Employee",
+    "imgUrl": "https://billweinbergerblog.files.wordpress.com/2019/11/ppm.png",
+    "isActive": true,
+    "assignmentCategory": "",
+    "assignedTo": ""
+  },
+  "staff17": {
+    "name": "Javier",
+    "title": "Entry Level Employee",
+    "imgUrl": "https://billweinbergerblog.files.wordpress.com/2019/11/ppm.png",
+    "isActive": true,
+    "assignmentCategory": "",
+    "assignedTo": ""
+  },
+  "staff18": {
+    "name": "Jose",
+    "title": "Entry Level Employee",
+    "imgUrl": "https://billweinbergerblog.files.wordpress.com/2019/11/ppm.png",
+    "isActive": true,
+    "assignmentCategory": "",
+    "assignedTo": ""
+  },
+  "staff19": {
+    "name": "Lucy",
+    "title": "Entry Level Employee",
+    "imgUrl": "https://billweinbergerblog.files.wordpress.com/2019/11/ppm.png",
+    "isActive": true,
+    "assignmentCategory": "",
+    "assignedTo": ""
+  },
+  "staff20": {
+    "name": "Mookie",
+    "title": "MVP",
+    "imgUrl": "https://billweinbergerblog.files.wordpress.com/2019/11/ppm.png",
+    "isActive": true,
+    "assignmentCategory": "",
+    "assignedTo": ""
+  },
+  "staff21": {
+    "name": "Belli",
+    "title": "MVP",
+    "imgUrl": "https://billweinbergerblog.files.wordpress.com/2019/11/ppm.png",
+    "isActive": true,
+    "assignmentCategory": "",
+    "assignedTo": ""
+  },
+  "staff22": {
+    "name": "Kershaw",
+    "title": "MVP",
+    "imgUrl": "https://billweinbergerblog.files.wordpress.com/2019/11/ppm.png",
+    "isActive": true,
+    "assignmentCategory": "",
+    "assignedTo": ""
+  },
+  "staff23": {
+    "name": "Turner",
+    "title": "Red Beard",
+    "imgUrl": "https://billweinbergerblog.files.wordpress.com/2019/11/ppm.png",
+    "isActive": true,
+    "assignmentCategory": "",
+    "assignedTo": ""
+  },
+  "staff24": {
+    "name": "Joe Kelly",
+    "title": "Bodygaurd",
+    "imgUrl": "https://billweinbergerblog.files.wordpress.com/2019/11/ppm.png",
+    "isActive": true,
+    "assignmentCategory": "",
+    "assignedTo": ""
+  },
+  "staff25": {
+    "name": "Seagar",
+    "title": "Bodygaurd",
+    "imgUrl": "https://billweinbergerblog.files.wordpress.com/2019/11/ppm.png",
+    "isActive": true,
+    "assignmentCategory": "",
+    "assignedTo": ""
+  },
+  "staff26": {
+    "name": "Jansen",
+    "title": "Closer",
+    "imgUrl": "https://billweinbergerblog.files.wordpress.com/2019/11/ppm.png",
+    "isActive": true,
+    "assignmentCategory": "",
+    "assignedTo": ""
+  },
+  "staff27": {
+    "name": "Pederson",
+    "title": "Outfielder",
+    "imgUrl": "https://billweinbergerblog.files.wordpress.com/2019/11/ppm.png",
+    "isActive": true,
+    "assignmentCategory": "",
+    "assignedTo": ""
   }
 }
