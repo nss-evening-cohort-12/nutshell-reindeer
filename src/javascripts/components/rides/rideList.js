@@ -63,6 +63,7 @@ const unattendedRides = (e) => {
 
 const displayRides = () => {
   header.headerBuilder('Rides');
+
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addRideForm());
     addButton.buttonDiv('Build New Ride');
@@ -70,9 +71,9 @@ const displayRides = () => {
   rideData.getRidesWithAssignees()
     .then((ridesArr) => {
       let domString = `
-        <div class="form-check unassigned-box">
-          <input class="form-check-input" type="checkbox" value="" id="unattended-rides">
-          <label class="form-check-label" for="unattended-rides">
+        <div class="custom-control custom-switch">
+          <input class="custom-control-input" type="checkbox" value="" id="unattended-rides">
+          <label class="custom-control-label" for="unattended-rides">
             See Unattended Rides
           </label>
         </div>

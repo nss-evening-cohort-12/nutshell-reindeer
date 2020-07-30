@@ -74,9 +74,9 @@ const displayDinos = () => {
   dinoData.getDinosWithHandlers()
     .then((dinosArr) => {
       let domString = `
-        <div class="form-check unassigned-box">
-          <input class="form-check-input" type="checkbox" value="" id="unattended-dinos">
-          <label class="form-check-label" for="unattended-dinos">
+        <div class="custom-control custom-switch">
+          <input class="custom-control-input" type="checkbox" value="" id="unattended-dinos">
+          <label class="custom-control-label" for="unattended-dinos">
             See Unattended Dinos
           </label>
         </div>

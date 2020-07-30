@@ -114,9 +114,9 @@ const displayEquipCollection = () => {
       equipData.getAllEquipment()
         .then((equipCollectionArr) => {
           let domString = `<div>
-          <div class="form-check unassigned-box">
-              <input class="form-check-input" type="checkbox" value="" id="unattended-equip">
-              <label class="form-check-label" for="unattended-equip">
+          <div class="custom-control custom-switch">
+              <input class="custom-control-input" type="checkbox" value="" id="unattended-equip">
+              <label class="custom-control-label" for="unattended-equip">
                 See Unattended Equipment
               </label>
             </div>
