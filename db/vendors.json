@@ -1,23 +1,22 @@
 {
-  "vendor1": {
-    "name": "Candy Apple",
-    "vendorType": "Candy Store",
-    "vendorImgUrl": "https://hungergamesthemepark.weebly.com/uploads/2/6/5/0/26505405/5871473.png"
+  "vendor1" : {
+    "name" : "DinoCorn",
+    "type" : "Cart"
   },
-  "vendor2": {
-    "name": "Fries",
-    "vendorType": "Resturant",
-    "vendorImgUrl": "https://phasegaming.files.wordpress.com/2014/03/fries.jpg"
+  "vendor2" : {
+    "name" : "T-Rex Cafe",
+    "type" : "Restaurant"
   },
-  "vendor3": {
-    "name": "Popcorn",
-    "vendorType": "Popcorn Store",
-    "vendorImgUrl": "https://i.pinimg.com/originals/46/04/d9/4604d94d8a2e7c437da852e31019afb9.jpg"
-
+  "vendor3" : {
+    "name" : "Jurassic Shirts",
+    "type" : "Gift Shop"
   },
-  "vendor4": {
-    "name": "Hot Dogs",
-    "vendorType": "Fast Food",
-    "vendorImgUrl": "https://comps.canstockphoto.com/hot-dog-vendor-drawings_csp8484063.jpg"
+  "vendor4" : {
+    "name" : "Pangaea Grill",
+    "type" : "Restaurant"
+  },
+  "-MDSNLk0XIZql9s9xGjE" : {
+    "name" : "Hold On 2 Ur Butts",
+    "type" : "Arcade"
   }
 }
