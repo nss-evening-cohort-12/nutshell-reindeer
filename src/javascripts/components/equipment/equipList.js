@@ -1,4 +1,4 @@
-import './cardFactoryEquip.scss';
+import './equipList.scss';
 
 import utils from '../../helpers/utils';
 import equipData from '../../helpers/data/equipData';
@@ -23,7 +23,7 @@ const equipIcon = (type) => {
       icon = 'fas fa-truck';
       break;
     default:
-      icon = 'fa-question';
+      icon = 'fas fa-question';
   }
   return `<i class="${icon} fa-5x text-secondary m-4"></i>`;
 };
@@ -31,12 +31,11 @@ const equipIcon = (type) => {
 // modal version
 const addEquipForm = () => {
   const domString = `
-
   <div class="modal" id="addEquipModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="newEquipModal">New Equipment</h5>
+        <h5 class="modal-title" id="newEquipModal">Add New Equipment</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -44,21 +43,30 @@ const addEquipForm = () => {
       <div class="modal-body">
       <form id="equipAddForm" class="px-4 py-3">
            <div class="form-group">
-             <label for="name">Equipment Name</label>
+             <label for="name">Item Name</label>
              <input type="text" class="form-control" name="name">
            </div>
-           <div class="form-group">
-             <label for="type">Equipment Type</label>
-             <input type="text" class="form-control" name="type">
+          <div class="form-group">
+            <label for="type">Item Type</label>
+            <select name="type" class="form-control start-blank">
+              <option value="Office">Office</option>
+              <option value="Safety">Safety</option>
+              <option value="Tool">Tool</option>
+              <option value="Vehicle">Vehicle</option>
+              <option value="Misc">(Other)</option>
+            </select>
           </div>
-           <div class="form-group">
-             <label for="location">Equipment Location</label>
-             <input type="text" class="form-control" name="location">
-           </div>         
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
+          <div class="form-group">
+            <label for="location">Item Location</label>
+            <select name="location" class="form-control start-blank">
+              <option value="Office">Office</option>
+              <option value="Parking Lot">Parking Lot</option>
+              <option value="Warehouse">Warehouse</option>
+              <option value="With Employee">With Employee</option>
+              <option value="Unknown">Unknown</option>
+            </select>
+          </div>     
+          <button type="submit" class="btn btn-primary">Save</button>
       </form>
       </div>
     </div>
@@ -107,6 +115,7 @@ const displayEquipCollection = () => {
   header.headerBuilder('Equipment');
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addEquipForm());
+    $('.start-blank').prop('selectedIndex', -1);
     addButton.buttonDiv('New Equipment');
   }
   staffData.getStaff()
@@ -121,7 +130,7 @@ const displayEquipCollection = () => {
               </label>
             </div>
             <div class="cardCollection"> 
-          <div class ="card equipCard align-items-center m-3" style="width: 18rem">
+          <div class ="card equip-card align-items-center m-3" style="width: 18rem">
             <div class="card-body">
             <button id="testButton" type="button" class="btn btn-outline-info btn-large">
         Test All Equipment
@@ -132,13 +141,13 @@ const displayEquipCollection = () => {
           `;
           equipCollectionArr.forEach((equip) => {
             domString += `
-          <div id="${equip.id}" class="card equipCard align-items-center m-3 ${equip.isOperational ? '' : 'disabled'}" style="width: 18rem">
+          <div id="${equip.id}" class="card equip-card align-items-center m-3 ${equip.isOperational ? '' : 'disabled'}" style="width: 18rem">
             
             ${equipIcon(equip.type)}
             <div class="card-body">
                 <h5 class="card-title">${equip.name}</h5>
-                <p class="card-text">location: ${equip.location}</p>
-                <p class="card-text">assigned to: ${equip.assignedTo ? (staff.find((staffMember) => staffMember.id === equip.assignedTo)).name : 'Available'}</p>`;
+                <p class="card-text">Location: ${equip.location}</p>
+                <p class="card-text">${equip.assignedTo ? `Assigned to: ${(staff.find((staffMember) => staffMember.id === equip.assignedTo)).name}` : 'Available'}</p>`;
             if (checkUser.checkUser()) {
               domString += `<div class="links card-text text-center"> 
                         <div class="btn-group">

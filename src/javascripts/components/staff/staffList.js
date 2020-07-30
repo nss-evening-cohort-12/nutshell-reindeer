@@ -26,7 +26,7 @@ const jobIcon = (jobType) => {
       icon = 'fas fa-tram';
       break;
     case 'vendors':
-      icon = 'fas fa-utensils';
+      icon = 'fas fa-money-bill-alt';
       break;
     case '':
       icon = 'fas fa-exclamation-triangle';
@@ -43,7 +43,7 @@ const addStaffForm = () => {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New Staff</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add New Staff Member</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -52,12 +52,12 @@ const addStaffForm = () => {
 
   <form id="staffAddForm" class="px-4 py-3">
     <div class="form-group">
-      <label for="addStaffName">Staff Name</label>
+      <label for="addStaffName">Name</label>
       <input type="text" class="form-control" name="addStaffName">
     </div>
     <div class="form-group">
-      <label for="addStaffTitle">Staff Title</label>
-      <select name="addStaffTitle" id="addStaffTitle" class="form-control">
+      <label for="addStaffTitle">Position</label>
+      <select name="addStaffTitle" id="addStaffTitle" class="form-control start-blank">
         <option value="Dino Handler">Dino Handler</option>
         <option value="Ride Attendant">Ride Attendant</option>
         <option value="Vendor Operator">Vendor Operator</option>
@@ -65,7 +65,7 @@ const addStaffForm = () => {
       </select>
     </div>
     <div class="form-group">
-      <label for="addStaffImgUrl">Staff Image URL</label>
+      <label for="addStaffImgUrl">Image URL</label>
       <input type="url" class="form-control" name="addStaffImgUrl">
     </div>
     <button type="submit" class="btn btn-primary">Hire</button>
@@ -124,6 +124,7 @@ const displayStaff = () => {
   header.headerBuilder('Staff');
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addStaffForm());
+    $('.start-blank').prop('selectedIndex', -1);
     addButton.buttonDiv('Hire New Staff');
   }
   let domString = `
