@@ -19,15 +19,17 @@ const editVendorDomStringBuilder = (collectionId, vendorObj) => {
       <h2>Edit Vendor</h2>
       <div class="form-group">
         <label for="editVendorName">Name:</label>
-        <input type="text" class="form-control" name="editVendorName" placeholder="Vendor Name" value=${vendorObj.name}>
+        <input type="text" class="form-control" name="editVendorName" placeholder="Vendor Name" value="${vendorObj.name}">
       </div>
       <div class="form-group">
-        <label for="editVendorType">Type:</label>
-        <input type="text" class="form-control" name="editVendorType" placeholder="Cashier" value=${vendorObj.vendorType}>
-      </div>
-      <div class="form-group">
-        <label for="editVendorImgUrl">Image URL</label>
-        <input type="text" class="form-control" name="editVendorImgUrl" placeholder="Image URL" value=${vendorObj.vendorImgUrl}>
+        <label for="editVendorType">Type</label>
+        <select name="editVendorType" class="form-control">
+          <option value="Restaurant"${vendorObj.type === 'Restaurant' ? ' selected' : ''}>Restaurant</option>
+          <option value="Gift Shop"${vendorObj.type === 'Gift Shop' ? ' selected' : ''}>Gift Shop</option>
+          <option value="Arcade"${vendorObj.type === 'Arcade' ? ' selected' : ''}>Arcade</option>
+          <option value="Cart"${vendorObj.type === 'Cart' ? ' selected' : ''}>Cart</option>
+          <option value="Misc"${vendorObj.type === 'Misc' ? ' selected' : ''}>(Other)</option>
+        </select>
       </div>
       <input type="hidden" class="form-control" name="collectionId" value=${collectionId}>
       <button type="submit" class="btn btn-primary" id="submitEdit">Update</button>
@@ -47,8 +49,7 @@ const editVendor = (e) => {
   const collectionId = e.target.elements.collectionId.value;
   const tempEditedVendor = {
     name: e.target.elements.editVendorName.value,
-    vendorType: e.target.elements.editVendorType.value,
-    vendorImgUrl: e.target.elements.editVendorImgUrl.value,
+    type: e.target.elements.editVendorType.value,
   };
   vendorData.updateVendor(collectionId, tempEditedVendor)
     .then(() => {
