@@ -1,12 +1,20 @@
 #scheduledCards {
   width: 100%;
-  .daysOfWeek {
-    margin: 2rem;
+}
+
+.daysOfWeek {
+  width: 18%;
+  margin-bottom: 2rem;
+}
+
+.dragItem {
+  width: 10rem;
+  .card-body {
+    padding: 0;
   }
 }
 
-.dragItem img {
-  min-width: 15%;
-  height: 2rem;
-  object-fit: cover;
+#unscheduled {
+  margin: 2rem;
+  padding: 2rem;
 }

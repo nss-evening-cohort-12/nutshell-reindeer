@@ -35,6 +35,7 @@ const drop = (e) => { // drop target
   const staffId = e.originalEvent.dataTransfer.getData('staffId');
   const staffMember = document.getElementById(staffId);
   const dropZone = e.target.closest('.drop-here');
+  console.error(dropZone.closest('.daysOfWeek').id);
   dropZone.appendChild(staffMember);
   e.originalEvent.dataTransfer.clearData();
   e.currentTarget.attributeStyleMap.delete('border');
@@ -45,7 +46,20 @@ const printSchedule = () => {
     .then((allSched) => {
       staff.getStaff()
         .then((allStaff) => {
-          let domString = '<div class="d-flex justify-content-around" id="scheduledCards">';
+          let domString = '<h1>Unscheduled Staff</h1><div class="card d-flex justify-content-content flex-row flex-wrap" id="unscheduled">';
+          allStaff.forEach((unschedStaff) => {
+            const isUnsched = allSched.find((s) => s.staffId === unschedStaff.id);
+            if (!isUnsched) {
+              domString += `<div id="${unschedStaff.id}" class="card mt-5 dragItem" draggable="true">
+                              <div class="card-body">
+                                <img src="${unschedStaff.imgUrl}" class="card-img-top" draggable="false">
+                                ${unschedStaff.name}
+                              </div>
+                            </div>`;
+            }
+          });
+          domString += '</div>';
+          domString += '<div class="d-flex justify-content-around" id="scheduledCards">';
           const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
           days.forEach((day) => {
             const scheduledStaff = allSched.filter((sched) => sched.day === day); // get all sched for this day
@@ -56,7 +70,7 @@ const printSchedule = () => {
               const staffMemberInfo = allStaff.find((foundStaff) => foundStaff.id === staffInSchedule.staffId); // Get Name and Id of staff member
               domString += `<div id="${staffMemberInfo.id}" class="card mt-5 dragItem" draggable="true">
                               <div class="card-body">
-                                <img src="${staffMemberInfo.imgUrl}">
+                                <img src="${staffMemberInfo.imgUrl}" class="card-img-top" draggable="false">
                                 ${staffMemberInfo.name}
                               </div>
                             </div>`;
