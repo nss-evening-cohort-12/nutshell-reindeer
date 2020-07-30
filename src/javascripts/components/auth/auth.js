@@ -20,6 +20,7 @@ const loginButton = () => {
 
 const logoutEvent = () => {
   firebase.auth().signOut();
+  $('#addButtonDiv').empty();
 };
 
 const getUser = () => firebase.auth().currentUser;

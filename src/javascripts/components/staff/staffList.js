@@ -3,6 +3,7 @@ import staffData from '../../helpers/data/staffData';
 import './staffList.scss';
 import checkUser from '../../helpers/data/checkUser';
 import header from '../consoleHeader/consoleHeader';
+import addButton from '../addButton/addButton';
 
 const staffIcon = (staffMember) => {
   let icon = '';
@@ -123,6 +124,7 @@ const displayStaff = () => {
   header.headerBuilder('Staff');
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addStaffForm());
+    addButton.buttonDiv('Hire New Staff');
   }
   let domString = `
     <div class="form-check unassigned-box">
