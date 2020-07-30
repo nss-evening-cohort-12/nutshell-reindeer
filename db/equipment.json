@@ -1,45 +1,49 @@
 {
-    "equipment1": {
-      "name": "Jeep Wrangler",
-      "type": "Vehicle",
-      "location": "Warehouse",
-      "isOperational": true,
-      "assignedTo" : "staff1"
+    "equipment1" : {
+      "isOperational" : true,
+      "location" : "Parking Lot",
+      "name" : "Jeep",
+      "type" : "Vehicle"
     },
-    "equipment2": {
-        "name": "Computer",
-        "type": "Office",
-        "location": "Warehouse",
-        "isOperational": true,
-        "assignedTo" : "staff2"
+    "equipment2" : {
+      "assignedTo" : "",
+      "isOperational" : true,
+      "location" : "Office",
+      "name" : "Computer",
+      "type" : "Office"
     },
-    "equipment3": {
-        "name": "Tour Van",
-        "type": "Vehicle",
-        "location": "Warehouse",
-        "isOperational": true,
-        "assignedTo" : "staff3"
+    "equipment3" : {
+      "assignedTo" : "staff14",
+      "isOperational" : true,
+      "location" : "With Employee",
+      "name" : "Tour",
+      "type" : "Vehicle"
     },
-    "equipment4": {
-        "name": "Tranquilizer",
-        "type": "Safety",
-        "location": "Warehouse",
-        "isOperational": true,
-        "assignedTo" : "staff4"
+    "equipment4" : {
+      "isOperational" : false,
+      "location" : "Warehouse",
+      "name" : "Tranquilizer",
+      "type" : "Safety"
     },
-    "equipment5": {
-        "name": "Air Gun",
-        "type": "Tool",
-        "location": "Warehouse",
-        "isOperational": true,
-        "assignedTo" : ""
+    "equipment5" : {
+      "isOperational" : true,
+      "location" : "Warehouse",
+      "name" : "Air Gun",
+      "type" : "Tool"
     },
-    "equipment6": {
-        "name": "Hammer",
-        "type": "Tool",
-        "location": "Warehouse",
-        "isOperational": true,
-        "assignedTo" : "staff6"
-    }
-}
+    "equipment6" : {
+      "assignedTo" : "",
+      "isOperational" : true,
+      "location" : "Warehouse",
+      "name" : "Hammer",
+      "type" : "Tool"
+    },
+    "equipment7" : {
+        "assignedTo" : "staff7",
+        "isOperational" : true,
+        "location" : "Warehouse",
+        "name" : "Drill",
+        "type" : "Tool"
+      }
+  }
   

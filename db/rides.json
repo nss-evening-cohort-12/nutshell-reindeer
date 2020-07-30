@@ -1,45 +1,33 @@
 {
-    "ride1": {
-      "name": "Tora Tora",
-      "rideType": "Roller Coaster",
-      "rideLocation": "Warehouse",
-      "rideImgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSm1hORuDUrKVkPr1Ycge1YW4lWMbHUy1YvuA&usqp=CAU",
-      "rideOperational": true
+    "ride1" : {
+      "isOperational" : true,
+      "name" : "Tora Tora",
+      "type" : "Moving"
     },
-    "ride2": {
-        "name": "Gravity",
-        "rideType": "Swing",
-        "rideLocation": "Warehouse",
-        "rideImgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQun8FwSPtzAq1EkE-G4Cv-hfhtRDJIHsFcEQ&usqp=CAU",
-        "rideOperational": true
+    "ride2" : {
+      "isOperational" : true,
+      "name" : "Gravity",
+      "type" : "Moving"
     },
-    "ride3": {
-        "name": "Anaconda",
-        "rideType": "theater",
-        "rideLocation": "Warehouse",
-        "rideImgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSpTH-BHJlivLfXayeknRNawNl9Ue8Zhdurmg&usqp=CAU",
-        "rideOperational": true
+    "ride3" : {
+      "isOperational" : true,
+      "name" : "Anaconda Theatre",
+      "type" : "Show"
     },
-    "ride4": {
-        "name": "KingKong",
-        "rideType": "theater",
-        "rideLocation": "Warehouse",
-        "rideImgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTQrWiyDaTC_aU5q-3glWjPf-4p2D7fO_u5AQ&usqp=CAU",
-        "rideOperational": true
+    "ride4" : {
+      "isOperational" : true,
+      "name" : "KingKong",
+      "type" : "Exhibit"
     },
-    "ride5": {
-        "name": "Superman",
-        "rideType": "BunjiJumping",
-        "rideLocation": "Warehouse",
-        "rideImgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSMS0Fqel9g-LCZq0EFbhaNYjrlaI5qhNHKHg&usqp=CAU",
-        "rideOperational": true
+    "ride5" : {
+      "isOperational" : true,
+      "name" : "Superman",
+      "type" : "Moving"
     },
-    "ride6": {
-        "name": "Captain America",
-        "rideType": "HighLow",
-        "rideLocation": "Warehouse",
-        "rideImgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTVOr_ucHT-B-_xGWUswVjzdQYLLd78wwBk6g&usqp=CAU",
-        "rideOperational": true
+    "ride6" : {
+      "isOperational" : false,
+      "name" : "Captain America",
+      "type" : "Moving"
     }
-}
+  }
   
