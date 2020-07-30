@@ -25,7 +25,7 @@ const editRideDomStringBuilder = (collectionId, rideObj) => {
           <select name="editRideType" class="form-control">
             <option value="Moving"${rideObj.type === 'Moving' ? ' selected' : ''}>Moving</option>
             <option value="Exhibit"${rideObj.type === 'Exhibit' ? ' selected' : ''}>Exhibit</option>
-            <option value="Show"${rideObj.type === 'ResShowtaurant' ? ' selected' : ''}>Show</option>
+            <option value="Show"${rideObj.type === 'Show' ? ' selected' : ''}>Show</option>
             <option value="Misc"${rideObj.type === 'Misc' ? ' selected' : ''}>(Other)</option>
           </select>
         </div>
