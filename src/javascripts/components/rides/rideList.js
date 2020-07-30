@@ -104,7 +104,7 @@ const displayRides = () => {
             if (i + 1 < ride.assignees.length && ride.assignees.length !== 1) assignees += ', ';
           }
         }
-        domString += `<div id="${ride.id}" class="card align-items-center m-3" style="width: 18rem; background-color:${ride.isOperational ? '' : 'red'};">
+        domString += `<div id="${ride.id}" class="card ride-card align-items-center m-3" style="background-color:${ride.isOperational ? '' : 'red'};">
         ${rideIcon(ride.type)}
         <div class="card-body">
           <h5 class="card-title">${ride.name}</h5>

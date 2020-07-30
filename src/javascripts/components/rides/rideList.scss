@@ -1,9 +1,10 @@
-.card-img-top {
-    height: 150px;
-  }
- 
 .cardCollection {
   display: flex;
   justify-content: space-around;
   flex-flow: row wrap;
 }  
+
+.ride-card {
+  width: 19rem; 
+  min-height: 350px;
+}

@@ -108,7 +108,7 @@ const displayVendors = () => {
           }
         }
         domString += `
-        <div class="card align-items-center m-3" style="width: 18rem;" id="${vendor.id}">
+        <div class="card vendor-card align-items-center m-3" id="${vendor.id}">
         ${vendorIcon(vendor.type)}
           <div class="card-body">
             <h5 class="card-title">${vendor.name}</h5>

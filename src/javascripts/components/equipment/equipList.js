@@ -1,4 +1,4 @@
-import './cardFactoryEquip.scss';
+import './equipList.scss';
 
 import utils from '../../helpers/utils';
 import equipData from '../../helpers/data/equipData';
@@ -68,9 +68,9 @@ const addEquipForm = () => {
             </select>
           </div>      
 
-      <div class="modal-footer">
+
         <button type="submit" class="btn btn-primary">Save</button>
-      </div>
+
       </form>
       </div>
     </div>
@@ -133,7 +133,7 @@ const displayEquipCollection = () => {
               </label>
             </div>
             <div class="cardCollection"> 
-          <div class ="card equipCard align-items-center m-3" style="width: 18rem">
+          <div class ="card equip-card align-items-center m-3" style="width: 18rem">
             <div class="card-body">
             <button id="testButton" type="button" class="btn btn-outline-info btn-large">
         Test All Equipment
@@ -144,7 +144,7 @@ const displayEquipCollection = () => {
           `;
           equipCollectionArr.forEach((equip) => {
             domString += `
-          <div id="${equip.id}" class="card equipCard align-items-center m-3 ${equip.isOperational ? '' : 'disabled'}" style="width: 18rem">
+          <div id="${equip.id}" class="card equip-card align-items-center m-3 ${equip.isOperational ? '' : 'disabled'}" style="width: 18rem">
             
             ${equipIcon(equip.type)}
             <div class="card-body">
