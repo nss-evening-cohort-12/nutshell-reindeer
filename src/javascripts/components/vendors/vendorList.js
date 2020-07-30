@@ -2,6 +2,7 @@ import checkUser from '../../helpers/data/checkUser';
 import vendorData from '../../helpers/data/vendorData';
 import utils from '../../helpers/utils';
 import header from '../consoleHeader/consoleHeader';
+import addButton from '../addButton/addButton';
 
 import './vendorList.scss';
 
@@ -84,14 +85,15 @@ const displayVendors = () => {
   header.headerBuilder('Vendors');
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addVendorForm());
+    addButton.buttonDiv('Build New Vendor');
   }
 
   vendorData.getVendorsWithAssignees()
     .then((vendorsArr) => {
       let domString = `
-      <div class="form-check unassigned-box">
-        <input class="form-check-input" type="checkbox" value="" id="unattended-vendors">
-        <label class="form-check-label" for="unattended-vendors">
+      <div class="custom-control custom-switch">
+      <input class="custom-control-input" type="checkbox" value="" id="unattended-vendors">
+      <label class="custom-control-label" for="unattended-vendors">
           See Unattended Vendors
         </label>
       </div>
