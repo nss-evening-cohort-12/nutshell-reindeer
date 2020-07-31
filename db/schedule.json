@@ -1,0 +1,22 @@
+{
+  "sched1": {
+    "staffId": "staff1",
+    "day": "Tuesday"
+  },
+  "sched2": {
+    "staffId": "staff5",
+    "day": "Friday"
+  },
+  "sched3": {
+    "staffId": "staff7",
+    "day": "Thursday"
+  },
+  "sched4": {
+    "staffId": "staff8",
+    "day": "Tuesday"
+  },
+  "sched5": {
+    "staffId": "staff14",
+    "day": "Monday"
+  }
+}

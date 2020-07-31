@@ -5,5 +5,6 @@
   "vendors": "somethingGoHere",
   "rides": "somethingGoHere",
   "equipment": "somethingGoHere",
-  "monkeyLog": "monkeyLog"
+  "monkeyLog": "monkeyLog",
+  "schedule": "schedule"
 }
