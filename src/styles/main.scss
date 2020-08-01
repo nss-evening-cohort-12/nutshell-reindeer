@@ -3,13 +3,22 @@
 @import "./styles";
 @import "./navBar.scss";
 @import "../javascripts/components/consoleHeader/consoleHeader.scss";
+@import "./cardStyling.scss";
+
+@font-face {
+  font-family: 'JPFont';
+  src: url('../assets/fonts/JurassicPark-BL48.woff') format('woff');
+}
 
 html {
   min-height: 100%;
+  width: 100%;
 }
 
 body {
   background: linear-gradient(rgba(52,185,72,1), rgba(39,96,47,1));
+  font-family: 'JPFont', Fallback, sans-serif;
+  letter-spacing: 1.5px;
 }
 
 .addButtonDiv {
@@ -33,4 +42,10 @@ body {
 
 .hide-assigned {
   display: none;
+}
+
+.custom-switch {
+  font-size: 2em;
+  display: flex;
+  align-items: center;
 }
