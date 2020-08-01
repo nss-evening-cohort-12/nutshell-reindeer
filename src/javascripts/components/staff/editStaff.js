@@ -7,6 +7,13 @@ const cancelEdit = () => {
   $('#addForm').addClass('hide');
 };
 
+const changeAvatar = () => {
+  console.warn('CLICKED AND CALLED');
+  const newUrl = staffList.avatarGenerator();
+  const domString = `<img src="${newUrl}" class="w-100" id="new-avatar-chooser" data-url="${newUrl}">`;
+  utils.printToDom('#chosen-new-avatar', domString);
+};
+
 const editStaffDomStringBuilder = (collectionId, staffObj) => {
   const domString = `    
   <div class="modal" id="editStaffModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -37,9 +44,13 @@ const editStaffDomStringBuilder = (collectionId, staffObj) => {
         </div>
 
         <div class="form-group">
-            <label for="editStaffImgUrl">Image URL</label>
-            <input type="text" class="form-control" name="editStaffImgUrl" value="${staffObj.imgUrl}">
-        </div>
+            <label>Profile Pic</label>
+            <div class="text-center text-secondary">Click to select another image</div>
+            <div id="chosen-new-avatar">
+              <img src="${staffObj.imgUrl}" class="w-100" id="new-avatar-chooser" data-url="${staffObj.imgUrl}">
+            </div>
+          </div>
+
         <div class="form-group">
             <label for="editStaffActive">Currently Active?</label>
             <input type="checkbox" name="isActive" checked>
@@ -55,6 +66,7 @@ const editStaffDomStringBuilder = (collectionId, staffObj) => {
   </div>
 </div>
     `;
+  $('body').on('click', '#new-avatar-chooser', changeAvatar);
   return domString;
 };
 
@@ -65,7 +77,7 @@ const editStaff = (e) => {
   const tempEditedStaff = {
     name: e.target.elements.editStaffName.value,
     title: e.target.elements.editStaffTitle.value,
-    imgUrl: e.target.elements.editStaffImgUrl.value,
+    imgUrl: $('#new-avatar-chooser')[0].dataset.url,
     isActive: e.target.elements.isActive.checked,
     assignedTo: e.target.elements.assignedTo.value,
     assignmentCategory: e.target.elements.assignmentCategory.value,
