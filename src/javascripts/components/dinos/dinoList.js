@@ -10,7 +10,7 @@ const addDinoForm = () => {
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">New Dino</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Add New Dinosaur</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -18,13 +18,21 @@ const addDinoForm = () => {
         <div class="modal-body">
           <form id="dinoAddForm" class="px-4 py-3">
             <div class="form-group">
-              <label for="addDinoName">Dinosaur Name</label>
+              <label for="addDinoName">Name</label>
               <input type="text" class="form-control" name="addDinoName">
             </div>
+
             <div class="form-group">
-              <label for="addDinoType">Dinosaur Type</label>
-              <input type="text" class="form-control" name="addDinoType">
-            </div>
+            <label for="addDinoType">Type</label>
+            <select name="addDinoType" id="addDinoType" class="form-control start-blank">
+              <option value="Diplodocus">Diplodocus</option>
+              <option value="Pterodactyl">Pterodactyl</option>
+              <option value="Stegosaurus">Stegosaurus</option>
+              <option value="Triceratops">Triceratops</option>
+              <option value="Tyrannosaurus Rex">Tyrannosaurus Rex</option>
+            </select>
+          </div>
+
             <div class="form-group">
               <label for="addDinoImgUrl">Dinosaur Image URL</label>
               <input type="url" class="form-control" name="addDinoImgUrl">
@@ -94,8 +102,8 @@ const displayDinos = () => {
         <div class="card align-items-center m-3" style="width: 18rem;" id="${dino.id}">
           <img src="${dino.dinoImgUrl}" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">Dinosaur Name: ${dino.name}</h5>
-            <p class="card-text">Dinosaur Type: ${dino.dinoType}</p>
+            <h5 class="card-title">${dino.name}</h5>
+            <p class="card-text text-secondary">${dino.type}</p>
             <p class="card-text">Current Handlers: 
             ${handlers}</p>`;
         if (checkUser.checkUser()) {
@@ -119,10 +127,8 @@ const addDino = (e) => {
 
   const tempDinoObj = {
     name: e.target.elements.addDinoName.value,
-    dinoType: e.target.elements.addDinoType.value,
+    type: e.target.elements.addDinoType.value,
     dinoImgUrl: e.target.elements.addDinoImgUrl.value,
-    dinoSize: e.target.elements.addDinoSize.value,
-    rideOperational: true,
   };
   dinoData.addDino(tempDinoObj).then(() => {
     $('#addDinoModal').modal('hide');
