@@ -12,31 +12,34 @@ const staffSelections = () => {
     .then((staff) => {
       dinoData.getDinosWithHandlers()
         .then((dinos) => {
-          dinos.forEach((dino) => {
-            if (dino.assignees.length <= 1) {
-              domString += `
+          const found = dinos.find((oneDino) => oneDino.assignees.length <= 1);
+          if (found !== undefined) {
+            dinos.forEach((dino) => {
+              if (dino.assignees.length <= 1) {
+                domString += `
                 <div class="dino-section">
                   <p class="handler"><span class="dino-name">${dino.name}</span> needs ${dino.assignees.length === 0 ? '<b>2</b> more handlers' : '<b>1</b> more handler'}</p>
                   <div class="update-area">
                     <select name="update-dino-handler" id="update-dino-handler" class="form-control ${dino.id}" data-dino-to-change=${dino.id}>`;
 
-              staff.forEach((person) => {
-                if (person.assignedTo === '' && person.isActive) {
-                  domString += `<option id="${person.id}">${!person.name ? 'Park Employee' : person.name}</option>`;
-                }
-              });
+                staff.forEach((person) => {
+                  if (person.assignedTo === '' && person.isActive) {
+                    domString += `<option id="${person.id}">${!person.name ? 'Park Employee' : person.name}</option>`;
+                  }
+                });
 
-              domString += `
+                domString += `
                     </select>
                   </div>
                 </div>
               `;
-            }
-          });
-          utils.printToDom('#dino-modal', domString);
-          dinos.forEach((dino) => {
-            $(`.${dino.id}`).prop('selectedIndex', -1);
-          });
+              }
+            });
+            utils.printToDom('#dino-modal', domString);
+            dinos.forEach((dino) => {
+              $(`.${dino.id}`).prop('selectedIndex', -1);
+            });
+          } else { utils.clearModal(); }
         });
     })
     .catch((err) => console.error(err));
@@ -57,10 +60,7 @@ const updateDinoHandlers = (e) => {
 
                   jobsData.assignNewJob(staffId, department, job)
                     .then(() => {
-                      const found = dinos.find((oneDino) => oneDino.assignees.length <= 1);
-                      if (found !== undefined) {
-                        staffSelections();
-                      }
+                      staffSelections();
                     });
                 }
               });
