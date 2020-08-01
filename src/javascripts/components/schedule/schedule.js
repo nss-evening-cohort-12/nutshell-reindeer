@@ -2,8 +2,10 @@ import './schedule.scss';
 import schedules from '../../helpers/data/scheduleData';
 import staff from '../../helpers/data/staffData';
 import utils from '../../helpers/utils';
+import consoleHeader from '../consoleHeader/consoleHeader';
 
 const printSchedule = () => {
+  consoleHeader.headerBuilder('Schedule');
   schedules.getSchedule()
     .then((allSched) => {
       staff.getStaff()

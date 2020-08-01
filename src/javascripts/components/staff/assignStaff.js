@@ -2,6 +2,7 @@ import utils from '../../helpers/utils';
 import staffData from '../../helpers/data/staffData';
 import jobsData from '../../helpers/data/jobsData';
 import staffList from './staffList';
+import checkDino from '../dinos/checkDino';
 
 const assignmentMenu = (employee, allJobs) => {
   const populateJobMenu = (e) => {
@@ -102,6 +103,7 @@ const assignSelectedJob = (e) => {
   jobsData.assignNewJob(staffId, department, job)
     .then(() => {
       staffList.displayStaff();
+      checkDino.checkDinoHandlers();
     })
     .catch((err) => console.error(err));
 };

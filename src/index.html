@@ -6,8 +6,50 @@
   <title>Jurassic World</title>
 </head>
 <body>
-  <nav class="navbar navbar-expand navbar-light">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">    <img class="logo" id="logo" src="./assets/images/jurrasicLogo.png" alt="Jurassic World" >
+    <div id="sounds"></div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li id="dinosaurs" class="nav-item .active">
+          Dinosaurs
+        </li>
+        <li id="staff" class="nav-item">
+          Staff
+        </li>
+        <li id="equipment" class="nav-item">
+         Equipment
+        </li>
+        <li id="rides" class="nav-item">
+          Rides
+        </li>
+        <li id="vendors" class="nav-item">
+          Vendors
+        </li>
+        <li id="schedule" class="nav-item">
+          Schedule
+        </li>      
+      </ul>
+      <div class="navbar-nav navbar-right">
+        <div class="logButton">
+          
+        </div>        
+      </div>
+      
+    </div>
+  </nav>
+
+  <!-- <nav class="navbar navbar-expand-md navbar-light">
     <img class="logo" src="./assets/images/jurrasicLogo.png" alt="Jurassic World" >
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a id="dinosaurs"class="nav-item nav-link" href="#">Dinosaurs<span class="sr-only">(current)</span></a>
@@ -23,7 +65,9 @@
         </div>        
       </div>
     </div>
-  </nav>
+  </nav> -->
+
+  
   <div id="toast1"></div>
   <div id="collectionName" class="text-center"></div>
     <div id="addButtonDiv" class="addButtonDiv hide-assigned">
@@ -33,9 +77,11 @@
   <div id="addForm"></div>
   <div id="editForm"></div>
   
+    <div id="check-dino"></div>
     <div id="toastDiv"></div>
     <div id="displayCards"></div>
     <div id="chaosMonkey"></div>
+    
 </body>
 </html>
 

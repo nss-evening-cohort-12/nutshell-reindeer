@@ -29,6 +29,12 @@ const convertFirebaseCollection = (data) => {
 
 const getActive = () => $('.navbar-nav .active').attr('id');
 
+const clearModal = () => {
+  $('#check-dino-modal').modal('hide');
+  $('body').removeClass('modal-open');
+  $('.modal-backdrop').remove();
+};
+
 export default {
   printToDom,
   convertFirebaseCollection,
@@ -36,4 +42,5 @@ export default {
   randomNum,
   setState,
   getState,
+  clearModal,
 };
