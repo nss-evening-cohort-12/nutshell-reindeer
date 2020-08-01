@@ -1,0 +1,50 @@
+#scheduledCards {
+  width: 100%;
+}
+
+.daysOfWeek {
+  width: 15rem;
+  height: 20rem;
+}
+
+.should-scroll { 
+  overflow: scroll;
+  height: 15rem;
+  margin: 1rem;
+}
+
+.dragItem {
+  .card-body {
+    height: 5rem;
+    padding: 0;
+  }
+  img {
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+  }
+}
+
+.child-elements {
+  pointer-events: none;
+}
+
+.scheduled {
+  position: relative;
+  background-color: white;
+  border-radius: 5px;
+  padding: 0;
+  h4 {
+    margin: 1rem;
+  }
+}
+
+#unscheduled {
+  position: relative;
+  background-color: white;
+  border-radius: 5px;
+  padding: 0;
+  h4 {
+    margin: 1rem;
+  }
+}

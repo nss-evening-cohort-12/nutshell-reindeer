@@ -12,6 +12,8 @@ import dinoList from '../dinos/dinoList';
 import staffList from '../staff/staffList';
 import rideList from '../rides/rideList';
 import vendorList from '../vendors/vendorList';
+import schedule from '../schedule/schedule';
+import equipList from '../equipment/equipList';
 
 let chaosCounter = 0;
 
@@ -33,14 +35,16 @@ const callStateReprint = (selectedState) => {
   switch (selectedState) {
     case 'dinos': return dinoList.displayDinos();
     case 'staff': return staffList.displayStaff();
+    case 'equipment': return equipList.displayEquipCollection();
     case 'rides': return rideList.displayRides();
     case 'vendors': return vendorList.displayVendors();
+    case 'schedules': return schedule.printSchedule();
     default: return console.error('no current state');
   }
 };
 
 const runChaos = (msg) => {
-  $('body').addClass('flash'); // trigger lightning flass
+  $('body').addClass('flash'); // trigger lightning flash
   setTimeout(() => $('body').removeClass('flash'), 600); // remove flash class after 600ms
   setTimeout(() => $('#chaosMonkey').html(angryMonkey), 600); // 2s animation after fade in monkey animation
   setTimeout(() => $('#chaosMonkey').html(paintSplat(`${msg}`)).delay(2000).fadeOut(1000), 3000);

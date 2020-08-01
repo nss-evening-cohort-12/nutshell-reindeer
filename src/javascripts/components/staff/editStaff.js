@@ -13,7 +13,7 @@ const editStaffDomStringBuilder = (collectionId, staffObj) => {
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Update Staff</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Update Staff Member</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -21,14 +21,13 @@ const editStaffDomStringBuilder = (collectionId, staffObj) => {
       <div class="modal-body">
 
         <form class="edit-staff m-5 editStaffForm">
-        <h2>Edit Staff</h2>
         <div class="form-group">
-            <label for="editStaffName">Name:</label>
+            <label for="editStaffName">Name</label>
             <input type="text" class="form-control" id="editStaffName" value="${staffObj.name}">
         </div>
 
         <div class="form-group">
-          <label for="editStaffTitle">Title</label>
+          <label for="editStaffTitle">Position</label>
           <select name="editStaffTitle" id="editStaffTitle" class="form-control">
             <option value="Dino Handler" ${staffObj.title === 'Dino Handler' ? ' selected' : ''}>Dino Handler</option>
             <option value="Ride Attendant" ${staffObj.title === 'Ride Attendant' ? ' selected' : ''}>Ride Attendant</option>
@@ -49,8 +48,6 @@ const editStaffDomStringBuilder = (collectionId, staffObj) => {
         <input type="hidden" class="form-control" name="assignedTo" value="${staffObj.assignedTo}">
         <input type="hidden" class="form-control" name="assignmentCategory" value="${staffObj.assignmentCategory}">
         <button type="submit" class="btn btn-primary" name="submitEdit">Update</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
         </form>
 
         </div>
