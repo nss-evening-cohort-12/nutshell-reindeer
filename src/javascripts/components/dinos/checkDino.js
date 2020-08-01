@@ -1,9 +1,10 @@
 import dinoData from '../../helpers/data/dinoData';
 import utils from '../../helpers/utils';
-
-import './dinoCards.scss';
 import staffData from '../../helpers/data/staffData';
 import jobsData from '../../helpers/data/jobsData';
+import './dinoCards.scss';
+
+// Checks staff selections that still need to be updated and clears modal if nothing is found
 
 const staffSelections = () => {
   let domString = '';
@@ -45,6 +46,8 @@ const staffSelections = () => {
     .catch((err) => console.error(err));
 };
 
+// Updates the assignment data for Staff
+
 const updateDinoHandlers = (e) => {
   staffData.getStaff()
     .then((staff) => {
@@ -71,6 +74,8 @@ const updateDinoHandlers = (e) => {
     .catch((err) => console.error(err));
 };
 
+// Displays the modal
+
 const runDinoModal = () => {
   const domString = `
     <div class="modal check-dino-modal" id="check-dino-modal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="check-dino-label" aria-hidden="true">
@@ -95,6 +100,8 @@ const runDinoModal = () => {
   $('#check-dino-modal').modal('show');
   $('body').on('click', '#close-dino-modal', utils.clearModal);
 };
+
+// Checks Dino handlers to see if the modal needs to be run
 
 const checkDinoHandlers = () => {
   dinoData.getDinosWithHandlers()
