@@ -3,10 +3,12 @@
 
 .collectionHeader {
   border-radius: 1em;
-  padding: .3em;
+  padding: .1em;
   border: 1.5px solid black;
   width: 6em;
   justify-self: center;
+  color: whitesmoke;
+  font-size: 4.5em;
   background: linear-gradient($primary-color, $primary-hover)
 }
 #collectionName {
