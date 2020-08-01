@@ -4,7 +4,7 @@ import 'firebase/auth';
 import utils from '../../helpers/utils';
 
 const logoutButton = () => {
-  const domString = '<button class="nav-link btn btn-danger mr-sm-2" id="logoutButton"><i class="fas fa-sign-out-alt"></i>  Logout</button>';
+  const domString = '<button class="nav-link btn btn-danger" id="logoutButton"><i class="fas fa-sign-out-alt pr-1 mt-2"></i>  Logout</button>';
   utils.printToDom('.logButton', domString);
 };
 
@@ -14,7 +14,7 @@ const signMeIn = () => {
 };
 
 const loginButton = () => {
-  const domString = '<button id="google-auth" class="btn btn-warning"><i class="fab fa-google-plus"></i> Log in</button>';
+  const domString = '<button id="google-auth" class="btn btn-warning"><i class="fab fa-google-plus pr-1 mt-2"></i> Log in</button>';
   utils.printToDom('.logButton', domString);
 };
 
