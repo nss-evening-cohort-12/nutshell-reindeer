@@ -16,6 +16,7 @@ import assignStaff from '../components/staff/assignStaff';
 // import causeChaos from '../components/chaosMonkey/causeChaos';
 import equipTest from '../components/equipment/equipAlert';
 import LogButtons from '../components/auth/auth';
+import checkDino from '../components/dinos/checkDino';
 import schedule from '../components/schedule/schedule';
 
 // const showAddForm = () => {
@@ -75,6 +76,7 @@ const clickEvents = () => {
       $('body').on('submit', '.editDinoForm', editDino.editDino);
       $('body').on('click', '.editDino', editDino.dinoEditForm);
       $('body').on('click', '#unattended-dinos', dinoList.unattendedDinos);
+      $('body').on('change', '#update-dino-handler', checkDino.updateDinoHandlers);
       //----------------------
 
       // -----> Equipment <-----

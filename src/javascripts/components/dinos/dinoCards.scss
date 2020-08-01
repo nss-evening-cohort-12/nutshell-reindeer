@@ -1,0 +1,55 @@
+.card-img-top {
+  height: 150px;
+}
+
+.check-dino-modal {
+
+  .modal-body {
+    padding: 0;
+    margin: 0;
+  }
+
+  h4 {
+    text-align: center;
+    color: red;
+  }
+
+  .dinos {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 1fr 1fr;
+
+    text-align: center;
+    margin: 25px 0px;
+  }
+
+  .handler {
+    align-self: flex-end;
+    text-align: center;
+
+    font-size: 1.2em;
+  }
+
+  .update-area {
+    align-self: flex-start;
+    justify-content: center;
+
+    display: flex;
+  }
+
+  .dino-section {
+    border: 3px #FFCC00 solid;
+    border-radius: .8em;
+
+    margin: 15px 40px;
+    padding: 20px;
+  }
+
+  .dino-name {
+    font-size: 1.1em;
+
+    background-color: #FFCC00;
+    padding: 8px;
+    border-radius: .2em;
+  }
+}
