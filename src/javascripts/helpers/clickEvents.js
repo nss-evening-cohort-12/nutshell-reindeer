@@ -33,7 +33,7 @@ const showModal = () => {
 
 const navBarEventListeners = () => {
   $('.navbar-nav a').click((event) => {
-    $('.navbar-nav .active').removeClass('active');
+    // $('.navbar-nav .active').removeClass('active');
     $(event.target).addClass('active');
   });
   $('#dinosaurs').click(() => {
