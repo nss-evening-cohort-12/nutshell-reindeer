@@ -8,7 +8,6 @@ const cancelEdit = () => {
 };
 
 const changeAvatar = () => {
-  console.warn('CLICKED AND CALLED');
   const newUrl = staffList.avatarGenerator();
   const domString = `<img src="${newUrl}" class="w-100" id="new-avatar-chooser" data-url="${newUrl}">`;
   utils.printToDom('#chosen-new-avatar', domString);
@@ -101,7 +100,7 @@ const staffEditForm = (e) => {
       // $('#addForm').removeClass('hide');
       $('#addButtonDiv').removeClass('d-none');
     })
-    .catch((err) => console.warn(err));
+    .catch((err) => console.error(err));
 };
 
 export default { editStaff, staffEditForm, cancelEdit };

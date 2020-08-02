@@ -173,7 +173,6 @@ const displayStaff = () => {
 
 const addStaff = (e) => {
   e.preventDefault();
-  console.warn($('#avatar-chooser')[0].dataset.url);
   const newStaff = {
     name: e.target.elements.addStaffName.value,
     title: e.target.elements.addStaffTitle.value,

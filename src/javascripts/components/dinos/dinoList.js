@@ -3,6 +3,7 @@ import utils from '../../helpers/utils';
 import checkUser from '../../helpers/data/checkUser';
 import header from '../consoleHeader/consoleHeader';
 import addButton from '../addButton/addButton';
+import './dinoCards.scss';
 
 const avatarGenerator = (dinoType) => {
   let max = 0;
@@ -28,7 +29,6 @@ const avatarGenerator = (dinoType) => {
   const randomNum = Math.floor((Math.random() * max) + 1);
   // eslint-disable-next-line global-require, import/no-dynamic-require
   const randomPic = require(`../../../assets/images/dinos/${dinoType}/${randomNum}.png`);
-  console.warn(randomPic.default);
   return randomPic.default;
 };
 
@@ -64,8 +64,9 @@ const addDinoForm = () => {
               <option value="Diplodocus">Diplodocus</option>
               <option value="Pterodactyl">Pterodactyl</option>
               <option value="Stegosaurus">Stegosaurus</option>
-              <option value="Triceratops">Triceratops</option>
               <option value="T-Rex">T-Rex</option>
+              <option value="Triceratops">Triceratops</option>
+
             </select>
           </div>
 
@@ -134,8 +135,8 @@ const displayDinos = () => {
           });
         }
         domString += `
-        <div class="card align-items-center m-3" style="width: 18rem;" id="${dino.id}">
-          <img src="${dino.imgUrl}" class="card-img-top" alt="...">
+        <div class="card align-items-center m-3 dino-card" id="${dino.id}">
+          <img src="${dino.imgUrl}" class="dino-card-photo">
           <div class="card-body">
             <h5 class="card-title">${dino.name}</h5>
             <p class="card-text text-secondary">${dino.type}</p>
@@ -172,5 +173,5 @@ const addDino = (e) => {
 };
 
 export default {
-  displayDinos, addDino, unattendedDinos, changeAvatar,
+  displayDinos, addDino, unattendedDinos, changeAvatar, avatarGenerator,
 };
