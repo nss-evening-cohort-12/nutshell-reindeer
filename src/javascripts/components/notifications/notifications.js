@@ -3,6 +3,11 @@ import './notifications.scss';
 import rideData from '../../helpers/data/rideData';
 import equipData from '../../helpers/data/equipData';
 
+const updateStatus = (e) => {
+  e.preventDefault();
+  console.warn(e.target);
+};
+
 const buildNotification = (number) => {
   let domString = '';
   rideData.getAllRides()
@@ -20,26 +25,28 @@ const buildNotification = (number) => {
           rides.forEach((ride) => {
             if (ride.isOperational === false) {
               domString += `
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="${ride.id}">
-                  <label class="form-check-label" for="${ride.id}">
+                <div class="custom-control custom-switch">
+                  <input class="custom-control-input" type="checkbox" value="" id="${ride.id}">
+                  <label class="custom-control-label" for="${ride.id}">
                     ${ride.name}
                   </label>
                 </div>
               `;
             }
+            $('body').on('click', `#${ride.id}`, updateStatus);
           });
           equip.forEach((oneEquip) => {
             if (oneEquip.isOperational === false) {
               domString += `
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="${oneEquip.id}">
-                  <label class="form-check-label" for="${oneEquip.id}">
+                <div class="custom-control custom-switch">
+                  <input class="custom-control-input" type="checkbox" value="" id="${oneEquip.id}">
+                  <label class="custom-control-label" for="${oneEquip.id}">
                     ${oneEquip.name}
                   </label>
                 </div>
               `;
             }
+            $('body').on('click', `#${oneEquip.id}`, updateStatus);
           });
 
           domString += `

@@ -12,11 +12,11 @@ import notifications from './components/notifications/notifications';
 
 const init = () => {
   firebase.initializeApp(apiKeys.firebaseConfig);
+  notifications.getIssues();
   authData.checkLoginStatus();
   clickEvents.clickEvents();
   causeChaos.randomChaos(); // sets the chaos counter to random number on init
   checkDino.checkDinoHandlers(); // checks for dinos with 1 or less than 1 handler
-  notifications.getIssues();
 };
 
 init();

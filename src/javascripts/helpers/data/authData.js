@@ -17,6 +17,7 @@ const checkLoginStatus = () => {
       $('#addButtonDiv').addClass('hide');
       utils.printToDom('#collectionName', '');
       utils.printToDom('#displayCards', '');
+      utils.printToDom('#notifications', '');
     }
   });
 };
