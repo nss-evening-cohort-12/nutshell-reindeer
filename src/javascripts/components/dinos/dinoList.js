@@ -126,22 +126,33 @@ const displayDinos = () => {
         </div>
         <div class="cardCollection"> 
       `;
+
       dinosArr.forEach((dino) => {
-        let handlers = 'unassigned';
+        let assignees = '';
         if (dino.assignees.length > 0) {
-          handlers = '';
-          dino.assignees.forEach((assignee) => {
-            handlers += `<p>${assignee.name}`;
-          });
+          for (let i = 0; i < dino.assignees.length; i += 1) {
+            assignees += dino.assignees[i].name;
+            if (i + 1 < dino.assignees.length && dino.assignees.length !== 1) assignees += ', ';
+          }
         }
+
+        // dinosArr.forEach((dino) => {
+        //   let handlers = 'unassigned';
+        //   if (dino.assignees.length > 0) {
+        //     handlers = '';
+        //     dino.assignees.forEach((assignee) => {
+        //       handlers += `<p>${assignee.name}`;
+        //     });
+        //   }
+
         domString += `
         <div class="card align-items-center m-3 dino-card" id="${dino.id}">
           <img src="${dino.imgUrl}" class="dino-card-photo">
           <div class="card-body">
             <h5 class="card-title">${dino.name}</h5>
             <p class="card-text text-secondary">${dino.type}</p>
-            <p class="card-text">Current Handlers: 
-            ${handlers}</p>`;
+            <p class="card-text">${assignees ? `Current Handlers: 
+            <br>${assignees}` : '<span class="text-danger" style="line-height: 3;"><i class="fas fa-exclamation-triangle"></i> currently unassigned</span>'}</p>`;
         if (checkUser.checkUser()) {
           domString += `<div class="links card-text text-center">
                 <a href="#" class="editDino mr-4 card-link "><i class="fas fa-pen"></i></a>
@@ -154,6 +165,7 @@ const displayDinos = () => {
       domString += '</div>';
       utils.printToDom('#displayCards', domString);
       utils.setState('dinos');
+      $('.start-blank').prop('selectedIndex', -1);
     })
     .catch((err) => console.error(err));
 };
