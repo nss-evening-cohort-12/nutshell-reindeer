@@ -11,15 +11,15 @@ import checkDino from './components/dinos/checkDino';
 import doorOpenAnim from './components/doorOpenAnim/doorOpenAnim';
 
 const init = () => {
+  doorOpenAnim.openDoors();
+  $(window).on('load', () => {
+    $('body').addClass('all-loaded');
+  });
   firebase.initializeApp(apiKeys.firebaseConfig);
   authData.checkLoginStatus();
   clickEvents.clickEvents();
   causeChaos.randomChaos(); // sets the chaos counter to random number on init
   checkDino.checkDinoHandlers(); // checks for dinos with 1 or less than 1 handler
-  $(window).on('load', () => {
-    $('body').addClass('all-loaded');
-  });
-  doorOpenAnim.openDoors();
 };
 
 init();
