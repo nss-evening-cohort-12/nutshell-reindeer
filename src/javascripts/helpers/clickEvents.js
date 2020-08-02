@@ -80,6 +80,7 @@ const clickEvents = () => {
       $('body').on('click', '.editDino', editDino.dinoEditForm);
       $('body').on('click', '#unattended-dinos', dinoList.unattendedDinos);
       $('body').on('change', '#update-dino-handler', checkDino.updateDinoHandlers);
+      $('body').on('change', '#addDinoType', dinoList.changeAvatar);
       //----------------------
 
       // -----> Equipment <-----
