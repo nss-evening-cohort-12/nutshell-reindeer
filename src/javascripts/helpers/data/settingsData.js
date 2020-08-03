@@ -1,12 +1,17 @@
-// import firebase from 'firebase/app';
-// import 'firebase/auth';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import axios from 'axios';
 import apiKeys from '../apiKeys.json';
 import utils from '../utils';
 
 const baseUrl = apiKeys.firebaseConfig.databaseURL;
 
-const updateSettings = (userId, settingsObj) => axios.put(`${baseUrl}/settings/${userId}.json`, settingsObj);
+const updateSettings = (settingsObj) => {
+  const user = firebase.auth().currentUser;
+  axios.patch(`${baseUrl}/settings/${user.uid}.json`, settingsObj);
+};
+
+const initializeSettings = (userId, settingsObj) => axios.put(`${baseUrl}/settings/${userId}.json`, settingsObj);
 
 const getUserSettings = (userId) => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/settings.json?orderBy="$key"&equalTo="${userId}"`)
@@ -20,7 +25,7 @@ const getUserSettings = (userId) => new Promise((resolve, reject) => {
           sound: true,
           chaosMonkey: false,
         };
-        updateSettings(userId, defaultSettings);
+        initializeSettings(userId, defaultSettings);
         resolve(defaultSettings);
       }
       resolve(utils.convertFirebaseCollection(response.data)[0]);
@@ -47,4 +52,4 @@ const getUserSettings = (userId) => new Promise((resolve, reject) => {
 //     .catch((err) => reject(err));
 // });
 
-export default { getUserSettings };
+export default { getUserSettings, updateSettings };

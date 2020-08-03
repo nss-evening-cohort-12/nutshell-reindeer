@@ -5,7 +5,6 @@ import './settings.scss';
 const applySettings = (settings) => {
   console.warn('calling settings', settings);
   if (settings.sound) {
-    console.warn('turn the sound on');
     $('.nav-item').addClass('nav-sound');
     $('#logo').addClass('nav-sound');
   } else if (settings.sound === false) {
@@ -14,9 +13,13 @@ const applySettings = (settings) => {
   }
   if (settings.animation) {
     console.warn('turn the automation on');
+  } else if (settings.animation === false) {
+    console.warn('turn animation off');
   }
   if (settings.chaosMonkey) {
     console.warn('turn the chaos monkey on');
+  } else if (settings.chaosMonkey === false) {
+    console.warn('turn the chaos monkey off');
   }
 };
 
@@ -29,6 +32,7 @@ const updateSettings = (e) => {
     [key]: value,
   };
   applySettings(settingChange);
+  settingsData.updateSettings(settingChange);
 };
 
 const settingsMenu = (user) => {
@@ -52,7 +56,7 @@ const settingsMenu = (user) => {
           <input type="checkbox" id="monkey-switch" class="settings-switch" name="monkey-switch" data-key="chaosMonkey" value="chaosMonkey"${settings.chaosMonkey ? ' checked' : ''}>
           <label for="monkey-switch">Chaos Monkey</label><br>
           <div class="dropdown-divider"></div>
-          <span class="dropdown-item" href="#">Log Out</span>
+          <div class="dropdown-item logButton" href="#"><span id="logoutButton">Log Out</span></div>
         </div>
       </div>`;
       utils.printToDom('#settings', domString);

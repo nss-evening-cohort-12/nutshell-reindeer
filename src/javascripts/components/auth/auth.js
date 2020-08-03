@@ -3,10 +3,10 @@ import 'firebase/auth';
 
 import utils from '../../helpers/utils';
 
-const logoutButton = () => {
-  const domString = '<button class="nav-link btn btn-danger mr-sm-2" id="logoutButton"><i class="fas fa-sign-out-alt"></i>  Logout</button>';
-  utils.printToDom('.logButton', domString);
-};
+// const logoutButton = () => {
+//   const domString = '<button class="nav-link btn btn-danger mr-sm-2" id="logoutButton"><i class="fas fa-sign-out-alt"></i>  Logout</button>';
+//   utils.printToDom('.logButton', domString);
+// };
 
 const signMeIn = () => {
   const googleProvider = new firebase.auth.GoogleAuthProvider();
@@ -29,6 +29,6 @@ export default {
   logoutEvent,
   loginButton,
   getUser,
-  logoutButton,
+  // logoutButton,
   signMeIn,
 };

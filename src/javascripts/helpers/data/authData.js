@@ -1,6 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import LogButtons from '../../components/auth/auth';
+import auth from '../../components/auth/auth';
 
 import utils from '../utils';
 import settings from '../../components/settings/settings';
@@ -15,13 +15,13 @@ const getCurrentUserId = () => {
 const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
+      settings.settingsMenu(user);
       utils.printToDom('#displayCards', '');
       $('#addButtonDiv').removeClass('hide');
-      LogButtons.logoutButton();
-      settings.settingsMenu(user);
+      // auth.logoutButton();
       // window.setInterval(chaosMonkey.bringChaosMonkey, 25000);
     } else {
-      LogButtons.loginButton();
+      auth.loginButton();
       $('#addButtonDiv').addClass('hide');
       utils.printToDom('#collectionName', '');
       utils.printToDom('#displayCards', '');
