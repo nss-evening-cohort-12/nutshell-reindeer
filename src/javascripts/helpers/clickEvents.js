@@ -19,6 +19,7 @@ import LogButtons from '../components/auth/auth';
 import checkDino from '../components/dinos/checkDino';
 import schedule from '../components/schedule/schedule';
 import sounds from '../components/soundEffects/soundEffects';
+import notifications from '../components/notifications/notifications';
 
 // const showAddForm = () => {
 //   $('#addForm').removeClass('hide');
@@ -91,6 +92,7 @@ const clickEvents = () => {
       $('body').on('click', '.deleteEquip', deleteEquipment.deleteEquip);
       $('body').on('click', '.assignEquipOption', editEquip.assignEquipment);
       $('body').on('click', '#unattended-equip', equipList.unattendedEquip);
+      $('body').on('click', '#fixIssues', notifications.updateStatus);
 
       //----------------------
 
