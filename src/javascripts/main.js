@@ -2,6 +2,7 @@ import firebase from 'firebase/app';
 import apiKeys from './helpers/apiKeys.json';
 
 import authData from './helpers/data/authData';
+import settings from './components/settings/settings';
 
 import '../styles/main.scss';
 import 'bootstrap';
@@ -15,6 +16,7 @@ const init = () => {
   firebase.initializeApp(apiKeys.firebaseConfig);
   authData.checkLoginStatus();
   clickEvents.clickEvents();
+  settings.settingsMenu();
   causeChaos.randomChaos(); // sets the chaos counter to random number on init
   checkDino.checkDinoHandlers(); // checks for dinos with 1 or less than 1 handler
 };

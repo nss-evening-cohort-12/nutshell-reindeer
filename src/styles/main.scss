@@ -21,9 +21,13 @@ body {
      top center / 100vw auto /* position / size */
      no-repeat                /* repeat */
      #16191e;                     /* color */
-  font-family: 'JPFont', Fallback, sans-serif;
+  // font-family: 'JPFont', Fallback, sans-serif;
   letter-spacing: 1.5px;
   position: relative;
+}
+
+.header-font {
+  font-family: 'JPFont', Fallback, sans-serif;
 }
 
 body.all-loaded {
