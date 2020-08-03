@@ -20,6 +20,7 @@ import checkDino from '../components/dinos/checkDino';
 import schedule from '../components/schedule/schedule';
 import sounds from '../components/soundEffects/soundEffects';
 import doorOpenAnim from '../components/doorOpenAnim/doorOpenAnim';
+import settings from '../components/settings/settings';
 
 // const showAddForm = () => {
 //   $('#addForm').removeClass('hide');
@@ -56,6 +57,7 @@ const navBarEventListeners = () => {
   $('#schedule').click(() => {
     schedule.printSchedule();
   });
+  $('body').on('click', '.settings-switch', settings.updateSettings);
 };
 
 const clickEvents = () => {

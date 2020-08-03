@@ -5,8 +5,30 @@ import './settings.scss';
 const applySettings = (settings) => {
   console.warn('calling settings', settings);
   if (settings.sound) {
+    console.warn('turn the sound on');
     $('.nav-item').addClass('nav-sound');
-  } else $('.nav-item').removeClass('hide-assigned');
+    $('#logo').addClass('nav-sound');
+  } else if (settings.sound === false) {
+    $('.nav-item').removeClass('nav-sound');
+    $('#logo').removeClass('nav-sound');
+  }
+  if (settings.animation) {
+    console.warn('turn the automation on');
+  }
+  if (settings.chaosMonkey) {
+    console.warn('turn the chaos monkey on');
+  }
+};
+
+const updateSettings = (e) => {
+  // const value = $(`#${e.target.id}`).checked;
+  const value = e.target.checked;
+  const { key } = e.target.dataset;
+  // console.warn(key, value);
+  const settingChange = {
+    [key]: value,
+  };
+  applySettings(settingChange);
 };
 
 const settingsMenu = (user) => {
@@ -23,11 +45,11 @@ const settingsMenu = (user) => {
         <div class="dropdown-menu p-4" id="settings-dropdown" aria-labelledby="dropdownMenuButton">
           <h6><i class="fas fa-user"></i> ${user.displayName}</h6>
           <div class="dropdown-divider mb-3"></div>
-          <input type="checkbox" id="sound-switch" name="sound-switch" value="sound"${settings.sound ? ' checked' : ''}>
+          <input type="checkbox" id="sound-switch" class="settings-switch" name="sound-switch" data-key="sound" value="sound"${settings.sound ? ' checked' : ''}>
           <label for="sound-switch">Sound</label><br>
-          <input type="checkbox" id="animation-switch" name="animation-switch" value="animation"${settings.animation ? ' checked' : ''}>
+          <input type="checkbox" id="animation-switch" class="settings-switch" name="animation-switch" data-key="animation" value="animation"${settings.animation ? ' checked' : ''}>
           <label for="animation-switch">Animation</label><br>
-          <input type="checkbox" id="monkey-switch" name="monkey-switch" value="chaosMonkey"${settings.chaosMonkey ? ' checked' : ''}>
+          <input type="checkbox" id="monkey-switch" class="settings-switch" name="monkey-switch" data-key="chaosMonkey" value="chaosMonkey"${settings.chaosMonkey ? ' checked' : ''}>
           <label for="monkey-switch">Chaos Monkey</label><br>
           <div class="dropdown-divider"></div>
           <span class="dropdown-item" href="#">Log Out</span>
@@ -39,4 +61,4 @@ const settingsMenu = (user) => {
     .catch((err) => console.error(err));
 };
 
-export default { settingsMenu };
+export default { settingsMenu, updateSettings };
