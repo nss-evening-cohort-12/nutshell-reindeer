@@ -6,6 +6,7 @@ import redLight from '../../../assets/images/red-light2.png';
 import yellowLight from '../../../assets/images/yellow-light2.png';
 import baydooropen from '../../../assets/sounds/baydooropen.mp3';
 import './doorOpenAnim.scss';
+import frontPageConsole from '../frontPageConsole/frontPageConsole';
 
 const openDoors = () => {
   const domString = `<img src="${yellowLight}" id="redlight" class="opendoors">
@@ -21,6 +22,7 @@ const animOpenDoor = () => {
   if ($('#openDoor').length) {
     $('.opendoors').css('animation-play-state', 'running');
     $('#bayDoorSound').get(0).play();
+    frontPageConsole.printConsole();
     setTimeout(() => {
       $('#openDoor').remove();
     }, 5000);
