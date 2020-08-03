@@ -1,0 +1,134 @@
+#frontConsoleCont {
+  width: 100%;
+  position: relative;
+}
+
+#screen {
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 40vw;
+}
+
+#mic {
+  position: absolute;
+  display: block;
+  top: 10vw;
+  left: 20vw;
+  width: 10vw;
+}
+
+#keypad {
+  position: absolute;
+  display: block;
+  top: 23vw;
+  left: 20vw;
+  width: 10vw;
+}
+
+#speaker {
+  position: absolute;
+  display: block;
+  top: 16vw;
+  right: 19vw;
+  width: 10vw;
+}
+
+#pipe {
+  position: absolute;
+  display: block;
+  top: -2.8vw;
+  left: 40vw;
+  width: 2.5vw;
+}
+
+#pipe2 {
+  position: absolute;
+  display: block;
+  top: -2.8vw;
+  left: 60vw;
+  width: 2.5vw;
+}
+
+.typewriter {
+  position: absolute;
+  top: 15vw;
+  left: 48vw;
+  transform: translate(-50%, 0);
+  text-align: left;
+}
+
+.typewriter h1 {
+  font-size: 1rem;
+  width: 0;
+  color: #fff;
+  font-family: monospace;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  // border: none;
+  // border-right: 1em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 3.5s steps(30, end) 4s forwards,
+    blink-caret .5s step-end 4s 10;
+}
+
+.typewriter2 {
+  position: absolute;
+  top: 18vw;
+  left: 50%;
+  transform: translate(-50%, 0);
+  text-align: left;
+}
+
+.typewriter2 h1 {
+  font-size: 1rem;
+  width: 0;
+  color: #fff;
+  font-family: monospace;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  // border: none;
+  // border-right: 1em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 3.5s steps(30, end) 9s forwards,
+    blink-caret .5s step-end 9s 8;
+}
+
+.typewriter3 {
+  position: absolute;
+  top: 21vw;
+  left: 42.8vw;
+  transform: translate(-50%, 0);
+  text-align: left;
+}
+
+.typewriter3 h1 {
+  font-size: 1rem;
+  width: 0;
+  color: #fff;
+  font-family: monospace;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  // border: none;
+  // border-right: 1em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 3.5s steps(30, end) 15s forwards,
+    blink-caret .5s step-end 15s infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-right: 1em solid transparent;}
+  50% { border-right: 1em solid orange; }
+}

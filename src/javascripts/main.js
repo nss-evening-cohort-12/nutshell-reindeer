@@ -8,8 +8,10 @@ import 'bootstrap';
 import clickEvents from './helpers/clickEvents';
 import causeChaos from './components/chaosMonkey/causeChaos';
 import checkDino from './components/dinos/checkDino';
+import doorOpenAnim from './components/doorOpenAnim/doorOpenAnim';
 
 const init = () => {
+  doorOpenAnim.openDoors();
   firebase.initializeApp(apiKeys.firebaseConfig);
   authData.checkLoginStatus();
   clickEvents.clickEvents();

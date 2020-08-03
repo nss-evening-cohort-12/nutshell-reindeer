@@ -19,6 +19,7 @@ import LogButtons from '../components/auth/auth';
 import checkDino from '../components/dinos/checkDino';
 import schedule from '../components/schedule/schedule';
 import sounds from '../components/soundEffects/soundEffects';
+import doorOpenAnim from '../components/doorOpenAnim/doorOpenAnim';
 
 // const showAddForm = () => {
 //   $('#addForm').removeClass('hide');
@@ -64,6 +65,7 @@ const clickEvents = () => {
     $('body').on('click', '#logoutButton', LogButtons.logoutEvent);
     $('body').on('click', '#logo', sounds.whichTheme);
     $('body').on('click', '.nav-item', sounds.whichTheme);
+    $('body').on('click', '#openDoor', doorOpenAnim.animOpenDoor);
     if (user) {
       // -----> Project <-----
       // $('body').click(() => { // Comment this out to turn off chaos monkey temporarily
