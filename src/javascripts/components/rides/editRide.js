@@ -75,7 +75,7 @@ const rideEditForm = (e) => {
       $('#editRideModal').modal();
       $('#addButtonDiv').removeClass('d-none');
     })
-    .catch((err) => console.warn(err));
+    .catch((err) => console.error(err));
 };
 
 export default { editRide, rideEditForm };
