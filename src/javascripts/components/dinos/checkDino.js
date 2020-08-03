@@ -2,7 +2,7 @@ import dinoData from '../../helpers/data/dinoData';
 import utils from '../../helpers/utils';
 import staffData from '../../helpers/data/staffData';
 import jobsData from '../../helpers/data/jobsData';
-import './dinoCards.scss';
+// import './dinoCards.scss';
 
 // Checks staff selections that still need to be updated and clears modal if nothing is found
 
