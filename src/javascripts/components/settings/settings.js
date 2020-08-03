@@ -36,7 +36,9 @@ const updateSettings = (e) => {
 };
 
 const settingsMenu = (user) => {
-  settingsData.getUserSettings(user.uid)
+  let userId = '';
+  if (user) { userId = user.id; }
+  settingsData.getUserSettings(userId)
     .then((response) => {
       if (response) { console.warn('settings'); }
       const settings = response;
@@ -47,7 +49,7 @@ const settingsMenu = (user) => {
           <i class="fas fa-cog"></i>
         </span>
         <div class="dropdown-menu p-4" id="settings-dropdown" aria-labelledby="dropdownMenuButton">
-          <h6><i class="fas fa-user"></i> ${user.displayName}</h6>
+          <h6 id="user-name">${user ? `<i class="fas fa-user"></i> ${user.displayName}` : ''}</h6>
           <div class="dropdown-divider mb-3"></div>
           <input type="checkbox" id="sound-switch" class="settings-switch" name="sound-switch" data-key="sound" value="sound"${settings.sound ? ' checked' : ''}>
           <label for="sound-switch">Sound</label><br>
@@ -56,7 +58,9 @@ const settingsMenu = (user) => {
           <input type="checkbox" id="monkey-switch" class="settings-switch" name="monkey-switch" data-key="chaosMonkey" value="chaosMonkey"${settings.chaosMonkey ? ' checked' : ''}>
           <label for="monkey-switch">Chaos Monkey</label><br>
           <div class="dropdown-divider"></div>
-          <div class="dropdown-item logButton" href="#"><span id="logoutButton">Log Out</span></div>
+          <div class="dropdown-item logButton" href="#">
+          ${user ? '<span id="logoutButton">Log Out</span>' : '<span id="google-auth">Log in</span>'}
+          </div>
         </div>
       </div>`;
       utils.printToDom('#settings', domString);

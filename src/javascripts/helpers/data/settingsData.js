@@ -14,23 +14,27 @@ const updateSettings = (settingsObj) => {
 const initializeSettings = (userId, settingsObj) => axios.put(`${baseUrl}/settings/${userId}.json`, settingsObj);
 
 const getUserSettings = (userId) => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/settings.json?orderBy="$key"&equalTo="${userId}"`)
-    .then((response) => {
-      console.warn(utils.convertFirebaseCollection(response.data));
-      if (!response.data) {
-        console.warn('no data');
-        const defaultSettings = {
-          uid: userId,
-          animation: true,
-          sound: true,
-          chaosMonkey: false,
-        };
-        initializeSettings(userId, defaultSettings);
-        resolve(defaultSettings);
-      }
-      resolve(utils.convertFirebaseCollection(response.data)[0]);
-    })
-    .catch((err) => reject(err));
+  const defaultSettings = {
+    uid: userId,
+    animation: true,
+    sound: true,
+    chaosMonkey: false,
+  };
+  if (userId) {
+    axios.get(`${baseUrl}/settings.json?orderBy="$key"&equalTo="${userId}"`)
+      .then((response) => {
+        console.warn(utils.convertFirebaseCollection(response.data));
+        if (!response.data) {
+          console.warn('no data');
+          initializeSettings(userId, defaultSettings);
+          resolve(defaultSettings);
+        }
+        resolve(utils.convertFirebaseCollection(response.data)[0]);
+      })
+      .catch((err) => reject(err));
+  } else {
+    resolve(defaultSettings);
+  }
 });
 
 // const getUserSettings = (userId) => new Promise((resolve, reject) => {

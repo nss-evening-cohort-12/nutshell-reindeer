@@ -13,9 +13,15 @@ const signMeIn = () => {
   firebase.auth().signInWithPopup(googleProvider);
 };
 
+// const loginButton = () => {
+//   const domString = '<button id="google-auth" class="btn btn-warning"><i class="fab fa-google-plus"></i> Log in</button>';
+//   utils.printToDom('.logButton', domString);
+// };
+
 const loginButton = () => {
-  const domString = '<button id="google-auth" class="btn btn-warning"><i class="fab fa-google-plus"></i> Log in</button>';
+  const domString = '<span id="google-auth">Log in</span>';
   utils.printToDom('.logButton', domString);
+  utils.printToDom('#user-name', '');
 };
 
 const logoutEvent = () => {

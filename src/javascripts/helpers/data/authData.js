@@ -21,10 +21,11 @@ const checkLoginStatus = () => {
       // auth.logoutButton();
       // window.setInterval(chaosMonkey.bringChaosMonkey, 25000);
     } else {
-      auth.loginButton();
+      settings.settingsMenu();
       $('#addButtonDiv').addClass('hide');
       utils.printToDom('#collectionName', '');
       utils.printToDom('#displayCards', '');
+      auth.loginButton();
     }
   });
 };
