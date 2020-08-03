@@ -12,9 +12,6 @@ import doorOpenAnim from './components/doorOpenAnim/doorOpenAnim';
 
 const init = () => {
   doorOpenAnim.openDoors();
-  $(window).on('load', () => {
-    $('body').addClass('all-loaded');
-  });
   firebase.initializeApp(apiKeys.firebaseConfig);
   authData.checkLoginStatus();
   clickEvents.clickEvents();

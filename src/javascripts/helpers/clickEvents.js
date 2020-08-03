@@ -19,6 +19,7 @@ import LogButtons from '../components/auth/auth';
 import checkDino from '../components/dinos/checkDino';
 import schedule from '../components/schedule/schedule';
 import sounds from '../components/soundEffects/soundEffects';
+import doorOpenAnim from '../components/doorOpenAnim/doorOpenAnim';
 
 // const showAddForm = () => {
 //   $('#addForm').removeClass('hide');
@@ -70,6 +71,7 @@ const clickEvents = () => {
       //  causeChaos.decreaseChaos();
       // });
       // $('body').on('click', '#addButton', showAddForm);
+      $('body').on('click', '#openDoor', doorOpenAnim.animOpenDoor);
       $('body').on('click', '#addButton', showModal);
       $('body').on('click', '#testButton', equipTest.equipCheck);
       //----------------------

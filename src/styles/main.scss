@@ -24,7 +24,6 @@ body {
   font-family: 'JPFont', Fallback, sans-serif;
   letter-spacing: 1.5px;
   position: relative;
-  opacity: 0;
 }
 
 body.all-loaded {
@@ -58,4 +57,8 @@ body.all-loaded {
   font-size: 2em;
   display: flex;
   align-items: center;
+}
+
+.card {
+  background-image: url('../assets/images/card-bg.png');
 }

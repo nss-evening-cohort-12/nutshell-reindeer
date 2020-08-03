@@ -32,7 +32,8 @@
   z-index: 5;
   width: 100vw;
   height: 100vh;
-  animation: top 3s linear 3s 1 forwards;
+  animation: top 3s linear 0s 1 forwards;
+  animation-play-state: paused;
 }
 
 #bottom-door {
@@ -40,7 +41,8 @@
   z-index: 5;
   width: 100vw;
   height: 100vh;
-  animation: bottom 3s linear 3s 1 forwards;
+  animation: bottom 3s linear 0s 1 forwards;
+  animation-play-state: paused;
 }
 
 #openDoor {
@@ -49,7 +51,9 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  animation: fly-in 3s linear 6s 1 forwards;
+  animation: fly-in 3s linear 3s 1 forwards;
+  animation-play-state: paused;
+  transform-origin: center center;
 }
 
 @keyframes top {
