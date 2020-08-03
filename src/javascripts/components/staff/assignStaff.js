@@ -81,8 +81,9 @@ const assignStaff = (e) => {
             <button type="button" class="close cancel-job-assignment" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           </div>
           <h5 class="card-title">${employee.name}</h5>
-          <h6 class="card-text text-secondary">Current assignment:</h6>
-          <p class="card-text text-secondary">${staffList.jobIcon(employee.assignmentCategory)} ${allJobs[employee.assignmentCategory][employee.assignedTo].name}</p>
+
+          ${employee.assignedTo ? `<h6 class="card-text text-secondary">Current assignment:</h6>
+          <p class="card-text text-secondary">${staffList.jobIcon(employee.assignmentCategory)} ${allJobs[employee.assignmentCategory][employee.assignedTo].name}</p>` : ''}
           <h6 class="card-text text-secondary" id="new-assignment-header">New assignment:</h6>
           <div id="new-assignment"></div>
           <div id="top-assignment-menu"></div>
