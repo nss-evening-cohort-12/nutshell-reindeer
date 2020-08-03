@@ -2,7 +2,6 @@ let state; // variable that holds the current console state
 
 const setState = (newState) => { // sets the console state
   state = newState;
-  console.error('current state: ', state);
 };
 
 const getState = () => state;

@@ -3,7 +3,7 @@ import settingsData from '../../helpers/data/settingsData';
 import './settings.scss';
 
 const applySettings = (settings) => {
-  console.warn('calling settings', settings);
+  // console.warn('calling settings', settings);
   if (settings.sound) {
     $('.nav-item').addClass('nav-sound');
     $('#logo').addClass('nav-sound');
@@ -36,11 +36,12 @@ const updateSettings = (e) => {
 };
 
 const settingsMenu = (user) => {
+  console.warn('user sent to settings', user);
   let userId = '';
-  if (user) { userId = user.id; }
+  if (user) { userId = user.uid; }
   settingsData.getUserSettings(userId)
     .then((response) => {
-      if (response) { console.warn('settings'); }
+      if (response) { console.warn('settings', response); }
       const settings = response;
       // console.warn(settings);
       const domString = `  
