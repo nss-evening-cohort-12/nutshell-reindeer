@@ -63,8 +63,8 @@ const clickEvents = () => {
   firebase.auth().onAuthStateChanged((user) => {
     $('body').on('click', '#google-auth', LogButtons.signMeIn);
     $('body').on('click', '#logoutButton', LogButtons.logoutEvent);
-    $('body').on('click', '#logo', sounds.whichTheme);
-    $('body').on('click', '.nav-item', sounds.whichTheme);
+    $('body').on('click', '.logo-sound', sounds.whichTheme);
+    $('body').on('click', '.nav-sound', sounds.whichTheme);
     if (user) {
       // -----> Project <-----
       // $('body').click(() => { // Comment this out to turn off chaos monkey temporarily

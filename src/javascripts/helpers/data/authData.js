@@ -3,7 +3,14 @@ import 'firebase/auth';
 import LogButtons from '../../components/auth/auth';
 
 import utils from '../utils';
+import settings from '../../components/settings/settings';
+
 // import chaosMonkey from '../../components/chaosMonkey/toast';
+
+const getCurrentUserId = () => {
+  const user = firebase.auth().currentUser;
+  return user.uid;
+};
 
 const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
@@ -11,6 +18,7 @@ const checkLoginStatus = () => {
       utils.printToDom('#displayCards', '');
       $('#addButtonDiv').removeClass('hide');
       LogButtons.logoutButton();
+      settings.settingsMenu(user);
       // window.setInterval(chaosMonkey.bringChaosMonkey, 25000);
     } else {
       LogButtons.loginButton();
@@ -33,4 +41,6 @@ const secureButtons = () => {
 // returns either user info or null (can use like true or false)
 const checkAuth = () => firebase.auth().currentUser;
 
-export default { checkLoginStatus, secureButtons, checkAuth };
+export default {
+  checkLoginStatus, secureButtons, checkAuth, getCurrentUserId,
+};
