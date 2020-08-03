@@ -9,8 +9,10 @@ import clickEvents from './helpers/clickEvents';
 import causeChaos from './components/chaosMonkey/causeChaos';
 import checkDino from './components/dinos/checkDino';
 import notifications from './components/notifications/notifications';
+import doorOpenAnim from './components/doorOpenAnim/doorOpenAnim';
 
 const init = () => {
+  doorOpenAnim.openDoors();
   firebase.initializeApp(apiKeys.firebaseConfig);
   notifications.getIssues();
   authData.checkLoginStatus();

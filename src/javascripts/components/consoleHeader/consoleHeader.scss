@@ -2,15 +2,18 @@
 
 
 .collectionHeader {
-  border-radius: 1em;
-  padding: .1em;
-  border: 1.5px solid black;
-  width: 6em;
+  width: 389px;
+  height: 82px;
   justify-self: center;
-  color: whitesmoke;
-  font-size: 4.5em;
-  background: linear-gradient($primary-color, $primary-hover)
+  background-image: url('/src/assets/images/name-plate.png');
+  background-repeat: no-repeat;
+  background-size: 389px;
+  line-height: 82px;
+  text-align: center;
+  text-shadow: -1px -1px 0 #95A6B1;
+  color: #363A3B;
 }
+
 #collectionName {
   display: flex;
   justify-content: center !important;
