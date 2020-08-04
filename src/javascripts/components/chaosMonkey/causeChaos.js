@@ -24,11 +24,11 @@ const randomChaos = () => {
 };
 
 const angryMonkey = () => `<img src="${lightrays}" id="light-rays">
-                          ${($('#sounds-switch').is(':checked')) ? `<audio src="${screech}" autoplay></audio>` : ''}
+                          ${($('#sound-switch').is(':checked')) ? `<audio src="${screech}" autoplay></audio>` : ''}
                           <img src="${monkey}" id="angry-monkey">`;
 
 const paintSplat = (text) => `<img src="${splat}" id="paint-splash">
-                              ${($('#sounds-switch').is(':checked')) ? `<audio src="${splatSound}" autoplay></audio>` : ''}
+                              ${($('#sound-switch').is(':checked')) ? `<audio src="${splatSound}" autoplay></audio>` : ''}
                               <div id="splat-text"><h1>${text}</h1></div>`;
 
 const callStateReprint = (selectedState) => {
