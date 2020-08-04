@@ -82,6 +82,7 @@ const clickEvents = () => {
       $('body').on('submit', '#dinoAddForm', dinoList.addDino);
       $('body').on('submit', '.editDinoForm', editDino.editDino);
       $('body').on('click', '.editDino', editDino.dinoEditForm);
+      $('body').on('click', '.deleteDino', dinoList.deleteDino);
       $('body').on('click', '#unattended-dinos', dinoList.unattendedDinos);
       $('body').on('change', '#update-dino-handler', checkDino.updateDinoHandlers);
       $('body').on('change', '#addDinoType', dinoList.changeAvatar);

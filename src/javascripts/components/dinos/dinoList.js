@@ -1,4 +1,5 @@
 import dinoData from '../../helpers/data/dinoData';
+import staffData from '../../helpers/data/staffData';
 import utils from '../../helpers/utils';
 import checkUser from '../../helpers/data/checkUser';
 import header from '../consoleHeader/consoleHeader';
@@ -156,7 +157,7 @@ const displayDinos = () => {
         if (checkUser.checkUser()) {
           domString += `<div class="links card-text text-center">
                 <a href="#" class="editDino mr-4 card-link "><i class="fas fa-pen"></i></a>
-                <a href="#" class="deleteDino ml-4 card-link"><i class="far fa-trash-alt"></i></a>
+                <a href="#"  class="deleteDino ml-4 card-link"><i class="far fa-trash-alt"></i></a>
             </div>`;
         }
         domString += `</div>
@@ -184,6 +185,41 @@ const addDino = (e) => {
   });
 };
 
+const deleteDino = (e) => {
+  const dinoId = e.target.closest('.card').id;
+  dinoData.deleteDinosById(dinoId)
+    .then(() => {
+      staffData.getStaff(dinoId)
+        .then((allStaff) => {
+          const tempstaffArr = [];
+          allStaff.forEach((staff) => {
+            if (staff.assignedTo === dinoId) {
+              tempstaffArr.push(staff);
+            }
+          });
+          const employeesToUpdate = [];
+          tempstaffArr.forEach((staff) => {
+            const editedStaff = staff;
+            const editedAssignedTo = { assignedTo: '' };
+            const editedAssignmentCategory = { assignmentCategory: '' };
+
+            employeesToUpdate.push(staffData.patchStaff(editedStaff.id, editedAssignedTo));
+            employeesToUpdate.push(staffData.patchStaff(editedStaff.id, editedAssignmentCategory));
+          });
+          Promise.all(employeesToUpdate)
+            .then(() => {
+              displayDinos();
+            });
+        });
+    })
+    .catch((err) => console.error(err));
+};
+
 export default {
-  displayDinos, addDino, unattendedDinos, changeAvatar, avatarGenerator,
+  displayDinos,
+  addDino,
+  unattendedDinos,
+  changeAvatar,
+  avatarGenerator,
+  deleteDino,
 };
