@@ -9,11 +9,11 @@ import clickEvents from './helpers/clickEvents';
 import causeChaos from './components/chaosMonkey/causeChaos';
 import checkDino from './components/dinos/checkDino';
 import notifications from './components/notifications/notifications';
-import doorOpenAnim from './components/doorOpenAnim/doorOpenAnim';
 import chaosLog from './components/chaosMonkey/chaosLog';
+import doorOpenAnim from './components/doorOpenAnim/doorOpenAnim'; // ANIMATION
 
 const init = () => {
-  doorOpenAnim.openDoors();
+  doorOpenAnim.openDoors(); // ANIMATION
   firebase.initializeApp(apiKeys.firebaseConfig);
   notifications.buildNotification();
   authData.checkLoginStatus();

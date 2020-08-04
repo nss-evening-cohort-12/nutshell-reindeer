@@ -20,7 +20,7 @@ import checkDino from '../components/dinos/checkDino';
 import schedule from '../components/schedule/schedule';
 import sounds from '../components/soundEffects/soundEffects';
 import notifications from '../components/notifications/notifications';
-import doorOpenAnim from '../components/doorOpenAnim/doorOpenAnim';
+import doorOpenAnim from '../components/doorOpenAnim/doorOpenAnim'; // ANIMATION
 import settings from '../components/settings/settings';
 import frontPageConsole from '../components/frontPageConsole/frontPageConsole';
 import chaosLog from '../components/chaosMonkey/chaosLog';
@@ -70,8 +70,8 @@ const clickEvents = () => {
     $('body').on('click', '#google-auth', LogButtons.signMeIn);
     $('body').on('click', '#logoutButton', LogButtons.logoutEvent);
     $('body').on('click', '.nav-sound', sounds.whichTheme);
-    $('body').on('click', '#openDoor', doorOpenAnim.animOpenDoor);
     $('body').on('click', '#chaosIcon', chaosLog.animateLog);
+    $('body').on('click', '#openDoor', doorOpenAnim.animOpenDoor); // ANIMATION
     $('body').click(() => {
       if ($('#monkey-switch').is(':checked')) {
         causeChaos.decreaseChaos();
