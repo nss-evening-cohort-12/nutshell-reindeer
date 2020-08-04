@@ -1,40 +1,50 @@
 import utils from '../../helpers/utils';
-import './notifications.scss';
 import rideData from '../../helpers/data/rideData';
 import equipData from '../../helpers/data/equipData';
+import './notifications.scss';
 
-const updateStatus = (e) => {
+const updateStatus = (e) => new Promise((resolve, reject) => {
+  const formData = e.currentTarget.form;
+
+  rideData.getAllRides()
+    .then((rides) => {
+      equipData.getAllEquipment()
+        .then((equip) => {
+          for (let i = 0; i < formData.length; i += 1) {
+            if ($(formData[i]).is(':checked')) {
+              rides.forEach((ride) => {
+                if (formData[i].id === ride.id) {
+                  rideData.patchRide(ride.id, { isOperational: true });
+                }
+              });
+              equip.forEach((oneEquip) => {
+                if (formData[i].id === oneEquip.id) {
+                  equipData.patchEquipment(oneEquip.id, { isOperational: true });
+                }
+              });
+              resolve();
+            }
+          }
+        });
+    })
+    .catch((err) => reject(err));
+});
+
+const checkNotification = (e) => {
   e.preventDefault();
-  // const formData = e.currentTarget.form;
-  console.warn(e.target.closest('.dropdown').dataset.currentnumber);
 
-  // rideData.getAllRides()
-  //   .then((rides) => {
-  //     equipData.getAllEquipment()
-  //       .then((equip) => {
-  //         for (let i = 0; i < formData.length; i += 1) {
-  //           if ($(formData[i]).is(':checked')) {
-  //             rides.forEach((ride) => {
-  //               if (formData[i].id === ride.id) {
-  //                 rideData.patchRide(ride.id, { isOperational: true });
-  //               }
-  //             });
-  //             equip.forEach((oneEquip) => {
-  //               if (formData[i].id === oneEquip.id) {
-  //                 equipData.patchEquipment(oneEquip.id, { isOperational: true });
-  //               }
-  //             });
-  //           }
-  //         }
-  //       });
-  //     // eslint-disable-next-line no-use-before-define
-  //     buildNotification();
-  //   })
-  //   .catch((err) => console.error(err));
+  updateStatus(e)
+    .then(() => {
+      // eslint-disable-next-line no-use-before-define
+      buildNotification();
+    })
+    .catch((err) => console.error(err));
 };
 
-const buildNotification = (number) => {
+const buildNotification = () => {
   let domString = '';
+  let number = 0;
+
   rideData.getAllRides()
     .then((rides) => {
       equipData.getAllEquipment()
@@ -42,7 +52,7 @@ const buildNotification = (number) => {
           domString += `
           <div class="dropdown" data-currentNumber=${number}>
             <button type="button" class="btn btn-warning notifications dropdown-toggle" id="dropdownIssueButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Issues <span class="badge badge-light">${number}</span>
+            <i class="fas fa-exclamation-circle"></i> <span class="badge badge-light">${number}</span>
               <span class="sr-only">unread messages</span>
             </button>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownIssueButton">
@@ -50,6 +60,7 @@ const buildNotification = (number) => {
               <form>`;
           rides.forEach((ride) => {
             if (ride.isOperational === false) {
+              number += 1;
               domString += `
                 <div class="form-group">
                   <input class="form-check-input" type="checkbox" value="" id="${ride.id}">
@@ -62,6 +73,7 @@ const buildNotification = (number) => {
           });
           equip.forEach((oneEquip) => {
             if (oneEquip.isOperational === false) {
+              number += 1;
               domString += `
                 <div class="form-group">
                   <input class="form-check-input" type="checkbox" value="" id="${oneEquip.id}">
@@ -82,34 +94,35 @@ const buildNotification = (number) => {
           </div>
         `;
           utils.printToDom('#notifications', domString);
+          $('.badge').html(number);
         });
     })
     .catch((err) => console.error('Getting ride and equipment data did not work -> ', err));
 };
 
-const getIssues = () => {
-  let rideNumber = 0;
-  let equipNumber = 0;
+// const getIssues = () => {
+//   let number = 0;
 
-  rideData.getAllRides()
-    .then((rides) => {
-      equipData.getAllEquipment()
-        .then((equip) => {
-          rides.forEach((ride) => {
-            if (ride.isOperational === false) {
-              rideNumber += 1;
-            }
-          });
-          equip.forEach((oneEquip) => {
-            if (oneEquip.isOperational === false) {
-              equipNumber += 1;
-            }
-          });
-          const number = rideNumber + equipNumber;
-          buildNotification(number);
-        });
-    })
-    .catch((err) => console.error('Could not get ride and equipment data for issues -> ', err));
-};
+//   rideData.getAllRides()
+//     .then((rides) => {
+//       equipData.getAllEquipment()
+//         .then((equip) => {
+//           rides.forEach((ride) => {
+//             if (ride.isOperational === false) {
+//               number += 1;
+//             }
+//           });
+//           equip.forEach((oneEquip) => {
+//             if (oneEquip.isOperational === false) {
+//               number += 1;
+//             }
+//           });
+//           if (number > 0) {
+//             buildNotification(number);
+//           }
+//         });
+//     })
+//     .catch((err) => console.error('Could not get ride and equipment data for issues -> ', err));
+// };
 
-export default { getIssues, updateStatus };
+export default { buildNotification, checkNotification };

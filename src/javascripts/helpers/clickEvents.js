@@ -94,7 +94,7 @@ const clickEvents = () => {
       $('body').on('click', '.deleteEquip', deleteEquipment.deleteEquip);
       $('body').on('click', '.assignEquipOption', editEquip.assignEquipment);
       $('body').on('click', '#unattended-equip', equipList.unattendedEquip);
-      $('body').on('click', '#fixIssues', notifications.updateStatus);
+      $('body').on('click', '#fixIssues', notifications.checkNotification);
 
       //----------------------
 

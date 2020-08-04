@@ -14,7 +14,7 @@ import doorOpenAnim from './components/doorOpenAnim/doorOpenAnim';
 const init = () => {
   doorOpenAnim.openDoors();
   firebase.initializeApp(apiKeys.firebaseConfig);
-  notifications.getIssues();
+  notifications.buildNotification();
   authData.checkLoginStatus();
   clickEvents.clickEvents();
   causeChaos.randomChaos(); // sets the chaos counter to random number on init

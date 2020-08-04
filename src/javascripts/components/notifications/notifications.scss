@@ -1,5 +1,9 @@
 #notifications {
 
+  .dropdown-toggle::after {
+    display: none;
+  }
+
   .dropdown-menu,
   .dropdown-menu-right {
     margin: 0 !important;
@@ -51,15 +55,37 @@
 
   .btn-warning {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: .5em;
-    border-radius: 1em;
+    background-color: transparent !important;
+    border-color: transparent;
 
-    padding: 5px 15px 5px 15px;
-    margin-right: 15px;
+    padding: 0;
+    margin: 5px 15px 0px 0px;
+  }
+
+  .btn-warning:focus,
+  .btn-warning:active {
+    outline: none !important;
+    box-shadow: none;
+ }
+
+  .fa-exclamation-circle {
+    color: #fff;
+    font-size: 1.2em;
+  }
+
+  .badge {
+    position: absolute;
+    top: 5%;
+    right: 15%;
+
+    background-color: #dc3545;
+    color: #fff;
+    font-size: .5em;
   }
 
   .dropdown {
     font-family: Arial, Helvetica, sans-serif;
+    margin-right: 10px;
   }
 
   .dropdown-menu {
