@@ -20,6 +20,7 @@ import checkDino from '../components/dinos/checkDino';
 import schedule from '../components/schedule/schedule';
 import sounds from '../components/soundEffects/soundEffects';
 import doorOpenAnim from '../components/doorOpenAnim/doorOpenAnim';
+import settings from '../components/settings/settings';
 
 // const showAddForm = () => {
 //   $('#addForm').removeClass('hide');
@@ -56,6 +57,7 @@ const navBarEventListeners = () => {
   $('#schedule').click(() => {
     schedule.printSchedule();
   });
+  $('body').on('click', '.settings-switch', settings.updateSettings);
 };
 
 const clickEvents = () => {
@@ -63,8 +65,8 @@ const clickEvents = () => {
   firebase.auth().onAuthStateChanged((user) => {
     $('body').on('click', '#google-auth', LogButtons.signMeIn);
     $('body').on('click', '#logoutButton', LogButtons.logoutEvent);
-    $('body').on('click', '#logo', sounds.whichTheme);
-    $('body').on('click', '.nav-item', sounds.whichTheme);
+    // $('body').on('click', '.logo-sound', sounds.whichTheme);
+    $('body').on('click', '.nav-sound', sounds.whichTheme);
     $('body').on('click', '#openDoor', doorOpenAnim.animOpenDoor);
     if (user) {
       // -----> Project <-----

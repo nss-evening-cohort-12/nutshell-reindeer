@@ -3,19 +3,25 @@ import 'firebase/auth';
 
 import utils from '../../helpers/utils';
 
-const logoutButton = () => {
-  const domString = '<button class="nav-link btn btn-danger mr-sm-2" id="logoutButton"><i class="fas fa-sign-out-alt"></i>  Logout</button>';
-  utils.printToDom('.logButton', domString);
-};
+// const logoutButton = () => {
+//   const domString = '<button class="nav-link btn btn-danger mr-sm-2" id="logoutButton"><i class="fas fa-sign-out-alt"></i>  Logout</button>';
+//   utils.printToDom('.logButton', domString);
+// };
 
 const signMeIn = () => {
   const googleProvider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(googleProvider);
 };
 
+// const loginButton = () => {
+//   const domString = '<button id="google-auth" class="btn btn-warning"><i class="fab fa-google-plus"></i> Log in</button>';
+//   utils.printToDom('.logButton', domString);
+// };
+
 const loginButton = () => {
-  const domString = '<button id="google-auth" class="btn btn-warning"><i class="fab fa-google-plus"></i> Log in</button>';
+  const domString = '<span id="google-auth">Log in</span>';
   utils.printToDom('.logButton', domString);
+  utils.printToDom('#user-name', '');
 };
 
 const logoutEvent = () => {
@@ -29,6 +35,6 @@ export default {
   logoutEvent,
   loginButton,
   getUser,
-  logoutButton,
+  // logoutButton,
   signMeIn,
 };
