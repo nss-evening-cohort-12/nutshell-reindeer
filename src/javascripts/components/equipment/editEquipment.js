@@ -1,6 +1,7 @@
 import equipData from '../../helpers/data/equipData';
 import utils from '../../helpers/utils';
 import equipList from './equipList';
+import notifications from '../notifications/notifications';
 
 const assignEquipment = (e) => {
   const staffId = e.target.dataset.staffid;
@@ -90,6 +91,7 @@ const editEquipment = (e) => {
   equipData.updateEquipment(collectionId, tempEditedEquip)
     .then(() => {
       equipList.displayEquipCollection();
+      notifications.buildNotification();
     })
     .catch((err) => console.error(err));
 };

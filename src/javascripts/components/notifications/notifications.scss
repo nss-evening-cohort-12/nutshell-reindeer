@@ -10,13 +10,18 @@
     padding: 0 !important;
   }
 
+  h4 {
+    text-align: center;
+    font-size: 1.2em;
+    padding: 18px 10px 10px 10px;
+  }
+
   h5 {
-    border: 3px solid #5b5b5b;
+    border-bottom: 3px solid #5b5b5b;
     border-radius: .1em;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    background-color: #5b5b5b;
-    color: #fff;
+    color: #5b5b5b;
 
     margin-bottom: 15px;
     padding: 10px;
@@ -98,6 +103,7 @@
   }
 
   .fa-check {
-    font-size: .7em;
+    color: seagreen;
+    margin-left: 10px;
   }
 }

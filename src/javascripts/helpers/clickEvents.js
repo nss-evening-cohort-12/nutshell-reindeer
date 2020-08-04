@@ -13,14 +13,14 @@ import deleteEquipment from '../components/equipment/deleteEquipment';
 import editVendor from '../components/vendors/editVendor';
 import deleteVendor from '../components/vendors/deleteVendor';
 import assignStaff from '../components/staff/assignStaff';
-// import causeChaos from '../components/chaosMonkey/causeChaos';
+import causeChaos from '../components/chaosMonkey/causeChaos';
 import equipTest from '../components/equipment/equipAlert';
 import LogButtons from '../components/auth/auth';
 import checkDino from '../components/dinos/checkDino';
 import schedule from '../components/schedule/schedule';
 import sounds from '../components/soundEffects/soundEffects';
 import notifications from '../components/notifications/notifications';
-// import doorOpenAnim from '../components/doorOpenAnim/doorOpenAnim';
+import doorOpenAnim from '../components/doorOpenAnim/doorOpenAnim';
 
 // const showAddForm = () => {
 //   $('#addForm').removeClass('hide');
@@ -66,12 +66,12 @@ const clickEvents = () => {
     $('body').on('click', '#logoutButton', LogButtons.logoutEvent);
     $('body').on('click', '#logo', sounds.whichTheme);
     $('body').on('click', '.nav-item', sounds.whichTheme);
-    // $('body').on('click', '#openDoor', doorOpenAnim.animOpenDoor);
+    $('body').on('click', '#openDoor', doorOpenAnim.animOpenDoor);
     if (user) {
       // -----> Project <-----
-      // $('body').click(() => { // Comment this out to turn off chaos monkey temporarily
-      //  causeChaos.decreaseChaos();
-      // });
+      $('body').click(() => { // Comment this out to turn off chaos monkey temporarily
+        causeChaos.decreaseChaos();
+      });
       // $('body').on('click', '#addButton', showAddForm);
       $('body').on('click', '#addButton', showModal);
       $('body').on('click', '#testButton', equipTest.equipCheck);

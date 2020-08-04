@@ -33,7 +33,7 @@ const updateNotification = (e) => {
             });
         });
     })
-    .catch((err) => console.error(err));
+    .catch((err) => console.error('Updating the notifications did not work -> ', err));
 };
 
 const buildNotification = () => {
@@ -93,6 +93,7 @@ const buildNotification = () => {
             $('.badge').html(number);
           } else {
             $('.badge').html('');
+            $('.dropdown-menu').html('<h4>No Issues!<i class="fas fa-check"></i></h4>');
           }
         });
     })
