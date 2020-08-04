@@ -12,13 +12,14 @@ import notifications from './components/notifications/notifications';
 import doorOpenAnim from './components/doorOpenAnim/doorOpenAnim';
 
 const init = () => {
-  doorOpenAnim.openDoors();
+  // doorOpenAnim.openDoors();
   firebase.initializeApp(apiKeys.firebaseConfig);
   notifications.buildNotification();
   authData.checkLoginStatus();
   clickEvents.clickEvents();
   causeChaos.randomChaos(); // sets the chaos counter to random number on init
   checkDino.checkDinoHandlers(); // checks for dinos with 1 or less than 1 handler
+  doorOpenAnim.openDoors();
 };
 
 init();
