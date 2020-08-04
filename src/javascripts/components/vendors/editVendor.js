@@ -74,7 +74,7 @@ const vendorEditForm = (e) => {
       $('#editVendorModal').modal();
       $('#addButtonDiv').removeClass('d-none');
     })
-    .catch((err) => console.warn(err));
+    .catch((err) => console.error(err));
 };
 
 export default { editVendor, vendorEditForm, cancelEdit };

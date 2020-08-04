@@ -1,6 +1,7 @@
 import equipData from '../../helpers/data/equipData';
 import utils from '../../helpers/utils';
 import equipList from './equipList';
+import notifications from '../notifications/notifications';
 
 const assignEquipment = (e) => {
   const staffId = e.target.dataset.staffid;
@@ -90,6 +91,7 @@ const editEquipment = (e) => {
   equipData.updateEquipment(collectionId, tempEditedEquip)
     .then(() => {
       equipList.displayEquipCollection();
+      notifications.buildNotification();
     })
     .catch((err) => console.error(err));
 };
@@ -106,7 +108,7 @@ const equipmentEditForm = (e) => {
       $('#editEquipModal').modal();
       $('#addButtonDiv').removeClass('d-none');
     })
-    .catch((err) => console.warn(err));
+    .catch((err) => console.error(err));
 };
 
 export default {

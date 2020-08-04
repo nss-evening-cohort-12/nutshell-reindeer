@@ -1,0 +1,39 @@
+#chaosMonkeyLog {
+  position: absolute;
+  top: 8rem;
+  right: -25vw;
+}
+
+#chaosMonkeyLog h5 {
+  color: white;
+}
+
+#chaosItems {
+  font-size: 0.5rem;
+  width: 25vw;
+  height: 80vh;
+  overflow: scroll;
+}
+
+#chaosIcon {
+  font-size: 2.5rem;
+  color: white;
+}
+
+.chaosSlideOut {
+  animation: slideOut 1s linear 1 forwards;
+}
+
+.chaosSlideIn {
+  animation: slideIn 1s linear 1 forwards;
+}
+
+@keyframes slideOut {
+  0% { right: -25vw; }
+  100% { right: 1vw; }
+}
+
+@keyframes slideIn {
+  0% { right: 1vw; }
+  100% { right: -25vw; }
+}

@@ -116,28 +116,24 @@ const displayEquipCollection = () => {
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addEquipForm());
     $('.start-blank').prop('selectedIndex', -1);
-    addButton.buttonDiv('New Equipment');
+    addButton.buttonDiv('Add New Equipment');
   }
+  const filterButton = `
+      <div class="custom-control custom-switch">
+        <input class="custom-control-input" type="checkbox" value="" id="unattended-equip">
+        <label class="custom-control-label" for="unattended-equip">
+          Show Available Equipment
+        </label>
+      </div>
+      <div id="testButton" class="ml-4 custom-control"><i class="fas fa-power-off"></i> Test All Equipment</div>`;
+  utils.printToDom('#filterDiv', filterButton);
+
   staffData.getStaff()
     .then((staff) => {
       equipData.getAllEquipment()
         .then((equipCollectionArr) => {
           let domString = `<div>
-          <div class="custom-control custom-switch">
-              <input class="custom-control-input" type="checkbox" value="" id="unattended-equip">
-              <label class="custom-control-label" for="unattended-equip">
-                See Unattended Equipment
-              </label>
-            </div>
-            <div class="cardCollection"> 
-          <div class ="card equip-card align-items-center m-3" style="width: 18rem">
-            <div class="card-body">
-            <button id="testButton" type="button" class="btn btn-outline-info btn-large">
-        Test All Equipment
-      </button>
-            </div>
-          </div>
-           
+            <div class="cardCollection">            
           `;
           equipCollectionArr.forEach((equip) => {
             domString += `
@@ -175,6 +171,7 @@ const displayEquipCollection = () => {
 const addEquipment = (e) => {
   e.preventDefault();
   const tempEquipOjb = {
+    assignedTo: '',
     name: e.target.elements.name.value,
     type: e.target.elements.type.value,
     location: e.target.elements.location.value,

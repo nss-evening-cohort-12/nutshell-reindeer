@@ -2,7 +2,7 @@ import dinoData from '../../helpers/data/dinoData';
 import utils from '../../helpers/utils';
 import staffData from '../../helpers/data/staffData';
 import jobsData from '../../helpers/data/jobsData';
-import './dinoCards.scss';
+// import './dinoCards.scss';
 
 // Checks staff selections that still need to be updated and clears modal if nothing is found
 
@@ -83,9 +83,6 @@ const runDinoModal = () => {
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title" id="check-dino-label"><i class="fas fa-exclamation-triangle pr-2"></i> Dinos on the loose!</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true" id="close-dino-modal">&times;</span>
-            </button>
           </div>
           <div class="modal-body">
             <div class="dinos" id="dino-modal">
@@ -98,7 +95,6 @@ const runDinoModal = () => {
     `;
   utils.printToDom('#check-dino', domString);
   $('#check-dino-modal').modal('show');
-  $('body').on('click', '#close-dino-modal', utils.clearModal);
 };
 
 // Checks Dino handlers to see if the modal needs to be run

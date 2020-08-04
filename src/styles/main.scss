@@ -16,15 +16,28 @@ html {
 }
 
 body {
-  background: linear-gradient(rgba(52,185,72,1), rgba(39,96,47,1));
-  font-family: 'JPFont', Fallback, sans-serif;
+  background:
+     url('./../assets/images/background.png')    /* image */
+     top center / 100vw auto /* position / size */
+     no-repeat                /* repeat */
+     #16191e;                     /* color */
+  // font-family: 'JPFont', Fallback, sans-serif;
   letter-spacing: 1.5px;
+  overflow-x: hidden;
 }
 
-.addButtonDiv {
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 10em;}
+.header-font {
+  font-family: 'JPFont', Fallback, sans-serif;
+}
+
+body.all-loaded {
+  opacity: 1;
+}
+
+// .addButtonDiv {
+//   display: flex;
+//   justify-content: flex-end;
+//   margin-right: 10em;}
   
 .displayCards {
   display: flex;
@@ -45,7 +58,31 @@ body {
 }
 
 .custom-switch {
-  font-size: 2em;
-  display: flex;
-  align-items: center;
+  font-size: 1em;
+  // display: flex;
+  // align-items: center;
+}
+
+#filterDiv, #addButton {
+  // color: #FFC107
+  color: lightgrey;
+}
+
+.custom-control:hover, #addButton:hover {
+  color: #007bff;
+  cursor: pointer;
+  label {
+    cursor: pointer;
+  }
+  i {
+    color: white;
+  }
+};
+
+#filterDiv {
+  margin-left: 2rem;
+}
+
+#addButton {
+  margin-right: 2rem;
 }

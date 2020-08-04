@@ -5,17 +5,6 @@ import checkUser from '../../helpers/data/checkUser';
 import header from '../consoleHeader/consoleHeader';
 import addButton from '../addButton/addButton';
 
-const staffIcon = (staffMember) => {
-  let icon = '';
-  if (staffMember.isActive) {
-    // eslint-disable-next-line no-unused-expressions
-    staffMember.assignedTo ? icon = 'fas fa-user' : icon = 'far fa-user';
-  } else {
-    icon = 'fas fa-user-slash';
-  }
-  return `<i class="${icon} fa-5x text-secondary m-4"></i>`;
-};
-
 const jobIcon = (jobType) => {
   let icon = '';
   switch (jobType) {
@@ -37,7 +26,23 @@ const jobIcon = (jobType) => {
   return `<i class="${icon}"></i> `;
 };
 
+const avatarGenerator = () => {
+  const randomNum = Math.floor((Math.random() * 47) + 1);
+  let formattedNum = (`0${randomNum}`);
+  if (randomNum < 10) { formattedNum = `00${randomNum}`; }
+  // eslint-disable-next-line global-require, import/no-dynamic-require
+  const randomPic = require(`../../../assets/images/avatars/${formattedNum}.png`);
+  return randomPic.default;
+};
+
+const changeAvatar = () => {
+  const newUrl = avatarGenerator();
+  const domString = `<img src="${newUrl}" class="w-100" id="avatar-chooser" data-url="${newUrl}">`;
+  utils.printToDom('#chosen-avatar', domString);
+};
+
 const addStaffForm = () => {
+  const avatar = avatarGenerator();
   const domString = `
   <div class="modal" id="addStaffModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -50,39 +55,44 @@ const addStaffForm = () => {
       </div>
       <div class="modal-body">
 
-  <form id="staffAddForm" class="px-4 py-3">
-    <div class="form-group">
-      <label for="addStaffName">Name</label>
-      <input type="text" class="form-control" name="addStaffName">
-    </div>
-    <div class="form-group">
-      <label for="addStaffTitle">Position</label>
-      <select name="addStaffTitle" id="addStaffTitle" class="form-control start-blank">
-        <option value="Dino Handler">Dino Handler</option>
-        <option value="Ride Attendant">Ride Attendant</option>
-        <option value="Vendor Operator">Vendor Operator</option>
-        <option value="">(none)</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="addStaffImgUrl">Image URL</label>
-      <input type="url" class="form-control" name="addStaffImgUrl">
-    </div>
-    <button type="submit" class="btn btn-primary">Hire</button>
-  </form>
-  </div>
+        <form id="staffAddForm" class="px-4 py-3">
+          <div class="form-group">
+            <label for="addStaffName">Name</label>
+            <input type="text" class="form-control" name="addStaffName">
+          </div>
+          <div class="form-group">
+            <label for="addStaffTitle">Position</label>
+            <select name="addStaffTitle" id="addStaffTitle" class="form-control start-blank">
+              <option value="Dino Handler">Dino Handler</option>
+              <option value="Ride Attendant">Ride Attendant</option>
+              <option value="Vendor Operator">Vendor Operator</option>
+              <option value="">(none)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Profile Pic</label>
+            <div class="text-center text-secondary">Click to select another image</div>
+            <div id="chosen-avatar">
+              <img src="${avatar}" class="w-100" id="avatar-chooser" data-url="${avatar}">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Hire</button>
+        </form>
+
+      </div>
     </div>
   </div>
 </div>`;
+  $('body').on('click', '#avatar-chooser', changeAvatar);
   return domString;
 };
 
 const staffCard = (employee) => {
   let domString = `<div class="card staff-card align-items-center m-3${employee.isActive ? ' ' : ' inactive'}" id="${employee.id}">
-      ${staffIcon(employee)}
       <div class="card-body">
         <h5 class="card-title">${employee.name}</h5>
-        <p class="card-text text-secondary">${employee.title ? employee.title : 'Park Employee'}</p>`;
+        <p class="card-text text-secondary">${employee.title ? employee.title : 'Park Employee'}</p>
+        <img src="${employee.imgUrl}" class="employee-card-photo">`;
   if (employee.assignedTo === '') {
     domString += '<p class="card-text text-danger"><i class="fas fa-exclamation-triangle"></i> currently unassigned</p>';
   } else {
@@ -125,15 +135,17 @@ const displayStaff = () => {
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addStaffForm());
     $('.start-blank').prop('selectedIndex', -1);
-    addButton.buttonDiv('Hire New Staff');
+    addButton.buttonDiv('Add New Staff Member');
   }
+  const filterButton = `
+      <div class="custom-control custom-switch">
+        <input class="custom-control-input" type="checkbox" value="" id="unassigned-staff">
+        <label class="custom-control-label" for="unassigned-staff">
+          See Unassigned Staff
+        </label>
+      </div>`;
+  utils.printToDom('#filterDiv', filterButton);
   let domString = `
-    <div class="custom-control custom-switch">
-      <input class="custom-control-input" type="checkbox" value="" id="unassigned-staff">
-      <label class="custom-control-label" for="unassigned-staff">
-        See Unassigned Staff
-      </label>
-    </div>
     <div class="cardCollection"> 
   `;
   staffData.getStaffWithAssignments()
@@ -153,7 +165,7 @@ const addStaff = (e) => {
   const newStaff = {
     name: e.target.elements.addStaffName.value,
     title: e.target.elements.addStaffTitle.value,
-    imgUrl: e.target.elements.addStaffImgUrl.value,
+    imgUrl: $('#avatar-chooser')[0].dataset.url,
     isActive: true,
     assignedTo: '',
     assignmentCategory: '',
@@ -165,5 +177,5 @@ const addStaff = (e) => {
 };
 
 export default {
-  displayStaff, addStaff, unassignedStaff, jobIcon,
+  displayStaff, addStaff, unassignedStaff, jobIcon, avatarGenerator,
 };

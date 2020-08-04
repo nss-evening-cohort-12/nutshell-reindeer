@@ -4,6 +4,7 @@ import checkUser from '../../helpers/data/checkUser';
 import './rideList.scss';
 import header from '../consoleHeader/consoleHeader';
 import addButton from '../addButton/addButton';
+import staffData from '../../helpers/data/staffData';
 
 const rideIcon = (type) => {
   let icon = '';
@@ -80,21 +81,23 @@ const unattendedRides = (e) => {
 
 const displayRides = () => {
   header.headerBuilder('Rides');
-
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addRideForm());
     $('.start-blank').prop('selectedIndex', -1);
-    addButton.buttonDiv('Build New Ride');
+    addButton.buttonDiv('Add New Ride');
   }
-  rideData.getRidesWithAssignees()
-    .then((ridesArr) => {
-      let domString = `
+  const filterButton = `
         <div class="custom-control custom-switch">
           <input class="custom-control-input" type="checkbox" value="" id="unattended-rides">
           <label class="custom-control-label" for="unattended-rides">
-            See Unattended Rides
+            Show Unattended Rides
           </label>
         </div>
+  `;
+  utils.printToDom('#filterDiv', filterButton);
+  rideData.getRidesWithAssignees()
+    .then((ridesArr) => {
+      let domString = `
         <div class="cardCollection">
       `;
       ridesArr.forEach((ride) => {
@@ -149,7 +152,25 @@ const deleteRide = (e) => {
   const collectionId = e.target.closest('.card').id;
   rideData.deleteRideById(collectionId)
     .then(() => {
-      displayRides();
+      staffData.getStaff(collectionId)
+        .then((allStaff) => {
+          const employeesToUpdate = [];
+
+          allStaff.forEach((staff) => {
+            if (staff.assignedTo === collectionId) {
+              const editedStaff = staff;
+              const editedAssignedTo = { assignedTo: '' };
+              const editedAssignmentCategory = { assignmentCategory: '' };
+
+              employeesToUpdate.push(staffData.patchStaff(editedStaff.id, editedAssignedTo));
+              employeesToUpdate.push(staffData.patchStaff(editedStaff.id, editedAssignmentCategory));
+            }
+          });
+          Promise.all(employeesToUpdate)
+            .then(() => {
+              displayRides();
+            });
+        });
     })
     .catch((err) => console.error(err));
 };

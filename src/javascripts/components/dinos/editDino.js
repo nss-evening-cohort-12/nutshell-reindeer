@@ -2,6 +2,13 @@ import utils from '../../helpers/utils';
 import dinoData from '../../helpers/data/dinoData';
 import dinoList from './dinoList';
 
+const changeAvatar = () => {
+  const dinoType = $('#edit-dino-type').val();
+  const newUrl = dinoList.avatarGenerator(dinoType);
+  const domString = `<img src="${newUrl}" class="w-100" id="avatar-chooser" data-url="${newUrl}">`;
+  utils.printToDom('#edit-dino-avatar', domString);
+};
+
 const editDinoDomStringBuilder = (collectionId, dinoObj) => {
   const domString = `
   <div class="modal" id="editDinoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -17,21 +24,28 @@ const editDinoDomStringBuilder = (collectionId, dinoObj) => {
         <form class="edit-dino m-5 editDinoForm">
           <h2>Edit Dino</h2>
           <div class="form-group">
-            <label for="edit-dino-name">Name:</label>
+            <label for="editDinoName">Name:</label>
             <input type="text" class="form-control" name="editDinoName" placeholder="Dino Name" value=${dinoObj.name}>
         </div>
+
         <div class="form-group">
-            <label for="edit-dino-type">Type:</label>
-            <input type="text" class="form-control" name="editDinoType" placeholder="T-Rex" value=${dinoObj.dinoType}>
+          <label for="editDinoType">Type</label>
+          <select name="editDinoType" id="edit-dino-type" class="form-control start-blank">
+            <option value="Diplodocus"${dinoObj.type === 'Diplodocus' ? ' selected' : ''}>Diplodocus</option>
+            <option value="Pterodactyl"${dinoObj.type === 'Pterodactyl' ? ' selected' : ''}>Pterodactyl</option>
+            <option value="Stegosaurus"${dinoObj.type === 'Stegosaurus' ? ' selected' : ''}>Stegosaurus</option>
+            <option value="T-Rex"${dinoObj.type === 'T-Rex' ? ' selected' : ''}>T-Rex</option>
+            <option value="Triceratops"${dinoObj.type === 'Triceratops' ? ' selected' : ''}>Triceratops</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Profile Pic</label>
+          <div id="edit-dino-avatar">
+          <img src="${dinoObj.imgUrl}" class="w-100" id="edit-avatar-chooser" data-url="${dinoObj.imgUrl}">
           </div>
-          <div class="form-group">
-            <label for="edit-dino-imgUrl">Image URL</label>
-            <input type="text" class="form-control" name="editDinoImgUrl" placeholder="Image URL" value=${dinoObj.dinoImgUrl}>
-          </div>
-          <div class="form-group">
-            <label for="edit-dino-imgUrl">Dino Size</label>
-            <input type="text" class="form-control" name="editDinoSize" placeholder="Medium" value=${dinoObj.dinoSize}>
-          </div>
+        </div>
+
             <input type="hidden" class="form-control" name="collectionId" value=${collectionId}>
             <button type="submit" class="btn btn-primary" id="submitEdit">Update</button>
         </form>
@@ -50,9 +64,8 @@ const editDino = (e) => {
   const collectionId = e.target.elements.collectionId.value;
   const tempEditedDino = {
     name: e.target.elements.editDinoName.value,
-    dinoType: e.target.elements.editDinoType.value,
-    dinoImgUrl: e.target.elements.editDinoImgUrl.value,
-    dinoSize: e.target.elements.editDinoSize.value,
+    type: e.target.elements.editDinoType.value,
+    imgUrl: $('#avatar-chooser')[0].dataset.url,
   };
   // pass those to an update vendor data function
   dinoData.updateDino(collectionId, tempEditedDino)
@@ -71,7 +84,7 @@ const dinoEditForm = (e) => {
       $('#editDinoModal').modal();
       $('#addButtonDiv').removeClass('d-none');
     })
-    .catch((err) => console.warn(err));
+    .catch((err) => console.error(err));
 };
 
-export default { editDino, dinoEditForm };
+export default { editDino, dinoEditForm, changeAvatar };

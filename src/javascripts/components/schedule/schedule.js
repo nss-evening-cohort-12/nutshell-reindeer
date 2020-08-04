@@ -5,19 +5,21 @@ import utils from '../../helpers/utils';
 import consoleHeader from '../consoleHeader/consoleHeader';
 
 const printSchedule = () => {
+  utils.printToDom('#filterDiv', '');
+  utils.printToDom('#addButtonDiv', '');
   consoleHeader.headerBuilder('Schedule');
   schedules.getSchedule()
     .then((allSched) => {
       staff.getStaff()
         .then((allStaff) => {
           let domString = `<div class="d-flex justify-content-center flex-wrap" id="scheduledCards">
-                            <div id="unscheduled" class="daysOfWeek mx-2 mt-4">
-                              <h4 class="child-elements no-drop">Unscheduled</h4>
+                            <div id="unscheduled" class="daysOfWeek mx-4 mt-4">
+                              <h5 class="child-elements no-drop">Unscheduled</h5>
                                 <div class="should-scroll drop-here">`;
           allStaff.forEach((unschedStaff) => {
             const isUnsched = allSched.find((s) => s.staffId === unschedStaff.id);
             if (!isUnsched) {
-              domString += `<div id="${unschedStaff.id}" class="card mt-2 dragItem" draggable="true">
+              domString += `<div id="${unschedStaff.id}" class="card my-4 mx-4 dragItem" draggable="true">
                               <div class="card-body d-flex flex-row justify-content-start align-items-center child-elements">
                                 <img src="${unschedStaff.imgUrl}" draggable="false">
                                 <span class="ml-5 child-elements">${unschedStaff.name}</span>
@@ -29,12 +31,12 @@ const printSchedule = () => {
           const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
           days.forEach((day) => {
             const scheduledStaff = allSched.filter((sched) => sched.day === day); // get all sched for this day
-            domString += `<div id="${day}" class="daysOfWeek mx-2 mt-4 scheduled">
-                            <h4 class="child-elements no-drop">${day}</h4>
+            domString += `<div id="${day}" class="daysOfWeek mt-4 scheduled">
+                            <h5 class="child-elements no-drop">${day}</h5>
                               <div class="should-scroll drop-here">`;
             scheduledStaff.forEach((staffInSchedule) => { // Loop through filtered schedules
               const staffMemberInfo = allStaff.find((foundStaff) => foundStaff.id === staffInSchedule.staffId); // Get Name and Id of staff member
-              domString += `<div id="${staffMemberInfo.id}" data-sched="${staffInSchedule.id}" class="card mt-2 dragItem" draggable="true">
+              domString += `<div id="${staffMemberInfo.id}" data-sched="${staffInSchedule.id}" class="card mx-auto my-4 mx-4 dragItem" draggable="true">
                               <div class="card-body d-flex flex-row justify-content-start align-items-center child-elements">
                                 <img src="${staffMemberInfo.imgUrl}" draggable="false" class="child-elements">
                                 <span class="ml-5 child-elements">${staffMemberInfo.name}</span>
