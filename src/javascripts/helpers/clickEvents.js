@@ -13,13 +13,15 @@ import deleteEquipment from '../components/equipment/deleteEquipment';
 import editVendor from '../components/vendors/editVendor';
 import deleteVendor from '../components/vendors/deleteVendor';
 import assignStaff from '../components/staff/assignStaff';
-// import causeChaos from '../components/chaosMonkey/causeChaos';
+import causeChaos from '../components/chaosMonkey/causeChaos';
 import equipTest from '../components/equipment/equipAlert';
 import LogButtons from '../components/auth/auth';
 import checkDino from '../components/dinos/checkDino';
 import schedule from '../components/schedule/schedule';
 import sounds from '../components/soundEffects/soundEffects';
+import notifications from '../components/notifications/notifications';
 import doorOpenAnim from '../components/doorOpenAnim/doorOpenAnim';
+import settings from '../components/settings/settings';
 
 // const showAddForm = () => {
 //   $('#addForm').removeClass('hide');
@@ -56,6 +58,7 @@ const navBarEventListeners = () => {
   $('#schedule').click(() => {
     schedule.printSchedule();
   });
+  $('body').on('click', '.settings-switch', settings.updateSettings);
 };
 
 const clickEvents = () => {
@@ -63,14 +66,14 @@ const clickEvents = () => {
   firebase.auth().onAuthStateChanged((user) => {
     $('body').on('click', '#google-auth', LogButtons.signMeIn);
     $('body').on('click', '#logoutButton', LogButtons.logoutEvent);
-    $('body').on('click', '#logo', sounds.whichTheme);
-    $('body').on('click', '.nav-item', sounds.whichTheme);
+    // $('body').on('click', '.logo-sound', sounds.whichTheme);
+    $('body').on('click', '.nav-sound', sounds.whichTheme);
     $('body').on('click', '#openDoor', doorOpenAnim.animOpenDoor);
     if (user) {
       // -----> Project <-----
-      // $('body').click(() => { // Comment this out to turn off chaos monkey temporarily
-      //  causeChaos.decreaseChaos();
-      // });
+      $('body').click(() => { // Comment this out to turn off chaos monkey temporarily
+        causeChaos.decreaseChaos();
+      });
       // $('body').on('click', '#addButton', showAddForm);
       $('body').on('click', '#addButton', showModal);
       $('body').on('click', '#testButton', equipTest.equipCheck);
@@ -80,6 +83,7 @@ const clickEvents = () => {
       $('body').on('submit', '#dinoAddForm', dinoList.addDino);
       $('body').on('submit', '.editDinoForm', editDino.editDino);
       $('body').on('click', '.editDino', editDino.dinoEditForm);
+      $('body').on('click', '.deleteDino', dinoList.deleteDino);
       $('body').on('click', '#unattended-dinos', dinoList.unattendedDinos);
       $('body').on('change', '#update-dino-handler', checkDino.updateDinoHandlers);
       $('body').on('change', '#addDinoType', dinoList.changeAvatar);
@@ -133,6 +137,10 @@ const clickEvents = () => {
       $('body').on('dragover', '.daysOfWeek', schedule.dragover);
       $('body').on('drop', '.daysOfWeek', schedule.drop);
       //----------------------
+
+      // -----> Notification <-----
+      $('body').on('click', '#fixIssues', notifications.updateNotification);
+      //---------------------------
     }
   });
 };

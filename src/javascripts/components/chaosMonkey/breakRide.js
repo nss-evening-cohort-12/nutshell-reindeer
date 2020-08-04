@@ -2,6 +2,7 @@ import staffData from '../../helpers/data/staffData';
 import utils from '../../helpers/utils';
 import monkeyData from '../../helpers/data/monkeyData';
 import rideData from '../../helpers/data/rideData';
+import notifications from '../notifications/notifications';
 
 const breakRide = () => new Promise((resolve, reject) => {
   rideData.getAllRides()
@@ -18,6 +19,7 @@ const breakRide = () => new Promise((resolve, reject) => {
                 staffData.patchStaff(assignedStaff.id, { assignedTo: '', assignmentCategory: '' });
               }
               monkeyData.addMonkeyLog({ dateTime: Date.now(), message: `The Chaos Monkey has broken the ${brokenRide.name} ride.` });
+              notifications.buildNotification();
             });
         });
       resolve(`The Chaos Monkey has broken the ${brokenRide.name} ride!`);

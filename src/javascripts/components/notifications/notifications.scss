@@ -1,0 +1,109 @@
+#notifications {
+
+  .dropdown-toggle::after {
+    display: none;
+  }
+
+  .dropdown-menu,
+  .dropdown-menu-right {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  h4 {
+    text-align: center;
+    font-size: 1.2em;
+    padding: 18px 10px 10px 10px;
+  }
+
+  h5 {
+    border-bottom: 3px solid #5b5b5b;
+    border-radius: .1em;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    color: #5b5b5b;
+
+    margin-bottom: 15px;
+    padding: 10px;
+    text-align: center;
+  }
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  input ~ .checkmark {
+    background-color: transparent;
+    border: 2px solid #dc3545;
+    border-radius: .3em;
+    color: #dc3545;
+
+    padding: 5px 10px;
+    margin: 0px 10px;
+    transition: 100ms ease-in;
+  }
+
+  input:hover ~ .checkmark {
+    border-color: #b42a38;
+    color: #b42a38;
+    cursor: pointer;
+  }
+
+  input:checked ~ .checkmark {
+    border-color: #5cb85c;
+    color: #5cb85c;
+  }
+
+  .btn-warning {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: transparent !important;
+    border-color: transparent;
+
+    padding: 0;
+    margin: 0px 15px 0px 0px;
+  }
+
+  .btn-warning:focus,
+  .btn-warning:active {
+    outline: none !important;
+    box-shadow: none;
+ }
+
+  .fa-exclamation-circle {
+    color: #fff;
+    font-size: 1.1em;
+  }
+
+  .badge {
+    position: absolute;
+    top: 5%;
+    right: 15%;
+
+    background-color: #dc3545;
+    color: #fff;
+    font-size: .5em;
+  }
+
+  .dropdown {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-right: 10px;
+  }
+
+  .dropdown-menu {
+    width: 250px !important;
+    padding: 15px;
+  }
+
+  .btn-success {
+    margin: 0px 15px 15px 0px;
+  }
+
+  .fa-check {
+    color: seagreen;
+    margin-left: 10px;
+  }
+}
