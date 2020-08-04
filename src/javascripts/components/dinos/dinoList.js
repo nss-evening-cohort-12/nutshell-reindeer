@@ -116,15 +116,17 @@ const displayDinos = () => {
     utils.printToDom('#addForm', addDinoForm());
     addButton.buttonDiv('Capture New Dinosaur');
   }
+  const filterButton = `
+      <div class="custom-control custom-switch">
+        <input class="custom-control-input" type="checkbox" value="" id="unattended-dinos">
+        <label class="custom-control-label" for="unattended-dinos">
+          See Unattended Dinos
+        </label>
+      </div>`;
+  utils.printToDom('#filterDiv', filterButton);
   dinoData.getDinosWithHandlers()
     .then((dinosArr) => {
       let domString = `
-        <div class="custom-control custom-switch">
-          <input class="custom-control-input" type="checkbox" value="" id="unattended-dinos">
-          <label class="custom-control-label" for="unattended-dinos">
-            See Unattended Dinos
-          </label>
-        </div>
         <div class="cardCollection"> 
       `;
 
