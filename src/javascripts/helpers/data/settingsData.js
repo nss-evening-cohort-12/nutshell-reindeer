@@ -14,6 +14,7 @@ const updateSettings = (settingsObj) => {
 const initializeSettings = (userId, settingsObj) => axios.patch(`${baseUrl}/settings/${userId}.json`, settingsObj);
 
 const getUserSettings = (userId) => new Promise((resolve, reject) => {
+  console.warn('getUserSettings recieved', userId);
   const defaultSettings = {
     uid: userId,
     animation: true,
