@@ -86,7 +86,7 @@ const displayVendors = () => {
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addVendorForm());
     $('.start-blank').prop('selectedIndex', -1);
-    addButton.buttonDiv('Build New Vendor');
+    addButton.buttonDiv('Add New Vendor');
   }
   const filterButton = `
       <div class="custom-control custom-switch">

@@ -78,7 +78,7 @@ const addDinoForm = () => {
             </div>
           </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Save</button>
           </form>
         </div>
       </div>
@@ -114,7 +114,7 @@ const displayDinos = () => {
   header.headerBuilder('Dinosaurs');
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addDinoForm());
-    addButton.buttonDiv('Capture New Dinosaur');
+    addButton.buttonDiv('Add New Dinosaur');
   }
   const filterButton = `
       <div class="custom-control custom-switch">

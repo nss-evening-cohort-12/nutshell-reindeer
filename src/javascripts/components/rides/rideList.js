@@ -84,7 +84,7 @@ const displayRides = () => {
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addRideForm());
     $('.start-blank').prop('selectedIndex', -1);
-    addButton.buttonDiv('Build New Ride');
+    addButton.buttonDiv('Add New Ride');
   }
   const filterButton = `
         <div class="custom-control custom-switch">

@@ -135,7 +135,7 @@ const displayStaff = () => {
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addStaffForm());
     $('.start-blank').prop('selectedIndex', -1);
-    addButton.buttonDiv('Hire New Staff');
+    addButton.buttonDiv('Add New Staff Member');
   }
   const filterButton = `
       <div class="custom-control custom-switch">

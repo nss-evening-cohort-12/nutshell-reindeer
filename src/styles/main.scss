@@ -68,10 +68,13 @@ body.all-loaded {
 }
 
 .custom-control:hover, #addButton:hover {
-  color: grey;
+  color: #007bff;
   cursor: pointer;
   label {
     cursor: pointer;
+  }
+  i {
+    color: white;
   }
 };
 
