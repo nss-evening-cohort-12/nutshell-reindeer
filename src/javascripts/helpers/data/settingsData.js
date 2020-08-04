@@ -21,42 +21,23 @@ const getUserSettings = (userId) => new Promise((resolve, reject) => {
     chaosMonkey: false,
   };
   if (userId) {
-    axios.get(`${baseUrl}/settings.json?orderBy="uid"&equalTo="${userId}"`)
+    axios.get(`${baseUrl}/settings.json?orderBy="$key"&equalTo="${userId}"`)
       .then((response) => {
-        console.warn('from axios get', response);
-        if (!response.data) {
+        const userSettings = utils.convertFirebaseCollection(response.data)[0];
+        if (!userSettings) {
           // user doesn't have a settings table yet
-          console.warn('no user data');
           initializeSettings(userId, defaultSettings);
           resolve(defaultSettings);
         } else {
-          console.warn('current user`s settings file', response);
+          // user has existing settings table
           resolve(utils.convertFirebaseCollection(response.data)[0]);
         }
       })
       .catch((err) => reject(err));
   } else {
+    // there is no user logged in
     resolve(defaultSettings);
   }
 });
-
-// const getUserSettings = (userId) => new Promise((resolve, reject) => {
-//   axios.get(`${baseUrl}/settings.json?orderBy="uid"&equalTo="${`${userId}fake`}"`)
-//     .then((response) => {
-//       if (!response.data[0]) { console.warn('no data'); }
-//       resolve(utils.convertFirebaseCollection(response.data));
-//     })
-//     .catch((err) => reject(err));
-// });
-
-// const getUserSettings = (userId) => new Promise((resolve, reject) => {
-//   axios.get(`${baseUrl}/settings.${userId}.json?`)
-//     .then((response) => {
-//       if (!response.data[0]) { console.warn('no data'); }
-//       console.warn(response);
-//       resolve(utils.convertFirebaseCollection(response.data));
-//     })
-//     .catch((err) => reject(err));
-// });
 
 export default { getUserSettings, updateSettings };
