@@ -50,7 +50,7 @@ const buildNotification = () => {
             <i class="fas fa-exclamation-circle"></i> <span class="badge badge-light">${number}</span>
               <span class="sr-only">unread messages</span>
             </button>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownIssueButton">
+            <div class="dropdown-menu dropdown-menu-right notification-dropdown" aria-labelledby="dropdownIssueButton">
               <h5><i class="fas fa-toolbox"></i> Need fixin'</h5>
               <form>`;
           rides.forEach((ride) => {
@@ -93,7 +93,7 @@ const buildNotification = () => {
             $('.badge').html(number);
           } else {
             $('.badge').html('');
-            $('.dropdown-menu').html('<h4>No Issues!<i class="fas fa-check"></i></h4>');
+            $('.notification-dropdown').html('<h4>No Issues!<i class="fas fa-check"></i></h4>');
           }
         });
     })
