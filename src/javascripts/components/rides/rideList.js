@@ -152,20 +152,22 @@ const deleteRide = (e) => {
     .then(() => {
       staffData.getStaff(collectionId)
         .then((allStaff) => {
+          const employeesToUpdate = [];
+
           allStaff.forEach((staff) => {
             if (staff.assignedTo === collectionId) {
               const editedStaff = staff;
-              editedStaff.assignedTo = '';
-              editedStaff.assignmentCategory = '';
+              const editedAssignedTo = { assignedTo: '' };
+              const editedAssignmentCategory = { assignmentCategory: '' };
 
-              staffData.updateStaff(staff.id, editedStaff)
-                .then(() => {
-                  displayRides();
-                });
-            } else {
-              displayRides();
+              employeesToUpdate.push(staffData.patchStaff(editedStaff.id, editedAssignedTo));
+              employeesToUpdate.push(staffData.patchStaff(editedStaff.id, editedAssignmentCategory));
             }
           });
+          Promise.all(employeesToUpdate)
+            .then(() => {
+              displayRides();
+            });
         });
     })
     .catch((err) => console.error(err));
