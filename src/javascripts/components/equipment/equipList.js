@@ -175,6 +175,7 @@ const displayEquipCollection = () => {
 const addEquipment = (e) => {
   e.preventDefault();
   const tempEquipOjb = {
+    assignedTo: '',
     name: e.target.elements.name.value,
     type: e.target.elements.type.value,
     location: e.target.elements.location.value,
