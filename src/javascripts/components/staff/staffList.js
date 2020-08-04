@@ -1,22 +1,9 @@
-// import firebase from 'firebase/app';
-// import 'firebase/storage';
 import utils from '../../helpers/utils';
 import staffData from '../../helpers/data/staffData';
 import './staffList.scss';
 import checkUser from '../../helpers/data/checkUser';
 import header from '../consoleHeader/consoleHeader';
 import addButton from '../addButton/addButton';
-
-// const staffIcon = (staffMember) => {
-//   let icon = '';
-//   if (staffMember.isActive) {
-//     // eslint-disable-next-line no-unused-expressions
-//     staffMember.assignedTo ? icon = 'fas fa-user' : icon = 'far fa-user';
-//   } else {
-//     icon = 'fas fa-user-slash';
-//   }
-//   return `<i class="${icon} fa-5x text-secondary m-4"></i>`;
-// };
 
 const jobIcon = (jobType) => {
   let icon = '';
@@ -150,13 +137,15 @@ const displayStaff = () => {
     $('.start-blank').prop('selectedIndex', -1);
     addButton.buttonDiv('Hire New Staff');
   }
+  const filterButton = `
+      <div class="custom-control custom-switch">
+        <input class="custom-control-input" type="checkbox" value="" id="unassigned-staff">
+        <label class="custom-control-label" for="unassigned-staff">
+          See Unassigned Staff
+        </label>
+      </div>`;
+  utils.printToDom('#filterDiv', filterButton);
   let domString = `
-    <div class="custom-control custom-switch">
-      <input class="custom-control-input" type="checkbox" value="" id="unassigned-staff">
-      <label class="custom-control-label" for="unassigned-staff">
-        See Unassigned Staff
-      </label>
-    </div>
     <div class="cardCollection"> 
   `;
   staffData.getStaffWithAssignments()
