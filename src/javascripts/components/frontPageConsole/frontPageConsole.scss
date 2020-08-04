@@ -53,15 +53,16 @@
 }
 
 .typewriter {
+  width: 25vw;
   position: absolute;
   top: 15vw;
-  left: 48vw;
+  left: 50vw;
   transform: translate(-50%, 0);
   text-align: left;
 }
 
 .typewriter h1 {
-  font-size: 1rem;
+  font-size: 1vw;
   width: 0;
   color: #fff;
   font-family: monospace;
@@ -71,20 +72,21 @@
   white-space: nowrap; /* Keeps the content on a single line */
   letter-spacing: .15em; /* Adjust as needed */
   animation: 
-    typing 3.5s steps(30, end) 4s forwards,
+    typing 2.5s steps(30, end) 4s forwards,
     blink-caret .5s step-end 4s 10;
 }
 
 .typewriter2 {
+  width: 25vw;
   position: absolute;
   top: 18vw;
-  left: 50%;
+  left: 50vw;
   transform: translate(-50%, 0);
   text-align: left;
 }
 
 .typewriter2 h1 {
-  font-size: 1rem;
+  font-size: 1vw;
   width: 0;
   color: #fff;
   font-family: monospace;
@@ -94,20 +96,21 @@
   white-space: nowrap; /* Keeps the content on a single line */
   letter-spacing: .15em; /* Adjust as needed */
   animation: 
-    typing 3.5s steps(30, end) 9s forwards,
-    blink-caret .5s step-end 9s 8;
+    typing2 2.5s steps(30, end) 7s forwards,
+    blink-caret .5s step-end 7s 8;
 }
 
 .typewriter3 {
+  width: 25vw;
   position: absolute;
-  top: 21vw;
-  left: 42.8vw;
+  top: 25vw;
+  left: 50vw;
   transform: translate(-50%, 0);
   text-align: left;
 }
 
 .typewriter3 h1 {
-  font-size: 1rem;
+  font-size: 1vw;
   width: 0;
   color: #fff;
   font-family: monospace;
@@ -117,14 +120,24 @@
   white-space: nowrap; /* Keeps the content on a single line */
   letter-spacing: .15em; /* Adjust as needed */
   animation: 
-    typing 3.5s steps(30, end) 15s forwards,
-    blink-caret .5s step-end 15s infinite;
+    typing3 1s steps(1, end) 9s forwards,
+    blink-caret .5s step-end 9s infinite;
 }
 
 /* The typing effect */
 @keyframes typing {
   from { width: 0 }
   to { width: 100% }
+}
+
+@keyframes typing2 {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes typing3 {
+  from { width: 0 }
+  to { width: 7% }
 }
 
 /* The typewriter cursor effect */

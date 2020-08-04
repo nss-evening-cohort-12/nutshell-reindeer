@@ -15,13 +15,13 @@ const printConsole = () => {
                     <img src="${pipe}" id="pipe">
                     <img src="${pipe}" id="pipe2">
                     <div class="typewriter">
-                      <h1>>WELCOME TO JURASSIC WORLD!</h1>
+                      <h1>WELCOME TO JURASSIC WORLD!</h1>
                     </div>
                     <div class="typewriter2">
-                      <h1>>PLEASE LOG IN TO USE THE CONSOLE</h1>
+                      <h1>PLEASE LOG IN TO USE THE CONSOLE</h1>
                     </div>
                     <div class="typewriter3">
-                      <h1>>USERNAME:</h1>
+                      <h1>></h1>
                     </div>
                     </div>
                     `;
