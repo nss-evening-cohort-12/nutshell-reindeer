@@ -162,6 +162,8 @@ const deleteRide = (e) => {
                 .then(() => {
                   displayRides();
                 });
+            } else {
+              displayRides();
             }
           });
         });
