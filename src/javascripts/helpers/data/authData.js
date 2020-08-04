@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import auth from '../../components/auth/auth';
+// import auth from '../../components/auth/auth';
 
 import utils from '../utils';
 import settings from '../../components/settings/settings';
@@ -25,6 +26,7 @@ const checkLoginStatus = () => {
       $('#addButtonDiv').addClass('hide');
       utils.printToDom('#collectionName', '');
       utils.printToDom('#displayCards', '');
+      utils.printToDom('#notifications', '');
       auth.loginButton();
     }
   });
