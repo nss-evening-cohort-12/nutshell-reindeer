@@ -81,21 +81,23 @@ const unattendedRides = (e) => {
 
 const displayRides = () => {
   header.headerBuilder('Rides');
-
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addRideForm());
     $('.start-blank').prop('selectedIndex', -1);
     addButton.buttonDiv('Build New Ride');
   }
-  rideData.getRidesWithAssignees()
-    .then((ridesArr) => {
-      let domString = `
+  const filterButton = `
         <div class="custom-control custom-switch">
           <input class="custom-control-input" type="checkbox" value="" id="unattended-rides">
           <label class="custom-control-label" for="unattended-rides">
-            See Unattended Rides
+            Show Unattended Rides
           </label>
         </div>
+  `;
+  utils.printToDom('#filterDiv', filterButton);
+  rideData.getRidesWithAssignees()
+    .then((ridesArr) => {
+      let domString = `
         <div class="cardCollection">
       `;
       ridesArr.forEach((ride) => {
