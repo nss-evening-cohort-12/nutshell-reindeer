@@ -94,7 +94,6 @@ const clickEvents = () => {
       $('body').on('click', '.deleteEquip', deleteEquipment.deleteEquip);
       $('body').on('click', '.assignEquipOption', editEquip.assignEquipment);
       $('body').on('click', '#unattended-equip', equipList.unattendedEquip);
-      $('body').on('click', '#fixIssues', notifications.checkNotification);
 
       //----------------------
 
@@ -135,6 +134,10 @@ const clickEvents = () => {
       $('body').on('dragover', '.daysOfWeek', schedule.dragover);
       $('body').on('drop', '.daysOfWeek', schedule.drop);
       //----------------------
+
+      // -----> Notification <-----
+      $('body').on('click', '#fixIssues', notifications.updateNotification);
+      //---------------------------
     }
   });
 };
