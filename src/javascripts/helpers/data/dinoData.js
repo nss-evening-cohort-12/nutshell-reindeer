@@ -29,7 +29,7 @@ const getDinosWithHandlers = () => new Promise((resolve, reject) => {
             allDinos[dino].assignees = [];
           });
           staff.forEach((employee) => {
-            if (employee.assignmentCategory === 'dinosaurs') {
+            if (employee.assignmentCategory === 'dinosaurs' && employee.assignedTo !== '') {
               allDinos[employee.assignedTo].assignees.push(employee);
             }
           });

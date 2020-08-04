@@ -1,6 +1,7 @@
 import utils from '../../helpers/utils';
 import monkeyData from '../../helpers/data/monkeyData';
 import equipData from '../../helpers/data/equipData';
+import notifications from '../notifications/notifications';
 
 const breakEquipment = () => new Promise((resolve, reject) => {
   equipData.getAllEquipment()
@@ -11,6 +12,7 @@ const breakEquipment = () => new Promise((resolve, reject) => {
       equipData.patchEquipment(brokenEquip.id, { assignedTo: '', isOperational: false })
         .then(() => {
           monkeyData.addMonkeyLog({ dateTime: Date.now(), message: `The Chaos Monkey has broken the ${brokenEquip.name}.` });
+          notifications.buildNotification();
         });
       resolve(`The Chaos Monkey has broken the ${brokenEquip.name}!`);
     })

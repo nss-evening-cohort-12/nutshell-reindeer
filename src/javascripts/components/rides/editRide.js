@@ -1,6 +1,7 @@
 import rideData from '../../helpers/data/rideData';
 import utils from '../../helpers/utils';
 import rideList from './rideList';
+import notifications from '../notifications/notifications';
 
 const editRideDomStringBuilder = (collectionId, rideObj) => {
   const domString = `
@@ -61,6 +62,7 @@ const editRide = (e) => {
   rideData.updateRide(collectionId, tempEditedRide)
     .then(() => {
       rideList.displayRides();
+      notifications.buildNotification();
     });
 };
 

@@ -19,6 +19,7 @@ import LogButtons from '../components/auth/auth';
 import checkDino from '../components/dinos/checkDino';
 import schedule from '../components/schedule/schedule';
 import sounds from '../components/soundEffects/soundEffects';
+import notifications from '../components/notifications/notifications';
 import doorOpenAnim from '../components/doorOpenAnim/doorOpenAnim';
 import settings from '../components/settings/settings';
 
@@ -83,6 +84,7 @@ const clickEvents = () => {
       $('body').on('submit', '#dinoAddForm', dinoList.addDino);
       $('body').on('submit', '.editDinoForm', editDino.editDino);
       $('body').on('click', '.editDino', editDino.dinoEditForm);
+      $('body').on('click', '.deleteDino', dinoList.deleteDino);
       $('body').on('click', '#unattended-dinos', dinoList.unattendedDinos);
       $('body').on('change', '#update-dino-handler', checkDino.updateDinoHandlers);
       $('body').on('change', '#addDinoType', dinoList.changeAvatar);
@@ -136,6 +138,10 @@ const clickEvents = () => {
       $('body').on('dragover', '.daysOfWeek', schedule.dragover);
       $('body').on('drop', '.daysOfWeek', schedule.drop);
       //----------------------
+
+      // -----> Notification <-----
+      $('body').on('click', '#fixIssues', notifications.updateNotification);
+      //---------------------------
     }
   });
 };
