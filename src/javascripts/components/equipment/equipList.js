@@ -122,9 +122,10 @@ const displayEquipCollection = () => {
       <div class="custom-control custom-switch">
         <input class="custom-control-input" type="checkbox" value="" id="unattended-equip">
         <label class="custom-control-label" for="unattended-equip">
-          See Unattended Equipment
+          Show Available Equipment
         </label>
-      </div>`;
+      </div>
+      <div id="testButton" class="ml-4 custom-control"><i class="fas fa-power-off"></i> Test All Equipment</div>`;
   utils.printToDom('#filterDiv', filterButton);
 
   staffData.getStaff()
@@ -132,16 +133,7 @@ const displayEquipCollection = () => {
       equipData.getAllEquipment()
         .then((equipCollectionArr) => {
           let domString = `<div>
-          
-            <div class="cardCollection"> 
-          <div class ="card equip-card align-items-center m-3" style="width: 18rem">
-            <div class="card-body">
-            <button id="testButton" type="button" class="btn btn-outline-info btn-large">
-        Test All Equipment
-      </button>
-            </div>
-          </div>
-           
+            <div class="cardCollection">            
           `;
           equipCollectionArr.forEach((equip) => {
             domString += `

@@ -67,8 +67,12 @@ body.all-loaded {
   color: lightgrey;
 }
 
-#filterDiv:hover, #addButton:hover {
+.custom-control:hover, #addButton:hover {
   color: grey;
+  cursor: pointer;
+  label {
+    cursor: pointer;
+  }
 };
 
 #filterDiv {
