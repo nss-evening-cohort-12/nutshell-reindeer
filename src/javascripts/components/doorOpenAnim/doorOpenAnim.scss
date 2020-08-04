@@ -8,6 +8,7 @@
   z-index: 10;
   width: 100vw;
   height: 100vh;
+  object-fit: cover;
 }
 
 #redlight {
@@ -16,6 +17,7 @@
   z-index: 15;
   width: 100vw;
   height: 100vh;
+  object-fit: cover;
 }
 
 #yellowlight {
@@ -24,6 +26,7 @@
   z-index: 20;
   width: 100vw;
   height: 100vh;
+  object-fit: cover;
   animation: blink 1s infinite;
 }
 
@@ -32,6 +35,7 @@
   z-index: 5;
   width: 100vw;
   height: 100vh;
+  object-fit: cover;
   animation: top 3s linear 0s 1 forwards;
   animation-play-state: paused;
 }
@@ -41,6 +45,7 @@
   z-index: 5;
   width: 100vw;
   height: 100vh;
+  object-fit: cover;
   animation: bottom 3s linear 0s 1 forwards;
   animation-play-state: paused;
 }

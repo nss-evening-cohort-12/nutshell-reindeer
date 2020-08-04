@@ -23,6 +23,7 @@ import notifications from '../components/notifications/notifications';
 import doorOpenAnim from '../components/doorOpenAnim/doorOpenAnim'; // ANIMATION
 import settings from '../components/settings/settings';
 import frontPageConsole from '../components/frontPageConsole/frontPageConsole';
+import chaosLog from '../components/chaosMonkey/chaosLog';
 
 // const showAddForm = () => {
 //   $('#addForm').removeClass('hide');
@@ -69,6 +70,7 @@ const clickEvents = () => {
     $('body').on('click', '#google-auth', LogButtons.signMeIn);
     $('body').on('click', '#logoutButton', LogButtons.logoutEvent);
     $('body').on('click', '.nav-sound', sounds.whichTheme);
+    $('body').on('click', '#chaosIcon', chaosLog.animateLog);
     $('body').on('click', '#openDoor', doorOpenAnim.animOpenDoor); // ANIMATION
     $('body').click(() => {
       if ($('#monkey-switch').is(':checked')) {
