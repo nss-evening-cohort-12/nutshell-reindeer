@@ -88,16 +88,16 @@ const displayVendors = () => {
     $('.start-blank').prop('selectedIndex', -1);
     addButton.buttonDiv('Build New Vendor');
   }
-
+  const filterButton = `
+      <div class="custom-control custom-switch">
+        <input class="custom-control-input" type="checkbox" value="" id="unattended-vendors">
+        <label class="custom-control-label" for="unattended-vendors">
+          See Unattended Vendors
+        </label>`;
+  utils.printToDom('#filterDiv', filterButton);
   vendorData.getVendorsWithAssignees()
     .then((vendorsArr) => {
       let domString = `
-      <div class="custom-control custom-switch">
-      <input class="custom-control-input" type="checkbox" value="" id="unattended-vendors">
-      <label class="custom-control-label" for="unattended-vendors">
-          See Unattended Vendors
-        </label>
-      </div>
       <div class="cardCollection"> 
       `;
       vendorsArr.forEach((vendor) => {
