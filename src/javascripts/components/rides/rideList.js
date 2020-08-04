@@ -4,6 +4,7 @@ import checkUser from '../../helpers/data/checkUser';
 import './rideList.scss';
 import header from '../consoleHeader/consoleHeader';
 import addButton from '../addButton/addButton';
+import staffData from '../../helpers/data/staffData';
 
 const rideIcon = (type) => {
   let icon = '';
@@ -149,7 +150,21 @@ const deleteRide = (e) => {
   const collectionId = e.target.closest('.card').id;
   rideData.deleteRideById(collectionId)
     .then(() => {
-      displayRides();
+      staffData.getStaff(collectionId)
+        .then((allStaff) => {
+          allStaff.forEach((staff) => {
+            if (staff.assignedTo === collectionId) {
+              const editedStaff = staff;
+              editedStaff.assignedTo = '';
+              editedStaff.assignmentCategory = '';
+
+              staffData.updateStaff(staff.id, editedStaff)
+                .then(() => {
+                  displayRides();
+                });
+            }
+          });
+        });
     })
     .catch((err) => console.error(err));
 };
