@@ -33,10 +33,10 @@ body.all-loaded {
   opacity: 1;
 }
 
-.addButtonDiv {
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 10em;}
+// .addButtonDiv {
+//   display: flex;
+//   justify-content: flex-end;
+//   margin-right: 10em;}
   
 .displayCards {
   display: flex;
@@ -57,7 +57,31 @@ body.all-loaded {
 }
 
 .custom-switch {
-  font-size: 2em;
-  display: flex;
-  align-items: center;
+  font-size: 1em;
+  // display: flex;
+  // align-items: center;
+}
+
+#filterDiv, #addButton {
+  // color: #FFC107
+  color: lightgrey;
+}
+
+.custom-control:hover, #addButton:hover {
+  color: #007bff;
+  cursor: pointer;
+  label {
+    cursor: pointer;
+  }
+  i {
+    color: white;
+  }
+};
+
+#filterDiv {
+  margin-left: 2rem;
+}
+
+#addButton {
+  margin-right: 2rem;
 }

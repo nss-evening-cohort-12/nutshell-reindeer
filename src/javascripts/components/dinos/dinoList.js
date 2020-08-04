@@ -78,7 +78,7 @@ const addDinoForm = () => {
             </div>
           </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Save</button>
           </form>
         </div>
       </div>
@@ -114,17 +114,19 @@ const displayDinos = () => {
   header.headerBuilder('Dinosaurs');
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addDinoForm());
-    addButton.buttonDiv('Capture New Dinosaur');
+    addButton.buttonDiv('Add New Dinosaur');
   }
+  const filterButton = `
+      <div class="custom-control custom-switch">
+        <input class="custom-control-input" type="checkbox" value="" id="unattended-dinos">
+        <label class="custom-control-label" for="unattended-dinos">
+          See Unattended Dinos
+        </label>
+      </div>`;
+  utils.printToDom('#filterDiv', filterButton);
   dinoData.getDinosWithHandlers()
     .then((dinosArr) => {
       let domString = `
-        <div class="custom-control custom-switch">
-          <input class="custom-control-input" type="checkbox" value="" id="unattended-dinos">
-          <label class="custom-control-label" for="unattended-dinos">
-            See Unattended Dinos
-          </label>
-        </div>
         <div class="cardCollection"> 
       `;
 

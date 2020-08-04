@@ -5,6 +5,8 @@ import utils from '../../helpers/utils';
 import consoleHeader from '../consoleHeader/consoleHeader';
 
 const printSchedule = () => {
+  utils.printToDom('#filterDiv', '');
+  utils.printToDom('#addButtonDiv', '');
   consoleHeader.headerBuilder('Schedule');
   schedules.getSchedule()
     .then((allSched) => {
