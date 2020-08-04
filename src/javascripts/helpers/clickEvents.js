@@ -65,16 +65,15 @@ const clickEvents = () => {
   firebase.auth().onAuthStateChanged((user) => {
     $('body').on('click', '#google-auth', LogButtons.signMeIn);
     $('body').on('click', '#logoutButton', LogButtons.logoutEvent);
-    // $('body').on('click', '.logo-sound', sounds.whichTheme);
     $('body').on('click', '.nav-sound', sounds.whichTheme);
     $('body').on('click', '#openDoor', doorOpenAnim.animOpenDoor);
+    $('body').click(() => {
+      if ($('#monkey-switch').is(':checked')) {
+        causeChaos.decreaseChaos();
+      }
+    });
     if (user) {
       // -----> Project <-----
-      $('body').click(() => {
-        if ($('#monkey-switch').is(':checked')) {
-          causeChaos.decreaseChaos();
-        }
-      });
       // $('body').on('click', '#addButton', showAddForm);
       $('body').on('click', '#addButton', showModal);
       $('body').on('click', '#testButton', equipTest.equipCheck);
