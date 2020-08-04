@@ -1,26 +1,40 @@
 #scheduledCards {
   width: 100%;
+  font-size: .5rem;
+}
+
+.drop-here {
+  min-height: 25rem;
 }
 
 .daysOfWeek {
-  width: 15rem;
-  height: 20rem;
+  width: 10rem;
+  background-color: transparent !important;
+  h5 {
+    color: white;
+    border-bottom: 2px solid white;
+  }
 }
 
-.should-scroll { 
+.should-scroll2 { 
   overflow: scroll;
-  height: 15rem;
+  height: 25rem;
   margin: 1rem;
 }
 
 .dragItem {
+  width: 80%;
+  border-radius: 0 3px 3px 0 !important;
+  position: relative;
   .card-body {
-    height: 5rem;
+    height: 2rem;
     padding: 0;
   }
   img {
-    width: 5rem;
-    height: 5rem;
+    left: -10px;
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
     object-fit: cover;
   }
 }
@@ -32,19 +46,19 @@
 .scheduled {
   position: relative;
   background-color: white;
-  border-radius: 5px;
   padding: 0;
-  h4 {
+  h5 {
     margin: 1rem;
   }
 }
 
 #unscheduled {
+  width: 14rem;
+  margin-right: 10rem !important;
   position: relative;
   background-color: white;
-  border-radius: 5px;
   padding: 0;
-  h4 {
+  h5 {
     margin: 1rem;
   }
 }

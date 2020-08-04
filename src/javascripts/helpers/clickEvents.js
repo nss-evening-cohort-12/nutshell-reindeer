@@ -22,6 +22,7 @@ import sounds from '../components/soundEffects/soundEffects';
 import notifications from '../components/notifications/notifications';
 import doorOpenAnim from '../components/doorOpenAnim/doorOpenAnim';
 import settings from '../components/settings/settings';
+import frontPageConsole from '../components/frontPageConsole/frontPageConsole';
 
 // const showAddForm = () => {
 //   $('#addForm').removeClass('hide');
@@ -64,6 +65,7 @@ const navBarEventListeners = () => {
 const clickEvents = () => {
   navBarEventListeners();
   firebase.auth().onAuthStateChanged((user) => {
+    frontPageConsole.printConsole();
     $('body').on('click', '#google-auth', LogButtons.signMeIn);
     $('body').on('click', '#logoutButton', LogButtons.logoutEvent);
     $('body').on('click', '.nav-sound', sounds.whichTheme);
