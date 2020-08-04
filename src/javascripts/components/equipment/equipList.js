@@ -116,19 +116,23 @@ const displayEquipCollection = () => {
   if (checkUser.checkUser()) {
     utils.printToDom('#addForm', addEquipForm());
     $('.start-blank').prop('selectedIndex', -1);
-    addButton.buttonDiv('New Equipment');
+    addButton.buttonDiv('Add New Equipment');
   }
+  const filterButton = `
+      <div class="custom-control custom-switch">
+        <input class="custom-control-input" type="checkbox" value="" id="unattended-equip">
+        <label class="custom-control-label" for="unattended-equip">
+          See Unattended Equipment
+        </label>
+      </div>`;
+  utils.printToDom('#filterDiv', filterButton);
+
   staffData.getStaff()
     .then((staff) => {
       equipData.getAllEquipment()
         .then((equipCollectionArr) => {
           let domString = `<div>
-          <div class="custom-control custom-switch">
-              <input class="custom-control-input" type="checkbox" value="" id="unattended-equip">
-              <label class="custom-control-label" for="unattended-equip">
-                See Unattended Equipment
-              </label>
-            </div>
+          
             <div class="cardCollection"> 
           <div class ="card equip-card align-items-center m-3" style="width: 18rem">
             <div class="card-body">
