@@ -10,6 +10,7 @@ import causeChaos from './components/chaosMonkey/causeChaos';
 import checkDino from './components/dinos/checkDino';
 import notifications from './components/notifications/notifications';
 import doorOpenAnim from './components/doorOpenAnim/doorOpenAnim';
+import chaosLog from './components/chaosMonkey/chaosLog';
 
 const init = () => {
   doorOpenAnim.openDoors();
@@ -19,6 +20,7 @@ const init = () => {
   clickEvents.clickEvents();
   causeChaos.randomChaos(); // sets the chaos counter to random number on init
   checkDino.checkDinoHandlers(); // checks for dinos with 1 or less than 1 handler
+  chaosLog.printChaosLog(); // prints the chaos log items into container
 };
 
 init();
